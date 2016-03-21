@@ -21,7 +21,7 @@ public class Student implements Comparable<Student>{
     private String religion;
     
    
-    public Student(String klasse,String jahrgang, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {
+    public Student( String jahrgang, String klasse, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {
         this.klasse = klasse;
         this.jahrgang = jahrgang;
         this.name = name;
@@ -44,7 +44,7 @@ public class Student implements Comparable<Student>{
     }
     
     public String toString(){
-        return klasse+" "+jahrgang+" "+name+" "+geschlecht+" "+zweig+" "+fs2+" "+fs3+" "+fs4+" "+religion;
+        return jahrgang+" "+klasse+" "+name+" "+geschlecht+" "+zweig+" "+fs2+" "+fs3+" "+fs4+" "+religion;
     }
     public String getKlasse(){
          return klasse;
