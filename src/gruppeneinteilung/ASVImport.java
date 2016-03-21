@@ -44,15 +44,17 @@ public class ASVImport {
     public List<Student> parseLines() {
         List<Student> students = new ArrayList<>();
         lines.stream().forEach((String line) -> {
-           
-                String[] tokens;
-                tokens = line.split("\t",-1);
-                if (tokens[0].length()>1  && Character.isDigit(tokens[0].charAt(0))) {
-                    Student s;
-                    s = new Student(tokens[0], tokens[1], tokens[2], tokens[3], tokens[5], tokens[6], tokens[7], tokens[8]);
-                    students.add(s);
-                }
-        
+
+            String[] tokens;
+            tokens = line.split("\t", -1);
+            if (tokens[0].length() > 1 && Character.isDigit(tokens[0].charAt(0))) {
+                Student s;
+                String jahrgang = tokens[0].substring(0, 2);
+                String klasse = tokens[0].substring(2);
+                s = new Student(jahrgang, klasse, tokens[1], tokens[2], tokens[3], tokens[5], tokens[6], tokens[7], tokens[8]);
+                students.add(s);
+            }
+
         });
         return students;
     }
