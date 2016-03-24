@@ -1,58 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gruppeneinteilung;
 
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.BorderLayout;
-
+import java.util.ArrayList;
+import javax.swing.*;
 public class GruppenFenster extends JFrame {
+    ArrayList<Student> students;
+   
 
-    String gruppenName;
-
-    public GruppenFenster(Student[] gruppe, String name) {
-        super("JListBeispiel");
+    public GruppenFenster(ArrayList<Student> students, String name) {
+        super("Gruppeneinteilung");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 300);
-        JPanel panel = new JPanel();
-
-        panel.setLayout(new java.awt.BorderLayout());
-
-        JLabel titel = new JLabel(name);
-        panel.add(titel, BorderLayout.NORTH);
-
-        JList<Student> gruppenListe;
-        gruppenListe = new JList<>(gruppe);
-        gruppenListe.setFixedCellWidth(100);
-        gruppenListe.setCellRenderer(new WhiteYellowCellRenderer());
-
-        //JList wird Panel hinzugefügt
-        panel.add(gruppenListe, BorderLayout.CENTER);
+        setSize(800, 600);
+        setLayout(new java.awt.BorderLayout());
         
-        JScrollPane scrollPane = new JScrollPane (panel, 
-            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-        add(scrollPane);
+        this.students = students;
+        
+        ArrayList<Student> gruppe1 = new ArrayList<> ();
+        ArrayList<Student> gruppe2 = new ArrayList<> ();
+        
+        for (int i = 0;i<20;i++)
+            gruppe1.add(students.get(i));
+        for (int i = 20;i<40;i++)
+            gruppe2.add(students.get(i));
+        
+        JPanel panel1 = new GruppenPanel(gruppe1,"Gruppe 1");
+        add(panel1, BorderLayout.WEST);
+        JPanel panel2 = new GruppenPanel(gruppe2,"Gruppe 2");
+        add(panel2, BorderLayout.EAST);
+        
+        
         setVisible(true);
 
     }
 
-    private static class WhiteYellowCellRenderer extends DefaultListCellRenderer {
-
-        @Override
-        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (index % 2 == 0) {
-                c.setBackground(Color.gray);
-            } else {
-                c.setBackground(Color.white);
-            }
-            return c;
-        }
-    }
+    
 }

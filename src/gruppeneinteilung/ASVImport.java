@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author claus
+ * @author Claus Behl
  */
 public class ASVImport {
 
@@ -30,8 +30,8 @@ public class ASVImport {
         int returnVal;
         returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("You chose to open this file: "
-                    + chooser.getSelectedFile().getName());
+            //System.out.println("You chose to open this file: "
+            //        + chooser.getSelectedFile().getName());
             asvexport = chooser.getSelectedFile();
         }
         lines = readFile();
@@ -41,8 +41,8 @@ public class ASVImport {
      *
      * @return Liste der Schüler, aus dem aktuellen Import
      */
-    public List<Student> parseLines() {
-        List<Student> students = new ArrayList<>();
+    public ArrayList<Student> parseLines() {
+        ArrayList<Student> students = new ArrayList<>();
         lines.stream().forEach((String line) -> {
 
             String[] tokens;

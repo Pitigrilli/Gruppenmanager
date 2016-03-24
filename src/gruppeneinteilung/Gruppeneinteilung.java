@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gruppeneinteilung;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -16,7 +10,7 @@ import java.util.List;
  * @author behl.claus
  */
 public class Gruppeneinteilung {
-    List<Student> students; 
+    ArrayList<Student> students; 
 
     public Gruppeneinteilung(){
         ASVImport asvImport = new ASVImport();
@@ -53,9 +47,8 @@ public class Gruppeneinteilung {
             System.out.println(studentliste[i].getName());
         }
              */
-        Student[] studentliste = students.toArray(new Student[students.size()]);
-        //Arrays.sort(studentliste);
-        GruppenFenster gf1 = new GruppenFenster(studentliste, "Gesamtliste: "+students.size()+" Schüler");
+
+        GruppenFenster gf1 = new GruppenFenster(students, "Gesamtliste: "+students.size()+" Schüler");
     }
 
     
