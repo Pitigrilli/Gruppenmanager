@@ -10,12 +10,14 @@ import java.util.Arrays;
  * @author behl.claus
  */
 public class Gruppeneinteilung {
-    ArrayList<Student> students; 
+    ArrayList<Student> students;
+    ArrayList<Jahrgang> jahrgaenge;
 
     public Gruppeneinteilung(){
         ASVImport asvImport = new ASVImport();
         //asvImport.testReadFile();
         students = asvImport.parseLines();
+        JahrgängeErstellen();
     }
     /**
      * @param args the command line arguments
@@ -49,6 +51,12 @@ public class Gruppeneinteilung {
              */
 
         GruppenFenster gf1 = new GruppenFenster(students, "Gesamtliste: "+students.size()+" Schüler");
+    }
+    
+    public void JahrgängeErstellen()
+    {
+        for(int i = 5; i < 11; i++)
+        jahrgaenge.add(new Jahrgang);
     }
 
     
