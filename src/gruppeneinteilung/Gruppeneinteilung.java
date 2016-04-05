@@ -17,7 +17,8 @@ public class Gruppeneinteilung {
         ASVImport asvImport = new ASVImport();
         //asvImport.testReadFile();
         students = asvImport.parseLines();
-        JahrgängeErstellen();
+        jahrgängeErstellen();
+        
     }
     /**
      * @param args the command line arguments
@@ -53,12 +54,18 @@ public class Gruppeneinteilung {
         GruppenFenster gf1 = new GruppenFenster(students, "Gesamtliste: "+students.size()+" Schüler");
     }
     
-    public void JahrgängeErstellen()
+    public void jahrgängeErstellen()
     {
         for(int i = 5; i < 11; i++)
-        jahrgaenge.add(new Jahrgang);
+        jahrgaenge.add(new Jahrgang(i));
     }
-
     
-
+    //studentEinfuegen
+    public void studentJahrgangZuordnen(){
+        for(int i=0;i<students.size();i++){
+            Student aktuell=students.get(i);
+            int j= aktuell.getJahrgang();
+            jahrgaenge.get(j-5).studentEinfuegen(aktuell);
+    }
+    }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Jahrgang 
 {
     //Variablen--------------------------
+    private int jahrgang;
     private ArrayList[] klassen;
     private ArrayList alle;
     private int stufe;
@@ -25,7 +26,9 @@ public class Jahrgang
     private boolean nachZweig;
     private boolean nachFremdsprache;
     
-    
+ public Jahrgang(int n){
+     jahrgang = n;
+ }   
     
     
     //Methoden---------------------------
@@ -73,6 +76,10 @@ public class Jahrgang
         nachReligion = false;
         nachZweig = false;
         nachFremdsprache = true;
+    }
+    public void studentEinfuegen(Student s)
+    {
+        alle.add(s);
     }
 }
     
