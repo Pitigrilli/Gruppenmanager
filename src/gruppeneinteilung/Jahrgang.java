@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class Jahrgang 
 {
     //Variablen--------------------------
-    private int jahrgang;
-    private ArrayList[] klassen;
-    private ArrayList alle;
+    private final int jahrgang;
+    private ArrayList<Student>[] klassen;
+    private ArrayList<Student> alle;
     private int stufe;
     private int schüleranzahl;
     private int weiblich;
@@ -28,29 +28,21 @@ public class Jahrgang
     
  public Jahrgang(int n){
      jahrgang = n;
+     alle = new ArrayList<>();
  }   
     
     
     //Methoden---------------------------
-    
-    public void setStufe(int i)
-    {
-        stufe = i;
+
+    public int getJahrgang(){
+        return jahrgang;
+        
     }
-    
-    public void setSchülerAnzahl(int i)
-    {
-        schüleranzahl = i;
-    }
+
     
     public int getSchülerAnzahl()
     {
-        return schüleranzahl;
-    }
-    public void setWeiblich(int i)
-    {
-        weiblich = i;
-        männlich = schüleranzahl - weiblich;
+        return alle.size();
     }
     
     public void setKlassenanzahl(int i)
@@ -80,6 +72,11 @@ public class Jahrgang
     public void studentEinfuegen(Student s)
     {
         alle.add(s);
+    }
+    
+    public void gibAlle(){
+        for(Student student: alle)
+            System.out.println(student);
     }
 }
     
