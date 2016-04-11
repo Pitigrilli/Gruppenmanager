@@ -11,7 +11,7 @@ package gruppeneinteilung;
  */
 public class Student implements Comparable<Student>{
     private String klasse;
-    private String jahrgang;
+    private int jahrgang;
     private final String name;
     private final String geschlecht;
     private final String zweig;
@@ -21,7 +21,7 @@ public class Student implements Comparable<Student>{
     private String religion;
     
    
-    public Student( String jahrgang, String klasse, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {
+    public Student( int jahrgang, String klasse, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {
         this.klasse = klasse;
         this.jahrgang = jahrgang;
         this.name = name;
@@ -49,7 +49,7 @@ public class Student implements Comparable<Student>{
     public String getKlasse(){
          return klasse;
      }
-    public String getJahrgang(){
+    public int getJahrgang(){
         return jahrgang;
     }
     public String getGeschlecht(){
@@ -84,7 +84,7 @@ public class Student implements Comparable<Student>{
        this.religion = religion;
     }
     
-    public void setJahrgang(String jahrgang){
+    public void setJahrgang(int jahrgang){
         this.jahrgang = jahrgang;
     }
  }
