@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public class Gruppeneinteilung {
 
-    ArrayList<Student> students;
-    ArrayList<Jahrgang> jahrgaenge;
+    static ArrayList<Student> students;
+    static ArrayList<Jahrgang> jahrgaenge;
 
     public Gruppeneinteilung() {
         ASVImport asvImport = new ASVImport();
