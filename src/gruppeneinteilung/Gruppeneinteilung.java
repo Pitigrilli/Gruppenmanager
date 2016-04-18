@@ -67,7 +67,11 @@ public class Gruppeneinteilung {
             jahrgang.geschlechterBerechnen();
             System.out.println("Männlich: " + jahrgang.getMaennlich());
             System.out.println("Weiblich: " + jahrgang.getWeiblich());
-            System.out.println();
+            jahrgang.religionenBerechnen();
+             System.out.println("Evangelisch: " + jahrgang.getEvangelisch());
+              System.out.println("römisch-Katholisch: " + jahrgang.getKatholisch());
+               System.out.println("Ethik: " + jahrgang.getEthik());
+               System.out.println();
             jahrgang.gibAlle();
         }
     }
