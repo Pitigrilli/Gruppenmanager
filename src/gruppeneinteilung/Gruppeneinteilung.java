@@ -64,6 +64,9 @@ public class Gruppeneinteilung {
             System.out.println();
             System.out.println("Jahrgang: " + jahrgang.getJahrgang());
             System.out.println("Anzahl: " + jahrgang.getSchülerAnzahl());
+            jahrgang.geschlechterBerechnen();
+            System.out.println("Männlich: " + jahrgang.getMaennlich());
+            System.out.println("Weiblich: " + jahrgang.getWeiblich());
             System.out.println();
             jahrgang.gibAlle();
         }
