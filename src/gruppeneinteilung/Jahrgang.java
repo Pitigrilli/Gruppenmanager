@@ -20,7 +20,10 @@ public class Jahrgang
     private int stufe;
     private int schüleranzahl;
     private int weiblich;
-    private int männlich;
+    private int maennlich;
+    private int katholisch;
+    private int evangelisch;
+    private int ethik;
     private int klassenanzahl;
     private boolean nachReligion;
     private boolean nachZweig;
@@ -78,6 +81,52 @@ public class Jahrgang
         for(Student student: alle)
             System.out.println(student);
     }
-}
+    
+    public int getMaennlich(){
+     return maennlich  ; 
+    }
+    
+    public int getWeiblich(){
+     return weiblich;   
+    }
+    
+    public int getKatholisch(){
+    return katholisch;    
+    }
+    
+    public int getEvangelisch(){
+        return evangelisch;
+        }
+    
+    public int getEthik(){
+        return ethik;
+    }
+    
+    public void geschlechterBerechnen(){
+     for(int i=0; i<alle.size();i++)  {
+         if(alle.get(i).getGeschlecht().equals("W")){
+             weiblich++;
+         }else if(alle.get(i).getGeschlecht().equals("M")){
+             maennlich++;
+         }else{
+             System.out.println("Fehler");
+         }
+     } 
+    }
+    
+     public void religionenBerechnen(){
+     for(int i=0; i<alle.size();i++)  {
+         if(alle.get(i).getReligion().equals("RK")){
+             katholisch++;
+         }else if(alle.get(i).getReligion().equals("ETH")){
+             ethik++;
+         }else if(alle.get(i).getReligion().equals("EV")){
+             evangelisch++;}else{
+             System.out.println("Fehler");
+         }
+     } 
+    }
+    }
+
     
 
