@@ -74,7 +74,7 @@ public class Gruppeneinteilung {
             System.out.println("--------------------");
             System.out.println();
             System.out.println("Jahrgang: " + jahrgang.getJahrgang());
-            System.out.println("Anzahl: " + jahrgang.getSchülerAnzahl());
+            System.out.println("Anzahl: " + jahrgang.getSchuelerAnzahl());
             System.out.println();
             jahrgang.ausgabeAlle();
         }
