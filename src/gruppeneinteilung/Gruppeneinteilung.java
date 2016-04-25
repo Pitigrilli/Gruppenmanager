@@ -13,22 +13,24 @@ public class Gruppeneinteilung {
 
     public Gruppeneinteilung() {
         ASVImport asvImport = new ASVImport();
-        //asvImport.testReadFile();
         students = asvImport.parseLines();
         jahrgaenge = new ArrayList<>();
         jahrgaengeErstellen();
         studentJahrgangZuordnen();
-        testeEinteilung();
     }
     
         public Gruppeneinteilung(String filename) {
         ASVImport asvImport = new ASVImport(filename);
-        //asvImport.testReadFile();
         students = asvImport.parseLines();
         jahrgaenge = new ArrayList<>();
         jahrgaengeErstellen();
         studentJahrgangZuordnen();
-        testeEinteilung();
+    }
+        
+    public Gruppeneinteilung(int i){
+        students = new ArrayList<Student>();
+        jahrgaenge = new ArrayList<Jahrgang>();
+        jahrgaengeErstellen();
     }
 
     /**
@@ -37,7 +39,6 @@ public class Gruppeneinteilung {
     public static void main(String[] args) {
         //testGruppenFenster();
         Gruppeneinteilung ge = new Gruppeneinteilung();
-        GUI gui = new GUI();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
