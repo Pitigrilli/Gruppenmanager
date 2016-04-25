@@ -36,6 +36,12 @@ public class ASVImport {
         }
         lines = readFile();
     }
+        public ASVImport(String filename) {
+        
+        asvexport = new File(filename);
+        
+        lines = readFile();
+    }
 
     /**
      *

@@ -5,11 +5,13 @@
  */
 package gruppeneinteilung;
 
+import java.io.Serializable;
+
 /**
  *
  * @author behl.claus
  */
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student>, Serializable{
     private String klasse;
     private int jahrgang;
     private final String name;

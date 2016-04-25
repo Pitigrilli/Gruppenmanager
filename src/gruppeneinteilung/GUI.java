@@ -10,7 +10,8 @@ package gruppeneinteilung;
  * @author heske.timjonathan
  */
 public class GUI extends javax.swing.JFrame {
-
+    Gruppeneinteilung ge;
+    int aktuellerJahrgang;
     /**
      * Creates new form GUI
      */
@@ -40,10 +41,11 @@ public class GUI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItemImport = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -141,6 +143,14 @@ public class GUI extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
+        jMenuItemImport.setText("Import");
+        jMenuItemImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemImportActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemImport);
+
         jMenuItem2.setText("Open");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,8 +170,13 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("Close");
-        jMenu1.add(jMenuItem5);
+        jMenuItemClose.setText("Close");
+        jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCloseActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemClose);
 
         jMenuBar1.add(jMenu1);
 
@@ -200,6 +215,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -209,6 +225,17 @@ public class GUI extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
+        // TODO add your handling code here:
+        ge = new Gruppeneinteilung();
+    }//GEN-LAST:event_jMenuItemImportActionPerformed
+
+    private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,7 +284,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItemClose;
+    private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

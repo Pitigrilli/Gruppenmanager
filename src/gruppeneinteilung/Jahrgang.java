@@ -9,12 +9,15 @@ package gruppeneinteilung;
  *
  * @author floth.rene
  */
-
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Jahrgang 
-{
+
+public class Jahrgang implements Serializable{
+
     //Variablen--------------------------
+
     private final int jahrgang;
+
     private ArrayList<Student>[] klassen;
     private ArrayList<Student> alle;
     private int stufe;
@@ -25,59 +28,67 @@ public class Jahrgang
     private boolean nachReligion;
     private boolean nachZweig;
     private boolean nachFremdsprache;
-    
- public Jahrgang(int n){
-     jahrgang = n;
-     alle = new ArrayList<>();
- }   
-    
-    
-    //Methoden---------------------------
 
-    public int getJahrgang(){
-        return jahrgang;
-        
+    public Jahrgang(int n) {
+        jahrgang = n;
+        alle = new ArrayList<>();
     }
 
+    //Methoden---------------------------
+    public int getJahrgang() {
+        return jahrgang;
+
+    }
     
-    public int getSchülerAnzahl()
-    {
+    
+    public ArrayList<Student>[] getKlassen() {
+        return klassen;
+    }
+
+    public int getKlassenanzahl() {
+        return klassenanzahl;
+    }
+
+    public int getSchülerAnzahl() {
         return alle.size();
     }
-    
-    public void setKlassenanzahl(int i)
-    {
+
+    public void setKlassenanzahl(int i) {
         klassenanzahl = i;
     }
-    
-    public void setNachReligion()
-    {
+
+    public void setNachReligion() {
         nachReligion = true;
         nachZweig = false;
         nachFremdsprache = false;
     }
-    public void setNachZweig()
-    {
+
+    public void setNachZweig() {
         nachReligion = false;
         nachZweig = true;
         nachFremdsprache = false;
     }
-    
-    public void setNachFremdsprache()
-    {
+
+    public void setNachFremdsprache() {
         nachReligion = false;
         nachZweig = false;
         nachFremdsprache = true;
     }
-    public void studentEinfuegen(Student s)
-    {
+
+    public void studentEinfuegen(Student s) {
         alle.add(s);
+        /*
+         HIer müssen die Attribute angepasst werden
+        */
+    }
+
+    public void ausgabeAlle() {
+        for (Student student : alle) {
+            System.out.println(student);
+        }
     }
     
-    public void gibAlle(){
-        for(Student student: alle)
-            System.out.println(student);
+    public ArrayList<Student> gibAlle(){
+        return alle;
     }
 }
-    
-

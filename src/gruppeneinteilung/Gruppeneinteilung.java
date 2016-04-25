@@ -20,6 +20,16 @@ public class Gruppeneinteilung {
         studentJahrgangZuordnen();
         testeEinteilung();
     }
+    
+        public Gruppeneinteilung(String filename) {
+        ASVImport asvImport = new ASVImport(filename);
+        //asvImport.testReadFile();
+        students = asvImport.parseLines();
+        jahrgaenge = new ArrayList<>();
+        jahrgaengeErstellen();
+        studentJahrgangZuordnen();
+        testeEinteilung();
+    }
 
     /**
      * @param args the command line arguments
@@ -65,7 +75,7 @@ public class Gruppeneinteilung {
             System.out.println("Jahrgang: " + jahrgang.getJahrgang());
             System.out.println("Anzahl: " + jahrgang.getSchülerAnzahl());
             System.out.println();
-            jahrgang.gibAlle();
+            jahrgang.ausgabeAlle();
         }
     }
 }
