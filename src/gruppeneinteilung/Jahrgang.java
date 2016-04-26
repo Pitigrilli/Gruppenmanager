@@ -39,6 +39,7 @@ public class Jahrgang implements Serializable
     public static void main(String[] args){
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
         Jahrgang j = ge.jahrgaenge.get(3);
+        ge.testeEinteilung();
       // j.test();
     }
     

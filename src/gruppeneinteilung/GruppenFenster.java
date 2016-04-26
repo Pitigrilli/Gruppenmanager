@@ -1,6 +1,6 @@
 package gruppeneinteilung;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
 public class GruppenFenster extends JFrame {
@@ -11,7 +11,7 @@ public class GruppenFenster extends JFrame {
         super("Gruppeneinteilung");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new GridLayout(1,5));
         
         this.students = students;
         
@@ -24,9 +24,9 @@ public class GruppenFenster extends JFrame {
             gruppe2.add(students.get(i));
         
         JPanel panel1 = new GruppenPanel(gruppe1,"Gruppe 1");
-        add(panel1, BorderLayout.WEST);
+        add(panel1);
         JPanel panel2 = new GruppenPanel(gruppe2,"Gruppe 2");
-        add(panel2, BorderLayout.EAST);
+        add(panel2);
         
         
         setVisible(true);

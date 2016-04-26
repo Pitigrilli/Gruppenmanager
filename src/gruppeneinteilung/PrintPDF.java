@@ -45,6 +45,7 @@ public class PrintPDF {
         this.FILE = "Ausdruck.pdf";
         document = new Document();
         document.setPageSize(PageSize.A4.rotate());
+        document.setMargins(5f, 5f, 5f, 5f);
         try {
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
@@ -93,8 +94,9 @@ public class PrintPDF {
 
         PdfPTable table = new PdfPTable(5); // Spaltenanzahl
 
-        float[] columnWidths = new float[]{10f, 20f, 30f, 10f};
-        table.setWidths(columnWidths);
+        float[] columnWidths = new float[]{50f, 50f, 50f, 50f, 40f};
+        //table.setTotalWidth(columnWidths);
+        table.setWidthPercentage(100f);
          //table.setBorderColor(BaseColor.BLACK);
         // t.setPadding(4);
         // t.setSpacing(4);
@@ -103,7 +105,7 @@ public class PrintPDF {
           //  PdfPCell c1 = new PdfPCell();//(new Phrase("Name"));
         //   c1.setHorizontalAlignment(Element.ALIGN_CENTER);
         //  table.addCell(c1);
-        table.setHeaderRows(1);
+        //table.setHeaderRows(1);
 
         for (int i = 0; i < 25; i++) {
             table.addCell(new Phrase((ge.jahrgaenge.get(0).gibAlle().get(i).toString()), tableFont));

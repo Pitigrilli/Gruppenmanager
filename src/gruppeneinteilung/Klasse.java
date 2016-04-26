@@ -22,6 +22,7 @@ public class Klasse {
     public Klasse(String s, int j){
         buchstabe=s;
         jahrgang = j;
+        schueler = new ArrayList<Student>();
     }
     
     public void studentHinzufuegen(Student s){

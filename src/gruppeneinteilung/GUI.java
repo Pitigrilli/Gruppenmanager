@@ -5,6 +5,8 @@
  */
 package gruppeneinteilung;
 
+import java.awt.GridLayout;
+
 /**
  *
  * @author heske.timjonathan
@@ -72,6 +74,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton1.setText("Aktualisieren");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,6 +141,7 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Religionsgruppen", jPanel4);
 
         System.out.println(aktuellerJahrgang);
+        jPanelAllgemein.setLayout(new GridLayout(1,5));
 
         javax.swing.GroupLayout jPanelAllgemeinLayout = new javax.swing.GroupLayout(jPanelAllgemein);
         jPanelAllgemein.setLayout(jPanelAllgemeinLayout);
@@ -233,6 +241,7 @@ public class GUI extends javax.swing.JFrame {
        ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl();
        jSpinner1.setValue(ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl());
        jPanelAllgemein.add(new GruppenPanel(ge.jahrgaenge.get(aktuellerJahrgang).gibAlle(), "klasse"));
+       jPanelAllgemein.repaint();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
@@ -262,6 +271,11 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
