@@ -10,8 +10,9 @@ package gruppeneinteilung;
  * @author floth.rene
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
-public class Jahrgang 
+public class Jahrgang implements Serializable
 {
     //Variablen--------------------------
     private final int jahrgang;
@@ -38,15 +39,20 @@ public class Jahrgang
     public static void main(String[] args){
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
         Jahrgang j = ge.jahrgaenge.get(3);
-       j.test();
+      // j.test();
     }
     
     
  public Jahrgang(int n){
      
-     
+     klassen= new ArrayList<>();
      jahrgang = n;
      alle = new ArrayList<>();
+    
+     for(int i = 0; i < 7; i++)
+     {
+         klassen.add(new Klasse("", stufe));
+     }
  }   
     
     
@@ -96,10 +102,59 @@ public class Jahrgang
     public void studentEinfuegen(Student s)
     {
         alle.add(s);
-        geschlechterBerechnen();
-        religionenBerechnen();
-        zweigeBerechnen();
-    }
+        if(s.getGeschlecht().equals("M")){
+         maennlich++;   
+        }else if(s.getGeschlecht().equals("W")){
+            weiblich++;
+        }
+        if(s.getReligion().equals("RK")){
+                katholisch++;
+        }else if(s.getReligion().equals("EV")){
+                evangelisch++;
+        }else if(s.getReligion().equals("ETH")){
+         ethik++;   
+        }
+        if(s.getZweig().equals("GY")){
+             GY++;
+         }else if(s.getZweig().equals("GY_MU")){
+             GY_MU++;
+         }else if(s.getZweig().equals("GY_TH")){
+             GY_TH++;
+         }else if(s.getZweig().equals("GY_NTG_8")){
+             GY_NTG++;
+             }else if(s.getZweig().equals("GY_WSG-S_8")){
+             GY_WSG++;
+             }else if(s.getZweig().equals("GY_SG_8")){
+             GY_SG++;
+             }
+        if(s.getKlasse().equals("a"))
+        {
+            klassen.get(0).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("b"))
+        {
+            klassen.get(1).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("c"))
+        {
+            klassen.get(2).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("d"))
+        {
+            klassen.get(3).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("e"))
+        {
+            klassen.get(4).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("f"))
+        {
+            klassen.get(5).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("g"))
+        {
+            klassen.get(6).studentHinzufuegen(s);
+        } else if(s.getKlasse().equals("h"))
+        {
+            klassen.get(7).studentHinzufuegen(s);
+        }
+    
+        
+            }
     
     public void ausgabeAlle() {
         for (Student student : alle) {

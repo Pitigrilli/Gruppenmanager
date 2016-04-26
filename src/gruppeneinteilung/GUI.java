@@ -38,13 +38,13 @@ public class GUI extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelAllgemein = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImport = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemOpen = new javax.swing.JMenuItem();
+        jMenuItemSave = new javax.swing.JMenuItem();
+        jMenuItemSettings = new javax.swing.JMenuItem();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -133,18 +133,20 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Religionsgruppen", jPanel4);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        System.out.println(aktuellerJahrgang);
+
+        javax.swing.GroupLayout jPanelAllgemeinLayout = new javax.swing.GroupLayout(jPanelAllgemein);
+        jPanelAllgemein.setLayout(jPanelAllgemeinLayout);
+        jPanelAllgemeinLayout.setHorizontalGroup(
+            jPanelAllgemeinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 579, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelAllgemeinLayout.setVerticalGroup(
+            jPanelAllgemeinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 414, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Allgemein", jPanel1);
+        jTabbedPane1.addTab("Allgemein", jPanelAllgemein);
 
         jMenu1.setText("File");
 
@@ -156,29 +158,29 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemImport);
 
-        jMenuItem2.setText("Open");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemOpen.setText("Open");
+        jMenuItemOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemOpenActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMenuItemOpen);
 
-        jMenuItem3.setText("Save");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSave.setText("Save");
+        jMenuItemSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemSaveActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMenuItemSave);
 
-        jMenuItem4.setText("Settings");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemSettings.setText("Settings");
+        jMenuItemSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItemSettingsActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        jMenu1.add(jMenuItemSettings);
 
         jMenuItemClose.setText("Close");
         jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
@@ -230,15 +232,16 @@ public class GUI extends javax.swing.JFrame {
        System.out.println(aktuellerJahrgang);
        ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl();
        jSpinner1.setValue(ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl());
+       jPanelAllgemein.add(new GruppenPanel(ge.jahrgaenge.get(aktuellerJahrgang).gibAlle(), "klasse"));
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
         
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItemSettingsActionPerformed
 
     private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
         // TODO add your handling code here:
@@ -251,10 +254,10 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemCloseActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemSaveActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -304,15 +307,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemImport;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jMenuItemOpen;
+    private javax.swing.JMenuItem jMenuItemSave;
+    private javax.swing.JMenuItem jMenuItemSettings;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelAllgemein;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;

@@ -12,11 +12,32 @@ import java.util.ArrayList;
  * @author schwindt.christian
  */
 public class Klasse {
+    
     private int jahrgang;
-    private char buchstabe;
+    private String buchstabe;
+    
 
     private ArrayList<Student> schueler;
     
+    public Klasse(String s, int j){
+        buchstabe=s;
+        jahrgang = j;
+    }
+    
+    public void studentHinzufuegen(Student s){
+        schueler.add(s);
+        
+        
+    }
+    
+    public void studentEntfernen(Student s){
+        schueler.remove(s);
+        
+    }
+    
+    public int getKlassengroesse(){
+        return schueler.size();
+    }
     
     
 }

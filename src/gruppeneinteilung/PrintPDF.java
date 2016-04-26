@@ -3,7 +3,6 @@ package gruppeneinteilung;
 import java.io.FileOutputStream;
 import java.util.Date;
 
-
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 
@@ -11,9 +10,11 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
 
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -28,11 +29,11 @@ public class PrintPDF {
 
     private String FILE;
     Document document;
-    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-            Font.BOLD);
-    private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-            Font.NORMAL, BaseColor.RED);
-    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
+    //private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
+    //Font.BOLD);
+    //private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+    // Font.NORMAL, BaseColor.RED);
+    private static Font tableFont = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD);
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.BOLD);
@@ -43,6 +44,7 @@ public class PrintPDF {
         this.ge = ge;
         this.FILE = "Ausdruck.pdf";
         document = new Document();
+        document.setPageSize(PageSize.A4.rotate());
         try {
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
@@ -75,6 +77,7 @@ public class PrintPDF {
         // Start a new page
         //document.newPage();
         Paragraph tabelle = new Paragraph();
+
         createTable(tabelle);
         document.add(tabelle);
     }
@@ -86,33 +89,31 @@ public class PrintPDF {
     }
 
     private void createTable(Paragraph subCatPart)
-            throws BadElementException {
+            throws BadElementException, DocumentException {
 
-        PdfPTable table = new PdfPTable(1); // Spaltenanzahl
+        PdfPTable table = new PdfPTable(5); // Spaltenanzahl
 
-        // t.setBorderColor(BaseColor.GRAY);
+        float[] columnWidths = new float[]{10f, 20f, 30f, 10f};
+        table.setWidths(columnWidths);
+         //table.setBorderColor(BaseColor.BLACK);
         // t.setPadding(4);
         // t.setSpacing(4);
-        // t.setBorderWidth(1);
-    
-            PdfPCell c1 = new PdfPCell(new Phrase("Name"));
-            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(c1);
-    
-        
+        //t.setBorderWidth(1);
+
+          //  PdfPCell c1 = new PdfPCell();//(new Phrase("Name"));
+        //   c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        //  table.addCell(c1);
         table.setHeaderRows(1);
 
-        for (int i = 0; i< 25;i++)
-        {
-            table.addCell(ge.jahrgaenge.get(0).gibAlle().get(i).toString());
+        for (int i = 0; i < 25; i++) {
+            table.addCell(new Phrase((ge.jahrgaenge.get(0).gibAlle().get(i).toString()), tableFont));
         }
-        
-        table.addCell("1.1");
-        table.addCell("1.2");
-        table.addCell("2.1");
-        table.addCell("2.2");
-        table.addCell("2.3");
 
+        //table.addCell("1.1");
+        // table.addCell("1.2");
+        //  table.addCell("2.1");
+        // table.addCell("2.2");
+        // table.addCell("2.3");
         subCatPart.add(table);
 
     }
