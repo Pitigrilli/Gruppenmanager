@@ -28,7 +28,7 @@ public class Speicherung {
 
     public Speicherung(Gruppeneinteilung ge) {
         this.ge = ge;
-        waehleFile();
+        file=waehleFile();
     }
 
     public Speicherung(String filename) {
@@ -36,7 +36,8 @@ public class Speicherung {
     }
     
     public Speicherung(){
-        waehleFile();
+        ge = new Gruppeneinteilung(0);
+        file=waehleFile();
     }
 
     public void serialisieren() {
@@ -96,7 +97,8 @@ public class Speicherung {
     }
     
     
-    public void waehleFile(){
+    public File waehleFile(){
+        File fileGewaehlt = null;
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "GED-Datei", "ged");
@@ -106,12 +108,12 @@ public class Speicherung {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             //System.out.println("You chose to open this file: "
             //        + chooser.getSelectedFile().getName());
-            file = chooser.getSelectedFile();
+            fileGewaehlt = chooser.getSelectedFile();
         }
+        return file;
     }
 
     public void testeLaden() {
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         serialisierungLaden();
         ge.testeEinteilung();
 
