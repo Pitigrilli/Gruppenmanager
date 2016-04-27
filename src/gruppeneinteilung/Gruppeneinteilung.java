@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public class Gruppeneinteilung {
 
     ArrayList<Student> students;
-    ArrayList<Jahrgang> jahrgaenge;
+    private ArrayList<Jahrgang> jahrgaenge;
+
+
 
     public Gruppeneinteilung() {
         ASVImport asvImport = new ASVImport();
@@ -67,6 +69,18 @@ public class Gruppeneinteilung {
             int j = aktuell.getJahrgang();
             jahrgaenge.get(j - 5).studentEinfuegen(aktuell);
         }
+    }
+    
+    public Jahrgang getJahrgang(int n){
+        return jahrgaenge.get(n-5);
+    }
+    
+        public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<Jahrgang> getJahrgaenge() {
+        return jahrgaenge;
     }
 
     public void testeEinteilung() {

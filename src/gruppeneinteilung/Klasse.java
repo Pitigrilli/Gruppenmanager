@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gruppeneinteilung;
 
 import java.util.ArrayList;
@@ -12,33 +7,36 @@ import java.util.ArrayList;
  * @author schwindt.christian
  */
 public class Klasse {
-    
-    private int jahrgang;
-    private String buchstabe;
-    
 
-    private ArrayList<Student> schueler;
-    
-    public Klasse(String s, int j){
-        buchstabe=s;
+    private final int jahrgang;
+    private final String buchstabe;
+    private final ArrayList<Student> schueler;
+
+    public Klasse(String b, int j) {
+        buchstabe = b;
         jahrgang = j;
-        schueler = new ArrayList<Student>();
+        schueler = new ArrayList<>();
     }
-    
-    public void studentHinzufuegen(Student s){
+
+    public void studentHinzufuegen(Student s) {
         schueler.add(s);
-        
-        
     }
-    
-    public void studentEntfernen(Student s){
+
+    public Student studentEntfernen(Student s) {
         schueler.remove(s);
-        
+        return s;
     }
-    
-    public int getKlassengroesse(){
+
+    public int getKlassengroesse() {
         return schueler.size();
     }
-    
-    
+
+    public String getBuchstabe() {
+        return buchstabe;
+    }
+
+    public ArrayList<Student> getSchueler() {
+        return schueler;
+    }
+
 }

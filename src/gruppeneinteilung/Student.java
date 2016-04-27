@@ -20,7 +20,7 @@ public class Student implements Comparable<Student>, Serializable{
     private final String fs2;
     private final String fs3;
     private final String fs4;
-    private String religion;
+    private String religion; //RK,EV,ETH,ORTH
     
    
     public Student( int jahrgang, String klasse, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {

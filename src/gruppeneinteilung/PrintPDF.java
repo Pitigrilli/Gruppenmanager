@@ -108,7 +108,7 @@ public class PrintPDF {
         //table.setHeaderRows(1);
 
         for (int i = 0; i < 25; i++) {
-            table.addCell(new Phrase((ge.jahrgaenge.get(0).gibAlle().get(i).toString()), tableFont));
+            table.addCell(new Phrase((ge.getJahrgang(0).gibAlle().get(i).toString()), tableFont));
         }
 
         //table.addCell("1.1");

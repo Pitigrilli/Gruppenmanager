@@ -46,7 +46,7 @@ public class Speicherung {
             FileOutputStream fileStream = new FileOutputStream(file);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
             objectStream.writeObject(ge.students);
-            objectStream.writeObject(ge.jahrgaenge);
+            objectStream.writeObject(ge.getJahrgaenge());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class Speicherung {
                         Object o = al.get(i);
                         if (o instanceof Jahrgang) {
                             Jahrgang v = (Jahrgang) o;
-                            ge.jahrgaenge.add(v);
+                            ge.getJahrgaenge().add(v);
                         }
                     }
                 }

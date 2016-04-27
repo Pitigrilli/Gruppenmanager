@@ -13,7 +13,7 @@ import java.awt.GridLayout;
  */
 public class GUI extends javax.swing.JFrame {
     Gruppeneinteilung ge;
-    int aktuellerJahrgang;
+    Jahrgang aktuellerJahrgang;
     /**
      * Creates new form GUI
      */
@@ -56,7 +56,7 @@ public class GUI extends javax.swing.JFrame {
         setTitle("Kursmanager");
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stufe wählen", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Stufe wählen", "5", "6", "7", "8", "9", "10"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -236,11 +236,13 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
        System.out.println(jComboBox1.getSelectedItem());
-       aktuellerJahrgang = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-       System.out.println(aktuellerJahrgang);
-       ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl();
-       jSpinner1.setValue(ge.jahrgaenge.get(aktuellerJahrgang-5).getKlassenanzahl());
-       jPanelAllgemein.add(new GruppenPanel(ge.jahrgaenge.get(aktuellerJahrgang).gibAlle(), "klasse"));
+       int n = Integer.parseInt(jComboBox1.getSelectedItem().toString());
+       aktuellerJahrgang = ge.getJahrgang(n);
+       System.out.println("Jahrgang: "+aktuellerJahrgang.getJahrgang());
+       int klassenanzahl=aktuellerJahrgang.getKlassenanzahl();
+       jSpinner1.setValue(klassenanzahl);
+       jSpinner1.revalidate();
+       jPanelAllgemein.add(new GruppenPanel(aktuellerJahrgang.getKlasse("a").getSchueler(), n+"a"));
        jPanelAllgemein.repaint();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
