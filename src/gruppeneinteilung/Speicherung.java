@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 public class Speicherung {
 
     private Gruppeneinteilung ge;
@@ -19,6 +18,7 @@ public class Speicherung {
         this.ge = ge;
         if (ge.getFile() == null) {
             file = new FileAuswahl().waehleFile();
+            ge.setFile(file);
         } else {
             file = ge.getFile();
         }
@@ -39,7 +39,7 @@ public class Speicherung {
     public void speichern() {
 
         try {
-            FileOutputStream fileStream = new FileOutputStream(file);
+            FileOutputStream fileStream = new FileOutputStream(file, false);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
             objectStream.writeObject(ge.getStudents());
             objectStream.writeObject(ge.getJahrgaenge());
@@ -47,14 +47,15 @@ public class Speicherung {
             ex.printStackTrace();
         }
     }
-    
-    public void speichernUnter(){
+
+    public void speichernUnter() {
         file = new FileAuswahl().waehleFile();
         ge.setFile(file);
         speichern();
     }
 
     public Gruppeneinteilung serialisierungLaden() {
+        
 
         try {
             FileInputStream fileStream = new FileInputStream(file);
@@ -96,25 +97,28 @@ public class Speicherung {
         return ge;
     }
 
-    
-
     public void testeLaden() {
-        serialisierungLaden();
-        ge.testeEinteilung();
+        ge = serialisierungLaden();
+        //ge.testeEinteilung();
+        for (Jahrgang j : ge.getJahrgaenge()) {
+            System.out.println("Jahrgang " + j.getJahrgang() + ": " + j.getKlassenanzahl());
+        }
 
     }
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         //Speicherung sp = new Speicherung(new Gruppeneinteilung("ASV.csv"));
-        //sp.serialisieren();
+        //sp.speichern();
         Speicherung sp = new Speicherung();
         sp.testeLaden();
     }
 
 }
 
-class FileAuswahl{
+class FileAuswahl {
+
     File file;
+
     public FileAuswahl() {
         File fileGewaehlt = null;
         JFileChooser chooser = new JFileChooser();
@@ -128,10 +132,10 @@ class FileAuswahl{
             //        + chooser.getSelectedFile().getName());
             fileGewaehlt = chooser.getSelectedFile();
         }
-        file =fileGewaehlt;
+        file = fileGewaehlt;
     }
-    
-    public File waehleFile(){
+
+    public File waehleFile() {
         return file;
     }
 }

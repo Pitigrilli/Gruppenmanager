@@ -18,7 +18,7 @@ public class Jahrgang implements Serializable {
     private final int jahrgang;
     private final ArrayList<Klasse> klassen;
     private final ArrayList<Student> alle;
-    private int schüleranzahl;
+    private int schuelerAnzahl;
     private int weiblich;
     private int maennlich;
     private int katholisch;
@@ -37,6 +37,7 @@ public class Jahrgang implements Serializable {
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
+        ge.testeEinteilung();
         for (int i = 5; i < 11; i++) {
             ge.getJahrgang(i).testKlassen();
         }
@@ -117,6 +118,7 @@ public class Jahrgang implements Serializable {
 
     public void studentEinfuegen(Student s) {
         alle.add(s);
+        schuelerAnzahl++;
         switch (s.getGeschlecht()) {
             case "M":
                 maennlich++;
@@ -250,6 +252,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void testKlassen() {
+        System.out.println("Klassenanzahl: "+klassenanzahl);
         for (Klasse k : klassen) {
             if (k.getKlassengroesse() > 0) {
                 System.out.println("Klasse " + jahrgang + k.getBuchstabe() + ":");

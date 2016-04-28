@@ -23,10 +23,6 @@ import java.util.ArrayList;
 
 public class PrintPDF {
 
-    public static void main(String[] args) {
-        new PrintPDF(new Gruppeneinteilung("ASV.csv"));
-    }
-
     private String FILE;
     Document document;
     //private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
@@ -35,13 +31,16 @@ public class PrintPDF {
     // Font.NORMAL, BaseColor.RED);
     private static Font tableFont = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD);
+    private static Font tableHeadFont = new Font(Font.FontFamily.TIMES_ROMAN, 10,
+            Font.BOLD);
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.BOLD);
 
-    Gruppeneinteilung ge;
+    private Gruppeneinteilung ge;
 
     public PrintPDF(Gruppeneinteilung ge) {
         this.ge = ge;
+        //ge.testeEinteilung();
         this.FILE = "Ausdruck.pdf";
         document = new Document();
         document.setPageSize(PageSize.A4.rotate());
@@ -75,12 +74,15 @@ public class PrintPDF {
         preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
-        // Start a new page
-        //document.newPage();
-        Paragraph tabelle = new Paragraph();
 
-        createTable(tabelle);
-        document.add(tabelle);
+        for (Jahrgang j : ge.getJahrgaenge()) {
+            Paragraph tabelle = new Paragraph();
+            createTable(tabelle, j);
+            document.add(tabelle);
+            // Start a new page
+            document.newPage();
+
+        }
     }
 
     private void addEmptyLine(Paragraph paragraph, int number) {
@@ -89,12 +91,17 @@ public class PrintPDF {
         }
     }
 
-    private void createTable(Paragraph subCatPart)
+    private void createTable(Paragraph newTable, Jahrgang j)
             throws BadElementException, DocumentException {
 
-        PdfPTable table = new PdfPTable(5); // Spaltenanzahl
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getKlassenanzahl();
+        //aktuellerJahrgang.testKlassen();
+        System.out.println(n);
 
-        float[] columnWidths = new float[]{50f, 50f, 50f, 50f, 40f};
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+
+        //float[] columnWidths = new float[]{50f, 50f, 50f, 50f, 40f};
         //table.setTotalWidth(columnWidths);
         table.setWidthPercentage(100f);
          //table.setBorderColor(BaseColor.BLACK);
@@ -102,22 +109,32 @@ public class PrintPDF {
         // t.setSpacing(4);
         //t.setBorderWidth(1);
 
-          //  PdfPCell c1 = new PdfPCell();//(new Phrase("Name"));
+        //  PdfPCell c1 = new PdfPCell();//(new Phrase("Name"));
         //   c1.setHorizontalAlignment(Element.ALIGN_CENTER);
         //  table.addCell(c1);
-        //table.setHeaderRows(1);
 
-        for (int i = 0; i < 25; i++) {
-            table.addCell(new Phrase((ge.getJahrgang(5).gibAlle().get(i).toString()), tableFont));
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
+                    tableHeadFont));
+            for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
+                tableI.addCell(new Phrase((s.toString()), tableFont));
+            }
+            table.addCell(tableI);
         }
 
-        //table.addCell("1.1");
+        table.addCell("1.1");
         // table.addCell("1.2");
         //  table.addCell("2.1");
         // table.addCell("2.2");
         // table.addCell("2.3");
-        subCatPart.add(table);
+        newTable.add(table);
 
+    }
+
+    public static void main(String[] args) {
+        new PrintPDF(new Gruppeneinteilung("ASV.csv"));
     }
 
 }

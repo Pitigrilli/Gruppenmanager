@@ -6,16 +6,20 @@ package gruppeneinteilung;
 
 import java.awt.GridLayout;
 import java.io.File;
+import javax.swing.JLabel;
+import javax.swing.SpinnerNumberModel;
 
 public class GUI extends javax.swing.JFrame {
+
     private Gruppeneinteilung ge;
     private Jahrgang aktuellerJahrgang;
     private File file;
+
     /**
      * Creates new form GUI
      */
     public GUI() {
-        
+
         initComponents();
     }
 
@@ -30,15 +34,15 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jSpinner1 = new javax.swing.JSpinner();
+        jComboBoxJahrgang = new javax.swing.JComboBox();
+        jSpinner1 = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<String>();
         jButtonAktualisieren = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
         jPanelReligion = new javax.swing.JPanel();
-        jPanelKlassen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImport = new javax.swing.JMenuItem();
@@ -46,6 +50,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSave = new javax.swing.JMenuItem();
         jMenuItemSaveAs = new javax.swing.JMenuItem();
         jMenuItemSettings = new javax.swing.JMenuItem();
+        jMenuItemPrint = new javax.swing.JMenuItem();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -55,10 +60,10 @@ public class GUI extends javax.swing.JFrame {
         setTitle("Kursmanager");
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6", "7", "8", "9", "10"}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxJahrgang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6", "7", "8", "9", "10"}));
+        jComboBoxJahrgang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxJahrgangActionPerformed(evt);
             }
         });
 
@@ -87,7 +92,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxJahrgang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAktualisieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -99,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxJahrgang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -113,47 +118,14 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBox2.getAccessibleContext().setAccessibleName("");
 
-        javax.swing.GroupLayout jPanelSportLayout = new javax.swing.GroupLayout(jPanelSport);
-        jPanelSport.setLayout(jPanelSportLayout);
-        jPanelSportLayout.setHorizontalGroup(
-            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1029, Short.MAX_VALUE)
-        );
-        jPanelSportLayout.setVerticalGroup(
-            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
-        );
+        jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
+        jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
+        jPanelSport.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Sportgruppen", jPanelSport);
 
-        javax.swing.GroupLayout jPanelReligionLayout = new javax.swing.GroupLayout(jPanelReligion);
-        jPanelReligion.setLayout(jPanelReligionLayout);
-        jPanelReligionLayout.setHorizontalGroup(
-            jPanelReligionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1029, Short.MAX_VALUE)
-        );
-        jPanelReligionLayout.setVerticalGroup(
-            jPanelReligionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
-        );
-
+        jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
-
-        System.out.println(aktuellerJahrgang);
-        jPanelKlassen.setLayout(new GridLayout(1,5));
-
-        javax.swing.GroupLayout jPanelKlassenLayout = new javax.swing.GroupLayout(jPanelKlassen);
-        jPanelKlassen.setLayout(jPanelKlassenLayout);
-        jPanelKlassenLayout.setHorizontalGroup(
-            jPanelKlassenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1029, Short.MAX_VALUE)
-        );
-        jPanelKlassenLayout.setVerticalGroup(
-            jPanelKlassenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
         jMenu1.setText("File");
 
@@ -197,6 +169,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemSettings);
 
+        jMenuItemPrint.setText("Print");
+        jMenuItemPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrintActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemPrint);
+
         jMenuItemClose.setText("Close");
         jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,9 +199,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,22 +219,16 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
-       System.out.println(jComboBox1.getSelectedItem());
-       int n = Integer.parseInt(jComboBox1.getSelectedItem().toString());
-       aktuellerJahrgang = ge.getJahrgang(n);
-       System.out.println("Jahrgang: "+aktuellerJahrgang.getJahrgang());
-       int klassenanzahl=aktuellerJahrgang.getKlassenanzahl();
-       jSpinner1.setValue(klassenanzahl);
-       jSpinner1.revalidate();
-       jPanelKlassen.add(new GruppenPanel(aktuellerJahrgang.getKlasse("a").getSchueler(), n+"a"));
-       jPanelKlassen.repaint();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        evalueteJahrgangsAuswahl();
+    }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
         ge = new Speicherung().serialisierungLaden();
-        this.setTitle("Kursmanager - "+ge.getFile().toString());
+        this.setTitle("Kursmanager - " + ge.getFile().toString());
+        evalueteJahrgangsAuswahl();
+
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
@@ -290,13 +264,18 @@ public class GUI extends javax.swing.JFrame {
     private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
         // TODO add your handling code here:
         new Speicherung(ge).speichernUnter();
-        this.setTitle("Kursmanager - "+ge.getFile().toString());
+        this.setTitle("Kursmanager - " + ge.getFile().toString());
     }//GEN-LAST:event_jMenuItemSaveAsActionPerformed
+
+    private void jMenuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrintActionPerformed
+        // TODO add your handling code here:
+        new PrintPDF(ge);
+    }//GEN-LAST:event_jMenuItemPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAktualisieren;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -305,6 +284,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemOpen;
+    private javax.swing.JMenuItem jMenuItemPrint;
     private javax.swing.JMenuItem jMenuItemSave;
     private javax.swing.JMenuItem jMenuItemSaveAs;
     private javax.swing.JMenuItem jMenuItemSettings;
@@ -316,7 +296,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-    
+
     /**
      * @param args the command line arguments
      */
@@ -351,5 +331,25 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    public void evalueteJahrgangsAuswahl() {
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        aktuellerJahrgang = ge.getJahrgang(n);
+        aktuellerJahrgang.setKlassenanzahl();
+
+        //System.out.println("Jahrgang: " + aktuellerJahrgang.getJahrgang());
+        int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
+        //System.out.println(klassenanzahl);
+        jSpinner1.getModel().setValue(klassenanzahl);
+        
+        jPanelKlassen.removeAll();
+        for (Klasse k : aktuellerJahrgang.getKlassen()) {
+            if (k.getKlassengroesse() > 0) {
+                jPanelKlassen.add(new GruppenPanel(k.getSchueler(), n + k.getBuchstabe()));
+            }
+        }
+        jPanelKlassen.revalidate();
+        jPanelKlassen.repaint();
+    }
+
 }
