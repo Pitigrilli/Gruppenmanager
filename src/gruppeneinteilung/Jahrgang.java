@@ -37,7 +37,7 @@ public class Jahrgang implements Serializable {
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
-        for (int i = 0; i < 6; i++) {
+        for (int i = 5; i < 11; i++) {
             ge.getJahrgang(i).testKlassen();
         }
 

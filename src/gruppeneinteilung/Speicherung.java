@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author mueller.fabian
  */
 package gruppeneinteilung;
 
@@ -10,50 +9,53 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author mueller.fabian
- */
+
 public class Speicherung {
 
-    public static void main(String[] args) {
-        //Speicherung sp = new Speicherung(new Gruppeneinteilung("ASV.csv"));
-        //sp.serialisieren();
-        Speicherung sp = new Speicherung();
-        sp.testeLaden();
-    }
-    Gruppeneinteilung ge;
-    File file;
-    
+    private Gruppeneinteilung ge;
+    private File file;
 
     public Speicherung(Gruppeneinteilung ge) {
         this.ge = ge;
-        file=waehleFile();
+        if (ge.getFile() == null) {
+            file = new FileAuswahl().waehleFile();
+        } else {
+            file = ge.getFile();
+        }
     }
 
     public Speicherung(String filename) {
-        ge = new Gruppeneinteilung(0);
-    }
-    
-    public Speicherung(){
-        ge = new Gruppeneinteilung(0);
-        file=waehleFile();
+        file = new File(filename);
+        ge = new Gruppeneinteilung();
+        ge.setFile(file);
     }
 
-    public void serialisieren() {
+    public Speicherung() {
+        ge = new Gruppeneinteilung();
+        file = new FileAuswahl().waehleFile();
+        ge.setFile(file);
+    }
+
+    public void speichern() {
 
         try {
             FileOutputStream fileStream = new FileOutputStream(file);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            objectStream.writeObject(ge.students);
+            objectStream.writeObject(ge.getStudents());
             objectStream.writeObject(ge.getJahrgaenge());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+    
+    public void speichernUnter(){
+        file = new FileAuswahl().waehleFile();
+        ge.setFile(file);
+        speichern();
+    }
 
     public Gruppeneinteilung serialisierungLaden() {
-        
+
         try {
             FileInputStream fileStream = new FileInputStream(file);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
@@ -67,7 +69,7 @@ public class Speicherung {
                         Object o = al.get(i);
                         if (o instanceof Student) {
                             Student v = (Student) o;
-                            ge.students.add(v);
+                            ge.getStudents().add(v);
                         }
                     }
                 }
@@ -87,17 +89,33 @@ public class Speicherung {
                     }
                 }
             }
-                //ge.students = (ArrayList<Student>) objectStream.readObject();
-            //ge.jahrgaenge = (ArrayList<Jahrgang>) objectStream.readObject();
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return ge;
     }
+
     
+
+    public void testeLaden() {
+        serialisierungLaden();
+        ge.testeEinteilung();
+
+    }
     
-    public File waehleFile(){
+     public static void main(String[] args) {
+        //Speicherung sp = new Speicherung(new Gruppeneinteilung("ASV.csv"));
+        //sp.serialisieren();
+        Speicherung sp = new Speicherung();
+        sp.testeLaden();
+    }
+
+}
+
+class FileAuswahl{
+    File file;
+    public FileAuswahl() {
         File fileGewaehlt = null;
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -110,13 +128,10 @@ public class Speicherung {
             //        + chooser.getSelectedFile().getName());
             fileGewaehlt = chooser.getSelectedFile();
         }
+        file =fileGewaehlt;
+    }
+    
+    public File waehleFile(){
         return file;
     }
-
-    public void testeLaden() {
-        serialisierungLaden();
-        ge.testeEinteilung();
-
-    }
-
 }

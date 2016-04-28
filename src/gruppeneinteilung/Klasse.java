@@ -1,12 +1,13 @@
 package gruppeneinteilung;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author schwindt.christian
  */
-public class Klasse {
+public class Klasse implements Serializable{
 
     private final int jahrgang;
     private final String buchstabe;

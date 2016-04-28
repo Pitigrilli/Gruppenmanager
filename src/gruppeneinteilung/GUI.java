@@ -34,7 +34,7 @@ public class GUI extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<String>();
-        jButton1 = new javax.swing.JButton();
+        jButtonAktualisieren = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelSport = new javax.swing.JPanel();
         jPanelReligion = new javax.swing.JPanel();
@@ -44,6 +44,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemImport = new javax.swing.JMenuItem();
         jMenuItemOpen = new javax.swing.JMenuItem();
         jMenuItemSave = new javax.swing.JMenuItem();
+        jMenuItemSaveAs = new javax.swing.JMenuItem();
         jMenuItemSettings = new javax.swing.JMenuItem();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -71,10 +72,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Aktualisieren");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAktualisieren.setText("Aktualisieren");
+        jButtonAktualisieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAktualisierenActionPerformed(evt);
             }
         });
 
@@ -87,7 +88,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAktualisieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,7 +107,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButtonAktualisieren)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,6 +181,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemSave);
 
+        jMenuItemSaveAs.setText("Save As");
+        jMenuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSaveAsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemSaveAs);
+
         jMenuItemSettings.setText("Settings");
         jMenuItemSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +253,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
-        
+        ge = new Speicherung().serialisierungLaden();
+        this.setTitle("Kursmanager - "+ge.getFile().toString());
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
@@ -254,6 +264,7 @@ public class GUI extends javax.swing.JFrame {
     private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
         // TODO add your handling code here:
         ge = new Gruppeneinteilung();
+        ge.asvImport();
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -264,20 +275,26 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveActionPerformed
         // TODO add your handling code here:
-        
+        new Speicherung(ge).speichern();
     }//GEN-LAST:event_jMenuItemSaveActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAktualisierenActionPerformed
         // TODO add your handling code here:
-        this.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ge.testeEinteilung();
+    }//GEN-LAST:event_jButtonAktualisierenActionPerformed
+
+    private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
+        // TODO add your handling code here:
+        new Speicherung(ge).speichernUnter();
+        this.setTitle("Kursmanager - "+ge.getFile().toString());
+    }//GEN-LAST:event_jMenuItemSaveAsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAktualisieren;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -289,6 +306,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemOpen;
     private javax.swing.JMenuItem jMenuItemSave;
+    private javax.swing.JMenuItem jMenuItemSaveAs;
     private javax.swing.JMenuItem jMenuItemSettings;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelKlassen;
@@ -334,11 +352,4 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     
-    private void ladeConfig(){
-        
-    }
-
-
-
-
 }
