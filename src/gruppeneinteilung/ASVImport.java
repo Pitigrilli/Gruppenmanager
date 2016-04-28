@@ -25,7 +25,7 @@ public class ASVImport {
     public ASVImport() {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "ASV-Export", "csv");
+                "ASV-Import", "csv");
         chooser.setFileFilter(filter);
         int returnVal;
         returnVal = chooser.showOpenDialog(null);

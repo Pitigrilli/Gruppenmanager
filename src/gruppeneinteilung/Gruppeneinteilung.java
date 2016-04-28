@@ -1,5 +1,6 @@
 package gruppeneinteilung;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,7 @@ public class Gruppeneinteilung {
 
     ArrayList<Student> students;
     private ArrayList<Jahrgang> jahrgaenge;
+    private File file;
 
 
 
@@ -22,6 +24,7 @@ public class Gruppeneinteilung {
     }
     
         public Gruppeneinteilung(String filename) {
+        file = new File(filename);
         ASVImport asvImport = new ASVImport(filename);
         students = asvImport.parseLines();
         jahrgaenge = new ArrayList<>();
