@@ -77,28 +77,6 @@ public class Gruppeneinteilung {
         return jahrgaenge;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
-
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ge.testGruppenFenster();
-            }
-        });
-
-    }
-
-    /**
-     *
-     */
-    public void testGruppenFenster() {
-        GruppenFenster gf1 = new GruppenFenster(students, "Gesamtliste: " + students.size() + " Schüler");
-    }
-
     public void testeEinteilung() {
         for (Jahrgang jahrgang : jahrgaenge) {
             System.out.println("--------------------");

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="gruppeneinteilung">
+  <ClassDiagramComponents>
+    <Class name="PrintPDF" package="gruppeneinteilung" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="file" type="File" visibility="private"/>
+        <Field name="document" type="Document" visibility="package"/>
+        <Field name="tableFont" type="Font" visibility="private" isStatic="true"/>
+        <Field name="tableHeadFont" type="Font" visibility="private" isStatic="true"/>
+        <Field name="smallBold" type="Font" visibility="private" isStatic="true"/>
+        <Field name="ge" type="Gruppeneinteilung" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Gruppeneinteilung" name="ge"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addMetaData" returnType="void" visibility="private">
+          <Argument type="Document" name="document"/>
+        </Method>
+        <Method name="addContent" returnType="void" visibility="private">
+          <Argument type="Document" name="document"/>
+        </Method>
+        <Method name="addEmptyLine" returnType="void" visibility="private">
+          <Argument type="Paragraph" name="paragraph"/>
+          <Argument type="int" name="number"/>
+        </Method>
+        <Method name="createTable" returnType="void" visibility="private">
+          <Argument type="Paragraph" name="newTable"/>
+          <Argument type="Jahrgang" name="j"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="getFile" returnType="File" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Klasse" package="gruppeneinteilung" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="jahrgang" type="int" visibility="private" isFinal="true"/>
+        <Field name="buchstabe" type="String" visibility="private" isFinal="true"/>
+        <Field name="schueler" type="ArrayList&lt;Student&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="b"/>
+          <Argument type="int" name="j"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="studentHinzufuegen" returnType="void" visibility="public">
+          <Argument type="Student" name="s"/>
+        </Method>
+        <Method name="studentEntfernen" returnType="Student" visibility="public">
+          <Argument type="Student" name="s"/>
+        </Method>
+        <Method name="getKlassengroesse" returnType="int" visibility="public"/>
+        <Method name="getBuchstabe" returnType="String" visibility="public"/>
+        <Method name="getSchueler" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Jahrgang" package="gruppeneinteilung" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="jahrgang" type="int" visibility="private" isFinal="true"/>
+        <Field name="klassen" type="ArrayList&lt;Klasse&gt;" visibility="private" isFinal="true"/>
+        <Field name="alle" type="ArrayList&lt;Student&gt;" visibility="private" isFinal="true"/>
+        <Field name="schuelerAnzahl" type="int" visibility="private"/>
+        <Field name="weiblich" type="int" visibility="private"/>
+        <Field name="maennlich" type="int" visibility="private"/>
+        <Field name="katholisch" type="int" visibility="private"/>
+        <Field name="evangelisch" type="int" visibility="private"/>
+        <Field name="ethik" type="int" visibility="private"/>
+        <Field name="GY" type="int" visibility="private"/>
+        <Field name="GY_MU" type="int" visibility="private"/>
+        <Field name="GY_TH" type="int" visibility="private"/>
+        <Field name="GY_NTG" type="int" visibility="private"/>
+        <Field name="GY_WSG" type="int" visibility="private"/>
+        <Field name="GY_SG" type="int" visibility="private"/>
+        <Field name="klassenanzahl" type="int" visibility="private"/>
+        <Field name="nachReligion" type="boolean" visibility="private"/>
+        <Field name="nachZweig" type="boolean" visibility="private"/>
+        <Field name="nachFremdsprache" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="n"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="getJahrgang" returnType="int" visibility="public"/>
+        <Method name="getSchuelerAnzahl" returnType="int" visibility="public"/>
+        <Method name="getKlasse" returnType="Klasse" visibility="public">
+          <Argument type="String" name="b"/>
+        </Method>
+        <Method name="getKlassen" returnType="ArrayList&lt;Klasse&gt;" visibility="public"/>
+        <Method name="getKlassenanzahl" returnType="int" visibility="public"/>
+        <Method name="setKlassenanzahl" returnType="void" visibility="public">
+          <Argument type="int" name="i"/>
+        </Method>
+        <Method name="setKlassenanzahl" returnType="void" visibility="public"/>
+        <Method name="setNachReligion" returnType="void" visibility="public"/>
+        <Method name="setNachZweig" returnType="void" visibility="public"/>
+        <Method name="setNachFremdsprache" returnType="void" visibility="public"/>
+        <Method name="studentEinfuegen" returnType="void" visibility="public">
+          <Argument type="Student" name="s"/>
+        </Method>
+        <Method name="ausgabeAlle" returnType="void" visibility="public"/>
+        <Method name="gibAlle" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+        <Method name="getMaennlich" returnType="int" visibility="public"/>
+        <Method name="getWeiblich" returnType="int" visibility="public"/>
+        <Method name="getKatholisch" returnType="int" visibility="public"/>
+        <Method name="getEvangelisch" returnType="int" visibility="public"/>
+        <Method name="getEthik" returnType="int" visibility="public"/>
+        <Method name="getGY" returnType="int" visibility="public"/>
+        <Method name="getGY_MU" returnType="int" visibility="public"/>
+        <Method name="getGY_TH" returnType="int" visibility="public"/>
+        <Method name="getGY_NTG" returnType="int" visibility="public"/>
+        <Method name="getGY_WSG" returnType="int" visibility="public"/>
+        <Method name="getGY_SG" returnType="int" visibility="public"/>
+        <Method name="test" returnType="void" visibility="public"/>
+        <Method name="testKlassen" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Student" package="gruppeneinteilung" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="klasse" type="String" visibility="private"/>
+        <Field name="jahrgang" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+        <Field name="geschlecht" type="String" visibility="private" isFinal="true"/>
+        <Field name="zweig" type="String" visibility="private" isFinal="true"/>
+        <Field name="fs2" type="String" visibility="private" isFinal="true"/>
+        <Field name="fs3" type="String" visibility="private" isFinal="true"/>
+        <Field name="fs4" type="String" visibility="private" isFinal="true"/>
+        <Field name="religion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="jahrgang"/>
+          <Argument type="String" name="klasse"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="geschlecht"/>
+          <Argument type="String" name="zweig"/>
+          <Argument type="String" name="fs2"/>
+          <Argument type="String" name="fs3"/>
+          <Argument type="String" name="fs4"/>
+          <Argument type="String" name="religion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="compareTo" returnType="int" visibility="public">
+          <Argument type="Student" name="other"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getKlasse" returnType="String" visibility="public"/>
+        <Method name="getJahrgang" returnType="int" visibility="public"/>
+        <Method name="getGeschlecht" returnType="String" visibility="public"/>
+        <Method name="getZweig" returnType="String" visibility="public"/>
+        <Method name="getFs2" returnType="String" visibility="public"/>
+        <Method name="getFs3" returnType="String" visibility="public"/>
+        <Method name="getFs4" returnType="String" visibility="public"/>
+        <Method name="getReligion" returnType="String" visibility="public"/>
+        <Method name="setKlasse" returnType="void" visibility="public">
+          <Argument type="String" name="klasse"/>
+        </Method>
+        <Method name="setReligion" returnType="void" visibility="public">
+          <Argument type="String" name="religion"/>
+        </Method>
+        <Method name="setJahrgang" returnType="void" visibility="public">
+          <Argument type="int" name="jahrgang"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GUI" package="gruppeneinteilung" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="ge" type="Gruppeneinteilung" visibility="private"/>
+        <Field name="aktuellerJahrgang" type="Jahrgang" visibility="private"/>
+        <Field name="file" type="File" visibility="private"/>
+        <Field name="jButtonAktualisieren" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jComboBox2" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jComboBoxJahrgang" type="javax.swing.JComboBox" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jMenu1" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenu2" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jMenuItem1" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemClose" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemImport" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemOpen" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemPrint" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemSave" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemSaveAs" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuItemSettings" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanelKlassen" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanelReligion" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanelSport" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jSpinner1" type="javax.swing.JSpinner" visibility="private"/>
+        <Field name="modelKlassenAnzahl" type="javax.swing.SpinnerModel" visibility="private"/>
+        <Field name="jTabbedPane1" type="javax.swing.JTabbedPane" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jComboBoxJahrgangActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemOpenActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemSettingsActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemImportActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemCloseActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemSaveActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jComboBox2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButtonAktualisierenActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemSaveAsActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jMenuItemPrintActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="evalueteJahrgangsAuswahl" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Gruppeneinteilung" package="gruppeneinteilung" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="students" type="ArrayList&lt;Student&gt;" visibility="private"/>
+        <Field name="jahrgaenge" type="ArrayList&lt;Jahrgang&gt;" visibility="private" isFinal="true"/>
+        <Field name="file" type="File" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="filename"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="studentJahrgangZuordnen" returnType="void" visibility="public"/>
+        <Method name="asvImport" returnType="void" visibility="public"/>
+        <Method name="setFile" returnType="void" visibility="package">
+          <Argument type="File" name="file"/>
+        </Method>
+        <Method name="getFile" returnType="File" visibility="public"/>
+        <Method name="getJahrgang" returnType="Jahrgang" visibility="public">
+          <Argument type="int" name="n"/>
+        </Method>
+        <Method name="getStudents" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+        <Method name="getJahrgaenge" returnType="ArrayList&lt;Jahrgang&gt;" visibility="public"/>
+        <Method name="testeEinteilung" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Speicherung" package="gruppeneinteilung" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="ge" type="Gruppeneinteilung" visibility="private"/>
+        <Field name="file" type="File" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Gruppeneinteilung" name="ge"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="filename"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="speichern" returnType="void" visibility="public"/>
+        <Method name="speichernUnter" returnType="void" visibility="public"/>
+        <Method name="serialisierungLaden" returnType="Gruppeneinteilung" visibility="public"/>
+        <Method name="testeLaden" returnType="void" visibility="public"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FileAuswahl" package="gruppeneinteilung" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="file" type="File" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="waehleFile" returnType="File" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ASVImport" package="gruppeneinteilung" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="asvexport" type="File" visibility="private"/>
+        <Field name="lines" type="List&lt;String&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="filename"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="parseLines" returnType="ArrayList&lt;Student&gt;" visibility="public"/>
+        <Method name="readFile" returnType="List&lt;String&gt;" visibility="private"/>
+        <Method name="testReadFile" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GruppenPanel" package="gruppeneinteilung" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="gruppenName" type="String" visibility="package"/>
+        <Field name="gruppe" type="ArrayList&lt;Student&gt;" visibility="package"/>
+        <Field name="gruppenListe" type="JList&lt;Student&gt;" visibility="package"/>
+        <Field name="studentFlavor" type="DataFlavor" visibility="package"/>
+        <Field name="dlm" type="DefaultListModel&lt;Student&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;Student&gt;" name="gruppe"/>
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="enableDnD" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="gruppeneinteilung.Jahrgang" target="gruppeneinteilung.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ge" source="gruppeneinteilung.GUI" target="gruppeneinteilung.Gruppeneinteilung" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dlm" source="gruppeneinteilung.GruppenPanel" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="DefaultListModel&lt;Student&gt;"/>
+    <HasRelation name="ge" source="gruppeneinteilung.Speicherung" target="gruppeneinteilung.Gruppeneinteilung" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gruppeneinteilung.PrintPDF" target="gruppeneinteilung.Jahrgang" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gruppeneinteilung.Student" target="gruppeneinteilung.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gruppeneinteilung.Jahrgang" target="gruppeneinteilung.Klasse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="aktuellerJahrgang" source="gruppeneinteilung.GUI" target="gruppeneinteilung.Jahrgang" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gruppeneinteilung.ASVImport" target="gruppeneinteilung.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gruppenListe" source="gruppeneinteilung.GruppenPanel" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="JList&lt;Student&gt;"/>
+    <UseRelation source="gruppeneinteilung.Speicherung" target="gruppeneinteilung.Gruppeneinteilung" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ge" source="gruppeneinteilung.PrintPDF" target="gruppeneinteilung.Gruppeneinteilung" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gruppeneinteilung.Gruppeneinteilung" target="gruppeneinteilung.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="students" source="gruppeneinteilung.Gruppeneinteilung" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Student&gt;"/>
+    <UseRelation source="gruppeneinteilung.Klasse" target="gruppeneinteilung.Student" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jahrgaenge" source="gruppeneinteilung.Gruppeneinteilung" target="gruppeneinteilung.Jahrgang" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Jahrgang&gt;"/>
+    <HasRelation name="gruppe" source="gruppeneinteilung.GruppenPanel" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Student&gt;"/>
+    <HasRelation name="alle" source="gruppeneinteilung.Jahrgang" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Student&gt;"/>
+    <HasRelation name="schueler" source="gruppeneinteilung.Klasse" target="gruppeneinteilung.Student" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Student&gt;"/>
+    <UseRelation source="gruppeneinteilung.Gruppeneinteilung" target="gruppeneinteilung.Jahrgang" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="klassen" source="gruppeneinteilung.Jahrgang" target="gruppeneinteilung.Klasse" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Klasse&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
