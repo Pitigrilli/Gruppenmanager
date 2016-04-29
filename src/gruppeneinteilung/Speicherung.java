@@ -121,7 +121,7 @@ class FileAuswahl {
 
     public FileAuswahl() {
         File fileGewaehlt = null;
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.dir")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "GED-Datei", "ged");
         chooser.setFileFilter(filter);

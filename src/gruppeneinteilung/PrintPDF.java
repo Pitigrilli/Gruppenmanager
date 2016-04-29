@@ -19,11 +19,14 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.util.ArrayList;
 
 public class PrintPDF {
 
-    private String FILE;
+    private File file;
+
+
     Document document;
     //private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
     //Font.BOLD);
@@ -41,12 +44,14 @@ public class PrintPDF {
     public PrintPDF(Gruppeneinteilung ge) {
         this.ge = ge;
         //ge.testeEinteilung();
-        this.FILE = "Ausdruck.pdf";
+        String filename = "Ausdruck.pdf";
+        file = new File(filename);
         document = new Document();
         document.setPageSize(PageSize.A4.rotate());
-        document.setMargins(5f, 5f, 5f, 5f);
+        document.setMargins(20f, 20f, 20f, 20f);
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(FILE));
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            
             document.open();
             addMetaData(document);
             addContent(document);
@@ -135,6 +140,11 @@ public class PrintPDF {
 
     public static void main(String[] args) {
         new PrintPDF(new Gruppeneinteilung("ASV.csv"));
+    }
+    
+        public File getFile() {
+            System.out.println(file.getAbsolutePath());
+        return file;
     }
 
 }

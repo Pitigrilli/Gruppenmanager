@@ -4,8 +4,10 @@
  */
 package gruppeneinteilung;
 
+import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JLabel;
 import javax.swing.SpinnerNumberModel;
 
@@ -269,7 +271,18 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrintActionPerformed
         // TODO add your handling code here:
-        new PrintPDF(ge);
+        PrintPDF printPdf = new PrintPDF(ge);
+        File fileAusdruck = printPdf.getFile();
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().open(fileAusdruck);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+                System.out.println("Es ist kein PDF Reader installiert.");
+            }
+        }
+
     }//GEN-LAST:event_jMenuItemPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,7 +354,7 @@ public class GUI extends javax.swing.JFrame {
         int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
         //System.out.println(klassenanzahl);
         jSpinner1.getModel().setValue(klassenanzahl);
-        
+
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
