@@ -39,7 +39,7 @@ public class GruppenPanel extends JPanel {
         gruppenListe = new JList<>(dlm);
         //gruppenListe.setFixedCellWidth(200);
         gruppenListe.setCellRenderer(new GruppenPanel.WhiteGrayCellRenderer());
-        
+
         //dnd
         enableDnD();
 
@@ -56,89 +56,94 @@ public class GruppenPanel extends JPanel {
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (index % 2 == 0) {
-                c.setBackground(Color.gray);
+
+            if (isSelected) {
+                this.setBackground(new Color(155, 255, 255));
             } else {
-                c.setBackground(Color.white);
+                if (index % 2 == 0) {
+                    c.setBackground(Color.gray);
+                } else {
+                    c.setBackground(Color.white);
+                }
             }
             return c;
         }
     }
-    
-    public void enableDnD(){
+
+    public void enableDnD() {
         gruppenListe.setDragEnabled(true);
         gruppenListe.setTransferHandler(
-            new TransferHandler() {
-                //Student student;
+                new TransferHandler() {
+                    //Student student;
 
-                @Override
-                public int getSourceActions(JComponent c) {
-                    return MOVE;
-                }
-
-                @Override
-                protected Transferable createTransferable(JComponent c) {
-                    JList list = (JList)c;
-                    Student student = (Student) list.getSelectedValue();
-                    DefaultListModel lm = (DefaultListModel) list.getModel();
-                    int index = lm.indexOf(student);
-                    //System.out.println("Ausgewählt:"+student+" Index: "+index);
-
-                    return new TransferableStudent(student);
-                }
-
-                @Override
-                protected void exportDone(JComponent c, Transferable t, int action) {
-                    TransferableStudent ts = (TransferableStudent) t;
-                    Student student = ts.getStudent();
-                    JList list = (JList) c;
-                    DefaultListModel listModel = (DefaultListModel)list.getModel();
-                    
-                    if (action == MOVE) {
-                        listModel.removeElement(student);
-                        gruppe.remove(student);
-                    }
-                }
-
-                @Override
-                public boolean canImport(TransferHandler.TransferSupport info) {
-                  
-                    return info.isDataFlavorSupported(studentFlavor);
-                }
-
-                @Override
-                public boolean importData(TransferHandler.TransferSupport info) {
-                    if (!info.isDrop()) {
-                        return false;
+                    @Override
+                    public int getSourceActions(JComponent c) {
+                        return MOVE;
                     }
 
-                    JList list = (JList)info.getComponent();
-                    
-                    @SuppressWarnings("unchecked")
-                    DefaultListModel<Student> listModel = (DefaultListModel<Student>)list.getModel();
-                    
-                    JList.DropLocation dl = (JList.DropLocation)info.getDropLocation();
-                    int index = dl.getIndex();
-                    boolean insert = dl.isInsert();
+                    @Override
+                    protected Transferable createTransferable(JComponent c) {
+                        JList list = (JList) c;
+                        Student student = (Student) list.getSelectedValue();
+                        DefaultListModel lm = (DefaultListModel) list.getModel();
+                        int index = lm.indexOf(student);
+                        //System.out.println("Ausgewählt:"+student+" Index: "+index);
 
-                    Transferable t = info.getTransferable();
-                    Student student;
-                    try {
-                        student = (Student)t.getTransferData(studentFlavor);
-                    } 
-                    catch (Exception e) { return false; }
+                        return new TransferableStudent(student);
+                    }
+
+                    @Override
+                    protected void exportDone(JComponent c, Transferable t, int action) {
+                        TransferableStudent ts = (TransferableStudent) t;
+                        Student student = ts.getStudent();
+                        JList list = (JList) c;
+                        DefaultListModel listModel = (DefaultListModel) list.getModel();
+
+                        if (action == MOVE) {
+                            listModel.removeElement(student);
+                            gruppe.remove(student);
+                        }
+                    }
+
+                    @Override
+                    public boolean canImport(TransferHandler.TransferSupport info) {
+
+                        return info.isDataFlavorSupported(studentFlavor);
+                    }
+
+                    @Override
+                    public boolean importData(TransferHandler.TransferSupport info) {
+                        if (!info.isDrop()) {
+                            return false;
+                        }
+
+                        JList list = (JList) info.getComponent();
+
+                        @SuppressWarnings("unchecked")
+                        DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
+
+                        JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
+                        int index = dl.getIndex();
+                        boolean insert = dl.isInsert();
+
+                        Transferable t = info.getTransferable();
+                        Student student;
+                        try {
+                            student = (Student) t.getTransferData(studentFlavor);
+                        } catch (Exception e) {
+                            return false;
+                        }
 
                     //System.out.println("Drop:"+student);
+                        if (insert) {
+                            listModel.add(index, student);
+                            gruppe.add(index, student);
+                        }
 
-                    if (insert) {
-                        listModel.add(index,student);
-                        gruppe.add(index,student);
-                    } 
+                        return true;
+                    }
 
-                    return true;
-                }
-
-            });
+                });
         /*  Ende der Definition des TransferHandler  */
         gruppenListe.setDropMode(DropMode.INSERT);
 
@@ -146,32 +151,35 @@ public class GruppenPanel extends JPanel {
 
     class TransferableStudent implements Transferable {
         /*objecto to transfer with dnd*/
+
         Student student;
+
         TransferableStudent(Student student) {
             this.student = student;
         }
 
-        Student getStudent(){
+        Student getStudent() {
             return student;
         }
 
-        @Override public DataFlavor[] getTransferDataFlavors()
-        {
-            return new DataFlavor[]{ studentFlavor };
+        @Override
+        public DataFlavor[] getTransferDataFlavors() {
+            return new DataFlavor[]{studentFlavor};
         }
 
-        @Override public boolean isDataFlavorSupported(DataFlavor flavor)
-        {
+        @Override
+        public boolean isDataFlavorSupported(DataFlavor flavor) {
             return flavor.equals(studentFlavor);
         }
 
-        @Override public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException
-        {
+        @Override
+        public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
 
-            if(flavor.equals(studentFlavor))
+            if (flavor.equals(studentFlavor)) {
                 return student;
-            else
+            } else {
                 throw new UnsupportedFlavorException(flavor);
+            }
         }
     }
 
