@@ -23,6 +23,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
 
         initComponents();
+    
+        
     }
 
     /**
@@ -41,6 +43,14 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<String>();
         jButtonAktualisieren = new javax.swing.JButton();
+        jLabelAnzahlSchülergesamt = new javax.swing.JLabel();
+        jLabelAnzahlKatholisch = new javax.swing.JLabel();
+        jLabelAnzahlEthik = new javax.swing.JLabel();
+        jLabelAnzahlEvangelisch = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
@@ -86,6 +96,22 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabelAnzahlSchülergesamt.setText("Anzahl Schüler gesamt:");
+
+        jLabelAnzahlKatholisch.setText("Anzahl Katholisch:");
+
+        jLabelAnzahlEthik.setText("Anzahl Ethik:");
+
+        jLabelAnzahlEvangelisch.setText("Anzahl Evangelisch:");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel2");
+
+        jLabel4.setText("jLabel2");
+
+        jLabel5.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -93,13 +119,21 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelAnzahlSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxJahrgang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAktualisieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelAnzahlKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelAnzahlEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelAnzahlEvangelisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -115,6 +149,22 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAktualisieren)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAnzahlSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAnzahlKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAnzahlEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAnzahlEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -153,6 +203,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItemSaveActionPerformed(evt);
             }
         });
+        jMenuItemSave.setEnabled(false);
         jMenu1.add(jMenuItemSave);
 
         jMenuItemSaveAs.setText("Save As");
@@ -161,6 +212,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItemSaveAsActionPerformed(evt);
             }
         });
+        jMenuItemSaveAs.setEnabled(false);
         jMenu1.add(jMenuItemSaveAs);
 
         jMenuItemSettings.setText("Settings");
@@ -169,6 +221,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItemSettingsActionPerformed(evt);
             }
         });
+        jMenuItemSettings.setEnabled(false);
         jMenu1.add(jMenuItemSettings);
 
         jMenuItemPrint.setText("Print");
@@ -177,6 +230,7 @@ public class GUI extends javax.swing.JFrame {
                 jMenuItemPrintActionPerformed(evt);
             }
         });
+        jMenuItemPrint.setEnabled(false);
         jMenu1.add(jMenuItemPrint);
 
         jMenuItemClose.setText("Close");
@@ -211,7 +265,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
@@ -230,6 +284,9 @@ public class GUI extends javax.swing.JFrame {
         ge = new Speicherung().serialisierungLaden();
         this.setTitle("Kursmanager - " + ge.getFile().toString());
         evalueteJahrgangsAuswahl();
+        jMenuItemSave.setEnabled(true);
+        jMenuItemSaveAs.setEnabled(true);
+        jMenuItemPrint.setEnabled(true);
 
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
@@ -241,6 +298,9 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         ge = new Gruppeneinteilung();
         ge.asvImport();
+        jMenuItemSave.setEnabled(true);
+        jMenuItemSaveAs.setEnabled(true);
+        jMenuItemPrint.setEnabled(true);
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -290,6 +350,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelAnzahlEthik;
+    private javax.swing.JLabel jLabelAnzahlEvangelisch;
+    private javax.swing.JLabel jLabelAnzahlKatholisch;
+    private javax.swing.JLabel jLabelAnzahlSchülergesamt;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

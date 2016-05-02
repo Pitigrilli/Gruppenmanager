@@ -8,19 +8,21 @@ import com.itextpdf.text.BaseColor;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.BaseFont;
-
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class PrintPDF {
 
@@ -28,30 +30,26 @@ public class PrintPDF {
 
 
     Document document;
-    //private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-    //Font.BOLD);
-    //private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-    // Font.NORMAL, BaseColor.RED);
+    private static Font tableFontRot = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD,BaseColor.RED); // Schrift in Tabelle 
+   private static Font tableFontGruen = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD,BaseColor.GREEN); // Schrift in Tabelle 
+    private static Font tableFontBlau = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD,BaseColor.BLUE); // Schrift in Tabelle 
     private static Font tableFont = new Font(Font.FontFamily.TIMES_ROMAN, 8,
-            Font.BOLD);
+            Font.BOLD); // Schrift in Tabelle 
     private static Font tableHeadFont = new Font(Font.FontFamily.TIMES_ROMAN, 10,
-            Font.BOLD);
+            Font.BOLD); // Klassenbezeichner
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-            Font.BOLD);
+            Font.BOLD);  // Überschrift
 
     private Gruppeneinteilung ge;
 
     public PrintPDF(Gruppeneinteilung ge) {
         this.ge = ge;
-        //ge.testeEinteilung();
-        String filename = "Ausdruck.pdf";
-        file = new File(filename);
-        document = new Document();
-        document.setPageSize(PageSize.A4.rotate());
-        document.setMargins(20f, 20f, 20f, 20f);
+            erstellen();
         try {
             PdfWriter.getInstance(document, new FileOutputStream(file));
-            
             document.open();
             addMetaData(document);
             addContent(document);
@@ -61,14 +59,18 @@ public class PrintPDF {
         }
 
     }
-
-    //Hier mal irgendwann anpassen
+    private void erstellen(){
+        String filename = "Ausdruck.pdf";
+        file = new File(filename);
+        document = new Document();
+        document.setPageSize(PageSize.A4.rotate());
+        document.setMargins(20f, 20f, 20f, 20f);
+    
+    }
+    
+   
     private void addMetaData(Document document) {
         document.addTitle("Gruppeneinteilung");
-        //document.addSubject("");
-        //document.addKeywords("");
-        //document.addAuthor();
-        //document.addCreator("");
     }
 
     private void addContent(Document document)
@@ -89,6 +91,25 @@ public class PrintPDF {
 
         }
     }
+    
+    private void ausgewaehlterJahrgangDrucken(Jahrgang j)throws DocumentException{
+  
+        
+         Paragraph preface = new Paragraph();
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        addEmptyLine(preface, 1);
+        document.add(preface);
+
+        Paragraph tabelle = new Paragraph();
+        
+            createTable(tabelle, j);
+            document.add(tabelle);
+            // Start a new page
+            document.newPage();
+    
+
+}
 
     private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
@@ -101,23 +122,11 @@ public class PrintPDF {
 
         Jahrgang aktuellerJahrgang = j;
         int n = aktuellerJahrgang.getKlassenanzahl();
-        //aktuellerJahrgang.testKlassen();
         System.out.println(n);
 
         PdfPTable table = new PdfPTable(n); // Spaltenanzahl
-
-        //float[] columnWidths = new float[]{50f, 50f, 50f, 50f, 40f};
-        //table.setTotalWidth(columnWidths);
         table.setWidthPercentage(100f);
-         //table.setBorderColor(BaseColor.BLACK);
-        // t.setPadding(4);
-        // t.setSpacing(4);
-        //t.setBorderWidth(1);
-
-        //  PdfPCell c1 = new PdfPCell();//(new Phrase("Name"));
-        //   c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-        //  table.addCell(c1);
-
+         
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
@@ -130,10 +139,6 @@ public class PrintPDF {
         }
 
         table.addCell("1.1");
-        // table.addCell("1.2");
-        //  table.addCell("2.1");
-        // table.addCell("2.2");
-        // table.addCell("2.3");
         newTable.add(table);
 
     }
@@ -146,5 +151,7 @@ public class PrintPDF {
             System.out.println(file.getAbsolutePath());
         return file;
     }
-
-}
+        
+        
+    
+}                       

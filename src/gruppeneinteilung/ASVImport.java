@@ -23,7 +23,7 @@ public class ASVImport {
     private final List<String> lines;
 
     public ASVImport() {
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.dir")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "ASV-Import", "csv");
         chooser.setFileFilter(filter);

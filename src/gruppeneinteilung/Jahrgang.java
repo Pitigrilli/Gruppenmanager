@@ -17,6 +17,8 @@ public class Jahrgang implements Serializable {
     //Variablen--------------------------
     private final int jahrgang;
     private final ArrayList<Klasse> klassen;
+    private ArrayList<Sportgruppe> sportgruppen;
+    private ArrayList<Religionsgruppe> religionsgruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -34,6 +36,8 @@ public class Jahrgang implements Serializable {
     private boolean nachReligion;
     private boolean nachZweig;
     private boolean nachFremdsprache;
+    private int sportgruppenzahl;
+    private int religionsgruppenzahl;
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
@@ -47,6 +51,8 @@ public class Jahrgang implements Serializable {
     public Jahrgang(int n) {
 
         klassen = new ArrayList<>();
+        sportgruppen = new ArrayList<>();
+        religionsgruppen = new ArrayList<>();
         jahrgang = n;
         alle = new ArrayList<>();
 
@@ -263,4 +269,143 @@ public class Jahrgang implements Serializable {
         }
     }
 
+    public void sportgruppeErstellen(String geschlecht){
+        Sportgruppe sp = new Sportgruppe(sportgruppenzahl, jahrgang, geschlecht);
+        sportgruppenzahl ++;
+        sportgruppen.add(sp);             
+    }
+    
+    public void sportgruppeKlasseHinzufügen(int sportgruppe, String buchstabe)
+    {
+        switch(buchstabe)
+        {
+            case "a":
+                for(int i = 0; i < klassen.get(0).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(0).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
+                    }
+                }
+            case "b":
+                for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(1).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
+                    }
+                }
+            case "c":
+                for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(2).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
+                    }
+                }
+            case "d":
+                for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(3).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
+                    }
+                }
+            case "e":
+                for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(4).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
+                    }
+                }
+            case "f":
+                for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(5).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
+                    }
+                }
+            case "g":
+                for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(6).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
+                    }
+                }
+        }
+    }
+         public void religionsgruppeErstellen(String religion){
+        Religionsgruppe re = new Religionsgruppe(religionsgruppenzahl, jahrgang, religion);
+        religionsgruppenzahl ++;
+        religionsgruppen.add(re);
+         }
+    
+    public void religionsgruppenKlasseHinzufügen(int religionsgruppe, String buchstabe){
+        switch(buchstabe)
+        {
+            case "a":
+                for(int i = 0; i < klassen.get(0).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(0).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
+                    }
+                }
+            case "b":
+                for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(1).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
+                    }
+                }
+            case "c":
+                for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(2).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                       religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
+                    }
+                }
+            case "d":
+                for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(3).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
+                    }
+                }
+            case "e":
+                for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(4).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
+                    }
+                }
+            case "f":
+                for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(5).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
+                    }
+                }
+            case "g":
+                for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(6).getSchueler().get(i).getGeschlecht().equals(buchstabe))
+                    {
+                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
+                    }
+                }
+    }
+    }
 }
+
+    
+    
+
