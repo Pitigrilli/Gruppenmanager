@@ -78,6 +78,7 @@ public class GruppenPanel extends JPanel {
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
+            l.setText(s.getName() +" "+s.getGeschlecht()+" "+s.getZweig()+" "+s.getReligion()+" "+s.getFs2()+" "+s.getFs3()+" "+s.getFs4()); //s.getKlasse()+" "+
             return l;
         }
     }
