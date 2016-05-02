@@ -58,15 +58,27 @@ public class GruppenPanel extends JPanel {
             Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
             if (isSelected) {
-                this.setBackground(new Color(155, 255, 255));
+                this.setBackground(Color.LIGHT_GRAY);
             } else {
-                if (index % 2 == 0) {
-                    c.setBackground(Color.gray);
-                } else {
                     c.setBackground(Color.white);
-                }
+
             }
-            return c;
+            
+            Student s = (Student) value;
+            switch (s.getReligion()) {
+                case "RK":
+                    c.setForeground(new Color(255,0,0));
+                    break;
+                case "EV":
+                    c.setForeground(new Color(0,255,0));
+                    break;
+                case "ETH":
+                    c.setForeground(new Color(0,0,255));
+                    break;
+            }
+            JLabel l = (JLabel) c;
+            l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
+            return l;
         }
     }
 
