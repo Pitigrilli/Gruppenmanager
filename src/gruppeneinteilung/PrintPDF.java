@@ -132,16 +132,36 @@ public class PrintPDF {
             tableI.setHeaderRows(1);
             tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
                     tableHeadFont));
+            
+            
             for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
-                tableI.addCell(new Phrase((s.toString()), tableFont));
+                
+                 switch (s.getReligion()) {
+                case "RK":
+                    tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                    break;
+                case "EV":
+                    tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                    break;
+                case "ETH":
+                    tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                    break;
+                                  
+                    default:
+                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                 }
+                
             }
+            
+            
+            
             table.addCell(tableI);
         }
 
         table.addCell("1.1");
         newTable.add(table);
 
-    }
+        }
 
     public static void main(String[] args) {
         new PrintPDF(new Gruppeneinteilung("ASV.csv"));

@@ -19,6 +19,7 @@ public class Jahrgang implements Serializable {
     private final ArrayList<Klasse> klassen;
     private ArrayList<Sportgruppe> sportgruppen;
     private ArrayList<Religionsgruppe> religionsgruppen;
+    private ArrayList<Zweiggruppe> zweiggruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -38,6 +39,7 @@ public class Jahrgang implements Serializable {
     private boolean nachFremdsprache;
     private int sportgruppenzahl;
     private int religionsgruppenzahl;
+    private int zweiggruppenzahl;
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
@@ -53,6 +55,7 @@ public class Jahrgang implements Serializable {
         klassen = new ArrayList<>();
         sportgruppen = new ArrayList<>();
         religionsgruppen = new ArrayList<>();
+        zweiggruppen = new ArrayList<>();
         jahrgang = n;
         alle = new ArrayList<>();
 
@@ -287,6 +290,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
                     }
                 }
+            break;
             case "b":
                 for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
                 {
@@ -295,6 +299,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
                     }
                 }
+            break;
             case "c":
                 for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
                 {
@@ -303,6 +308,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
                     }
                 }
+            break;
             case "d":
                 for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
                 {
@@ -311,6 +317,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
                     }
                 }
+            break;
             case "e":
                 for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
                 {
@@ -319,6 +326,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
                     }
                 }
+            break;
             case "f":
                 for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
                 {
@@ -327,6 +335,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
                     }
                 }
+            break;
             case "g":
                 for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
                 {
@@ -335,6 +344,7 @@ public class Jahrgang implements Serializable {
                         sportgruppen.get(sportgruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
                     }
                 }
+            break;
         }
     }
          public void religionsgruppeErstellen(String religion){
@@ -354,6 +364,7 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
                     }
                 }
+            break;
             case "b":
                 for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
                 {
@@ -362,6 +373,7 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
                     }
                 }
+            break;
             case "c":
                 for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
                 {
@@ -370,6 +382,7 @@ public class Jahrgang implements Serializable {
                        religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
                     }
                 }
+            break;
             case "d":
                 for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
                 {
@@ -378,6 +391,7 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
                     }
                 }
+            break;
             case "e":
                 for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
                 {
@@ -386,6 +400,7 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
                     }
                 }
+            break;
             case "f":
                 for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
                 {
@@ -394,6 +409,7 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
                     }
                 }
+            break;
             case "g":
                 for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
                 {
@@ -402,6 +418,82 @@ public class Jahrgang implements Serializable {
                         religionsgruppen.get(religionsgruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
                     }
                 }
+            break;
+    }
+    }
+    
+            public void  zweiggruppeErstellen(String zweig){
+        Zweiggruppe re = new Zweiggruppe(zweiggruppenzahl, jahrgang, zweig);
+        zweiggruppenzahl ++;
+        zweiggruppen.add(re);
+         }
+    
+    public void zweiggruppenKlasseHinzufügen(int zweiggruppe, String buchstabe){
+        switch(buchstabe)
+        {
+            case "a":
+                for(int i = 0; i < klassen.get(0).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(0).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "b":
+                for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(1).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "c":
+                for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(2).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                       zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "d":
+                for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(3).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                       zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "e":
+                for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(4).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "f":
+                for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(5).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "g":
+                for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(6).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        zweiggruppen.get(zweiggruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
+                    }
+                }
+            break;
     }
     }
 }
