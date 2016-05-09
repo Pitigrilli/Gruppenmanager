@@ -7,11 +7,11 @@ package gruppeneinteilung;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Zweiggruppe implements Serializable{
+public class Zweiggruppe extends Sortierung implements Serializable{
     private final int jahrgang;
     private final String Zweig;
     private final int zahl;
-    private final ArrayList<Student> schueler;
+    //private final ArrayList<Student> schueler;
 
     public Zweiggruppe (int z, int j,String g) {
        zahl = z;

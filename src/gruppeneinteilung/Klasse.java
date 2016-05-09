@@ -2,16 +2,20 @@ package gruppeneinteilung;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  *
  * @author schwindt.christian
  */
-public class Klasse implements Serializable{
+public class Klasse extends Sortierung implements Serializable{
 
     private final int jahrgang;
     private final String buchstabe;
-    private final ArrayList<Student> schueler;
+    //private final ArrayList<Student> schueler;
+    
+    public static String sortierung;
 
     public Klasse(String b, int j) {
         buchstabe = b;
@@ -39,5 +43,12 @@ public class Klasse implements Serializable{
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
-
+    
+    public void test()     
+    {
+        for(int i = 0; i< schueler.size(); i ++)
+        {
+            System.out.println(schueler.get(i).getName() + ", " + schueler.get(i).getGeschlecht());
+        }
+    }
 }

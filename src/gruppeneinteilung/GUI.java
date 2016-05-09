@@ -41,7 +41,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<>();
+        jComboBoxSortierung = new javax.swing.JComboBox<String>();
         jButtonAktualisieren = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -51,6 +51,22 @@ public class GUI extends javax.swing.JFrame {
         jLabelKatholischAnzahl = new javax.swing.JLabel();
         jLabelEthikAnzahl = new javax.swing.JLabel();
         jLabelEvangelischAnzahl = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelMännlichAnzahl = new javax.swing.JLabel();
+        jLabelMännlich = new javax.swing.JLabel();
+        jLabelWeiblichAnzahl = new javax.swing.JLabel();
+        jLabelWeiblich = new javax.swing.JLabel();
+        jLabel1Anzahl = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel2Anzahl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel3Anzahl = new javax.swing.JLabel();
+        jLabelGY_SG = new javax.swing.JLabel();
+        jLabelGY_NTGAnzahl = new javax.swing.JLabel();
+        jLabelGY_NTG = new javax.swing.JLabel();
+        jLabelGY_WSGAnzahl = new javax.swing.JLabel();
+        jLabelGY_WSG = new javax.swing.JLabel();
+        jLabelGY_SGAnzahl = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
@@ -119,6 +135,38 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelEvangelischAnzahl.setText("");
 
+        jLabel1.setText("");
+
+        jLabelMännlichAnzahl.setText("");
+
+        jLabelMännlich.setText("Anzahl Männlich:");
+
+        jLabelWeiblichAnzahl.setText("");
+
+        jLabelWeiblich.setText("Anzahl Weiblich:");
+
+        jLabel1Anzahl.setText("");
+
+        jLabel2.setText("");
+
+        jLabel2Anzahl.setText("");
+
+        jLabel3.setText("");
+
+        jLabel3Anzahl.setText("");
+
+        jLabelGY_SG.setText("Anzahl im SG-Zweig:");
+
+        jLabelGY_NTGAnzahl.setText("");
+
+        jLabelGY_NTG.setText("Anzahl im NTG-Zweig:");
+
+        jLabelGY_WSGAnzahl.setText("");
+
+        jLabelGY_WSG.setText("Anzahl im WSG-Zweig:");
+
+        jLabelGY_SGAnzahl.setText("");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -140,7 +188,23 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelSchülergesamtAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelKatholischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEthikAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelEvangelischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelEvangelischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMännlichAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelWeiblichAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelMännlich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelWeiblich, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1Anzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2Anzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3Anzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_SG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_NTGAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_NTG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_WSGAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_SGAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelGY_WSG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -172,7 +236,39 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEvangelischAnzahl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelMännlich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMännlichAnzahl)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelWeiblichAnzahl)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1Anzahl)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2Anzahl)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3Anzahl)
+                .addGap(13, 13, 13)
+                .addComponent(jLabelGY_NTG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGY_NTGAnzahl)
+                .addGap(13, 13, 13)
+                .addComponent(jLabelGY_WSG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGY_WSGAnzahl)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelGY_SG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelGY_SGAnzahl)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -275,11 +371,8 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
@@ -292,6 +385,33 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
+        
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        if(n==5 || n==6){
+        String anzahlGY = aktuellerJahrgang.getGY()+"";
+        jLabel1Anzahl.setText(anzahlGY);
+        jLabel1.setText("Schüler ohne Zweig");
+        String anzahlGY_MU = aktuellerJahrgang.getGY_MU()+"";
+        jLabel2Anzahl.setText(anzahlGY_MU);
+        jLabel2.setText("Schüler Musikklassen");
+        String anzahlGY_TH = aktuellerJahrgang.getGY_TH()+"";
+        jLabel3Anzahl.setText(anzahlGY_TH);
+        jLabel3.setText("Schüler Theaterklassen");
+    }else if(n==7){
+        String anzahlGY = aktuellerJahrgang.getGY()+"";
+        jLabel1Anzahl.setText(anzahlGY);
+        jLabel1.setText("Schüler ohne Zweig");
+    }else if(n==8 || n==9 || n==10){
+        String anzahlGY_NTG = aktuellerJahrgang.getGY_NTG()+"";
+        jLabel1Anzahl.setText(anzahlGY_NTG);
+        jLabel1.setText("Schüler im NTG-Zweig");
+        String anzahlGY_WSG = aktuellerJahrgang.getGY_WSG()+"";
+        jLabel2Anzahl.setText(anzahlGY_WSG);
+        jLabel2.setText("Schüler im WSG-Zweig");
+        String anzahlGY_SG = aktuellerJahrgang.getGY_SG()+"";
+        jLabel3Anzahl.setText(anzahlGY_SG);
+        jLabel3.setText("Schüler im SG-Zweig");
+    }
         String anzahlSchueler = aktuellerJahrgang.getSchuelerAnzahl()+"";
         jLabelSchülergesamtAnzahl.setText(anzahlSchueler);
         String anzahlKatholisch = aktuellerJahrgang.getKatholisch()+"";
@@ -300,11 +420,20 @@ public class GUI extends javax.swing.JFrame {
         jLabelEthikAnzahl.setText(anzahlEthik);
         String anzahlEvangelisch = aktuellerJahrgang.getEvangelisch()+"";
         jLabelEvangelischAnzahl.setText(anzahlEvangelisch);
+        String anzahlMännlich = aktuellerJahrgang.getMaennlich()+"";
+        jLabelMännlichAnzahl.setText(anzahlMännlich);
+        String anzahlWeiblich = aktuellerJahrgang.getWeiblich()+"";
+        jLabelWeiblichAnzahl.setText(anzahlWeiblich);
+        
+        
         jComboBoxSortierung.setEnabled(true);
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
-        ge = new Speicherung().serialisierungLaden();
+        Speicherung sp = new Speicherung();
+        sp.testeLaden();
+        ge = sp.serialisierungLaden();
+        ge.testeEinteilung();
         this.setTitle("Kursmanager - " + ge.getFile().toString());
         evalueteJahrgangsAuswahl();
         jMenuItemSave.setEnabled(true);
@@ -377,15 +506,31 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAktualisieren;
     private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JComboBox<String> jComboBoxSortierung;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel1Anzahl;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel2Anzahl;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel3Anzahl;
     private javax.swing.JLabel jLabelEthik;
     private javax.swing.JLabel jLabelEthikAnzahl;
     private javax.swing.JLabel jLabelEvangelisch;
     private javax.swing.JLabel jLabelEvangelischAnzahl;
+    private javax.swing.JLabel jLabelGY_NTG;
+    private javax.swing.JLabel jLabelGY_NTGAnzahl;
+    private javax.swing.JLabel jLabelGY_SG;
+    private javax.swing.JLabel jLabelGY_SGAnzahl;
+    private javax.swing.JLabel jLabelGY_WSG;
+    private javax.swing.JLabel jLabelGY_WSGAnzahl;
     private javax.swing.JLabel jLabelKatholisch;
     private javax.swing.JLabel jLabelKatholischAnzahl;
     private javax.swing.JLabel jLabelKlassen;
+    private javax.swing.JLabel jLabelMännlich;
+    private javax.swing.JLabel jLabelMännlichAnzahl;
     private javax.swing.JLabel jLabelSchülergesamt;
     private javax.swing.JLabel jLabelSchülergesamtAnzahl;
+    private javax.swing.JLabel jLabelWeiblich;
+    private javax.swing.JLabel jLabelWeiblichAnzahl;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

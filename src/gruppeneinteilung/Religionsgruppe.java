@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author schwindt.christian
  */
-public class Religionsgruppe implements Serializable {
+public class Religionsgruppe extends Sortierung implements Serializable {
     private final int jahrgang;
     private final String religion;
     
     private final int zahl;
-    private final ArrayList<Student> schueler;
+    //private final ArrayList<Student> schueler;
 
     public Religionsgruppe (int z, int j,String r) {
         zahl=z;

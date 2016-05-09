@@ -38,7 +38,26 @@ public class Student implements Comparable<Student>, Serializable{
     
     
     public int compareTo(Student other){
-         return name.compareTo(other.name);
+       switch(Klasse.sortierung)
+       {
+           case "Geschlecht":
+               return geschlecht.compareTo(other.geschlecht);
+               
+           case "Zweig":
+               return zweig.compareTo(other.zweig);
+               
+           case "Religion":
+               return religion.compareTo(other.religion);
+               
+           case "Fremdsprache":
+               return fs2.compareTo(other.fs2);
+               
+           case "Alphabet":
+               return name.compareTo(other.name);
+               
+       }
+            return name.compareTo(other.name);
+         
     }
     
     public String getName() {
