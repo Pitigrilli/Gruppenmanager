@@ -4,6 +4,7 @@
  */
 package gruppeneinteilung;
 
+import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.io.File;
@@ -42,7 +43,7 @@ public class GUI extends javax.swing.JFrame {
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
         jComboBoxSortierung = new javax.swing.JComboBox<String>();
-        jButtonAktualisieren = new javax.swing.JButton();
+        jButtonSortieren = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
         jLabelEthik = new javax.swing.JLabel();
@@ -111,11 +112,11 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonAktualisieren.setText("Aktualisieren");
-        jButtonAktualisieren.setEnabled(false);
-        jButtonAktualisieren.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSortieren.setText("Sortieren");
+        jButtonSortieren.setEnabled(false);
+        jButtonSortieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAktualisierenActionPerformed(evt);
+                jButtonSortierenActionPerformed(evt);
             }
         });
 
@@ -177,7 +178,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxSortierung, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxJahrgang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAktualisieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelKlassen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -219,7 +220,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxSortierung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAktualisieren)
+                .addComponent(jButtonSortieren)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -268,7 +269,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelGY_SG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelGY_SGAnzahl)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -431,16 +432,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
         Speicherung sp = new Speicherung();
-        sp.testeLaden();
         ge = sp.serialisierungLaden();
-        ge.testeEinteilung();
         this.setTitle("Kursmanager - " + ge.getFile().toString());
         evalueteJahrgangsAuswahl();
         jMenuItemSave.setEnabled(true);
         jMenuItemSaveAs.setEnabled(true);
         jMenuItemPrint.setEnabled(true);
         jComboBoxJahrgang.setEnabled(true);
-        jButtonAktualisieren.setEnabled(true);
+        jButtonSortieren.setEnabled(true);
         jSpinnerAnzahlKlassen.setEnabled(true);
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
@@ -456,7 +455,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSaveAs.setEnabled(true);
         jMenuItemPrint.setEnabled(true);
         jComboBoxJahrgang.setEnabled(true);
-        jButtonAktualisieren.setEnabled(true);
+        jButtonSortieren.setEnabled(true);
         jSpinnerAnzahlKlassen.setEnabled(true);
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
@@ -475,10 +474,28 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSortierungActionPerformed
 
-    private void jButtonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAktualisierenActionPerformed
+    private void jButtonSortierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortierenActionPerformed
         // TODO add your handling code here:
-        ge.testeEinteilung();
-    }//GEN-LAST:event_jButtonAktualisierenActionPerformed
+        String sortierung = jComboBoxSortierung.getSelectedItem().toString();
+        for(Klasse k: aktuellerJahrgang.getKlassen()){
+            switch(sortierung){
+                case "Alphabetisch": k.sortierenName();break;
+                case "Männlich/Weiblich" : k.sortierenGeschlecht();break;
+                case "Religion": k.sortierenReligion();break;
+                case "Zweig": k.sortierenZweig();break;
+            }
+        }
+        Component[] comps =  jPanelKlassen.getComponents();
+        for(Component comp: comps){
+            GruppenPanel gp =  (GruppenPanel) comp;
+            gp.aktualisiereListModel();
+            gp.revalidate();
+            gp.repaint();
+        }
+        jPanelKlassen.revalidate();
+        jPanelKlassen.repaint();
+        
+    }//GEN-LAST:event_jButtonSortierenActionPerformed
 
     private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
         // TODO add your handling code here:
@@ -503,7 +520,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAktualisieren;
+    private javax.swing.JButton jButtonSortieren;
     private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JComboBox<String> jComboBoxSortierung;
     private javax.swing.JLabel jLabel1;
@@ -601,7 +618,8 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
-                jPanelKlassen.add(new GruppenPanel(k.getSchueler(), n + k.getBuchstabe()));
+                GruppenPanel gp = new GruppenPanel(k.getSchueler(), n + k.getBuchstabe());
+                jPanelKlassen.add(gp);
             }
         }
         jPanelKlassen.revalidate();

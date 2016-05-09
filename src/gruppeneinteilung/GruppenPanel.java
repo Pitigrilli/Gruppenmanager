@@ -22,6 +22,7 @@ public class GruppenPanel extends JPanel {
     DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
     DefaultListModel<Student> dlm = new DefaultListModel<>();
 
+
     public GruppenPanel(ArrayList<Student> gruppe, String name) {
         this.gruppe = gruppe;
         this.gruppenName = name;
@@ -35,6 +36,7 @@ public class GruppenPanel extends JPanel {
         for (Student student : gruppe) {
             dlm.addElement(student);
         }
+
         // JList
         gruppenListe = new JList<>(dlm);
         //gruppenListe.setFixedCellWidth(200);
@@ -49,6 +51,14 @@ public class GruppenPanel extends JPanel {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Scrollbar ins Panel
         add(scrollPane, BorderLayout.CENTER);
+    }
+    
+    
+    public void aktualisiereListModel(){
+        dlm.clear();
+        for (Student student : gruppe) {
+            dlm.addElement(student);
+        }
     }
 
     private static class WhiteGrayCellRenderer extends DefaultListCellRenderer {
