@@ -39,18 +39,18 @@ public class GUI extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jComboBoxJahrgang = new javax.swing.JComboBox();
-        jSpinner1 = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
+        jLabelKlassen = new javax.swing.JLabel();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonAktualisieren = new javax.swing.JButton();
-        jLabelAnzahlSchülergesamt = new javax.swing.JLabel();
-        jLabelAnzahlKatholisch = new javax.swing.JLabel();
-        jLabelAnzahlEthik = new javax.swing.JLabel();
-        jLabelAnzahlEvangelisch = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelSchülergesamt = new javax.swing.JLabel();
+        jLabelKatholisch = new javax.swing.JLabel();
+        jLabelEthik = new javax.swing.JLabel();
+        jLabelEvangelisch = new javax.swing.JLabel();
+        jLabelSchülergesamtAnzahl = new javax.swing.JLabel();
+        jLabelKatholischAnzahl = new javax.swing.JLabel();
+        jLabelEthikAnzahl = new javax.swing.JLabel();
+        jLabelEvangelischAnzahl = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
@@ -65,6 +65,8 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemPrint = new javax.swing.JMenuItem();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -73,44 +75,49 @@ public class GUI extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jComboBoxJahrgang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6", "7", "8", "9", "10"}));
+        jComboBoxJahrgang.setEnabled(false);
         jComboBoxJahrgang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxJahrgangActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Anzahl Klassen:");
+        jSpinnerAnzahlKlassen.setEnabled(false);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sortierung wählen", "Alphabetisch", "Religion", "Zweig" }));
-        jComboBox2.setName(""); // NOI18N
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jLabelKlassen.setText("Anzahl Klassen:");
+
+        jComboBoxSortierung.setEnabled(false);
+        jComboBoxSortierung.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sortierung wählen", "Alphabetisch", "Männlich/Weiblich", "Religion", "Zweig" }));
+        jComboBoxSortierung.setName(""); // NOI18N
+        jComboBoxSortierung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jComboBoxSortierungActionPerformed(evt);
             }
         });
 
         jButtonAktualisieren.setText("Aktualisieren");
+        jButtonAktualisieren.setEnabled(false);
         jButtonAktualisieren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAktualisierenActionPerformed(evt);
             }
         });
 
-        jLabelAnzahlSchülergesamt.setText("Anzahl Schüler gesamt:");
+        jLabelSchülergesamt.setText("Anzahl Schüler gesamt:");
 
-        jLabelAnzahlKatholisch.setText("Anzahl Katholisch:");
+        jLabelKatholisch.setText("Anzahl Katholisch:");
 
-        jLabelAnzahlEthik.setText("Anzahl Ethik:");
+        jLabelEthik.setText("Anzahl Ethik:");
 
-        jLabelAnzahlEvangelisch.setText("Anzahl Evangelisch:");
+        jLabelEvangelisch.setText("Anzahl Evangelisch:");
 
-        jLabel2.setText("jLabel2");
+        jLabelSchülergesamtAnzahl.setText("");
 
-        jLabel3.setText("jLabel2");
+        jLabelKatholischAnzahl.setText("");
 
-        jLabel4.setText("jLabel2");
+        jLabelEthikAnzahl.setText("");
 
-        jLabel5.setText("jLabel2");
+        jLabelEvangelischAnzahl.setText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,21 +126,21 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelAnzahlSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxSortierung, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxJahrgang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAktualisieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelKlassen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelAnzahlKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAnzahlEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAnzahlEvangelisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jSpinnerAnzahlKlassen, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelSchülergesamtAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelKatholischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEthikAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEvangelischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -143,32 +150,32 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jComboBoxJahrgang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSpinner1))
+                    .addComponent(jLabelKlassen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSpinnerAnzahlKlassen))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxSortierung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAktualisieren)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelAnzahlSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jLabel2)
+                .addComponent(jLabelSchülergesamtAnzahl)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelAnzahlKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel3)
+                .addComponent(jLabelKatholischAnzahl)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelAnzahlEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel4)
+                .addComponent(jLabelEthikAnzahl)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelAnzahlEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabelEvangelischAnzahl)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox2.getAccessibleContext().setAccessibleName("");
+        jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
 
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Allgemein", jPanelKlassen);
@@ -244,6 +251,13 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("jMenuItem3");
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -278,6 +292,15 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
+        String anzahlSchueler = aktuellerJahrgang.getSchuelerAnzahl()+"";
+        jLabelSchülergesamtAnzahl.setText(anzahlSchueler);
+        String anzahlKatholisch = aktuellerJahrgang.getKatholisch()+"";
+        jLabelKatholischAnzahl.setText(anzahlKatholisch);
+        String anzahlEthik = aktuellerJahrgang.getEthik()+"";
+        jLabelEthikAnzahl.setText(anzahlEthik);
+        String anzahlEvangelisch = aktuellerJahrgang.getEvangelisch()+"";
+        jLabelEvangelischAnzahl.setText(anzahlEvangelisch);
+        jComboBoxSortierung.setEnabled(true);
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
@@ -287,7 +310,9 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSave.setEnabled(true);
         jMenuItemSaveAs.setEnabled(true);
         jMenuItemPrint.setEnabled(true);
-
+        jComboBoxJahrgang.setEnabled(true);
+        jButtonAktualisieren.setEnabled(true);
+        jSpinnerAnzahlKlassen.setEnabled(true);
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
@@ -301,6 +326,9 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSave.setEnabled(true);
         jMenuItemSaveAs.setEnabled(true);
         jMenuItemPrint.setEnabled(true);
+        jComboBoxJahrgang.setEnabled(true);
+        jButtonAktualisieren.setEnabled(true);
+        jSpinnerAnzahlKlassen.setEnabled(true);
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -314,9 +342,9 @@ public class GUI extends javax.swing.JFrame {
         new Speicherung(ge).speichern();
     }//GEN-LAST:event_jMenuItemSaveActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jComboBoxSortierungActionPerformed
 
     private void jButtonAktualisierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAktualisierenActionPerformed
         // TODO add your handling code here:
@@ -347,21 +375,23 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAktualisieren;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox jComboBoxJahrgang;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabelAnzahlEthik;
-    private javax.swing.JLabel jLabelAnzahlEvangelisch;
-    private javax.swing.JLabel jLabelAnzahlKatholisch;
-    private javax.swing.JLabel jLabelAnzahlSchülergesamt;
+    private javax.swing.JComboBox<String> jComboBoxSortierung;
+    private javax.swing.JLabel jLabelEthik;
+    private javax.swing.JLabel jLabelEthikAnzahl;
+    private javax.swing.JLabel jLabelEvangelisch;
+    private javax.swing.JLabel jLabelEvangelischAnzahl;
+    private javax.swing.JLabel jLabelKatholisch;
+    private javax.swing.JLabel jLabelKatholischAnzahl;
+    private javax.swing.JLabel jLabelKlassen;
+    private javax.swing.JLabel jLabelSchülergesamt;
+    private javax.swing.JLabel jLabelSchülergesamtAnzahl;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemOpen;
@@ -373,7 +403,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
     private javax.swing.JPanel jPanelSport;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinnerAnzahlKlassen;
     private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
@@ -421,7 +451,7 @@ public class GUI extends javax.swing.JFrame {
         //System.out.println("Jahrgang: " + aktuellerJahrgang.getJahrgang());
         int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
         //System.out.println(klassenanzahl);
-        jSpinner1.getModel().setValue(klassenanzahl);
+        jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
 
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
@@ -431,6 +461,25 @@ public class GUI extends javax.swing.JFrame {
         }
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
+        
+        //Sportgruppen
+    //    jPanelSport.removeAll();
+    //    for (Klasse s : aktuellerJahrgang.getSportgruppen()) {
+    //        if (s.getSportgruppenzahl() > 0) {
+    //            jPanelSport.add(new GruppenPanel(s.getSchueler(), n + s.getBuchstabe()));
+    //        }
+    //    }
+    //    jPanelSport.revalidate();
+    //    jPanelSport.repaint();
+         //Religionsgruppen 
+    //    jPanelReligion.removeAll();
+    //    for (Klasse r : aktuellerJahrgang.getReligionsgruppen()) {
+    //        if (r.getReligionsgruppenzahl() > 0) {
+    //            jPanelSport.add(new GruppenPanel(r.getSchueler(), n + r.getBuchstabe()));
+    //        }
+    //    }
+    //    jPanelSport.revalidate();
+    //    jPanelSport.repaint();
     }
 
 }
