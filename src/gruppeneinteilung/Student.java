@@ -14,12 +14,12 @@ import java.io.Serializable;
 public class Student implements Comparable<Student>, Serializable{
     private String klasse;
     private int jahrgang;
-    private final String name;
-    private final String geschlecht;
-    private final String zweig;
-    private final String fs2;
-    private final String fs3;
-    private final String fs4;
+    private String name;
+    private String geschlecht;
+    private String zweig;
+    private String fs2;
+    private String fs3;
+    private String fs4;
     private String religion; //RK,EV,ETH,ORTH
     
    
@@ -107,6 +107,30 @@ public class Student implements Comparable<Student>, Serializable{
     
     public void setJahrgang(int jahrgang){
         this.jahrgang = jahrgang;
+    }
+    public void setName(String n)
+    {
+        name = n;
+    }
+    public void setZweig(String z)
+    {
+        zweig = z;
+    }
+    public void setFs2(String f)
+    {
+        fs2 = f;
+    }
+    public void setFs3(String f)
+    {
+        fs3 = f;
+    }
+    public void setFs4(String f)
+    {
+        fs4 = f;
+    }
+    public void setGeschlecht(String g)
+    {
+        geschlecht = g;
     }
  }
     

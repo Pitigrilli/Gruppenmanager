@@ -10,6 +10,8 @@ import java.awt.Component;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -41,6 +43,7 @@ public class GruppenPanel extends JPanel {
         gruppenListe = new JList<>(dlm);
         //gruppenListe.setFixedCellWidth(200);
         gruppenListe.setCellRenderer(new GruppenPanel.WhiteGrayCellRenderer());
+        
 
         //dnd
         enableDnD();
@@ -53,7 +56,7 @@ public class GruppenPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
     
-    
+   
     public void aktualisiereListModel(){
         dlm.clear();
         for (Student student : gruppe) {

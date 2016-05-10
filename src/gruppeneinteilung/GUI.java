@@ -62,12 +62,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel2Anzahl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel3Anzahl = new javax.swing.JLabel();
-        jLabelGY_SG = new javax.swing.JLabel();
-        jLabelGY_NTGAnzahl = new javax.swing.JLabel();
-        jLabelGY_NTG = new javax.swing.JLabel();
-        jLabelGY_WSGAnzahl = new javax.swing.JLabel();
-        jLabelGY_WSG = new javax.swing.JLabel();
-        jLabelGY_SGAnzahl = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
@@ -156,18 +150,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel3Anzahl.setText("");
 
-        jLabelGY_SG.setText("Anzahl im SG-Zweig:");
-
-        jLabelGY_NTGAnzahl.setText("");
-
-        jLabelGY_NTG.setText("Anzahl im NTG-Zweig:");
-
-        jLabelGY_WSGAnzahl.setText("");
-
-        jLabelGY_WSG.setText("Anzahl im WSG-Zweig:");
-
-        jLabelGY_SGAnzahl.setText("");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -199,13 +181,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2Anzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3Anzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_SG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_NTGAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_NTG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_WSGAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_SGAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGY_WSG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3Anzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -257,19 +233,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3Anzahl)
-                .addGap(13, 13, 13)
-                .addComponent(jLabelGY_NTG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGY_NTGAnzahl)
-                .addGap(13, 13, 13)
-                .addComponent(jLabelGY_WSG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGY_WSGAnzahl)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelGY_SG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelGY_SGAnzahl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -400,8 +364,13 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setText("Schüler Theaterklassen");
     }else if(n==7){
         String anzahlGY = aktuellerJahrgang.getGY()+"";
-        jLabel1Anzahl.setText(anzahlGY);
-        jLabel1.setText("Schüler ohne Zweig");
+        
+        jLabel1.setText("");
+        jLabel1Anzahl.setText("");
+        jLabel2.setText("");
+        jLabel2Anzahl.setText("");
+        jLabel3.setText("");
+        jLabel3Anzahl.setText("");
     }else if(n==8 || n==9 || n==10){
         String anzahlGY_NTG = aktuellerJahrgang.getGY_NTG()+"";
         jLabel1Anzahl.setText(anzahlGY_NTG);
@@ -427,7 +396,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelWeiblichAnzahl.setText(anzahlWeiblich);
         
         
-        jComboBoxSortierung.setEnabled(true);
+        
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
@@ -441,6 +410,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang.setEnabled(true);
         jButtonSortieren.setEnabled(true);
         jSpinnerAnzahlKlassen.setEnabled(true);
+        jComboBoxSortierung.setEnabled(true);
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
@@ -457,6 +427,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang.setEnabled(true);
         jButtonSortieren.setEnabled(true);
         jSpinnerAnzahlKlassen.setEnabled(true);
+        jComboBoxSortierung.setEnabled(true);
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -533,12 +504,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEthikAnzahl;
     private javax.swing.JLabel jLabelEvangelisch;
     private javax.swing.JLabel jLabelEvangelischAnzahl;
-    private javax.swing.JLabel jLabelGY_NTG;
-    private javax.swing.JLabel jLabelGY_NTGAnzahl;
-    private javax.swing.JLabel jLabelGY_SG;
-    private javax.swing.JLabel jLabelGY_SGAnzahl;
-    private javax.swing.JLabel jLabelGY_WSG;
-    private javax.swing.JLabel jLabelGY_WSGAnzahl;
     private javax.swing.JLabel jLabelKatholisch;
     private javax.swing.JLabel jLabelKatholischAnzahl;
     private javax.swing.JLabel jLabelKlassen;

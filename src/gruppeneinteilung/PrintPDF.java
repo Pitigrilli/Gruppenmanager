@@ -36,10 +36,14 @@ public class PrintPDF {
             Font.BOLD);  // Überschrift
 
     private Gruppeneinteilung ge;
+    private int x;
 
     public PrintPDF(Gruppeneinteilung ge) {
         this.ge = ge;
-        erstellen();
+       }
+    
+    private void Drucken(){
+
         try {
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
@@ -49,11 +53,14 @@ public class PrintPDF {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+  
+        
+    
+    
 
-    private void erstellen() {
-        String filename = "Ausdruck.pdf";
+    private void erstellen(String n) {
+        String filename = n+".pdf";
         file = new File(filename);
         document = new Document();
         document.setPageSize(PageSize.A4.rotate());
@@ -83,8 +90,24 @@ public class PrintPDF {
 
         }
     }
+    private void druckeJahrgang(Jahrgang j){
 
-    private void ausgewaehlterJahrgangDrucken(Jahrgang j) throws DocumentException {
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+            ausgewaehlterJahrgangDrucken(document,j);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+       
+    private void ausgewaehlterJahrgangDrucken(Document document,Jahrgang j) throws DocumentException {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
@@ -149,14 +172,18 @@ public class PrintPDF {
         newTable.add(table);
 
     }
+    
+    
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
         PrintPDF pdf =new PrintPDF(ge);
-       // Jahrgang j= ge.getJahrgang(5);
+        Jahrgang j= ge.getJahrgang(5);
+        pdf.druckeJahrgang(j);
        // try{
        
        // catch(DocumentException e){}
+        
         
         
         
