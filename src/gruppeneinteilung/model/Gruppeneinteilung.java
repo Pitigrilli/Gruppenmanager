@@ -2,8 +2,9 @@
  *
  * @author behl.claus
  */
-package gruppeneinteilung;
+package gruppeneinteilung.model;
 
+import gruppeneinteilung.helper.ASVImport;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class Gruppeneinteilung {
         }
     }
 
-    void setFile(File file) {
+    public void setFile(File file) {
         this.file = file;
     }
 

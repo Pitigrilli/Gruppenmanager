@@ -2,8 +2,11 @@
  *
  * @author mueller.fabian
  */
-package gruppeneinteilung;
+package gruppeneinteilung.helper;
 
+import gruppeneinteilung.model.Gruppeneinteilung;
+import gruppeneinteilung.model.Student;
+import gruppeneinteilung.model.Jahrgang;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;

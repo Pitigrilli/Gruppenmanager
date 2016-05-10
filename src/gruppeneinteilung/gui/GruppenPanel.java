@@ -1,9 +1,10 @@
-package gruppeneinteilung;
+package gruppeneinteilung.gui;
 
 /**
  *
  * @author Claus Behl
  */
+import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;

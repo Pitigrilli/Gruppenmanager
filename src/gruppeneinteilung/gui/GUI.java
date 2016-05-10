@@ -2,8 +2,13 @@
  *
  * @author heske.timjonathan
  */
-package gruppeneinteilung;
+package gruppeneinteilung.gui;
 
+import gruppeneinteilung.helper.PrintPDF;
+import gruppeneinteilung.helper.Speicherung;
+import gruppeneinteilung.model.Gruppeneinteilung;
+import gruppeneinteilung.model.Klasse;
+import gruppeneinteilung.model.Jahrgang;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GridLayout;

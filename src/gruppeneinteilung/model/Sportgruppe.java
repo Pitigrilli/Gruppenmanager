@@ -3,21 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gruppeneinteilung;
+package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-public class Zweiggruppe extends Sortierung implements Serializable{
+/**
+ *
+ * @author schwindt.christian
+ */
+public class Sportgruppe extends Sortierung implements Serializable {
     private final int jahrgang;
-    private final String Zweig;
+    private final String geschlecht;
     private final int zahl;
     //private final ArrayList<Student> schueler;
 
-    public Zweiggruppe (int z, int j,String g) {
+    public Sportgruppe (int z, int j,String g) {
        zahl = z;
         jahrgang = j;
         schueler = new ArrayList<>();
-        Zweig = g;
+        geschlecht = g;
     }
 
     public void studentHinzufuegen(Student s) {
@@ -29,7 +35,7 @@ public class Zweiggruppe extends Sortierung implements Serializable{
         return s;
     }
 
-    public int getZweiggroesse() {
+    public int getSportgroesse() {
         return schueler.size();
     }
 
@@ -40,11 +46,8 @@ public class Zweiggruppe extends Sortierung implements Serializable{
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
-    public String getZweig(){
-        return Zweig;
+    public String getGeschlecht(){
+        return geschlecht;
         
     }
-
-
-    
 }
