@@ -71,8 +71,8 @@ public class GUI extends javax.swing.JFrame {
         jCheckBoxZweig = new javax.swing.JCheckBox();
         jCheckBoxFremdsprache = new javax.swing.JCheckBox();
         jButtonEinstellungReligion = new javax.swing.JButton();
-        jButtonEinstellungenZweig = new javax.swing.JButton();
-        jButtonEinstellungFremdsprachen = new javax.swing.JButton();
+        jButtonEinstellungZweig = new javax.swing.JButton();
+        jButtonEinstellungFremdsprache = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
@@ -212,21 +212,21 @@ public class GUI extends javax.swing.JFrame {
         });
         jButtonEinstellungReligion.setEnabled(false);
 
-        jButtonEinstellungenZweig.setText("Einstellung");
-        jButtonEinstellungenZweig.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEinstellungZweig.setText("Einstellung");
+        jButtonEinstellungZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEinstellungenZweigActionPerformed(evt);
+                jButtonEinstellungZweigActionPerformed(evt);
             }
         });
-        jButtonEinstellungenZweig.setEnabled(false);
+        jButtonEinstellungZweig.setEnabled(false);
 
-        jButtonEinstellungFremdsprachen.setText("Einstellung");
-        jButtonEinstellungFremdsprachen.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEinstellungFremdsprache.setText("Einstellung");
+        jButtonEinstellungFremdsprache.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEinstellungFremdsprachenActionPerformed(evt);
+                jButtonEinstellungFremdspracheActionPerformed(evt);
             }
         });
-        jButtonEinstellungFremdsprachen.setEnabled(false);
+        jButtonEinstellungFremdsprache.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -267,11 +267,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jCheckBoxZweig)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEinstellungenZweig, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonEinstellungZweig, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jCheckBoxFremdsprache)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEinstellungFremdsprachen, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEinstellungFremdsprache, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -294,11 +294,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxZweig)
-                    .addComponent(jButtonEinstellungenZweig))
+                    .addComponent(jButtonEinstellungZweig))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxFremdsprache)
-                    .addComponent(jButtonEinstellungFremdsprachen))
+                    .addComponent(jButtonEinstellungFremdsprache))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
@@ -335,7 +335,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3Anzahl)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -518,8 +518,8 @@ public class GUI extends javax.swing.JFrame {
         jCheckBoxZweig.setEnabled(true);
         jCheckBoxFremdsprache.setEnabled(true);
         jButtonEinstellungReligion.setEnabled(true);
-        jButtonEinstellungenZweig.setEnabled(true);
-        jButtonEinstellungFremdsprachen.setEnabled(true);
+        jButtonEinstellungZweig.setEnabled(true);
+        jButtonEinstellungFremdsprache.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
         jLabelSchülergesamtAnzahl.setVisible(true);
@@ -560,8 +560,8 @@ public class GUI extends javax.swing.JFrame {
         jCheckBoxZweig.setEnabled(true);
         jCheckBoxFremdsprache.setEnabled(true);
         jButtonEinstellungReligion.setEnabled(true);
-        jButtonEinstellungenZweig.setEnabled(true);
-        jButtonEinstellungFremdsprachen.setEnabled(true);
+        jButtonEinstellungZweig.setEnabled(true);
+        jButtonEinstellungFremdsprache.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
         jLabelSchülergesamtAnzahl.setVisible(true);
@@ -681,20 +681,20 @@ public class GUI extends javax.swing.JFrame {
         aktuellerJahrgang.setNachFremdsprache();
     }//GEN-LAST:event_jCheckBoxFremdspracheActionPerformed
 
-    private void jButtonEinstellungenZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungenZweigActionPerformed
+    private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
         new EinstellungFrame().setVisible(true);
-    }//GEN-LAST:event_jButtonEinstellungenZweigActionPerformed
+    }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
-    private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
+    private void jButtonEinstellungFremdspracheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdspracheActionPerformed
         // TODO add your handling code here:
         new EinstellungFrame().setVisible(true);
-    }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
+    }//GEN-LAST:event_jButtonEinstellungFremdspracheActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEinstellungFremdsprachen;
+    private javax.swing.JButton jButtonEinstellungFremdsprache;
     private javax.swing.JButton jButtonEinstellungReligion;
-    private javax.swing.JButton jButtonEinstellungenZweig;
+    private javax.swing.JButton jButtonEinstellungZweig;
     private javax.swing.JButton jButtonSortieren;
     private javax.swing.JCheckBox jCheckBoxFremdsprache;
     private javax.swing.JCheckBox jCheckBoxReligion;

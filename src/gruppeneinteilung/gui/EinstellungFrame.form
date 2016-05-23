@@ -53,8 +53,8 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabelAnzahlKlassen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                      <Component id="jSpinner1" min="-2" pref="67" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
