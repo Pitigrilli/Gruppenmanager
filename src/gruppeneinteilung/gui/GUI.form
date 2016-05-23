@@ -141,7 +141,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="1026" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -159,7 +159,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelSchülergesamt" alignment="1" max="32767" attributes="0"/>
@@ -188,6 +188,21 @@
                       <Component id="jLabel2Anzahl" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel3Anzahl" alignment="1" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jCheckBoxReligion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="jButtonEinstellungReligion" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxZweig" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButtonEinstellungenZweig" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jCheckBoxFremdsprache" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButtonEinstellungFremdsprachen" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -207,6 +222,21 @@
                   <Component id="jComboBoxSortierung" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonSortieren" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxReligion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungReligion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxZweig" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungenZweig" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxFremdsprache" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungFremdsprachen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelSchülergesamt" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -243,7 +273,7 @@
                   <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3Anzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="286" max="32767" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -252,7 +282,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxJahrgang">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;})" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Jahrgang w&#xe4;hlen&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;})" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -273,6 +303,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Anzahl Klassen:"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelKlassen.setEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxSortierung">
           <Properties>
@@ -309,6 +342,9 @@
               <Connection code="&quot;Anzahl Sch&#xfc;ler gesamt:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelSch&#xfc;lergesamt.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelKatholisch">
           <Properties>
@@ -316,6 +352,9 @@
               <Connection code="&quot;Anzahl Katholisch:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelKatholisch.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEthik">
           <Properties>
@@ -323,6 +362,9 @@
               <Connection code="&quot;Anzahl Ethik:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEthik.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEvangelisch">
           <Properties>
@@ -330,6 +372,9 @@
               <Connection code="&quot;Anzahl Evangelisch:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEvangelisch.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelSch&#xfc;lergesamtAnzahl">
           <Properties>
@@ -337,6 +382,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelSch&#xfc;lergesamtAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelKatholischAnzahl">
           <Properties>
@@ -344,6 +392,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelKatholischAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEthikAnzahl">
           <Properties>
@@ -351,6 +402,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEthikAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelEvangelischAnzahl">
           <Properties>
@@ -358,6 +412,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEvangelischAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -365,6 +422,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel1.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelM&#xe4;nnlichAnzahl">
           <Properties>
@@ -372,6 +432,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelM&#xe4;nnlichAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelM&#xe4;nnlich">
           <Properties>
@@ -379,6 +442,9 @@
               <Connection code="&quot;Anzahl M&#xe4;nnlich:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelM&#xe4;nnlich.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelWeiblichAnzahl">
           <Properties>
@@ -386,6 +452,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelWeiblichAnzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelWeiblich">
           <Properties>
@@ -393,6 +462,9 @@
               <Connection code="&quot;Anzahl Weiblich:&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelWeiblich.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1Anzahl">
           <Properties>
@@ -400,6 +472,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel1Anzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -407,6 +482,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel2.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2Anzahl">
           <Properties>
@@ -414,6 +492,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel2Anzahl.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -421,6 +502,9 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel3.setVisible(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3Anzahl">
           <Properties>
@@ -428,6 +512,87 @@
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel3Anzahl.setVisible(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxReligion">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Religion&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxReligionActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxReligion.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxZweig">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Zweig&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxZweigActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxZweig.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxFremdsprache">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Fremdsprache&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFremdspracheActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxFremdsprache.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonEinstellungReligion">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Einstellung&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungReligionActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungReligion.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonEinstellungenZweig">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Einstellung&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungenZweigActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungenZweig.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonEinstellungFremdsprachen">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Einstellung&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungFremdsprachenActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungFremdsprachen.setEnabled(false);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
