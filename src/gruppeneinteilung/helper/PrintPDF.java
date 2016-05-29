@@ -39,15 +39,18 @@ public class PrintPDF {
             Font.BOLD);  // Überschrift
 
     private Gruppeneinteilung ge;
-    private int x;
-
+    private String name;
     public PrintPDF(Gruppeneinteilung ge) {
         this.ge = ge;
+        
+        
+         
        }
     
-    private void Drucken(){
+    private void Drucken(String name){     //Druckt alle Jahrgänge aus erwartet einen String als Name für die PDF Datei
 
         try {
+            erstellen(name);
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             addMetaData(document);
@@ -63,7 +66,8 @@ public class PrintPDF {
     
 
     private void erstellen(String n) {
-        String filename = n+".pdf";
+        
+        String filename = n +".pdf";
         file = new File(filename);
         document = new Document();
         document.setPageSize(PageSize.A4.rotate());
@@ -93,9 +97,13 @@ public class PrintPDF {
 
         }
     }
-    private void druckeJahrgang(Jahrgang j){
+    
+    
+    private void druckeJahrgang(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen Strng für PDF 
 
         try {
+            
+            erstellen(name);
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             addMetaData(document);
@@ -181,8 +189,10 @@ public class PrintPDF {
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(5);
-        pdf.druckeJahrgang(j);
+        Jahrgang j= ge.getJahrgang(6);
+        String b = "Hallooo";
+        //pdf.druckeJahrgang(j,b);
+       pdf.Drucken(b);
        // try{
        
        // catch(DocumentException e){}
@@ -196,8 +206,24 @@ public class PrintPDF {
         System.out.println(file.getAbsolutePath());
         return file;
     }
+    // NOCH IN ARBEIT :D
+    
+     private void druckeGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen Jahrgang und einen Strng für PDF 
 
-    private void ausgewaehlteGruppeDrucken(Jahrgang j, String g) throws DocumentException {
+        try {
+            
+            erstellen(name);
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+            ausgewaehlteGruppeDrucken(document,j);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ausgewaehlteGruppeDrucken(Document document,Jahrgang j) throws DocumentException {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
@@ -207,14 +233,14 @@ public class PrintPDF {
 
         Paragraph tabelle = new Paragraph();
 
-        createTableGruppe(tabelle, j, g);
+        createTableGruppe(tabelle, j);
         document.add(tabelle);
         // Start a new page
         document.newPage();
 
     }
 
-    private void createTableGruppe(Paragraph newTable, Jahrgang j, String g)
+    private void createTableGruppe(Paragraph newTable, Jahrgang j)
             throws BadElementException, DocumentException {
 
         Jahrgang aktuellerJahrgang = j;
