@@ -99,7 +99,7 @@ public class PrintPDF {
     }
     
     
-    private void druckeJahrgang(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen Strng für PDF 
+    public void druckeJahrgang(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen Strng für PDF 
 
         try {
             
