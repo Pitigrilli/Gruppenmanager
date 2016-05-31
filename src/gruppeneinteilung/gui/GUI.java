@@ -47,7 +47,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<String>();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -335,7 +335,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3Anzahl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -625,24 +625,16 @@ public class GUI extends javax.swing.JFrame {
     private void jMenuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrintActionPerformed
         // TODO add your handling code here:
         PrintPDF printPdf = new PrintPDF(ge);
-        printPdf.Drucken("Datei");
-     //   File fileAusdruck = printPdf.getFile();
-
-      //  if (Desktop.isDesktopSupported()) {
-      //      try {
-      //          Desktop.getDesktop().open(fileAusdruck);
-      //      } catch (IOException ex) {
-                // no application registered for PDFs
-      //          System.out.println("Es ist kein PDF Reader installiert.");
-      //      }
-     //   }
-
+        printPdf.Drucken("Alle Klassen");
     }//GEN-LAST:event_jMenuItemPrintActionPerformed
 
     private void jButtonJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJahrgangDruckenActionPerformed
         // TODO add your handling code here:
-        
-
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j= ge.getJahrgang(n);
+        String z = Integer.toString(n);
+        printPdf.druckeJahrgang(j,"Jahrgang"+z); 
     }//GEN-LAST:event_jButtonJahrgangDruckenActionPerformed
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
