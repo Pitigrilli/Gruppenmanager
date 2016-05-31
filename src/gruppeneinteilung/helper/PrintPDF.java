@@ -47,7 +47,7 @@ public class PrintPDF {
          
        }
     
-    private void Drucken(String name){     //Druckt alle Jahrgänge aus erwartet einen String als Name für die PDF Datei
+    public void Drucken(String name){     //Druckt alle Jahrgänge aus erwartet einen String als Name für die PDF Datei
 
         try {
             erstellen(name);
