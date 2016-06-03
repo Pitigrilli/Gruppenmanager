@@ -174,20 +174,11 @@
                       <Component id="jLabelKatholisch" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelEthik" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelEvangelisch" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabelSchülergesamtAnzahl" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabelKatholischAnzahl" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabelEthikAnzahl" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabelEvangelischAnzahl" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabelMännlichAnzahl" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabelWeiblichAnzahl" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelMännlich" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelWeiblich" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel1Anzahl" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel2Anzahl" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel3Anzahl" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jCheckBoxReligion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -239,41 +230,23 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelSchülergesamt" min="-2" pref="29" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="jLabelSchülergesamtAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelKatholisch" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jLabelKatholischAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabelEthik" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jLabelEthikAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabelEvangelisch" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelEvangelischAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabelEthik" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabelEvangelisch" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelMännlich" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelMännlichAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelWeiblich" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelWeiblichAnzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1Anzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2Anzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3Anzahl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="206" max="32767" attributes="0"/>
+                  <EmptySpace pref="274" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -293,6 +266,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="jSpinnerAnzahlKlassen">
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinnerAnzahlKlassenStateChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1))"/>
             <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);"/>
@@ -378,46 +354,6 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEvangelisch.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelSch&#xfc;lergesamtAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelSch&#xfc;lergesamtAnzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelKatholischAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelKatholischAnzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelEthikAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEthikAnzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelEvangelischAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEvangelischAnzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -426,16 +362,6 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel1.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelM&#xe4;nnlichAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelM&#xe4;nnlichAnzahl.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelM&#xe4;nnlich">
@@ -448,16 +374,6 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelM&#xe4;nnlich.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelWeiblichAnzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelWeiblichAnzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelWeiblich">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -466,16 +382,6 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelWeiblich.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1Anzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel1Anzahl.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -488,16 +394,6 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel2.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2Anzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel2Anzahl.setVisible(false);"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -506,16 +402,6 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel3.setVisible(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3Anzahl">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel3Anzahl.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxReligion">

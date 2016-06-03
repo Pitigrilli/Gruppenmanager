@@ -29,8 +29,7 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
 
         initComponents();
-    
-        
+
     }
 
     /**
@@ -47,26 +46,17 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<>();
+        jComboBoxSortierung = new javax.swing.JComboBox<String>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
         jLabelEthik = new javax.swing.JLabel();
         jLabelEvangelisch = new javax.swing.JLabel();
-        jLabelSchülergesamtAnzahl = new javax.swing.JLabel();
-        jLabelKatholischAnzahl = new javax.swing.JLabel();
-        jLabelEthikAnzahl = new javax.swing.JLabel();
-        jLabelEvangelischAnzahl = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelMännlichAnzahl = new javax.swing.JLabel();
         jLabelMännlich = new javax.swing.JLabel();
-        jLabelWeiblichAnzahl = new javax.swing.JLabel();
         jLabelWeiblich = new javax.swing.JLabel();
-        jLabel1Anzahl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel2Anzahl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel3Anzahl = new javax.swing.JLabel();
         jCheckBoxReligion = new javax.swing.JCheckBox();
         jCheckBoxZweig = new javax.swing.JCheckBox();
         jCheckBoxFremdsprache = new javax.swing.JCheckBox();
@@ -105,6 +95,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jSpinnerAnzahlKlassen.setEnabled(false);
+        jSpinnerAnzahlKlassen.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerAnzahlKlassenStateChanged(evt);
+            }
+        });
 
         jLabelKlassen.setText("Anzahl Klassen:");
         jLabelKlassen.setEnabled(false);
@@ -138,47 +133,20 @@ public class GUI extends javax.swing.JFrame {
         jLabelEvangelisch.setText("Anzahl Evangelisch:");
         jLabelEvangelisch.setVisible(false);
 
-        jLabelSchülergesamtAnzahl.setText("");
-        jLabelSchülergesamtAnzahl.setVisible(false);
-
-        jLabelKatholischAnzahl.setText("");
-        jLabelKatholischAnzahl.setVisible(false);
-
-        jLabelEthikAnzahl.setText("");
-        jLabelEthikAnzahl.setVisible(false);
-
-        jLabelEvangelischAnzahl.setText("");
-        jLabelEvangelischAnzahl.setVisible(false);
-
         jLabel1.setText("");
         jLabel1.setVisible(false);
-
-        jLabelMännlichAnzahl.setText("");
-        jLabelMännlichAnzahl.setVisible(false);
 
         jLabelMännlich.setText("Anzahl Männlich:");
         jLabelMännlich.setVisible(false);
 
-        jLabelWeiblichAnzahl.setText("");
-        jLabelWeiblichAnzahl.setVisible(false);
-
         jLabelWeiblich.setText("Anzahl Weiblich:");
         jLabelWeiblich.setVisible(false);
-
-        jLabel1Anzahl.setText("");
-        jLabel1Anzahl.setVisible(false);
 
         jLabel2.setText("");
         jLabel2.setVisible(false);
 
-        jLabel2Anzahl.setText("");
-        jLabel2Anzahl.setVisible(false);
-
         jLabel3.setText("");
         jLabel3.setVisible(false);
-
-        jLabel3Anzahl.setText("");
-        jLabel3Anzahl.setVisible(false);
 
         jCheckBoxReligion.setText("Religion");
         jCheckBoxReligion.addActionListener(new java.awt.event.ActionListener() {
@@ -246,20 +214,11 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelSchülergesamtAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelKatholischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelEthikAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelEvangelischAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelMännlichAnzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelWeiblichAnzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelMännlich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelWeiblich, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1Anzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2Anzahl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3Anzahl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jCheckBoxReligion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -301,41 +260,23 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jButtonEinstellungFremdsprache))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabelSchülergesamtAnzahl)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jLabelKatholischAnzahl)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jLabelEthikAnzahl)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelEvangelischAnzahl)
-                .addGap(18, 18, 18)
+                .addComponent(jLabelEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelMännlich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelMännlichAnzahl)
-                .addGap(18, 18, 18)
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelWeiblichAnzahl)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1Anzahl)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2Anzahl)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3Anzahl)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -452,54 +393,6 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
-        
-        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
-        if(n==5 || n==6){
-        String anzahlGY = aktuellerJahrgang.getGY()+"";
-        jLabel1Anzahl.setText(anzahlGY);
-        jLabel1.setText("Schüler ohne Zweig");
-        String anzahlGY_MU = aktuellerJahrgang.getGY_MU()+"";
-        jLabel2Anzahl.setText(anzahlGY_MU);
-        jLabel2.setText("Schüler Musikklassen");
-        String anzahlGY_TH = aktuellerJahrgang.getGY_TH()+"";
-        jLabel3Anzahl.setText(anzahlGY_TH);
-        jLabel3.setText("Schüler Theaterklassen");
-    }else if(n==7){
-        String anzahlGY = aktuellerJahrgang.getGY()+"";
-        
-        jLabel1.setText("");
-        jLabel1Anzahl.setText("");
-        jLabel2.setText("");
-        jLabel2Anzahl.setText("");
-        jLabel3.setText("");
-        jLabel3Anzahl.setText("");
-    }else if(n==8 || n==9 || n==10){
-        String anzahlGY_NTG = aktuellerJahrgang.getGY_NTG()+"";
-        jLabel1Anzahl.setText(anzahlGY_NTG);
-        jLabel1.setText("Schüler im NTG-Zweig");
-        String anzahlGY_WSG = aktuellerJahrgang.getGY_WSG()+"";
-        jLabel2Anzahl.setText(anzahlGY_WSG);
-        jLabel2.setText("Schüler im WSG-Zweig");
-        String anzahlGY_SG = aktuellerJahrgang.getGY_SG()+"";
-        jLabel3Anzahl.setText(anzahlGY_SG);
-        jLabel3.setText("Schüler im SG-Zweig");
-    }
-        String anzahlSchueler = aktuellerJahrgang.getSchuelerAnzahl()+"";
-        jLabelSchülergesamtAnzahl.setText(anzahlSchueler);
-        String anzahlKatholisch = aktuellerJahrgang.getKatholisch()+"";
-        jLabelKatholischAnzahl.setText(anzahlKatholisch);
-        String anzahlEthik = aktuellerJahrgang.getEthik()+"";
-        jLabelEthikAnzahl.setText(anzahlEthik);
-        String anzahlEvangelisch = aktuellerJahrgang.getEvangelisch()+"";
-        jLabelEvangelischAnzahl.setText(anzahlEvangelisch);
-        String anzahlMännlich = aktuellerJahrgang.getMaennlich()+"";
-        jLabelMännlichAnzahl.setText(anzahlMännlich);
-        String anzahlWeiblich = aktuellerJahrgang.getWeiblich()+"";
-        jLabelWeiblichAnzahl.setText(anzahlWeiblich);
-
-        
-        
-        
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
@@ -522,23 +415,23 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungFremdsprache.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
-        jLabelSchülergesamtAnzahl.setVisible(true);
+
         jLabelKatholisch.setVisible(true);
-        jLabelKatholischAnzahl.setVisible(true);
+
         jLabelEvangelisch.setVisible(true);
-        jLabelEvangelischAnzahl.setVisible(true);
+
         jLabelEthik.setVisible(true);
-        jLabelEthikAnzahl.setVisible(true);
+
         jLabelMännlich.setVisible(true);
-        jLabelMännlichAnzahl.setVisible(true);
+
         jLabelWeiblich.setVisible(true);
-        jLabelWeiblichAnzahl.setVisible(true);
+
         jLabel1.setVisible(true);
-        jLabel1Anzahl.setVisible(true);
+
         jLabel2.setVisible(true);
-        jLabel2Anzahl.setVisible(true);
+
         jLabel3.setVisible(true);
-        jLabel3Anzahl.setVisible(true);
+
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
@@ -564,23 +457,23 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungFremdsprache.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
-        jLabelSchülergesamtAnzahl.setVisible(true);
+
         jLabelKatholisch.setVisible(true);
-        jLabelKatholischAnzahl.setVisible(true);
+
         jLabelEvangelisch.setVisible(true);
-        jLabelEvangelischAnzahl.setVisible(true);
+
         jLabelEthik.setVisible(true);
-        jLabelEthikAnzahl.setVisible(true);
+
         jLabelMännlich.setVisible(true);
-        jLabelMännlichAnzahl.setVisible(true);
+
         jLabelWeiblich.setVisible(true);
-        jLabelWeiblichAnzahl.setVisible(true);
+
         jLabel1.setVisible(true);
-        jLabel1Anzahl.setVisible(true);
+
         jLabel2.setVisible(true);
-        jLabel2Anzahl.setVisible(true);
+
         jLabel3.setVisible(true);
-        jLabel3Anzahl.setVisible(true);
+
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -597,17 +490,25 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
         // TODO add your handling code here:
         String sortierung = jComboBoxSortierung.getSelectedItem().toString();
-        for(Klasse k: aktuellerJahrgang.getKlassen()){
-            switch(sortierung){
-                case "Alphabetisch": k.sortierenName();break;
-                case "Männlich/Weiblich" : k.sortierenGeschlecht();break;
-                case "Religion": k.sortierenReligion();break;
-                case "Zweig": k.sortierenZweig();break;
+        for (Klasse k : aktuellerJahrgang.getKlassen()) {
+            switch (sortierung) {
+                case "Alphabetisch":
+                    k.sortierenName();
+                    break;
+                case "Männlich/Weiblich":
+                    k.sortierenGeschlecht();
+                    break;
+                case "Religion":
+                    k.sortierenReligion();
+                    break;
+                case "Zweig":
+                    k.sortierenZweig();
+                    break;
             }
         }
-        Component[] comps =  jPanelKlassen.getComponents();
-        for(Component comp: comps){
-            GruppenPanel gp =  (GruppenPanel) comp;
+        Component[] comps = jPanelKlassen.getComponents();
+        for (Component comp : comps) {
+            GruppenPanel gp = (GruppenPanel) comp;
             gp.aktualisiereListModel();
             gp.revalidate();
             gp.repaint();
@@ -632,9 +533,9 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
-        Jahrgang j= ge.getJahrgang(n);
+        Jahrgang j = ge.getJahrgang(n);
         String z = Integer.toString(n);
-        printPdf.druckeJahrgang(j,"Jahrgang"+z); 
+        printPdf.druckeJahrgang(j, "Jahrgang" + z);
     }//GEN-LAST:event_jButtonJahrgangDruckenActionPerformed
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
@@ -667,6 +568,11 @@ public class GUI extends javax.swing.JFrame {
         new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungFremdspracheActionPerformed
 
+    private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jSpinnerAnzahlKlassenStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEinstellungFremdsprache;
     private javax.swing.JButton jButtonEinstellungReligion;
@@ -678,24 +584,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JComboBox<String> jComboBoxSortierung;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel1Anzahl;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel2Anzahl;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel3Anzahl;
     private javax.swing.JLabel jLabelEthik;
-    private javax.swing.JLabel jLabelEthikAnzahl;
     private javax.swing.JLabel jLabelEvangelisch;
-    private javax.swing.JLabel jLabelEvangelischAnzahl;
     private javax.swing.JLabel jLabelKatholisch;
-    private javax.swing.JLabel jLabelKatholischAnzahl;
     private javax.swing.JLabel jLabelKlassen;
     private javax.swing.JLabel jLabelMännlich;
-    private javax.swing.JLabel jLabelMännlichAnzahl;
     private javax.swing.JLabel jLabelSchülergesamt;
-    private javax.swing.JLabel jLabelSchülergesamtAnzahl;
     private javax.swing.JLabel jLabelWeiblich;
-    private javax.swing.JLabel jLabelWeiblichAnzahl;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -754,32 +651,90 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void evalueteJahrgangsAuswahl() {
-        if(jComboBoxJahrgang.getSelectedItem().toString()=="5"|| jComboBoxJahrgang.getSelectedItem().toString()=="6" || jComboBoxJahrgang.getSelectedItem().toString()=="7" || jComboBoxJahrgang.getSelectedItem().toString()=="8" || jComboBoxJahrgang.getSelectedItem().toString()=="9" || jComboBoxJahrgang.getSelectedItem().toString()=="10"){
-            
-        
-        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
-        aktuellerJahrgang = ge.getJahrgang(n);
-        aktuellerJahrgang.setKlassenanzahl();
+        String auswahl = jComboBoxJahrgang.getSelectedItem().toString();
+        int n;
+        try {
+            n = Integer.parseInt(auswahl);
+        } catch (NumberFormatException e) {
+            n = 0;
+        }
 
-        //System.out.println("Jahrgang: " + aktuellerJahrgang.getJahrgang());
-        int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
-        //System.out.println(klassenanzahl);
-        jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
+        if (n >= 5 && n <= 10) {
+            aktuellerJahrgang = ge.getJahrgang(n);
+            aktuellerJahrgang.setKlassenanzahl();
 
-        jPanelKlassen.removeAll();
-        for (Klasse k : aktuellerJahrgang.getKlassen()) {
-            if (k.getKlassengroesse() > 0) {
-                GruppenPanel gp = new GruppenPanel(k.getSchueler(), n + k.getBuchstabe());
-                jPanelKlassen.add(gp);
+            //System.out.println("Jahrgang: " + aktuellerJahrgang.getJahrgang());
+            int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
+            //System.out.println(klassenanzahl);
+            jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
+
+            jPanelKlassen.removeAll();
+            for (Klasse k : aktuellerJahrgang.getKlassen()) {
+                if (k.getKlassengroesse() > 0) {
+                    GruppenPanel gp = new GruppenPanel(k.getSchueler(), n + k.getBuchstabe());
+                    jPanelKlassen.add(gp);
+                }
             }
+            
+            
+            if (n == 5 || n == 6) {
+            String anzahlGY = aktuellerJahrgang.getGY() + "";
+            //jLabel1Anzahl.setText(anzahlGY);
+            jLabel1.setText("ohne Zweig: "+anzahlGY);
+            String anzahlGY_MU = aktuellerJahrgang.getGY_MU() + "";
+            //jLabel2Anzahl.setText(anzahlGY_MU);
+            jLabel2.setText("Musikklassen: "+anzahlGY_MU);
+            String anzahlGY_TH = aktuellerJahrgang.getGY_TH() + "";
+            //jLabel3Anzahl.setText(anzahlGY_TH);
+            jLabel3.setText("Theaterklassen: "+anzahlGY_TH);
+        } else if (n == 7) {
+            String anzahlGY = aktuellerJahrgang.getGY() + "";
+
+            jLabel1.setText("");
+            //jLabel1Anzahl.setText("");
+            jLabel2.setText("");
+            //jLabel2Anzahl.setText("");
+            jLabel3.setText("");
+            //jLabel3Anzahl.setText("");
+        } else if (n == 8 || n == 9 || n == 10) {
+            String anzahlGY_NTG = aktuellerJahrgang.getGY_NTG() + "";
+            //jLabel1Anzahl.setText(anzahlGY_NTG);
+            jLabel1.setText("NTG-Zweig: "+anzahlGY_NTG);
+            String anzahlGY_WSG = aktuellerJahrgang.getGY_WSG() + "";
+            //jLabel2Anzahl.setText(anzahlGY_WSG);
+            jLabel2.setText("WSG-Zweig: "+anzahlGY_WSG);
+            String anzahlGY_SG = aktuellerJahrgang.getGY_SG() + "";
+            //jLabel3Anzahl.setText(anzahlGY_SG);
+            jLabel3.setText("SG-Zweig: "+anzahlGY_SG);
+        }
+        String anzahlSchueler = aktuellerJahrgang.getSchuelerAnzahl() + "";
+        jLabelSchülergesamt.setText("Gesamt: "+anzahlSchueler);
+        //jLabelSchülergesamtAnzahl.setText(anzahlSchueler);
+        String anzahlKatholisch = aktuellerJahrgang.getKatholisch() + "";
+        jLabelKatholisch.setText("Katholisch: "+anzahlKatholisch);
+        //jLabelKatholischAnzahl.setText(anzahlKatholisch);
+        String anzahlEthik = aktuellerJahrgang.getEthik() + "";
+        jLabelEthik.setText("Ethik: "+anzahlEthik);
+        //jLabelEthikAnzahl.setText(anzahlEthik);
+        String anzahlEvangelisch = aktuellerJahrgang.getEvangelisch() + "";
+        jLabelEvangelisch.setText("Evangelisch:"+anzahlEvangelisch);
+        //jLabelEvangelischAnzahl.setText(anzahlEvangelisch);
+        String anzahlMännlich = aktuellerJahrgang.getMaennlich() + "";
+        jLabelMännlich.setText("Männlich: "+anzahlMännlich);
+        //jLabelMännlichAnzahl.setText(anzahlMännlich);
+        String anzahlWeiblich = aktuellerJahrgang.getWeiblich() + "";
+        jLabelWeiblich.setText("Weiblich: "+anzahlWeiblich);
+        //jLabelWeiblichAnzahl.setText(anzahlWeiblich);
+        } else {
+            jPanelKlassen.removeAll();
+            
         }
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
-        }else if (jComboBoxJahrgang.getSelectedItem().toString()=="Jahrgang wählen"){
-            
-        }
-    }
+       
         
+    }
+
         //Sportgruppen
     //    jPanelSport.removeAll();
     //    for (Klasse s : aktuellerJahrgang.getSportgruppen()) {
@@ -789,7 +744,7 @@ public class GUI extends javax.swing.JFrame {
     //    }
     //    jPanelSport.revalidate();
     //    jPanelSport.repaint();
-         //Religionsgruppen 
+    //Religionsgruppen 
     //    jPanelReligion.removeAll();
     //    for (Klasse r : aktuellerJahrgang.getReligionsgruppen()) {
     //        if (r.getReligionsgruppenzahl() > 0) {
@@ -798,6 +753,4 @@ public class GUI extends javax.swing.JFrame {
     //    }
     //    jPanelSport.revalidate();
     //    jPanelSport.repaint();
-    }
-
-
+}

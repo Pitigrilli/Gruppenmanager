@@ -208,7 +208,8 @@ public class PrintPDF {
     }
     // NOCH IN ARBEIT :D
     
-     private void druckeGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen Jahrgang und einen Strng für PDF 
+     private void druckeGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
+         //Jahrgang und einen String für PDF 
 
         try {
             
