@@ -14,14 +14,11 @@ import java.util.Collections;
  * @author schwindt.christian
  */
 public class Sportgruppe extends Sortierung implements Serializable {
-    private final int jahrgang;
     private final String geschlecht;
-    private final int zahl;
+
     //private final ArrayList<Student> schueler;
 
-    public Sportgruppe (int z, int j,String g) {
-       zahl = z;
-        jahrgang = j;
+    public Sportgruppe (String g) {
         schueler = new ArrayList<>();
         geschlecht = g;
     }
@@ -37,10 +34,6 @@ public class Sportgruppe extends Sortierung implements Serializable {
 
     public int getSportgroesse() {
         return schueler.size();
-    }
-
-    public int getZahl() {
-        return zahl;
     }
 
     public ArrayList<Student> getSchueler() {

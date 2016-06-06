@@ -569,7 +569,7 @@ public class GUI extends javax.swing.JFrame {
         }
         Component[] comps = jPanelKlassen.getComponents();
         for (Component comp : comps) {
-            GruppenPanel gp = (GruppenPanel) comp;
+            KlassenPanel gp = (KlassenPanel) comp;
             gp.aktualisiereListModel();
             gp.revalidate();
             gp.repaint();
@@ -750,7 +750,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelKlassen.removeAll();
             for (Klasse k : aktuellerJahrgang.getKlassen()) {
                 if (k.getKlassengroesse() > 0) {
-                    GruppenPanel gp = new GruppenPanel(k.getSchueler(), n + k.getBuchstabe());
+                    KlassenPanel gp = new KlassenPanel(k.getSchueler(), n + k.getBuchstabe());
                     jPanelKlassen.add(gp);
                 }
             }
@@ -816,8 +816,8 @@ public class GUI extends javax.swing.JFrame {
     public void sportgruppenAnzeigen(){
             jPanelSport.removeAll();
        for (Sportgruppe s : aktuellerJahrgang.gibSportgruppen()) {
-            if (s.getZahl() > 0) {
-                jPanelSport.add(new GruppenPanel(s.getSchueler(),  ""+s.getZahl()));
+            if (s.getSportgroesse() > 0) {
+                jPanelSport.add(new GruppenPanel(s.getSchueler(),  ""+s.getSportgroesse()));
             }
         }
         jPanelSport.revalidate();

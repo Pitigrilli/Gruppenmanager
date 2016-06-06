@@ -16,8 +16,9 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
+import static javax.swing.TransferHandler.MOVE;
 
-public class GruppenPanel extends JPanel {
+public class KlassenPanel extends JPanel {
 
     String gruppenName;
     ArrayList<Student> gruppe;
@@ -25,7 +26,7 @@ public class GruppenPanel extends JPanel {
     DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
     DefaultListModel<Student> dlm = new DefaultListModel<>();
 
-    public GruppenPanel(ArrayList<Student> gruppe, String name) {
+    public KlassenPanel(ArrayList<Student> gruppe, String name) {
         this.gruppe = gruppe;
         this.gruppenName = name;
 
@@ -42,7 +43,7 @@ public class GruppenPanel extends JPanel {
         // JList
         gruppenListe = new JList<>(dlm);
         //gruppenListe.setFixedCellWidth(200);
-        gruppenListe.setCellRenderer(new GruppenPanel.GruppenCellRenderer());
+        gruppenListe.setCellRenderer(new KlassenPanel.KlassenCellRenderer());
 
         //dnd
         enableDnD();
@@ -59,50 +60,6 @@ public class GruppenPanel extends JPanel {
         dlm.clear();
         for (Student student : gruppe) {
             dlm.addElement(student);
-        }
-    }
-
-    static class GruppenCellRenderer extends DefaultListCellRenderer {
-
-        @Override
-        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-
-            if (isSelected) {
-                this.setBackground(Color.LIGHT_GRAY);
-            } else {
-                c.setBackground(Color.white);
-
-            }
-
-            Student s = (Student) value;
-            switch (s.getKlasse()) {
-                case "a":
-                    c.setForeground(new Color(255, 0, 0));
-                    break;
-                case "b":
-                    c.setForeground(new Color(0, 255, 0));
-                    break;
-                case "c":
-                    c.setForeground(new Color(0, 0, 255));
-                    break;
-                case "d":
-                    c.setForeground(new Color(0, 255, 255));
-                    break;
-                case "e":
-                    c.setForeground(new Color(255, 0, 255));
-                    break;
-                case "f":
-                    c.setForeground(new Color(255, 255, 0));
-                    break;
-                case "g":
-                    c.setForeground(new Color(255, 255, 255));
-                    break;
-            }
-            JLabel l = (JLabel) c;
-            l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getKlasse() + " "+s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
-            return l;
         }
     }
 
@@ -173,6 +130,8 @@ public class GruppenPanel extends JPanel {
                         //System.out.println("Drop:"+student);
                         if (insert) {
                             listModel.add(index, student);
+                            // Der Schüler bekommt seine Klasse richtig geetzt
+                            student.setKlasse(gruppenName.substring(gruppenName.length() - 1));
                             gruppe.add(index, student);
                         }
 
@@ -183,6 +142,38 @@ public class GruppenPanel extends JPanel {
         /*  Ende der Definition des TransferHandler  */
         gruppenListe.setDropMode(DropMode.INSERT);
 
+    }
+
+      static class KlassenCellRenderer extends DefaultListCellRenderer {
+
+        @Override
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+
+            if (isSelected) {
+                this.setBackground(Color.LIGHT_GRAY);
+            } else {
+                c.setBackground(Color.white);
+
+            }
+
+            Student s = (Student) value;
+            switch (s.getReligion()) {
+                case "RK":
+                    c.setForeground(new Color(255, 0, 0));
+                    break;
+                case "EV":
+                    c.setForeground(new Color(0, 255, 0));
+                    break;
+                case "ETH":
+                    c.setForeground(new Color(0, 0, 255));
+                    break;
+            }
+            JLabel l = (JLabel) c;
+            l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
+            l.setText(s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
+            return l;
+        }
     }
 
 }

@@ -182,7 +182,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jCheckBoxFremdsprachen" max="32767" attributes="0"/>
-                              <Component id="jCheckBoxReligion" pref="114" max="32767" attributes="0"/>
+                              <Component id="jCheckBoxReligion" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">

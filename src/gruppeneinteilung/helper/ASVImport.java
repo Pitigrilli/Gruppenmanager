@@ -85,10 +85,4 @@ public class ASVImport {
         }
     }
 
-    public void testReadFile() {
-        lines.stream().forEach((line) -> {
-            System.out.println(line);
-        });
-    }
-
 }
