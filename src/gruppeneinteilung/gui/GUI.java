@@ -67,6 +67,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
         jPanelReligion = new javax.swing.JPanel();
+        jPanelZweiggruppen = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImport = new javax.swing.JMenuItem();
@@ -276,7 +277,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -289,6 +290,19 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
+
+        javax.swing.GroupLayout jPanelZweiggruppenLayout = new javax.swing.GroupLayout(jPanelZweiggruppen);
+        jPanelZweiggruppen.setLayout(jPanelZweiggruppenLayout);
+        jPanelZweiggruppenLayout.setHorizontalGroup(
+            jPanelZweiggruppenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1042, Short.MAX_VALUE)
+        );
+        jPanelZweiggruppenLayout.setVerticalGroup(
+            jPanelZweiggruppenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 671, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Zweiggruppen", jPanelZweiggruppen);
 
         jMenu1.setText("File");
 
@@ -374,7 +388,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -383,7 +397,7 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("");
+        jTabbedPane1.getAccessibleContext().setAccessibleName("\"\"");
 
         getAccessibleContext().setAccessibleName("");
 
@@ -540,7 +554,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
-        aktuellerJahrgang.setNachReligion();
+         new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
@@ -550,12 +564,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
         // TODO add your handling code here:
-        aktuellerJahrgang.setNachZweig();
+        new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jCheckBoxZweigActionPerformed
 
     private void jCheckBoxFremdspracheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdspracheActionPerformed
         // TODO add your handling code here:
-        aktuellerJahrgang.setNachFremdsprache();
+         new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jCheckBoxFremdspracheActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
@@ -610,6 +624,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
     private javax.swing.JPanel jPanelSport;
+    private javax.swing.JPanel jPanelZweiggruppen;
     private javax.swing.JSpinner jSpinnerAnzahlKlassen;
     private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -731,26 +746,40 @@ public class GUI extends javax.swing.JFrame {
         }
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
-       
+        
         
     }
+    public void sportgruppenAnzeigen(){
+            jPanelSport.removeAll();
+       for (Sportgruppe s : aktuellerJahrgang.gibSportgruppen()) {
+            if (s.getSportgruppenzahl() > 0) {
+                jPanelSport.add(new GruppenPanel(s.getSchueler(),  s.getZahl()));
+            }
+        }
+        jPanelSport.revalidate();
+        jPanelSport.repaint();
+    }
+    public void religionsgruppenAnzeigen(){
+      
+       jPanelReligion.removeAll();
+        for (Religionsgruppe r : aktuellerJahrgang.gibReligionsgruppen()) {
+            if (r.getReligionsgruppenzahl() > 0) {
+                jPanelReligion.add(new GruppenPanel(r.getSchueler(), r.getZahl()));
+            }
+        }
+        jPanelReligion.revalidate();
+        jPanelReligion.repaint();
+    }
+    public void zweiggruppeAnzeigen(){
+        jPanelZweiggruppen.removeAll();
+        for (Zweiggruppe r : aktuellerJahrgang.gibZweiggruppen()) {
+            if (r.getReligionsgruppenzahl() > 0) {
+                jPanelZweiggruppen.add(new GruppenPanel(r.getSchueler(), r.getZahl()));
+            }
+        }
+        jPanelZweiggruppen.revalidate();
+        jPanelZweiggruppen.repaint();
+    }
 
-        //Sportgruppen
-    //    jPanelSport.removeAll();
-    //    for (Klasse s : aktuellerJahrgang.getSportgruppen()) {
-    //        if (s.getSportgruppenzahl() > 0) {
-    //            jPanelSport.add(new GruppenPanel(s.getSchueler(), n + s.getBuchstabe()));
-    //        }
-    //    }
-    //    jPanelSport.revalidate();
-    //    jPanelSport.repaint();
-    //Religionsgruppen 
-    //    jPanelReligion.removeAll();
-    //    for (Klasse r : aktuellerJahrgang.getReligionsgruppen()) {
-    //        if (r.getReligionsgruppenzahl() > 0) {
-    //            jPanelSport.add(new GruppenPanel(r.getSchueler(), n + r.getBuchstabe()));
-    //        }
-    //    }
-    //    jPanelSport.revalidate();
-    //    jPanelSport.repaint();
+    
 }
