@@ -54,4 +54,11 @@ public class Sortierung implements Serializable
         Collections.sort(schueler);
         
     }
+    public void sortierenBemerkung()
+    {
+
+        Klasse.sortierung = "Bemerkung";
+        Collections.sort(schueler);
+        
+    }
 }

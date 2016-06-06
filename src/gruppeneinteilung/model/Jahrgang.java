@@ -80,7 +80,8 @@ public class Jahrgang implements Serializable {
     }
     
     public Klasse getKlasse(String b){
-        int n = 0;
+        int n = -1;
+        if(b.equals("a"))n=0;
         if(b.equals("b"))n=1;
         if(b.equals("c"))n=2;
         if(b.equals("d"))n=3;
@@ -88,7 +89,14 @@ public class Jahrgang implements Serializable {
         if(b.equals("f"))n=5;
         if(b.equals("g"))n=6;
         if(b.equals("h"))n=7;
+        
+        if(n != -1)
         return klassen.get(n);
+        else
+        {
+            return null;
+        }
+        
     }
 
     public ArrayList<Klasse> getKlassen() {
@@ -499,6 +507,22 @@ public class Jahrgang implements Serializable {
             break;
     }
     }
+    
+    public ArrayList<Religionsgruppe> gibReligionsgruppen()
+            {
+     
+                return religionsgruppen;
+            }
+    public ArrayList<Zweiggruppe> gibZweiggruppen()
+            {
+     
+                return zweiggruppen;
+            }
+    public ArrayList<Sportgruppe> gibSportgruppen()
+            {
+     
+                return sportgruppen;
+            }
 }
 
     

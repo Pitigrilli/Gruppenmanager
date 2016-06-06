@@ -21,6 +21,7 @@ public class Student implements Comparable<Student>, Serializable{
     private String fs3;
     private String fs4;
     private String religion; //RK,EV,ETH,ORTH
+    private String bemerkung;
     
    
     public Student( int jahrgang, String klasse, String name, String geschlecht, String zweig, String fs2, String fs3, String fs4, String religion) {
@@ -54,6 +55,9 @@ public class Student implements Comparable<Student>, Serializable{
                
            case "Alphabet":
                return name.compareTo(other.name);
+               
+           case "Bemerkung":
+               return bemerkung.compareTo(other.bemerkung);
                
        }
             return name.compareTo(other.name);
@@ -131,6 +135,16 @@ public class Student implements Comparable<Student>, Serializable{
     public void setGeschlecht(String g)
     {
         geschlecht = g;
+    }
+    
+    public void setBemerkung(String b)
+    {
+        bemerkung = b;
+    }
+    
+    public String getBemerkung()
+    {
+        return bemerkung;
     }
  }
     
