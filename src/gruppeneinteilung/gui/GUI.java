@@ -9,6 +9,9 @@ import gruppeneinteilung.helper.Speicherung;
 import gruppeneinteilung.model.Gruppeneinteilung;
 import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.Jahrgang;
+import gruppeneinteilung.model.Religionsgruppe;
+import gruppeneinteilung.model.Sportgruppe;
+import gruppeneinteilung.model.Zweiggruppe;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GridLayout;
@@ -46,28 +49,31 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<String>();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
         jLabelEthik = new javax.swing.JLabel();
         jLabelEvangelisch = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelZweig1 = new javax.swing.JLabel();
         jLabelMännlich = new javax.swing.JLabel();
         jLabelWeiblich = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelZweig2 = new javax.swing.JLabel();
+        jLabelZweig3 = new javax.swing.JLabel();
         jCheckBoxReligion = new javax.swing.JCheckBox();
+        jCheckBoxSport = new javax.swing.JCheckBox();
         jCheckBoxZweig = new javax.swing.JCheckBox();
-        jCheckBoxFremdsprache = new javax.swing.JCheckBox();
         jButtonEinstellungReligion = new javax.swing.JButton();
+        jButtonEinstellungSport = new javax.swing.JButton();
         jButtonEinstellungZweig = new javax.swing.JButton();
-        jButtonEinstellungFremdsprache = new javax.swing.JButton();
+        jCheckBoxFremdsprachen = new javax.swing.JCheckBox();
+        jButtonEinstellungFremdsprachen = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
-        jPanelSport = new javax.swing.JPanel();
+        jPanelFremdsprachen = new javax.swing.JPanel();
         jPanelReligion = new javax.swing.JPanel();
-        jPanelZweiggruppen = new javax.swing.JPanel();
+        jPanelSport = new javax.swing.JPanel();
+        jPanelZweig = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImport = new javax.swing.JMenuItem();
@@ -134,8 +140,8 @@ public class GUI extends javax.swing.JFrame {
         jLabelEvangelisch.setText("Anzahl Evangelisch:");
         jLabelEvangelisch.setVisible(false);
 
-        jLabel1.setText("");
-        jLabel1.setVisible(false);
+        jLabelZweig1.setText("");
+        jLabelZweig1.setVisible(false);
 
         jLabelMännlich.setText("Anzahl Männlich:");
         jLabelMännlich.setVisible(false);
@@ -143,11 +149,11 @@ public class GUI extends javax.swing.JFrame {
         jLabelWeiblich.setText("Anzahl Weiblich:");
         jLabelWeiblich.setVisible(false);
 
-        jLabel2.setText("");
-        jLabel2.setVisible(false);
+        jLabelZweig2.setText("");
+        jLabelZweig2.setVisible(false);
 
-        jLabel3.setText("");
-        jLabel3.setVisible(false);
+        jLabelZweig3.setText("");
+        jLabelZweig3.setVisible(false);
 
         jCheckBoxReligion.setText("Religion");
         jCheckBoxReligion.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +163,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jCheckBoxReligion.setEnabled(false);
 
+        jCheckBoxSport.setText("Sport");
+        jCheckBoxSport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxSportActionPerformed(evt);
+            }
+        });
+        jCheckBoxSport.setEnabled(false);
+
         jCheckBoxZweig.setText("Zweig");
         jCheckBoxZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,14 +178,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jCheckBoxZweig.setEnabled(false);
-
-        jCheckBoxFremdsprache.setText("Fremdsprache");
-        jCheckBoxFremdsprache.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxFremdspracheActionPerformed(evt);
-            }
-        });
-        jCheckBoxFremdsprache.setEnabled(false);
 
         jButtonEinstellungReligion.setText("Einstellung");
         jButtonEinstellungReligion.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +187,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jButtonEinstellungReligion.setEnabled(false);
 
+        jButtonEinstellungSport.setText("Einstellung");
+        jButtonEinstellungSport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEinstellungSportActionPerformed(evt);
+            }
+        });
+        jButtonEinstellungSport.setEnabled(false);
+
         jButtonEinstellungZweig.setText("Einstellung");
         jButtonEinstellungZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,13 +203,21 @@ public class GUI extends javax.swing.JFrame {
         });
         jButtonEinstellungZweig.setEnabled(false);
 
-        jButtonEinstellungFremdsprache.setText("Einstellung");
-        jButtonEinstellungFremdsprache.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxFremdsprachen.setEnabled(false);
+        jCheckBoxFremdsprachen.setText("Fremdsprachen");
+        jCheckBoxFremdsprachen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEinstellungFremdspracheActionPerformed(evt);
+                jCheckBoxFremdsprachenActionPerformed(evt);
             }
         });
-        jButtonEinstellungFremdsprache.setEnabled(false);
+
+        jButtonEinstellungFremdsprachen.setEnabled(false);
+        jButtonEinstellungFremdsprachen.setText("Einstellungen");
+        jButtonEinstellungFremdsprachen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEinstellungFremdsprachenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -204,7 +226,6 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxSortierung, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxJahrgang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonJahrgangDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -212,26 +233,31 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabelKlassen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinnerAnzahlKlassen, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelZweig1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelMännlich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelWeiblich, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelZweig2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelZweig3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxReligion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jButtonEinstellungReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxZweig)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBoxFremdsprachen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBoxReligion, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonEinstellungReligion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEinstellungFremdsprachen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxSport)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEinstellungZweig, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jCheckBoxFremdsprache)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEinstellungFremdsprache, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEinstellungSport, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxZweig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEinstellungZweig, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -249,17 +275,21 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jButtonJahrgangDrucken)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxFremdsprachen)
+                    .addComponent(jButtonEinstellungFremdsprachen))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxReligion)
                     .addComponent(jButtonEinstellungReligion))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxZweig)
-                    .addComponent(jButtonEinstellungZweig))
+                    .addComponent(jCheckBoxSport)
+                    .addComponent(jButtonEinstellungSport))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxFremdsprache)
-                    .addComponent(jButtonEinstellungFremdsprache))
-                .addGap(18, 18, 18)
+                    .addComponent(jCheckBoxZweig)
+                    .addComponent(jButtonEinstellungZweig))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,12 +302,12 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelZweig1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelZweig2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabelZweig3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -285,24 +315,37 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
-        jPanelSport.setLayout(new java.awt.GridLayout(1, 8));
-        jTabbedPane1.addTab("Sportgruppen", jPanelSport);
+        jPanelFremdsprachen.setLayout(new java.awt.GridLayout(1, 8));
+        jTabbedPane1.addTab("Fremdsprachengruppen", jPanelFremdsprachen);
 
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
 
-        javax.swing.GroupLayout jPanelZweiggruppenLayout = new javax.swing.GroupLayout(jPanelZweiggruppen);
-        jPanelZweiggruppen.setLayout(jPanelZweiggruppenLayout);
-        jPanelZweiggruppenLayout.setHorizontalGroup(
-            jPanelZweiggruppenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1042, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelSportLayout = new javax.swing.GroupLayout(jPanelSport);
+        jPanelSport.setLayout(jPanelSportLayout);
+        jPanelSportLayout.setHorizontalGroup(
+            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1017, Short.MAX_VALUE)
         );
-        jPanelZweiggruppenLayout.setVerticalGroup(
-            jPanelZweiggruppenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelSportLayout.setVerticalGroup(
+            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 671, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Zweiggruppen", jPanelZweiggruppen);
+        jTabbedPane1.addTab("Sportgruppen", jPanelSport);
+
+        javax.swing.GroupLayout jPanelZweigLayout = new javax.swing.GroupLayout(jPanelZweig);
+        jPanelZweig.setLayout(jPanelZweigLayout);
+        jPanelZweigLayout.setHorizontalGroup(
+            jPanelZweigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1017, Short.MAX_VALUE)
+        );
+        jPanelZweigLayout.setVerticalGroup(
+            jPanelZweigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
         jMenu1.setText("File");
 
@@ -422,11 +465,13 @@ public class GUI extends javax.swing.JFrame {
         jSpinnerAnzahlKlassen.setEnabled(true);
         jComboBoxSortierung.setEnabled(true);
         jCheckBoxReligion.setEnabled(true);
+        jCheckBoxSport.setEnabled(true);
         jCheckBoxZweig.setEnabled(true);
-        jCheckBoxFremdsprache.setEnabled(true);
+        jCheckBoxFremdsprachen.setEnabled(true);
         jButtonEinstellungReligion.setEnabled(true);
+        jButtonEinstellungSport.setEnabled(true);
         jButtonEinstellungZweig.setEnabled(true);
-        jButtonEinstellungFremdsprache.setEnabled(true);
+        jButtonEinstellungFremdsprachen.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
 
@@ -440,11 +485,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelWeiblich.setVisible(true);
 
-        jLabel1.setVisible(true);
+        jLabelZweig1.setVisible(true);
 
-        jLabel2.setVisible(true);
+        jLabelZweig2.setVisible(true);
 
-        jLabel3.setVisible(true);
+        jLabelZweig3.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
@@ -464,11 +509,13 @@ public class GUI extends javax.swing.JFrame {
         jSpinnerAnzahlKlassen.setEnabled(true);
         jComboBoxSortierung.setEnabled(true);
         jCheckBoxReligion.setEnabled(true);
+        jCheckBoxSport.setEnabled(true);
         jCheckBoxZweig.setEnabled(true);
-        jCheckBoxFremdsprache.setEnabled(true);
+        jCheckBoxFremdsprachen.setEnabled(true);
         jButtonEinstellungReligion.setEnabled(true);
+        jButtonEinstellungSport.setEnabled(true);
         jButtonEinstellungZweig.setEnabled(true);
-        jButtonEinstellungFremdsprache.setEnabled(true);
+        jButtonEinstellungFremdsprachen.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
 
@@ -482,11 +529,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabelWeiblich.setVisible(true);
 
-        jLabel1.setVisible(true);
+        jLabelZweig1.setVisible(true);
 
-        jLabel2.setVisible(true);
+        jLabelZweig2.setVisible(true);
 
-        jLabel3.setVisible(true);
+        jLabelZweig3.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
@@ -555,6 +602,7 @@ public class GUI extends javax.swing.JFrame {
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
          new EinstellungFrame().setVisible(true);
+         
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
@@ -562,44 +610,56 @@ public class GUI extends javax.swing.JFrame {
         new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
-    private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
+    private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
         // TODO add your handling code here:
         new EinstellungFrame().setVisible(true);
-    }//GEN-LAST:event_jCheckBoxZweigActionPerformed
+       
+    }//GEN-LAST:event_jCheckBoxSportActionPerformed
 
-    private void jCheckBoxFremdspracheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdspracheActionPerformed
+    private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
         // TODO add your handling code here:
          new EinstellungFrame().setVisible(true);
-    }//GEN-LAST:event_jCheckBoxFremdspracheActionPerformed
+         
+    }//GEN-LAST:event_jCheckBoxZweigActionPerformed
+
+    private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
+        // TODO add your handling code here:
+        new EinstellungFrame().setVisible(true);
+    }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
         new EinstellungFrame().setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
-    private void jButtonEinstellungFremdspracheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdspracheActionPerformed
-        // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
-    }//GEN-LAST:event_jButtonEinstellungFremdspracheActionPerformed
-
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
         // TODO add your handling code here:
+         
 
     }//GEN-LAST:event_jSpinnerAnzahlKlassenStateChanged
 
+    private void jCheckBoxFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdsprachenActionPerformed
+        // TODO add your handling code here:
+       new EinstellungFrame().setVisible(true);
+    }//GEN-LAST:event_jCheckBoxFremdsprachenActionPerformed
+
+    private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
+        // TODO add your handling code here:
+        new EinstellungFrame().setVisible(true);
+    }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEinstellungFremdsprache;
+    private javax.swing.JButton jButtonEinstellungFremdsprachen;
     private javax.swing.JButton jButtonEinstellungReligion;
+    private javax.swing.JButton jButtonEinstellungSport;
     private javax.swing.JButton jButtonEinstellungZweig;
     private javax.swing.JButton jButtonJahrgangDrucken;
-    private javax.swing.JCheckBox jCheckBoxFremdsprache;
+    private javax.swing.JCheckBox jCheckBoxFremdsprachen;
     private javax.swing.JCheckBox jCheckBoxReligion;
+    private javax.swing.JCheckBox jCheckBoxSport;
     private javax.swing.JCheckBox jCheckBoxZweig;
     private javax.swing.JComboBox jComboBoxJahrgang;
     private javax.swing.JComboBox<String> jComboBoxSortierung;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelEthik;
     private javax.swing.JLabel jLabelEvangelisch;
     private javax.swing.JLabel jLabelKatholisch;
@@ -607,6 +667,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMännlich;
     private javax.swing.JLabel jLabelSchülergesamt;
     private javax.swing.JLabel jLabelWeiblich;
+    private javax.swing.JLabel jLabelZweig1;
+    private javax.swing.JLabel jLabelZweig2;
+    private javax.swing.JLabel jLabelZweig3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -621,10 +684,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSaveAs;
     private javax.swing.JMenuItem jMenuItemSettings;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelFremdsprachen;
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
     private javax.swing.JPanel jPanelSport;
-    private javax.swing.JPanel jPanelZweiggruppen;
+    private javax.swing.JPanel jPanelZweig;
     private javax.swing.JSpinner jSpinnerAnzahlKlassen;
     private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -695,32 +759,32 @@ public class GUI extends javax.swing.JFrame {
             if (n == 5 || n == 6) {
             String anzahlGY = aktuellerJahrgang.getGY() + "";
             //jLabel1Anzahl.setText(anzahlGY);
-            jLabel1.setText("ohne Zweig: "+anzahlGY);
+            jLabelZweig1.setText("ohne Zweig: "+anzahlGY);
             String anzahlGY_MU = aktuellerJahrgang.getGY_MU() + "";
             //jLabel2Anzahl.setText(anzahlGY_MU);
-            jLabel2.setText("Musikklassen: "+anzahlGY_MU);
+            jLabelZweig2.setText("Musikklassen: "+anzahlGY_MU);
             String anzahlGY_TH = aktuellerJahrgang.getGY_TH() + "";
             //jLabel3Anzahl.setText(anzahlGY_TH);
-            jLabel3.setText("Theaterklassen: "+anzahlGY_TH);
+            jLabelZweig3.setText("Theaterklassen: "+anzahlGY_TH);
         } else if (n == 7) {
             String anzahlGY = aktuellerJahrgang.getGY() + "";
 
-            jLabel1.setText("");
+            jLabelZweig1.setText("");
             //jLabel1Anzahl.setText("");
-            jLabel2.setText("");
+            jLabelZweig2.setText("");
             //jLabel2Anzahl.setText("");
-            jLabel3.setText("");
+            jLabelZweig3.setText("");
             //jLabel3Anzahl.setText("");
         } else if (n == 8 || n == 9 || n == 10) {
             String anzahlGY_NTG = aktuellerJahrgang.getGY_NTG() + "";
             //jLabel1Anzahl.setText(anzahlGY_NTG);
-            jLabel1.setText("NTG-Zweig: "+anzahlGY_NTG);
+            jLabelZweig1.setText("NTG-Zweig: "+anzahlGY_NTG);
             String anzahlGY_WSG = aktuellerJahrgang.getGY_WSG() + "";
             //jLabel2Anzahl.setText(anzahlGY_WSG);
-            jLabel2.setText("WSG-Zweig: "+anzahlGY_WSG);
+            jLabelZweig2.setText("WSG-Zweig: "+anzahlGY_WSG);
             String anzahlGY_SG = aktuellerJahrgang.getGY_SG() + "";
             //jLabel3Anzahl.setText(anzahlGY_SG);
-            jLabel3.setText("SG-Zweig: "+anzahlGY_SG);
+            jLabelZweig3.setText("SG-Zweig: "+anzahlGY_SG);
         }
         String anzahlSchueler = aktuellerJahrgang.getSchuelerAnzahl() + "";
         jLabelSchülergesamt.setText("Gesamt: "+anzahlSchueler);
@@ -752,8 +816,8 @@ public class GUI extends javax.swing.JFrame {
     public void sportgruppenAnzeigen(){
             jPanelSport.removeAll();
        for (Sportgruppe s : aktuellerJahrgang.gibSportgruppen()) {
-            if (s.getSportgruppenzahl() > 0) {
-                jPanelSport.add(new GruppenPanel(s.getSchueler(),  s.getZahl()));
+            if (s.getZahl() > 0) {
+                jPanelSport.add(new GruppenPanel(s.getSchueler(),  ""+s.getZahl()));
             }
         }
         jPanelSport.revalidate();
@@ -763,22 +827,32 @@ public class GUI extends javax.swing.JFrame {
       
        jPanelReligion.removeAll();
         for (Religionsgruppe r : aktuellerJahrgang.gibReligionsgruppen()) {
-            if (r.getReligionsgruppenzahl() > 0) {
-                jPanelReligion.add(new GruppenPanel(r.getSchueler(), r.getZahl()));
+            if (r.getZahl() > 0) {
+                jPanelReligion.add(new GruppenPanel(r.getSchueler(), ""+r.getZahl()));
             }
         }
         jPanelReligion.revalidate();
         jPanelReligion.repaint();
     }
-    public void zweiggruppeAnzeigen(){
-        jPanelZweiggruppen.removeAll();
+    public void zweiggruppenAnzeigen(){
+        jPanelZweig.removeAll();
         for (Zweiggruppe r : aktuellerJahrgang.gibZweiggruppen()) {
-            if (r.getReligionsgruppenzahl() > 0) {
-                jPanelZweiggruppen.add(new GruppenPanel(r.getSchueler(), r.getZahl()));
+            if (r.getZahl() > 0) {
+                jPanelZweig.add(new GruppenPanel(r.getSchueler(), ""+r.getZahl()));
             }
         }
-        jPanelZweiggruppen.revalidate();
-        jPanelZweiggruppen.repaint();
+        jPanelZweig.revalidate();
+        jPanelZweig.repaint();
+    }
+    public void fremdsprachengruppenAnzeigen(){
+     //   jPanelFremdsprachen.removeAll();
+     //   for (Fremdsprachengruppen f : aktuellerJahrgang.gibFremdsprachengruppen()) {
+     //       if (f.getZahl() > 0) {
+     //           jPanelFremdsprachen.add(new GruppenPanel(f.getSchueler(), ""+f.getZahl()));
+     //       }
+     //   }
+     //   jPanelFremdsprachen.revalidate();
+     //   jPanelFremdsprachen.repaint();
     }
 
     

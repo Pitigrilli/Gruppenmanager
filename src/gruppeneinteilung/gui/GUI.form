@@ -138,9 +138,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -159,10 +159,9 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelSchülergesamt" alignment="1" max="32767" attributes="0"/>
                       <Component id="jComboBoxSortierung" alignment="0" max="32767" attributes="0"/>
                       <Component id="jComboBoxJahrgang" alignment="0" max="32767" attributes="0"/>
                       <Component id="jButtonJahrgangDrucken" alignment="0" max="32767" attributes="0"/>
@@ -171,28 +170,35 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSpinnerAnzahlKlassen" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabelSchülergesamt" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabelKatholisch" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelEthik" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelEvangelisch" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabelZweig1" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabelMännlich" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabelWeiblich" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelZweig2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabelZweig3" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jCheckBoxReligion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
-                          <Component id="jButtonEinstellungReligion" min="-2" pref="64" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jCheckBoxFremdsprachen" max="32767" attributes="0"/>
+                              <Component id="jCheckBoxReligion" pref="114" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButtonEinstellungReligion" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="jButtonEinstellungFremdsprachen" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jCheckBoxZweig" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jCheckBoxSport" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButtonEinstellungSport" min="-2" pref="64" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jCheckBoxZweig" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonEinstellungZweig" min="-2" pref="64" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jCheckBoxFremdsprache" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonEinstellungFremdsprache" min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -215,20 +221,25 @@
                   <Component id="jButtonJahrgangDrucken" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxFremdsprachen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungFremdsprachen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jCheckBoxReligion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonEinstellungReligion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxSport" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungSport" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jCheckBoxZweig" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonEinstellungZweig" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jCheckBoxFremdsprache" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonEinstellungFremdsprache" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Component id="jLabelSchülergesamt" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabelKatholisch" min="-2" pref="24" max="-2" attributes="0"/>
@@ -241,12 +252,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelWeiblich" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="jLabelZweig1" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="jLabelZweig2" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabelZweig3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -354,14 +365,14 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelEvangelisch.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLabelZweig1">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel1.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelZweig1.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelM&#xe4;nnlich">
@@ -384,24 +395,24 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelWeiblich.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLabelZweig2">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel2.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelZweig2.setVisible(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="jLabelZweig3">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;&quot;" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel3.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabelZweig3.setVisible(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxReligion">
@@ -417,6 +428,19 @@
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxReligion.setEnabled(false);"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxSport">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Sport&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSportActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxSport.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxZweig">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -428,19 +452,6 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxZweig.setEnabled(false);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxFremdsprache">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;Fremdsprache&quot;" type="code"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFremdspracheActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jCheckBoxFremdsprache.setEnabled(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonEinstellungReligion">
@@ -456,6 +467,19 @@
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungReligion.setEnabled(false);"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="jButtonEinstellungSport">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Einstellung&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungSportActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungSport.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JButton" name="jButtonEinstellungZweig">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -469,17 +493,30 @@
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungZweig.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonEinstellungFremdsprache">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxFremdsprachen">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;Einstellung&quot;" type="code"/>
+              <Connection code="&quot;Fremdsprachen&quot;" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungFremdspracheActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFremdsprachenActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungFremdsprache.setEnabled(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jCheckBoxFremdsprachen.setEnabled(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonEinstellungFremdsprachen">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Einstellungen&quot;" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungFremdsprachenActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jButtonEinstellungFremdsprachen.setEnabled(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -505,11 +542,11 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelSport">
+        <Container class="javax.swing.JPanel" name="jPanelFremdsprachen">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Sportgruppen">
-                <Property name="tabTitle" type="java.lang.String" value="Sportgruppen"/>
+              <JTabbedPaneConstraints tabName="Fremdsprachengruppen">
+                <Property name="tabTitle" type="java.lang.String" value="Fremdsprachengruppen"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -533,7 +570,29 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelZweiggruppen">
+        <Container class="javax.swing.JPanel" name="jPanelSport">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Sportgruppen">
+                <Property name="tabTitle" type="java.lang.String" value="Sportgruppen"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="1017" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="671" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanelZweig">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Zweiggruppen">
@@ -545,12 +604,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1042" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1017" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="671" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="664" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

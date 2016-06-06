@@ -32,7 +32,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jLabelAnzahlKlassen = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonErstellen = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jButtonSchließen = new javax.swing.JButton();
 
@@ -53,10 +53,10 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
         jLabelAnzahlKlassen.setText("Klassenanzahl");
 
-        jButton1.setText("Speichern");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonErstellen.setText("Erstellen");
+        jButtonErstellen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonErstellenActionPerformed(evt);
             }
         });
 
@@ -77,7 +77,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonSchließen, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jButtonErstellen))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelAnzahlKlassen)
                         .addGap(216, 216, 216)
@@ -93,7 +93,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonErstellen)
                     .addComponent(jButtonSchließen))
                 .addGap(23, 23, 23))
         );
@@ -101,10 +101,10 @@ public class EinstellungFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         // TODO add your handling code here:
     
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonErstellenActionPerformed
 
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed
         // TODO add your handling code here:
@@ -148,7 +148,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonErstellen;
     private javax.swing.JButton jButtonSchließen;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabelAnzahlKlassen;
