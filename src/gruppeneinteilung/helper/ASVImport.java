@@ -59,6 +59,7 @@ public class ASVImport {
                 int jahrgang = Integer.parseInt(tokens[0].substring(0, 2));
                 String klasse = tokens[0].substring(2);
                 s = new Student(jahrgang, klasse, tokens[1], tokens[2], tokens[3], tokens[5], tokens[6], tokens[7], tokens[8]);
+                s.setBemerkung("");
                 students.add(s);
             }
 

@@ -25,6 +25,7 @@ public class KlassenPanel extends JPanel {
     JList<Student> gruppenListe;
     DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
     DefaultListModel<Student> dlm = new DefaultListModel<>();
+    JPopupMenu jpopupmenu;
 
     public KlassenPanel(ArrayList<Student> gruppe, String name) {
         this.gruppe = gruppe;
@@ -34,6 +35,16 @@ public class KlassenPanel extends JPanel {
         // Titel
         JLabel titel = new JLabel(name);
         add(titel, BorderLayout.NORTH);
+        
+        //Popupmenu
+        jpopupmenu = new JPopupMenu();
+        JMenuItem item = new JMenuItem("Edit");
+        jpopupmenu.add(item);
+        item.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popupEditActionPerformed(evt);
+            }
+        });
 
         // Listenmodell
         for (Student student : gruppe) {
@@ -44,6 +55,25 @@ public class KlassenPanel extends JPanel {
         gruppenListe = new JList<>(dlm);
         //gruppenListe.setFixedCellWidth(200);
         gruppenListe.setCellRenderer(new KlassenPanel.KlassenCellRenderer());
+        //Contextmenu
+        gruppenListe.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                check(e);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                check(e);
+            }
+
+            public void check(MouseEvent e) {
+                if (e.isPopupTrigger()) { //if the event shows the menu
+                    gruppenListe.setSelectedIndex(gruppenListe.locationToIndex(e.getPoint())); //select the item
+                    jpopupmenu.show(gruppenListe, e.getX(), e.getY()); //and show the menu
+                }
+            }
+        });// ende MouseAdapter
 
         //dnd
         enableDnD();
@@ -55,6 +85,13 @@ public class KlassenPanel extends JPanel {
         // Scrollbar ins Panel
         add(scrollPane, BorderLayout.CENTER);
     }
+    
+    private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+       Student s = gruppenListe.getSelectedValue();
+       new StudentEditFrame(s).setVisible(true);
+       System.out.println("Popup: "+s.getName());
+    }   
 
     public void aktualisiereListModel() {
         dlm.clear();
@@ -144,7 +181,7 @@ public class KlassenPanel extends JPanel {
 
     }
 
-      static class KlassenCellRenderer extends DefaultListCellRenderer {
+    static class KlassenCellRenderer extends DefaultListCellRenderer {
 
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -171,7 +208,15 @@ public class KlassenPanel extends JPanel {
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
+            l.setText(s.getName() + " " + 
+                    s.getGeschlecht() + " " + 
+                    s.getZweig() + " " + 
+                    s.getReligion() + " " + 
+                    s.getFs2() + " " + 
+                    s.getFs3() + " " + 
+                    s.getFs4() + " " +
+                    s.getBemerkung()
+            ); //s.getKlasse()+" "+
             return l;
         }
     }
