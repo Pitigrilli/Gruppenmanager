@@ -13,10 +13,9 @@ import java.util.ArrayList;
  */
 
 
-public class Religionsgruppe extends Sortierung implements Serializable {
+public class Religionsgruppe extends SortierbareGruppe implements Serializable {
     private final int jahrgang;
     private final String religion;
-    
     private final int zahl;
     //private  ArrayList<Student> schueler;
 

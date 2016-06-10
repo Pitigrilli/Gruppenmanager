@@ -13,7 +13,7 @@ import java.util.Collections;
  *
  * @author schwindt.christian
  */
-public class Sportgruppe extends Sortierung implements Serializable {
+public class Sportgruppe extends SortierbareGruppe implements Serializable {
     private final String geschlecht;
 
     //private final ArrayList<Student> schueler;

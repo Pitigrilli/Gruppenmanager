@@ -7,7 +7,7 @@ package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Zweiggruppe extends Sortierung implements Serializable{
+public class Zweiggruppe extends SortierbareGruppe implements Serializable{
     private final int jahrgang;
     private final String Zweig;
     private final int zahl;

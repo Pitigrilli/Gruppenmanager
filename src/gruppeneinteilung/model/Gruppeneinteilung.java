@@ -86,7 +86,7 @@ public class Gruppeneinteilung {
             System.out.println("Anzahl Klassen: " + jahrgang.getKlassenanzahl());
             System.out.println("Anzahl Schüler: " + jahrgang.getSchuelerAnzahl());
             System.out.println();
-            //jahrgang.ausgabeAlle();
+            //jahrgang.printAlle();
         }
     }
 

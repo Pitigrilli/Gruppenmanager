@@ -39,7 +39,7 @@ public class Student implements Comparable<Student>, Serializable{
     
     
     public int compareTo(Student other){
-       switch(Klasse.sortierung)
+       switch(SortierbareGruppe.sortierung)
        {
            case "Geschlecht":
                return geschlecht.compareTo(other.geschlecht);

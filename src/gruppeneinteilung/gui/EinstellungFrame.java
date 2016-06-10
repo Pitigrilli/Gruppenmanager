@@ -35,6 +35,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
         jButtonErstellen = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jButtonSchließen = new javax.swing.JButton();
+        jPanelGruppe1 = new javax.swing.JPanel();
 
         jInternalFrame1.setVisible(true);
 
@@ -51,12 +52,18 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabelAnzahlKlassen.setText("Klassenanzahl");
+        jLabelAnzahlKlassen.setText("Anzahl der Gruppen");
 
         jButtonErstellen.setText("Erstellen");
         jButtonErstellen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonErstellenActionPerformed(evt);
+            }
+        });
+
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
             }
         });
 
@@ -67,21 +74,36 @@ public class EinstellungFrame extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanelGruppe1Layout = new javax.swing.GroupLayout(jPanelGruppe1);
+        jPanelGruppe1.setLayout(jPanelGruppe1Layout);
+        jPanelGruppe1Layout.setHorizontalGroup(
+            jPanelGruppe1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelGruppe1Layout.setVerticalGroup(
+            jPanelGruppe1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelGruppe1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSchließen, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonErstellen))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelAnzahlKlassen)
-                        .addGap(216, 216, 216)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonSchließen, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonErstellen))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelAnzahlKlassen)
+                                .addGap(216, 216, 216)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -91,7 +113,9 @@ public class EinstellungFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAnzahlKlassen)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelGruppe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonErstellen)
                     .addComponent(jButtonSchließen))
@@ -111,6 +135,12 @@ public class EinstellungFrame extends javax.swing.JFrame {
         
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSchließenActionPerformed
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        int value = (Integer) jSpinner1.getValue();
+        
+    }//GEN-LAST:event_jSpinner1StateChanged
 
     /**
      * @param args the command line arguments
@@ -152,6 +182,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSchließen;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabelAnzahlKlassen;
+    private javax.swing.JPanel jPanelGruppe1;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
 }

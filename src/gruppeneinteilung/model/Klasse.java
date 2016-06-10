@@ -9,14 +9,12 @@ import java.util.Collections;
  *
  * @author schwindt.christian
  */
-public class Klasse extends Sortierung implements Serializable{
+public class Klasse extends SortierbareGruppe implements Serializable{
 
     private final int jahrgang;
     private final String buchstabe;
     //private final ArrayList<Student> schueler;
     
-    public static String sortierung;
-
     public Klasse(String b, int j) {
         buchstabe = b;
         jahrgang = j;

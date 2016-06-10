@@ -11,15 +11,14 @@ import java.io.Serializable;
  *
  * @author floth.rene
  */
-public class Sortierung implements Serializable
+public class SortierbareGruppe implements Serializable
 {
     protected ArrayList <Student> schueler;
+    public static String sortierung;
     
     public void sortierenGeschlecht()
     {
-        
-
-        Klasse.sortierung = "Geschlecht";
+        sortierung = "Geschlecht";
         Collections.sort(schueler);
         
     }
@@ -27,14 +26,14 @@ public class Sortierung implements Serializable
     public void sortierenZweig()
     {
 
-        Klasse.sortierung = "Zweig";
+        sortierung = "Zweig";
         Collections.sort(schueler);
         
     }
     public void sortierenReligion()
     {
 
-        Klasse.sortierung = "Religion";
+        sortierung = "Religion";
         Collections.sort(schueler);
         
     }
@@ -42,7 +41,7 @@ public class Sortierung implements Serializable
     public void sortierenFremdsprache()
     {
 
-        Klasse.sortierung = "Fremdsprache";
+        sortierung = "Fremdsprache";
         Collections.sort(schueler);
         
     }
@@ -50,14 +49,14 @@ public class Sortierung implements Serializable
     public void sortierenName()
     {
 
-        Klasse.sortierung = "Alphabet";
+        sortierung = "Alphabet";
         Collections.sort(schueler);
         
     }
     public void sortierenBemerkung()
     {
 
-        Klasse.sortierung = "Bemerkung";
+        sortierung = "Bemerkung";
         Collections.sort(schueler);
         
     }
