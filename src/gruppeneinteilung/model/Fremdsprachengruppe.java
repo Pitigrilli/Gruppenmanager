@@ -7,18 +7,26 @@ package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Zweiggruppe extends SortierbareGruppe implements Serializable{
-    private final int jahrgang;
-    private final String Zweig;
-    private final int zahl;
-    private String[] klassen;
-    //private final ArrayList<Student> schueler;
 
-    public Zweiggruppe (int z, int j,String g) {
-       zahl = z;
+
+/**
+ *
+ * @author floth.rene
+ */
+public class Fremdsprachengruppe extends SortierbareGruppe implements Serializable
+{
+    private final int jahrgang;
+    private final String fremdsprache;
+    private String[] klassen;
+    
+    private final int zahl;
+    //private  ArrayList<Student> schueler;
+
+    public Fremdsprachengruppe (int z, int j,String r) {
+        zahl=z;
         jahrgang = j;
         schueler = new ArrayList<>();
-        Zweig = g;
+        fremdsprache = r;
         klassen = new String[8];
     }
 
@@ -31,7 +39,7 @@ public class Zweiggruppe extends SortierbareGruppe implements Serializable{
         return s;
     }
 
-    public int getZweiggroesse() {
+    public int getFremdsprachengroesse() {
         return schueler.size();
     }
 
@@ -42,11 +50,10 @@ public class Zweiggruppe extends SortierbareGruppe implements Serializable{
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
-    public String getZweig(){
-        return Zweig;
-        
-    }
-    public void klasseHinzufügen(String k)
+    public String getFremdsprache(){
+        return fremdsprache;
+}
+public void klasseHinzufügen(String k)
 {
     int i = 0;
     while(klassen[i]!= null)
@@ -55,7 +62,5 @@ public class Zweiggruppe extends SortierbareGruppe implements Serializable{
     }
     klassen[i] = k;
 }
-
-
     
 }

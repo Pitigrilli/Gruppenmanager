@@ -15,6 +15,7 @@ public class Jahrgang implements Serializable {
     private ArrayList<Sportgruppe> sportgruppen;
     private ArrayList<Religionsgruppe> religionsgruppen;
     private ArrayList<Zweiggruppe> zweiggruppen;
+    private ArrayList<Fremdsprachengruppe> fremdsprachengruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -35,6 +36,7 @@ public class Jahrgang implements Serializable {
     private int sportgruppenzahl;
     private int religionsgruppenzahl;
     private int zweiggruppenzahl;
+    private int fremdsprachengruppenzahl;
 
     // Konstruktoren ------------------------------------------
     public Jahrgang(int n) {

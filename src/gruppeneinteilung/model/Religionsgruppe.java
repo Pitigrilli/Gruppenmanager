@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class Religionsgruppe extends SortierbareGruppe implements Serializable {
     private final int jahrgang;
     private final String religion;
+    private String[] klassen;
+    
     private final int zahl;
     //private  ArrayList<Student> schueler;
 
@@ -24,6 +26,7 @@ public class Religionsgruppe extends SortierbareGruppe implements Serializable {
         jahrgang = j;
         schueler = new ArrayList<>();
         religion = r;
+        klassen = new String[8];
     }
 
     public void studentHinzufuegen(Student s) {
@@ -49,5 +52,14 @@ public class Religionsgruppe extends SortierbareGruppe implements Serializable {
     public String getReligion(){
         return religion;
 }
-
+public void klasseHinzufügen(String k)
+{
+    int i = 0;
+    while(klassen[i]!= null)
+    {
+        i ++;
+    }
+    klassen[i] = k;
+}
+    
 }
