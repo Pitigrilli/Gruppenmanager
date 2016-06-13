@@ -11,6 +11,7 @@ public class Zweiggruppe extends Sortierung implements Serializable{
     private final int jahrgang;
     private final String Zweig;
     private final int zahl;
+    private String[] klassen;
     //private final ArrayList<Student> schueler;
 
     public Zweiggruppe (int z, int j,String g) {
@@ -18,6 +19,7 @@ public class Zweiggruppe extends Sortierung implements Serializable{
         jahrgang = j;
         schueler = new ArrayList<>();
         Zweig = g;
+        klassen = new String[8];
     }
 
     public void studentHinzufuegen(Student s) {
@@ -44,6 +46,15 @@ public class Zweiggruppe extends Sortierung implements Serializable{
         return Zweig;
         
     }
+    public void klasseHinzufügen(String k)
+{
+    int i = 0;
+    while(klassen[i]!= null)
+    {
+        i ++;
+    }
+    klassen[i] = k;
+}
 
 
     

@@ -20,6 +20,7 @@ public class Jahrgang implements Serializable {
     private ArrayList<Sportgruppe> sportgruppen;
     private ArrayList<Religionsgruppe> religionsgruppen;
     private ArrayList<Zweiggruppe> zweiggruppen;
+    private ArrayList<Fremdsprachengruppe> fremdsprachengruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -40,6 +41,7 @@ public class Jahrgang implements Serializable {
     private int sportgruppenzahl;
     private int religionsgruppenzahl;
     private int zweiggruppenzahl;
+    private int fremdsprachengruppenzahl;
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
@@ -291,6 +293,7 @@ public class Jahrgang implements Serializable {
     
     public void sportgruppeKlasseHinzufügen(int sportgruppe, String buchstabe)
     {
+        sportgruppen.get(sportgruppe + 1).klasseHinzufügen(buchstabe);
         switch(buchstabe)
         {
             case "a":
@@ -365,6 +368,8 @@ public class Jahrgang implements Serializable {
          }
     
     public void religionsgruppenKlasseHinzufügen(int religionsgruppe, String buchstabe){
+        
+        religionsgruppen.get(religionsgruppe + 1).klasseHinzufügen(buchstabe);
         switch(buchstabe)
         {
             case "a":
@@ -440,6 +445,7 @@ public class Jahrgang implements Serializable {
          }
     
     public void zweiggruppenKlasseHinzufügen(int zweiggruppe, String buchstabe){
+        zweiggruppen.get(zweiggruppe + 1).klasseHinzufügen(buchstabe);
         switch(buchstabe)
         {
             case "a":
@@ -508,21 +514,115 @@ public class Jahrgang implements Serializable {
     }
     }
     
-    public ArrayList<Religionsgruppe> gibReligionsgruppen()
+    
+            public void  fremdsprachengruppeErstellen(String fremdsprache){
+        Fremdsprachengruppe fg = new Fremdsprachengruppe(fremdsprachengruppenzahl, jahrgang, fremdsprache);
+        fremdsprachengruppenzahl ++;
+        fremdsprachengruppen.add(fg);
+         }
+    
+    public void fremdsprachengruppenKlasseHinzufügen(int fremdsprachengruppe, String buchstabe){
+        
+        fremdsprachengruppen.get(fremdsprachengruppe + 1).klasseHinzufügen(buchstabe);
+        switch(buchstabe)
+        {
+            case "a":
+                for(int i = 0; i < klassen.get(0).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(0).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "b":
+                for(int i = 0; i < klassen.get(1).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(1).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "c":
+                for(int i = 0; i < klassen.get(2).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(2).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "d":
+                for(int i = 0; i < klassen.get(3).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(3).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "e":
+                for(int i = 0; i < klassen.get(4).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(4).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "f":
+                for(int i = 0; i < klassen.get(5).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(5).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
+                    }
+                }
+            break;
+            case "g":
+                for(int i = 0; i < klassen.get(6).getKlassengroesse(); i++)
+                {
+                    if(klassen.get(6).getSchueler().get(i).getZweig().equals(buchstabe))
+                    {
+                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
+                    }
+                }
+            break;
+    }
+    }
+    public ArrayList<Religionsgruppe> getReligionsgruppen()
             {
      
                 return religionsgruppen;
             }
-    public ArrayList<Zweiggruppe> gibZweiggruppen()
+    public ArrayList<Zweiggruppe> getZweiggruppen()
             {
      
                 return zweiggruppen;
             }
-    public ArrayList<Sportgruppe> gibSportgruppen()
+    public ArrayList<Sportgruppe> getSportgruppen()
             {
      
                 return sportgruppen;
             }
+     public ArrayList<Fremdsprachengruppe> getFremdsprachengruppen()
+            {
+     
+                return fremdsprachengruppen;
+            }
+    public  int getSportgruppenzahl(){
+        return sportgruppen.size();
+    }
+    public  int getReligionsgruppenzahl(){
+        return religionsgruppen.size();
+    }
+    public  int getZweiggruppenzahl(){
+        return zweiggruppen.size();
+        
+    }public  int getFremdsprachengruppenzahl(){
+        return fremdsprachengruppen.size();
+    }
 }
 
     

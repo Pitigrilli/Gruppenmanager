@@ -6,21 +6,27 @@
 package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
+
 
 /**
  *
- * @author schwindt.christian
+ * @author floth.rene
  */
-public class Sportgruppe extends Sortierung implements Serializable {
-    private final String geschlecht;
+public class Fremdsprachengruppe extends Sortierung implements Serializable
+{
+    private final int jahrgang;
+    private final String fremdsprache;
     private String[] klassen;
-    //private final ArrayList<Student> schueler;
+    
+    private final int zahl;
+    //private  ArrayList<Student> schueler;
 
-    public Sportgruppe (String g) {
+    public Fremdsprachengruppe (int z, int j,String r) {
+        zahl=z;
+        jahrgang = j;
         schueler = new ArrayList<>();
-        geschlecht = g;
+        fremdsprache = r;
         klassen = new String[8];
     }
 
@@ -33,18 +39,21 @@ public class Sportgruppe extends Sortierung implements Serializable {
         return s;
     }
 
-    public int getSportgroesse() {
+    public int getFremdsprachengroesse() {
         return schueler.size();
+    }
+
+    public int getZahl() {
+        return zahl;
     }
 
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
-    public String getGeschlecht(){
-        return geschlecht;
-        
-    }
-    public void klasseHinzufügen(String k)
+    public String getFremdsprache(){
+        return fremdsprache;
+}
+public void klasseHinzufügen(String k)
 {
     int i = 0;
     while(klassen[i]!= null)
@@ -53,4 +62,5 @@ public class Sportgruppe extends Sortierung implements Serializable {
     }
     klassen[i] = k;
 }
+    
 }
