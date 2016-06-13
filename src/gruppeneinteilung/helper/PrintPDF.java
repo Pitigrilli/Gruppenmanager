@@ -190,9 +190,9 @@ public class PrintPDF {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
         PrintPDF pdf =new PrintPDF(ge);
         Jahrgang j= ge.getJahrgang(6);
-        String b = "Hallooo";
+        String b = "Religruppe";
         //pdf.druckeJahrgang(j,b);
-       pdf.Drucken(b);
+       pdf.druckeGruppe(j,b);
        // try{
        
        // catch(DocumentException e){}
@@ -245,20 +245,20 @@ public class PrintPDF {
             throws BadElementException, DocumentException {
 
         Jahrgang aktuellerJahrgang = j;
-        int n = aktuellerJahrgang.getKlassenanzahl();
+        int n = aktuellerJahrgang.getReligionsgruppenAnzahl();   //Wollte gruppe Modell noch machen
         System.out.println(n);
 
-        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        PdfPTable table = new PdfPTable(n); 
         table.setWidthPercentage(100f);
 
         for (int i = 0; i < n; i++) {
-            PdfPTable tableI = new PdfPTable(1);
+            PdfPTable tableI = new PdfPTable(1);      
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.gibReligionsgruppen().get(i).getZahl()+""+ aktuellerJahrgang.gibReligionsgruppen().get(i).getReligion() ,
                     tableHeadFont));
-
+            //Änderung für anderes 
             
-            for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
+            for (Student s : aktuellerJahrgang.gibReligionsgruppen().get(i).getSchueler()) { //Ändern für andere Gruppe
 
                 switch (s.getReligion()) {
                     case "RK":
