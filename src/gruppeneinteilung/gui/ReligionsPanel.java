@@ -16,7 +16,7 @@ public class ReligionsPanel extends JPanel{
  
     // Auf dem JPanel wird alles angeordnet. 
     // Es ist das Element, dem das Flow-Layout zugewiesen wird
-    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+   
  
     // Die sichtbaren Elemente werden als Objektvariablen angelegt:
     private javax.swing.JCheckBox JCheckBox1 = new javax.swing.JCheckBox();
@@ -28,9 +28,9 @@ public class ReligionsPanel extends JPanel{
     private javax.swing.JCheckBox JCheckBox7 = new javax.swing.JCheckBox();
     private javax.swing.JCheckBox JCheckBox8 = new javax.swing.JCheckBox();
     private javax.swing.JComboBox JComboBox1 = new javax.swing.JComboBox();
-
+    
 public ReligionsPanel(){
-JCheckBox1.setName("a");
+add(JCheckBox1);JCheckBox1.setName("a");
 JCheckBox2.setName("b");
 JCheckBox3.setName("c");
 JCheckBox4.setName("d");
@@ -38,9 +38,13 @@ JCheckBox5.setName("e");
 JCheckBox6.setName("f");
 JCheckBox7.setName("g");
 JCheckBox8.setName("h");
-JComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8"}));
+JComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Religion wählen", "Katholisch", "Ethik", "Evangelisch"}));
 
 
 }
+public static void main(String args[]) {
+        // Ein Objekt der Klasse erzeugen und sichtbar machen.
+        new ReligionsPanel().setVisible ( true );
+    }
 }
 
