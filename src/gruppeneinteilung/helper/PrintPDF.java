@@ -246,7 +246,7 @@ public class PrintPDF {
 
         Jahrgang aktuellerJahrgang = j;
         int n = 0;
-        //n= aktuellerJahrgang.getReligionsgruppenAnzahl();   //Wollte gruppe Modell noch machen
+        //n= aktuellerJahrgang.getReligionsgruppenzahl();   //Wollte gruppe Modell noch machen
         System.out.println(n);
 
         PdfPTable table = new PdfPTable(n); 
