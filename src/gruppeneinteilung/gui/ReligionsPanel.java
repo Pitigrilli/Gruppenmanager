@@ -30,21 +30,21 @@ public class ReligionsPanel extends JPanel{
     private javax.swing.JComboBox JComboBox1 = new javax.swing.JComboBox();
     
 public ReligionsPanel(){
-add(JCheckBox1);JCheckBox1.setName("a");
-JCheckBox2.setName("b");
-JCheckBox3.setName("c");
-JCheckBox4.setName("d");
-JCheckBox5.setName("e");
-JCheckBox6.setName("f");
-JCheckBox7.setName("g");
-JCheckBox8.setName("h");
-JComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Religion wählen", "Katholisch", "Ethik", "Evangelisch"}));
+    this.setLayout(new java.awt.FlowLayout());
+    this.add(JCheckBox1);JCheckBox1.setText("a");
+    this.add(JCheckBox2);JCheckBox2.setText("b");
+    this.add(JCheckBox3);JCheckBox3.setText("c");
+    this.add(JCheckBox4);JCheckBox4.setText("d");
+    this.add(JCheckBox5);JCheckBox5.setText("e");
+    this.add(JCheckBox6);JCheckBox6.setText("f");
+    this.add(JCheckBox7);JCheckBox7.setText("g");
+    this.add(JCheckBox8);JCheckBox8.setText("h");
+    this.add(JComboBox1);JComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Religion wählen", "Katholisch", "Ethik", "Evangelisch"}));
+    
+
 
 
 }
-public static void main(String args[]) {
-        // Ein Objekt der Klasse erzeugen und sichtbar machen.
-        new ReligionsPanel().setVisible ( true );
-    }
+
 }
 

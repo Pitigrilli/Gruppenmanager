@@ -7,6 +7,8 @@ package gruppeneinteilung.gui;
 
 import gruppeneinteilung.model.Student;
 import gruppeneinteilung.gui.ReligionsPanel;
+import java.awt.FlowLayout;
+import javax.swing.JPanel;
 
 /**
  *
@@ -88,14 +90,11 @@ public class EinstellungFrame extends javax.swing.JFrame {
             .addGap(0, 25, Short.MAX_VALUE)
         );
 
-        jPanel1.setVisible(true);
-        jPanel1.show();
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 469, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,14 +173,18 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         // TODO add your handling code here:
+        FlowLayout mainLayout = new FlowLayout();
         
-        for (int i = (Integer) jSpinner1.getValue(); i!=0; i--){
-         jPanel1.add(new ReligionsPanel());
+        JPanel panel = new JPanel(mainLayout); 
+        setLayout(mainLayout);
+       
+        ReligionsPanel religion = new ReligionsPanel();
+        panel.add(religion);
+         religion.setVisible(true);
+         add(panel);
          
-         jPanel1.revalidate();
-         jPanel1.repaint();
-         System.out.println(i);
-        }
+         
+        System.out.println("1");
     }//GEN-LAST:event_jSpinner1StateChanged
 
     /**
