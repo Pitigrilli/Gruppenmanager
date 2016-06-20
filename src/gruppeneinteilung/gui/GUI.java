@@ -601,35 +601,35 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
-         new EinstellungFrame().setVisible(true);
+         new EinstellungFrame(aktuellerJahrgang).setVisible(true);
          
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
     private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
        
     }//GEN-LAST:event_jCheckBoxSportActionPerformed
 
     private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
         // TODO add your handling code here:
-         new EinstellungFrame().setVisible(true);
+         new EinstellungFrame(aktuellerJahrgang).setVisible(true);
          
     }//GEN-LAST:event_jCheckBoxZweigActionPerformed
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
@@ -640,12 +640,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdsprachenActionPerformed
         // TODO add your handling code here:
-       new EinstellungFrame().setVisible(true);
+       new EinstellungFrame(aktuellerJahrgang).setVisible(true);
     }//GEN-LAST:event_jCheckBoxFremdsprachenActionPerformed
 
     private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame().setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

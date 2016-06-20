@@ -7,20 +7,23 @@ package gruppeneinteilung.gui;
 
 import gruppeneinteilung.model.Student;
 import gruppeneinteilung.gui.ReligionsPanel;
+import gruppeneinteilung.model.Gruppeneinteilung;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
-
+import gruppeneinteilung.model.Jahrgang;
 /**
  *
  * @author zimmer.lennard
  */
 public class EinstellungFrame extends javax.swing.JFrame {
-
+Jahrgang j;
+Gruppeneinteilung ge;
    
     /**
      * Creates new form StudentEditFrame
      */
-    public EinstellungFrame() {
+    public EinstellungFrame(Jahrgang j) {
+        this.j = j;
         initComponents();
     }
 
@@ -38,9 +41,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
         jButtonErstellen = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         jButtonSchließen = new javax.swing.JButton();
-        jPanelGruppe1 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        religionsPanel1 = new gruppeneinteilung.gui.ReligionsPanel();
 
         jInternalFrame1.setVisible(true);
 
@@ -66,6 +67,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
             }
         });
 
+        jSpinner1.setValue(j.getReligionsgruppenzahl());
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinner1StateChanged(evt);
@@ -79,45 +81,14 @@ public class EinstellungFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelGruppe1Layout = new javax.swing.GroupLayout(jPanelGruppe1);
-        jPanelGruppe1.setLayout(jPanelGruppe1Layout);
-        jPanelGruppe1Layout.setHorizontalGroup(
-            jPanelGruppe1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanelGruppe1Layout.setVerticalGroup(
-            jPanelGruppe1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout religionsPanel1Layout = new javax.swing.GroupLayout(religionsPanel1);
-        religionsPanel1.setLayout(religionsPanel1Layout);
-        religionsPanel1Layout.setHorizontalGroup(
-            religionsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        religionsPanel1Layout.setVerticalGroup(
-            religionsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.GridLayout(8, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -128,13 +99,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
                         .addComponent(jLabelAnzahlKlassen)
                         .addGap(216, 216, 216)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelGruppe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(religionsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,13 +109,8 @@ public class EinstellungFrame extends javax.swing.JFrame {
                     .addComponent(jLabelAnzahlKlassen)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelGruppe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(religionsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonErstellen)
                     .addComponent(jButtonSchließen))
@@ -173,18 +133,22 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         // TODO add your handling code here:
-        FlowLayout mainLayout = new FlowLayout();
+        jPanel1.removeAll();
+        for(int i = Integer.parseInt(jSpinner1.getValue().toString());i!=0;i--){
+      //  FlowLayout mainLayout = new FlowLayout();
         
-        JPanel panel = new JPanel(mainLayout); 
-        setLayout(mainLayout);
+     //   JPanel panel = new JPanel(mainLayout); 
+      //  setLayout(mainLayout);
        
         ReligionsPanel religion = new ReligionsPanel();
-        panel.add(religion);
+        jPanel1.add(religion);
          religion.setVisible(true);
-         add(panel);
+     //    jPanel1.add(panel);
          
+        }
+       
          
-        System.out.println("1");
+    
     }//GEN-LAST:event_jSpinner1StateChanged
 
     /**
@@ -216,8 +180,12 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
+            Jahrgang jahrgang = ge.getJahrgang(6); 
+            //jahrgang.religionsgruppeErstellen("kat");
+            
             public void run() {
-                new EinstellungFrame().setVisible(true);
+                new EinstellungFrame(jahrgang).setVisible(true);
             }
         });
     }
@@ -228,8 +196,6 @@ public class EinstellungFrame extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabelAnzahlKlassen;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelGruppe1;
     private javax.swing.JSpinner jSpinner1;
-    private gruppeneinteilung.gui.ReligionsPanel religionsPanel1;
     // End of variables declaration//GEN-END:variables
 }
