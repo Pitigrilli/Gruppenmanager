@@ -282,6 +282,7 @@ public class PrintPDF {
         
 
     }
+   
      private void druckeSportGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
          //Jahrgang und einen String für PDF 
 
@@ -320,7 +321,7 @@ public class PrintPDF {
 
         Jahrgang aktuellerJahrgang = j;
         int n = 0;
-        n= aktuellerJahrgang.getReligionsgruppenzahl();   
+        n= aktuellerJahrgang.getSportgruppenzahl();   
         System.out.println(n);
 
         PdfPTable table = new PdfPTable(n); 
@@ -329,11 +330,155 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);      
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getReligionsgruppen().get(i).getZahl()+""+ aktuellerJahrgang.getReligionsgruppen().get(i).getReligion() ,
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getSportgruppen().get(i).getZahl()+""+ aktuellerJahrgang.getSportgruppen().get(i).getGeschlecht() ,
+                    tableHeadFont));
+            //getZahl() fehlt noch in Sportgruppen
+            
+            for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) { //Ändern für andere Gruppe
+
+                switch (s.getReligion()) {
+                    case "RK":
+                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        break;
+                    case "EV":
+                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        break;
+                    case "ETH":
+                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        break;
+
+                    default:
+                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                }
+
+            }
+        }
+        
+    }
+    
+     private void druckeFremdsprachenGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
+         //Jahrgang und einen String für PDF 
+
+        try {
+            
+            erstellen(name);
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+            fremdsprachenGruppeDrucken(document,j);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fremdsprachenGruppeDrucken(Document document,Jahrgang j) throws DocumentException { //Methode muss noch angepasst
+
+        Paragraph preface = new Paragraph();
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        addEmptyLine(preface, 1);
+        document.add(preface);
+
+        Paragraph tabelle = new Paragraph();
+
+        createTableFremdsprachenGruppe(tabelle, j);
+        document.add(tabelle);
+        // Start a new page
+        document.newPage();
+
+    }
+
+    private void createTableFremdsprachenGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = 0;
+        n= aktuellerJahrgang.getFremdsprachengruppenzahl();   
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); 
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);      
+            tableI.setHeaderRows(1);
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getFremdsprachengruppen().get(i).getZahl()+""+ aktuellerJahrgang.getFremdsprachengruppen().get(i).getFremdsprache() ,
                     tableHeadFont));
             //Änderung für anderes 
             
-            for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) { //Ändern für andere Gruppe
+            for (Student s : aktuellerJahrgang.getFremdsprachengruppen().get(i).getSchueler()) { 
+
+                switch (s.getReligion()) {
+                    case "RK":
+                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        break;
+                    case "EV":
+                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        break;
+                    case "ETH":
+                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        break;
+
+                    default:
+                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                }
+
+            }
+        }
+        
+    }
+    private void druckeZweigGruppe(Jahrgang j,String name){   
+
+        try {
+            
+            erstellen(name);
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+            zweigGruppeDrucken(document,j);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void zweigGruppeDrucken(Document document,Jahrgang j) throws DocumentException { 
+
+        Paragraph preface = new Paragraph();
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        addEmptyLine(preface, 1);
+        document.add(preface);
+
+        Paragraph tabelle = new Paragraph();
+
+        createTableZweigGruppe(tabelle, j);
+        document.add(tabelle);
+        // Start a new page
+        document.newPage();
+
+    }
+
+    private void createTableZweigGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = 0;
+        n= aktuellerJahrgang.getZweiggruppenzahl();   
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); 
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);      
+            tableI.setHeaderRows(1);
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getZweiggruppen().get(i).getZahl()+""+ aktuellerJahrgang.getZweiggruppen().get(i).getZweig() ,
+                    tableHeadFont));
+           
+            
+            for (Student s : aktuellerJahrgang.getZweiggruppen().get(i).getSchueler()) { 
 
                 switch (s.getReligion()) {
                     case "RK":
