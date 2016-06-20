@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Fremdsprachengruppe extends SortierbareGruppe implements Serializable
 {
     private final int jahrgang;
-    private final String fremdsprache;
+    private  String fremdsprache;
     private String[] klassen;
     
     private final int zahl;
@@ -53,6 +53,10 @@ public class Fremdsprachengruppe extends SortierbareGruppe implements Serializab
     public String getFremdsprache(){
         return fremdsprache;
 }
+    public void setFremdsprache(String fremdsprache){
+    this.fremdsprache=fremdsprache;
+    }
+    
 public void klasseHinzufügen(String k)
 {
     int i = 0;

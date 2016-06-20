@@ -15,9 +15,14 @@ import java.util.ArrayList;
 
 public class Religionsgruppe extends SortierbareGruppe implements Serializable {
     private final int jahrgang;
-    private final String religion;
+    private String religion;
+    /**
+     * Liste der Buchstaben der zugehörigen Klassen
+     */
     private String[] klassen;
-    
+    /**
+     * Nummer der Religionsgruppe im Jahrgang
+     */
     private final int zahl;
     //private  ArrayList<Student> schueler;
 
@@ -46,12 +51,25 @@ public class Religionsgruppe extends SortierbareGruppe implements Serializable {
         return zahl;
     }
 
+    public void setKlassen(String[] klassen) {
+        this.klassen = klassen;
+    }
+
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
     public String getReligion(){
         return religion;
-}
+    }
+    public void setReligion(String r)
+    {
+        religion = r;
+    }
+    public String[] getKlassen()
+    {
+        return klassen;
+    }
+   
 public void klasseHinzufügen(String k)
 {
     int i = 0;

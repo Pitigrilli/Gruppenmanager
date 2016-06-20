@@ -53,7 +53,15 @@ public class Jahrgang implements Serializable {
         ge.getJahrgang(5).getKlasse("b").test();
         ge.getJahrgang(5).getKlasse("b").sortierenGeschlecht();
         ge.getJahrgang(5).getKlasse("b").test();
-    }
+        
+        Jahrgang j = ge.getJahrgang(5);
+        j.religionsgruppeErstellen("ETH");
+        j.getReligionsgruppen().get(0).klasseHinzufügen("a");
+        j.religionsgruppenOrdnen();
+       // for(int i = 0; i < j.getReligionsgruppen()[0].getschüler().size(); i++)
+        
+        
+                }
 
     public Jahrgang(int n) {
 
@@ -285,8 +293,8 @@ public class Jahrgang implements Serializable {
         }
     }
 
-    public void sportgruppeErstellen(String geschlecht){
-        Sportgruppe sp = new Sportgruppe(geschlecht);
+    public void sportgruppeErstellen(String geschlecht, int z){
+        Sportgruppe sp = new Sportgruppe(geschlecht, z);
         sportgruppenzahl ++;
         sportgruppen.add(sp);             
     }
@@ -622,6 +630,29 @@ public class Jahrgang implements Serializable {
         
     }public  int getFremdsprachengruppenzahl(){
         return fremdsprachengruppen.size();
+    }
+    
+    /**
+     * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
+     */
+    public void religionsgruppenOrdnen()
+    {
+        for(int i = 0; i < religionsgruppen.size(); i++)
+        {
+            Religionsgruppe aktuelleRG = religionsgruppen.get(i);
+            
+            for(int j = 0; j < alle.size(); j++)
+            {
+                if
+                        (
+                        alle.get(j).getReligion().equals(aktuelleRG.getReligion())
+                        && (alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[0]) ||alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[1]) ||alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[2]) ||alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[3]) || alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[4]))
+                        )
+                {
+                    aktuelleRG.studentHinzufuegen(alle.get(j));
+                }
+            }
+        }
     }
 }
 
