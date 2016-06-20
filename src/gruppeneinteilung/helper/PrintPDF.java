@@ -192,7 +192,7 @@ public class PrintPDF {
         Jahrgang j= ge.getJahrgang(6);
         String b = "Religruppe";
         //pdf.druckeJahrgang(j,b);
-       pdf.druckeReligionGruppe(j,b);
+       pdf.druckeReligionsGruppe(j,b);
        // try{
        
        // catch(DocumentException e){}
@@ -208,7 +208,7 @@ public class PrintPDF {
     }
     // NOCH IN ARBEIT :D
     
-     private void druckereligionsGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
+     private void druckeReligionsGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
          //Jahrgang und einen String für PDF 
 
         try {
