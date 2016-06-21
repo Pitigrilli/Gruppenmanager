@@ -57,7 +57,7 @@ public class Jahrgang implements Serializable {
         Jahrgang j = ge.getJahrgang(5);
         j.religionsgruppeErstellen("ETH");
         j.getReligionsgruppen().get(0).klasseHinzufügen("a");
-        j.religionsgruppenOrdnen();
+        j.religionsgruppenZuordnen();
        // for(int i = 0; i < j.getReligionsgruppen()[0].getschüler().size(); i++)
         
         
@@ -635,7 +635,7 @@ public class Jahrgang implements Serializable {
     /**
      * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
      */
-    public void religionsgruppenOrdnen()
+    public void religionsgruppenZuordnen()
     {
         for(int i = 0; i < religionsgruppen.size(); i++)
         {

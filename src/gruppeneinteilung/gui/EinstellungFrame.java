@@ -11,20 +11,38 @@ import gruppeneinteilung.model.Gruppeneinteilung;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import gruppeneinteilung.model.Jahrgang;
+import gruppeneinteilung.model.Religionsgruppe;
+
 /**
  *
  * @author zimmer.lennard
  */
 public class EinstellungFrame extends javax.swing.JFrame {
-Jahrgang j;
-Gruppeneinteilung ge;
-   
+
+    Jahrgang j;
+    Gruppeneinteilung ge;
+    int anzahlGruppen;
+
     /**
      * Creates new form StudentEditFrame
      */
     public EinstellungFrame(Jahrgang j) {
+        
         this.j = j;
+        /// ab hier nut zu Testzwecken
+        
+        j.religionsgruppeErstellen("KATH");
+        /// bis hier
+        anzahlGruppen = j.getReligionsgruppenzahl();
         initComponents();
+        jSpinner1.setValue(anzahlGruppen);
+        
+        for (Religionsgruppe rg : j.getReligionsgruppen()) {
+            ReligionsPanel rp = new ReligionsPanel();
+            rp.setReligion(rg.getReligion());
+            //rp.checkKlassen(rg.getKlassen());
+            jPanel1.add(rp);
+        }
     }
 
     /**
@@ -68,6 +86,7 @@ Gruppeneinteilung ge;
         });
 
         jSpinner1.setValue(j.getReligionsgruppenzahl());
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 8, 1));
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinner1StateChanged(evt);
@@ -122,33 +141,32 @@ Gruppeneinteilung ge;
 
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         // TODO add your handling code here:
-    
+
     }//GEN-LAST:event_jButtonErstellenActionPerformed
 
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed
         // TODO add your handling code here:
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSchließenActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         // TODO add your handling code here:
-        jPanel1.removeAll();
-        for(int i = Integer.parseInt(jSpinner1.getValue().toString());i!=0;i--){
-      //  FlowLayout mainLayout = new FlowLayout();
-        
-     //   JPanel panel = new JPanel(mainLayout); 
-      //  setLayout(mainLayout);
-       
-        ReligionsPanel religion = new ReligionsPanel();
-        jPanel1.add(religion);
-         religion.setVisible(true);
-     //    jPanel1.add(panel);
-         
+        //jPanel1.removeAll();
+        int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
+        if (aktWert == anzahlGruppen + 1) {
+            ReligionsPanel religion = new ReligionsPanel();
+            jPanel1.add(religion);
+            religion.setVisible(true);
+            anzahlGruppen++;
+        } else if (aktWert == anzahlGruppen - 1) {
+            jPanel1.remove(jPanel1.getComponentCount() - 1);
+            anzahlGruppen--;
+            jPanel1.revalidate();
+            jPanel1.repaint();
         }
-       
-         
-    
+
+
     }//GEN-LAST:event_jSpinner1StateChanged
 
     /**
@@ -181,9 +199,8 @@ Gruppeneinteilung ge;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
-            Jahrgang jahrgang = ge.getJahrgang(6); 
-            //jahrgang.religionsgruppeErstellen("kat");
-            
+            Jahrgang jahrgang = ge.getJahrgang(5);
+
             public void run() {
                 new EinstellungFrame(jahrgang).setVisible(true);
             }
