@@ -32,6 +32,9 @@ public class EinstellungFrame extends javax.swing.JFrame {
         /// ab hier nut zu Testzwecken
         
         j.religionsgruppeErstellen("KATH");
+        Religionsgruppe rk = j.getReligionsgruppen().get(0);
+        String[] klassen = {"a", "c"};
+        rk.setKlassen(klassen);
         /// bis hier
         anzahlGruppen = j.getReligionsgruppenzahl();
         initComponents();
@@ -40,7 +43,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
         for (Religionsgruppe rg : j.getReligionsgruppen()) {
             ReligionsPanel rp = new ReligionsPanel();
             rp.setReligion(rg.getReligion());
-            //rp.checkKlassen(rg.getKlassen());
+            rp.checkKlassen(rg.getKlassen());
             jPanel1.add(rp);
         }
     }
@@ -141,7 +144,11 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         // TODO add your handling code here:
-
+   //    int a = 0;
+   //     for(int i = Integer.parseInt(jSpinner1.getValue().toString()); i!=0; i--){
+   //         j.religionsgruppenKlasseHinzufügen(jPanel1.getComponent(a).getComboBoxReligion(), jPanel1.getComponent(a).getCheckBox());
+   //         a++;
+   //     }
     }//GEN-LAST:event_jButtonErstellenActionPerformed
 
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed

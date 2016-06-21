@@ -54,6 +54,36 @@ public class ReligionsPanel extends JPanel {
     public void setReligion(String rel) {
         JComboBoxReligion.getModel().setSelectedItem(rel);
     }
+    
+    public String[] getCheckBox(){
+        String[] klassen = new String[7];
+       if(JCheckBoxA.isSelected()){
+           klassen[0]= "a";
+       }else if(JCheckBoxB.isSelected()){
+           klassen[1]= "b";
+       }else if(JCheckBoxC.isSelected()){
+           klassen[2]= "c";
+       }else if(JCheckBoxD.isSelected()){
+           klassen[3]= "d";
+       }else if(JCheckBoxE.isSelected()){
+           klassen[4]= "e";
+       }else if(JCheckBoxF.isSelected()){
+           klassen[5]= "f";
+       }else if(JCheckBoxG.isSelected()){
+           klassen[6]= "g";
+       }else if(JCheckBoxH.isSelected()){
+           klassen[7]= "h";
+       }
+        return klassen;
+    }
+       
+    
+    
+    public String getComboBoxReligion(){
+        return JComboBoxReligion.getModel().toString();
+    }
+    
+    
 
     public void checkKlassen(String[] args) {
         for (String s : args) {
