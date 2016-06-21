@@ -46,8 +46,11 @@ public class PrintPDF {
         
          
        }
-    
-    public void Drucken(String name){     //Druckt alle Jahrgänge aus erwartet einen String als Name für die PDF Datei
+    /**
+     * Druckt alle Jahrgänge,erwartet einen String als Name für die PDF-Datei
+     * @param name 
+     */
+    public void Drucken(String name){     
 
         try {
             erstellen(name);
@@ -98,7 +101,11 @@ public class PrintPDF {
         }
     }
     
-    
+    /**
+     * Druckt den übergebenen Jahrgang,erwartet einen Jahrgang und einen String für die PDF-Datei
+     * @param j
+     * @param name 
+     */
     public void druckeJahrgang(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
 
         try {
@@ -207,9 +214,13 @@ public class PrintPDF {
         return file;
     }
     // NOCH IN ARBEIT :D
-    
-     private void druckeReligionsGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
-         //Jahrgang und einen String für PDF 
+    /**
+     * Druckt die ausgewählte Religionsgruppe,erwartet als Eingabe einen Jahrgang und einen String als Name für die PDF-Datei
+     * @param j
+     * @param name 
+     */
+     private void druckeReligionsGruppe(Jahrgang j,String name){    
+         
 
         try {
             
@@ -257,9 +268,9 @@ public class PrintPDF {
             tableI.setHeaderRows(1);
             tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getReligionsgruppen().get(i).getZahl()+""+ aktuellerJahrgang.getReligionsgruppen().get(i).getReligion() ,
                     tableHeadFont));
-            //Änderung für anderes 
             
-            for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) { //Ändern für andere Gruppe
+            
+            for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) { 
 
                 switch (s.getReligion()) {
                     case "RK":
@@ -282,9 +293,13 @@ public class PrintPDF {
         
 
     }
-   
-     private void druckeSportGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
-         //Jahrgang und einen String für PDF 
+   /**
+    * Druckt die ausgewählte Sportgruppe,erwartet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
+    * @param j
+    * @param name 
+    */
+     private void druckeSportGruppe(Jahrgang j,String name){     
+          
 
         try {
             
@@ -299,7 +314,7 @@ public class PrintPDF {
         }
     }
 
-    private void sportGruppeDrucken(Document document,Jahrgang j) throws DocumentException { //Methode muss noch angepasst
+    private void sportGruppeDrucken(Document document,Jahrgang j) throws DocumentException { 
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
@@ -334,7 +349,7 @@ public class PrintPDF {
                     tableHeadFont));
             //getZahl() fehlt noch in Sportgruppen
             
-            for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) { //Ändern für andere Gruppe
+            for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) { 
 
                 switch (s.getReligion()) {
                     case "RK":
@@ -355,7 +370,11 @@ public class PrintPDF {
         }
         
     }
-    
+    /**
+     * Druckt die ausgewählte FremdsprachenGruppe,erwatet als Eingabe einen Jahrgang und einen String für den Namen für die PDF-Datei
+     * @param j
+     * @param name 
+     */
      private void druckeFremdsprachenGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang und Gruppe  erwartet einen 
          //Jahrgang und einen String für PDF 
 
@@ -442,7 +461,12 @@ public class PrintPDF {
             e.printStackTrace();
         }
     }
-
+/**
+ * Druckt die ausgewählte Zweiggruppe,erwatet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
+ * @param document
+ * @param j
+ * @throws DocumentException 
+ */
     private void zweigGruppeDrucken(Document document,Jahrgang j) throws DocumentException { 
 
         Paragraph preface = new Paragraph();

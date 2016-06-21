@@ -49,7 +49,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<>();
+        jComboBoxSortierung = new javax.swing.JComboBox<String>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -245,7 +245,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCheckBoxFremdsprachen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxReligion, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                            .addComponent(jCheckBoxReligion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(13, 13, 13)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonEinstellungReligion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,7 +289,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxZweig)
                     .addComponent(jButtonEinstellungZweig))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,9 +347,9 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Datei");
 
-        jMenuItemImport.setText("Import");
+        jMenuItemImport.setText("Importieren");
         jMenuItemImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemImportActionPerformed(evt);
@@ -357,7 +357,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemImport);
 
-        jMenuItemOpen.setText("Open");
+        jMenuItemOpen.setText("Öffnen");
         jMenuItemOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemOpenActionPerformed(evt);
@@ -365,7 +365,7 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemOpen);
 
-        jMenuItemSave.setText("Save");
+        jMenuItemSave.setText("Speichern");
         jMenuItemSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSaveActionPerformed(evt);
@@ -374,7 +374,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSave.setEnabled(false);
         jMenu1.add(jMenuItemSave);
 
-        jMenuItemSaveAs.setText("Save As");
+        jMenuItemSaveAs.setText("Speichern unter...");
         jMenuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSaveAsActionPerformed(evt);
@@ -383,7 +383,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSaveAs.setEnabled(false);
         jMenu1.add(jMenuItemSaveAs);
 
-        jMenuItemSettings.setText("Settings");
+        jMenuItemSettings.setText("Einstellungen");
         jMenuItemSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSettingsActionPerformed(evt);
@@ -392,7 +392,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSettings.setEnabled(false);
         jMenu1.add(jMenuItemSettings);
 
-        jMenuItemPrint.setText("Print");
+        jMenuItemPrint.setText("Alles drucken");
         jMenuItemPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemPrintActionPerformed(evt);
@@ -401,7 +401,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemPrint.setEnabled(false);
         jMenu1.add(jMenuItemPrint);
 
-        jMenuItemClose.setText("Close");
+        jMenuItemClose.setText("Schließen");
         jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemCloseActionPerformed(evt);
@@ -411,7 +411,7 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Bearbeiten");
 
         jMenuItem2.setText("jMenuItem2");
         jMenu2.add(jMenuItem2);
