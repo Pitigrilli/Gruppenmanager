@@ -16,20 +16,20 @@ public class ReligionsPanel extends JPanel {
 
     // Die Objektvariablen für die Elemente auf dem JFrame:
     // Auf dem JPanel wird alles angeordnet. 
-    // Es ist das Element, dem das Flow-Layout zugewiesen wird
     // Die sichtbaren Elemente werden als Objektvariablen angelegt:
-    private javax.swing.JCheckBox JCheckBoxA = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxB = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxC = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxD = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxE = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxF = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxG = new javax.swing.JCheckBox();
-    private javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
-    private javax.swing.JComboBox JComboBoxReligion = new javax.swing.JComboBox();
+    private final javax.swing.JCheckBox JCheckBoxA;
+    private final javax.swing.JCheckBox JCheckBoxB = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxC = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxD = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxE = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxF = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxG = new javax.swing.JCheckBox();
+    private final javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
+    private final javax.swing.JComboBox<String> JComboBoxReligion;
 
     public ReligionsPanel() {
         this.setLayout(new java.awt.FlowLayout());
+        JCheckBoxA = new javax.swing.JCheckBox("a");
         this.add(JCheckBoxA);
         JCheckBoxA.setText("a");
         this.add(JCheckBoxB);
@@ -46,44 +46,41 @@ public class ReligionsPanel extends JPanel {
         JCheckBoxG.setText("g");
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
-        this.add(JComboBoxReligion);
-        JComboBoxReligion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Religion wählen", "KATH", "ETH", "EV", "ORTH"}));
 
+        String[] auswahl = {"Religion wählen", "RK", "ETH", "EV", "ORTH"};
+        JComboBoxReligion = new javax.swing.JComboBox<>(auswahl);
+        this.add(JComboBoxReligion);
     }
 
     public void setReligion(String rel) {
         JComboBoxReligion.getModel().setSelectedItem(rel);
     }
-    
-    public String[] getCheckBox(){
-        String[] klassen = new String[7];
-       if(JCheckBoxA.isSelected()){
-           klassen[0]= "a";
-       }else if(JCheckBoxB.isSelected()){
-           klassen[1]= "b";
-       }else if(JCheckBoxC.isSelected()){
-           klassen[2]= "c";
-       }else if(JCheckBoxD.isSelected()){
-           klassen[3]= "d";
-       }else if(JCheckBoxE.isSelected()){
-           klassen[4]= "e";
-       }else if(JCheckBoxF.isSelected()){
-           klassen[5]= "f";
-       }else if(JCheckBoxG.isSelected()){
-           klassen[6]= "g";
-       }else if(JCheckBoxH.isSelected()){
-           klassen[7]= "h";
-       }
+
+    public String[] getKlassen() {
+        String[] klassen = new String[8];
+        if (JCheckBoxA.isSelected()) {
+            klassen[0] = "a";
+        } else if (JCheckBoxB.isSelected()) {
+            klassen[1] = "b";
+        } else if (JCheckBoxC.isSelected()) {
+            klassen[2] = "c";
+        } else if (JCheckBoxD.isSelected()) {
+            klassen[3] = "d";
+        } else if (JCheckBoxE.isSelected()) {
+            klassen[4] = "e";
+        } else if (JCheckBoxF.isSelected()) {
+            klassen[5] = "f";
+        } else if (JCheckBoxG.isSelected()) {
+            klassen[6] = "g";
+        } else if (JCheckBoxH.isSelected()) {
+            klassen[7] = "h";
+        }
         return klassen;
     }
-       
-    
-    
-    public String getComboBoxReligion(){
-        return JComboBoxReligion.getModel().toString();
+
+    public String getReligion() {
+        return (String) JComboBoxReligion.getModel().getSelectedItem();
     }
-    
-    
 
     public void checkKlassen(String[] args) {
         for (String s : args) {

@@ -12,6 +12,7 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Religionsgruppe;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,27 +23,32 @@ public class EinstellungFrame extends javax.swing.JFrame {
     Jahrgang j;
     Gruppeneinteilung ge;
     int anzahlGruppen;
+    JFrame parent;
 
     /**
      * Creates new form StudentEditFrame
      */
-    public EinstellungFrame(Jahrgang j) {
-        
+
+    public EinstellungFrame(Jahrgang j, JFrame parent) {
+        this.parent = parent;
         this.j = j;
-        /// ab hier nut zu Testzwecken
-        
-        j.religionsgruppeErstellen("KATH");
+        // 
+        /* ab hier nut zu Testzwecken
+
+        j.religionsgruppeErstellen("RK");
         Religionsgruppe rk = j.getReligionsgruppen().get(0);
         String[] klassen = {"a", "c"};
         rk.setKlassen(klassen);
-        /// bis hier
+        */// bis hier
         anzahlGruppen = j.getReligionsgruppenzahl();
         initComponents();
         jSpinner1.setValue(anzahlGruppen);
-        
+
         for (Religionsgruppe rg : j.getReligionsgruppen()) {
             ReligionsPanel rp = new ReligionsPanel();
-            rp.setReligion(rg.getReligion());
+            String religion = rg.getReligion();
+            rp.setReligion(religion);
+            System.out.println("Religion: "+religion);
             rp.checkKlassen(rg.getKlassen());
             jPanel1.add(rp);
         }
@@ -144,17 +150,25 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         // TODO add your handling code here:
-   //    int a = 0;
-   //     for(int i = Integer.parseInt(jSpinner1.getValue().toString()); i!=0; i--){
-   //         j.religionsgruppenKlasseHinzufügen(jPanel1.getComponent(a).getComboBoxReligion(), jPanel1.getComponent(a).getCheckBox());
-   //         a++;
-   //     }
+        //Die Religionsgruppen des Jahrgangs müssen entweder bearbeitet oder neu angelegt werden.
+        // Alle alten gruppen werden gelöscht, neu angelegt und ie Schüler neu zugeordnet.
+        j.getReligionsgruppen().clear();
+        for (int i = 0; i < anzahlGruppen; i++) {
+            ReligionsPanel rp = (ReligionsPanel) jPanel1.getComponent(i);
+            String religion = rp.getReligion();
+            j.religionsgruppeErstellen(religion);
+            String[] klassen = rp.getKlassen();
+           j.getReligionsgruppen().get(i).setKlassen(klassen);
+        }
+        j.religionsgruppenZuordnen();
+        
     }//GEN-LAST:event_jButtonErstellenActionPerformed
 
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed
         // TODO add your handling code here:
 
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButtonSchließenActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
@@ -209,7 +223,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
             Jahrgang jahrgang = ge.getJahrgang(5);
 
             public void run() {
-                new EinstellungFrame(jahrgang).setVisible(true);
+                new EinstellungFrame(jahrgang, null).setVisible(true);
             }
         });
     }

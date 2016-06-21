@@ -128,22 +128,22 @@ public class Jahrgang implements Serializable {
         klassenanzahl = i;
     }
 
-    public void setNachReligion() {
-        nachReligion = true;
-        nachZweig = false;
-        nachFremdsprache = false;
+    public void setNachReligion(boolean b) {
+        nachReligion = b;
+        //nachZweig = false;
+        //nachFremdsprache = false;
     }
 
-    public void setNachZweig() {
-        nachReligion = false;
-        nachZweig = true;
-        nachFremdsprache = false;
+    public void setNachZweig(boolean b) {
+        //nachReligion = false;
+        nachZweig = b;
+        //nachFremdsprache = false;
     }
 
-    public void setNachFremdsprache() {
-        nachReligion = false;
-        nachZweig = false;
-        nachFremdsprache = true;
+    public void setNachFremdsprache(boolean b) {
+        //nachReligion = false;
+        //nachZweig = false;
+        nachFremdsprache = b;
     }
 
     public void studentEinfuegen(Student s) {

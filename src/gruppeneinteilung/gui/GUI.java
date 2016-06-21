@@ -156,6 +156,11 @@ public class GUI extends javax.swing.JFrame {
         jLabelZweig3.setVisible(false);
 
         jCheckBoxReligion.setText("Religion");
+        jCheckBoxReligion.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxReligionStateChanged(evt);
+            }
+        });
         jCheckBoxReligion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxReligionActionPerformed(evt);
@@ -312,12 +317,23 @@ public class GUI extends javax.swing.JFrame {
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
         jPanelFremdsprachen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Fremdsprachengruppen", jPanelFremdsprachen);
 
+        jPanelReligion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelReligionFocusGained(evt);
+            }
+        });
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
 
@@ -601,35 +617,35 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
-         new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+         new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
          
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
     private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang,this).setVisible(true);
        
     }//GEN-LAST:event_jCheckBoxSportActionPerformed
 
     private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
         // TODO add your handling code here:
-         new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+         new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
          
     }//GEN-LAST:event_jCheckBoxZweigActionPerformed
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang,this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang,this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
@@ -640,13 +656,32 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdsprachenActionPerformed
         // TODO add your handling code here:
-       new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+       new EinstellungFrame(aktuellerJahrgang,this).setVisible(true);
     }//GEN-LAST:event_jCheckBoxFremdsprachenActionPerformed
 
     private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang).setVisible(true);
+        new EinstellungFrame(aktuellerJahrgang,this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jPanelReligionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelReligionFocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPanelReligionFocusGained
+
+    private void jCheckBoxReligionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxReligionStateChanged
+        // TODO add your handling code here:
+        /*
+        if(jCheckBoxReligion.isSelected()){
+            aktuellerJahrgang.setNachReligion(true);
+        } else {
+            aktuellerJahrgang.setNachReligion(false);
+        }*/
+    }//GEN-LAST:event_jCheckBoxReligionStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEinstellungFremdsprachen;
