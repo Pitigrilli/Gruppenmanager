@@ -107,7 +107,7 @@ public class StudentEditFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NTG_8", "WSG_8", "SOG_8"}));
+        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "NTG_8", "WSG_8", "SOG_8"}));
         jComboZweig.setSelectedItem(s.getZweig());
         jComboZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

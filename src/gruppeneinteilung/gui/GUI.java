@@ -798,6 +798,14 @@ public class GUI extends javax.swing.JFrame {
             jCheckBoxReligion.setSelected(true);
             jButtonEinstellungReligion.setEnabled(true);
             religionsgruppenAnzeigen();
+        } else {
+            aktuellerJahrgang.clearReligionsgruppen();
+            jCheckBoxReligion.setSelected(false);
+            jButtonEinstellungReligion.setEnabled(false);
+            jPanelReligion.removeAll();
+            jPanelReligion.revalidate();
+            jPanelReligion.repaint();
+            
         }
 
 
