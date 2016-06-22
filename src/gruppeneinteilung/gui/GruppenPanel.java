@@ -87,16 +87,16 @@ public class GruppenPanel extends JPanel {
                     c.setForeground(new Color(0, 0, 255));
                     break;
                 case "d":
-                    c.setForeground(new Color(0, 255, 255));
+                    c.setForeground(new Color(0, 0, 0));
                     break;
                 case "e":
-                    c.setForeground(new Color(255, 0, 255));
+                    c.setForeground(new Color(255, 0, 0));
                     break;
                 case "f":
-                    c.setForeground(new Color(255, 255, 0));
+                    c.setForeground(new Color(255, 0, 0));
                     break;
                 case "g":
-                    c.setForeground(new Color(255, 255, 255));
+                    c.setForeground(new Color(0, 255, 0));
                     break;
             }
             JLabel l = (JLabel) c;

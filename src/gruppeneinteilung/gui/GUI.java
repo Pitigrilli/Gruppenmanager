@@ -490,21 +490,13 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungFremdsprachen.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
-
         jLabelKatholisch.setVisible(true);
-
         jLabelEvangelisch.setVisible(true);
-
         jLabelEthik.setVisible(true);
-
         jLabelMännlich.setVisible(true);
-
         jLabelWeiblich.setVisible(true);
-
         jLabelZweig1.setVisible(true);
-
         jLabelZweig2.setVisible(true);
-
         jLabelZweig3.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
@@ -534,23 +526,14 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungFremdsprachen.setEnabled(true);
         jLabelKlassen.setEnabled(true);
         jLabelSchülergesamt.setVisible(true);
-
         jLabelKatholisch.setVisible(true);
-
         jLabelEvangelisch.setVisible(true);
-
         jLabelEthik.setVisible(true);
-
         jLabelMännlich.setVisible(true);
-
         jLabelWeiblich.setVisible(true);
-
         jLabelZweig1.setVisible(true);
-
         jLabelZweig2.setVisible(true);
-
         jLabelZweig3.setVisible(true);
-
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -674,13 +657,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelReligionFocusGained
 
     private void jCheckBoxReligionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxReligionStateChanged
-        // TODO add your handling code here:
-        /*
-        if(jCheckBoxReligion.isSelected()){
-            aktuellerJahrgang.setNachReligion(true);
-        } else {
-            aktuellerJahrgang.setNachReligion(false);
-        }*/
+//        if(jCheckBoxReligion.isSelected()){
+//            aktuellerJahrgang.setNachReligion(true);
+//             new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+//        } else {
+//            aktuellerJahrgang.setNachReligion(false);
+//        }
     }//GEN-LAST:event_jCheckBoxReligionStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

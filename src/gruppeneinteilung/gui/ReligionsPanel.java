@@ -60,19 +60,26 @@ public class ReligionsPanel extends JPanel {
         String[] klassen = new String[8];
         if (JCheckBoxA.isSelected()) {
             klassen[0] = "a";
-        } else if (JCheckBoxB.isSelected()) {
+        }
+        if (JCheckBoxB.isSelected()) {
             klassen[1] = "b";
-        } else if (JCheckBoxC.isSelected()) {
+        }
+        if (JCheckBoxC.isSelected()) {
             klassen[2] = "c";
-        } else if (JCheckBoxD.isSelected()) {
+        }
+        if (JCheckBoxD.isSelected()) {
             klassen[3] = "d";
-        } else if (JCheckBoxE.isSelected()) {
+        }
+        if (JCheckBoxE.isSelected()) {
             klassen[4] = "e";
-        } else if (JCheckBoxF.isSelected()) {
+        }
+        if (JCheckBoxF.isSelected()) {
             klassen[5] = "f";
-        } else if (JCheckBoxG.isSelected()) {
+        }
+        if (JCheckBoxG.isSelected()) {
             klassen[6] = "g";
-        } else if (JCheckBoxH.isSelected()) {
+        }
+        if (JCheckBoxH.isSelected()) {
             klassen[7] = "h";
         }
         return klassen;
@@ -84,6 +91,9 @@ public class ReligionsPanel extends JPanel {
 
     public void checkKlassen(String[] args) {
         for (String s : args) {
+            if (s == null) {
+                continue;
+            }
             switch (s) {
                 case "a":
                     JCheckBoxA.setSelected(true);

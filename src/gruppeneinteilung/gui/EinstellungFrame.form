@@ -106,7 +106,7 @@
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner1StateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jSpinner1.setValue(j.getReligionsgruppenzahl());"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jSpinner1.setValue(jahrgang.getReligionsgruppenzahl());"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSchlie&#xdf;en">

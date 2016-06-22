@@ -140,7 +140,7 @@ public class Jahrgang implements Serializable {
         //nachFremdsprache = false;
     }
 
-    public void setNachFremdsprache(boolean b) {
+    public void setNachSprache(boolean b) {
         //nachReligion = false;
         //nachZweig = false;
         nachFremdsprache = b;
@@ -653,6 +653,10 @@ public class Jahrgang implements Serializable {
                 }
             }
         }
+    }
+    
+    public void clearReligionsgruppen(){
+        religionsgruppen = new ArrayList<>();
     }
 }
 
