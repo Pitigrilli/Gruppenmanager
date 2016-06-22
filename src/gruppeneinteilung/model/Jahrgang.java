@@ -634,6 +634,17 @@ public class Jahrgang implements Serializable {
             }
         }
     }
+//    
+//    public void religionsgruppenZuordnen2(){
+//        
+//        for(Klasse k: klassen){
+//            for(Student s: k.getSchueler()){
+//                String b = s.getKlasse();
+//                String r = s.getReligion();
+//                
+//            }
+//        }
+//    }
 
     public void clearReligionsgruppen() {
         religionsgruppen = new ArrayList<>();

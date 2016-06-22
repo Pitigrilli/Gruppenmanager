@@ -167,7 +167,7 @@ public class KlassenPanel extends JPanel {
                         //System.out.println("Drop:"+student);
                         if (insert) {
                             listModel.add(index, student);
-                            // Der Schüler bekommt seine Klasse richtig geetzt
+                            // Der Schüler bekommt seine Klasse richtig gesetzt
                             student.setKlasse(gruppenName.substring(gruppenName.length() - 1));
                             gruppe.add(index, student);
                         }

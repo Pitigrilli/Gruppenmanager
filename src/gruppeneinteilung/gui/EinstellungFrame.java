@@ -173,6 +173,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
         jahrgang.testKlassen();
         jahrgang.religionsgruppenZuordnen();
         parent.religionsgruppenAnzeigen();
+        
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed
 
