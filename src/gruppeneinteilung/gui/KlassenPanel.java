@@ -180,6 +180,9 @@ public class KlassenPanel extends JPanel {
         gruppenListe.setDropMode(DropMode.INSERT);
 
     }
+     public int getAnzahlSchueler(){
+        return gruppe.size();
+    }
 
     static class KlassenCellRenderer extends DefaultListCellRenderer {
 
@@ -208,7 +211,9 @@ public class KlassenPanel extends JPanel {
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getName() + " " + 
+            l.setText(s.getJahrgang()+" "+
+                    s.getKlasse()+" "+
+                    s.getName() + " " + 
                     s.getGeschlecht() + " " + 
                     s.getZweig() + " " + 
                     s.getReligion() + " " + 

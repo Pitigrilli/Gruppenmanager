@@ -12,6 +12,9 @@ import gruppeneinteilung.model.Gruppeneinteilung;
 import javax.swing.JPanel;
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Religionsgruppe;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JFrame;
 
 /**
@@ -28,12 +31,11 @@ public class EinstellungFrame extends javax.swing.JFrame {
     /**
      * Creates new form StudentEditFrame
      */
-
     public EinstellungFrame(Jahrgang j, JFrame parent) {
         this.parent = (GUI) parent;
         this.jahrgang = j;
         initComponents();
-        anzahlGruppen=j.getReligionsgruppen().size();
+        anzahlGruppen = j.getReligionsgruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
         for (Religionsgruppe rg : j.getReligionsgruppen()) {
@@ -149,10 +151,10 @@ public class EinstellungFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *  Alle alten Gruppen werden gelöscht, neu angelegt und die Schüler
-     *  den Gruppen neu zugeordnet.
-     *  Das Frame wird geschlossen
-     * @param evt 
+     * Alle alten Gruppen werden gelöscht, neu angelegt und die Schüler den
+     * Gruppen neu zugeordnet. Das Frame wird geschlossen
+     *
+     * @param evt
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearReligionsgruppen();
@@ -161,8 +163,14 @@ public class EinstellungFrame extends javax.swing.JFrame {
             String religion = rp.getReligion();
             jahrgang.religionsgruppeErstellen(religion);
             String[] klassen = rp.getKlassen();
-           jahrgang.getReligionsgruppen().get(i).setKlassen(klassen);
+            List<String> list = new ArrayList<String>(Arrays.asList(klassen));
+//            System.out.println(list);
+            list.removeAll(Arrays.asList("", null));
+//            System.out.println(list);
+            klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
+            jahrgang.getReligionsgruppen().get(i).setKlassen(klassen);
         }
+        jahrgang.testKlassen();
         jahrgang.religionsgruppenZuordnen();
         parent.religionsgruppenAnzeigen();
         dispose();
@@ -170,7 +178,8 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     /**
      * Schließt das Fenster ohne die Änderungen zu speichern
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed
         // TODO add your handling code here:
@@ -179,10 +188,12 @@ public class EinstellungFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSchließenActionPerformed
 
     /**
-     * Der in der Spinnerbox angezeigte Wert wird mit der anzahlGruppen verglichen.
-     * Ist der aktWert eins größer wird ein neues Auswahl Panel hinzugefügt
-     * Ist der Wert eins kleiner wird das unterste Auswahl Panel entfernt.
-     * @param evt 
+     * Der in der Spinnerbox angezeigte Wert wird mit der anzahlGruppen
+     * verglichen. Ist der aktWert eins größer wird ein neues Auswahl Panel
+     * hinzugefügt Ist der Wert eins kleiner wird das unterste Auswahl Panel
+     * entfernt.
+     *
+     * @param evt
      */
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());

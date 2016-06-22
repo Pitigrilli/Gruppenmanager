@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 public class GUI extends javax.swing.JFrame {
@@ -612,7 +613,40 @@ public class GUI extends javax.swing.JFrame {
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
         // TODO add your handling code here:
-
+        int aktWert = Integer.parseInt(jSpinnerAnzahlKlassen.getValue().toString());
+        int anzahlKlassenPanel = jPanelKlassen.getComponentCount();
+        
+        if (aktWert == anzahlKlassenPanel + 1) {
+            String  neuBuchstabeKlasse="";
+            switch(aktWert){
+                case 1: neuBuchstabeKlasse="a"; break;
+                case 2: neuBuchstabeKlasse="b"; break;
+                case 3: neuBuchstabeKlasse="c"; break;
+                case 4: neuBuchstabeKlasse="d"; break;
+                case 5: neuBuchstabeKlasse="e"; break;
+                case 6: neuBuchstabeKlasse="f"; break;
+                case 7: neuBuchstabeKlasse="g"; break;
+                case 8: neuBuchstabeKlasse="h"; break;
+            }
+            System.out.println(aktuellerJahrgang.getJahrgang() + neuBuchstabeKlasse);
+            Klasse klasseNeu = aktuellerJahrgang.getKlasse(neuBuchstabeKlasse);
+            KlassenPanel gp = new KlassenPanel(klasseNeu.getSchueler(), aktuellerJahrgang.getJahrgang() + klasseNeu.getBuchstabe());
+            jPanelKlassen.add(gp);
+            jPanelKlassen.revalidate();
+            jPanelKlassen.repaint();
+        } else if (aktWert == anzahlKlassenPanel - 1) {
+            int  indexLetztesPanel = jPanelKlassen.getComponentCount() - 1;
+            KlassenPanel gp  = (KlassenPanel) jPanelKlassen.getComponent(indexLetztesPanel);
+            if(gp.getAnzahlSchueler()>0){
+                JOptionPane.showMessageDialog(null, "Die letzte Gruppe ist nicht leer.\n Entfernen nicht möglich.");
+                jSpinnerAnzahlKlassen.setValue(anzahlKlassenPanel);
+                return;
+            }
+                
+            jPanelKlassen.remove(indexLetztesPanel);
+            jPanelKlassen.revalidate();
+            jPanelKlassen.repaint();
+        }
 
     }//GEN-LAST:event_jSpinnerAnzahlKlassenStateChanged
 
@@ -743,7 +777,6 @@ public class GUI extends javax.swing.JFrame {
         }
         this.setTitle("Kursmanager" + dateiname);
         if (ge.getAktJahrgang() != null) {
-            System.out.println("Aktueller Jahrgang gefunden: " + ge.getAktJahrgang().getJahrgang());
             aktuellerJahrgang = ge.getAktJahrgang();
             jComboBoxJahrgang.setSelectedIndex(aktuellerJahrgang.getJahrgang() - 4);
         }
@@ -871,7 +904,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
-                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
+                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang.getJahrgang() + k.getBuchstabe()+": "+k.getKlassengroesse()+" Schüler");
                 jPanelKlassen.add(gp);
             }
         }

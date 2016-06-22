@@ -61,6 +61,10 @@ public class GruppenPanel extends JPanel {
             dlm.addElement(student);
         }
     }
+    
+    public int getAnzahlSchueler(){
+        return gruppe.size();
+    }
 
     static class GruppenCellRenderer extends DefaultListCellRenderer {
 
@@ -90,13 +94,13 @@ public class GruppenPanel extends JPanel {
                     c.setForeground(new Color(0, 0, 0));
                     break;
                 case "e":
-                    c.setForeground(new Color(255, 0, 0));
+                    c.setForeground(new Color(255, 100, 0));
                     break;
                 case "f":
-                    c.setForeground(new Color(255, 0, 0));
+                    c.setForeground(new Color(255, 0, 100));
                     break;
                 case "g":
-                    c.setForeground(new Color(0, 255, 0));
+                    c.setForeground(new Color(0, 255, 100));
                     break;
             }
             JLabel l = (JLabel) c;

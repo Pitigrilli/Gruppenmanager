@@ -11,6 +11,8 @@ package gruppeneinteilung.model;
  */
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Jahrgang implements Serializable {
 
@@ -614,13 +616,20 @@ public class Jahrgang implements Serializable {
      * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
      */
     public void religionsgruppenZuordnen() {
-        for (int i = 0; i < religionsgruppen.size(); i++) {
-            Religionsgruppe aktuelleRG = religionsgruppen.get(i);
+        for (Religionsgruppe aktuelleRG: religionsgruppen) {
+           List klassenList = Arrays.asList(aktuelleRG.getKlassen());
 
-            for (int j = 0; j < alle.size(); j++) {
-                if (alle.get(j).getReligion().equals(aktuelleRG.getReligion())
-                        && (alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[0]) || alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[1]) || alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[2]) || alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[3]) || alle.get(j).getKlasse().equals(aktuelleRG.getKlassen()[4]))) {
-                    aktuelleRG.studentHinzufuegen(alle.get(j));
+            for (Student student: alle) {
+                
+                if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
+//                        student.getReligion().equals(aktuelleRG.getReligion())
+//                        && (student.getKlasse().equals(aktuelleRG.getKlassen()[0])
+//                        || student.getKlasse().equals(aktuelleRG.getKlassen()[1]) ||
+//                        student.getKlasse().equals(aktuelleRG.getKlassen()[2]) || 
+//                        student.getKlasse().equals(aktuelleRG.getKlassen()[3]) || 
+//                        student.getKlasse().equals(aktuelleRG.getKlassen()[4]))
+                        ) {
+                    aktuelleRG.studentHinzufuegen(student);
                 }
             }
         }
