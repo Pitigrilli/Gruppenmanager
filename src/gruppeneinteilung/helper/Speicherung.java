@@ -40,12 +40,12 @@ public class Speicherung {
     }
 
     public void speichern() {
-
         try {
             FileOutputStream fileStream = new FileOutputStream(file, false);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            objectStream.writeObject(ge.getStudents());
-            objectStream.writeObject(ge.getJahrgaenge());
+            objectStream.writeObject(ge);//neu
+//            objectStream.writeObject(ge.getStudents());
+//            objectStream.writeObject(ge.getJahrgaenge());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -58,41 +58,42 @@ public class Speicherung {
     }
 
     public Gruppeneinteilung serialisierungLaden() {
-        
 
         try {
             FileInputStream fileStream = new FileInputStream(file);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
             Object obj = objectStream.readObject();
-            if (obj instanceof ArrayList<?>) {
-                ArrayList<?> al = (ArrayList<?>) obj;
-                if (al.size() > 0) {
-                    // Iterate.
-                    for (int i = 0; i < al.size(); i++) {
-                        // Still not enough for a type.
-                        Object o = al.get(i);
-                        if (o instanceof Student) {
-                            Student v = (Student) o;
-                            ge.getStudents().add(v);
-                        }
-                    }
-                }
-            }
-            obj = objectStream.readObject();
-            if (obj instanceof ArrayList<?>) {
-                ArrayList<?> al = (ArrayList<?>) obj;
-                if (al.size() > 0) {
-                    // Iterate.
-                    for (int i = 0; i < al.size(); i++) {
-                        // Still not enough for a type.
-                        Object o = al.get(i);
-                        if (o instanceof Jahrgang) {
-                            Jahrgang v = (Jahrgang) o;
-                            ge.getJahrgaenge().add(v);
-                        }
-                    }
-                }
-            }
+            if(obj instanceof Gruppeneinteilung)
+            ge = (Gruppeneinteilung) obj;
+//            if (obj instanceof ArrayList<?>) {
+//                ArrayList<?> al = (ArrayList<?>) obj;
+//                if (al.size() > 0) {
+//                    // Iterate.
+//                    for (int i = 0; i < al.size(); i++) {
+//                        // Still not enough for a type.
+//                        Object o = al.get(i);
+//                        if (o instanceof Student) {
+//                            Student v = (Student) o;
+//                            ge.getStudents().add(v);
+//                        }
+//                    }
+//                }
+//            }
+//            obj = objectStream.readObject();
+//            if (obj instanceof ArrayList<?>) {
+//                ArrayList<?> al = (ArrayList<?>) obj;
+//                if (al.size() > 0) {
+//                    // Iterate.
+//                    for (int i = 0; i < al.size(); i++) {
+//                        // Still not enough for a type.
+//                        Object o = al.get(i);
+//                        if (o instanceof Jahrgang) {
+//                            Jahrgang v = (Jahrgang) o;
+//                            ge.getJahrgaenge().add(v);
+//                        }
+//                    }
+//                }
+//            }
 
         } catch (Exception ex) {
             ex.printStackTrace();

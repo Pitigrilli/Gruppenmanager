@@ -6,12 +6,15 @@ package gruppeneinteilung.model;
 
 import gruppeneinteilung.helper.ASVImport;
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Gruppeneinteilung {
+public class Gruppeneinteilung implements Serializable {
 
     private ArrayList<Student> students;
     private final ArrayList<Jahrgang> jahrgaenge;
+    private Jahrgang aktJahrgang;
+
     private File file;
     /*
      Folgender Konstruktor wird nur zum Testen benötigt
@@ -64,6 +67,15 @@ public class Gruppeneinteilung {
 
     public File getFile() {
         return file;
+    }
+
+    public void setAktJahrgang(Jahrgang aktJahrgang) {
+        this.aktJahrgang = aktJahrgang;
+    }
+    
+    
+    public Jahrgang getAktJahrgang() {
+        return aktJahrgang;
     }
 
     public Jahrgang getJahrgang(int n) {
