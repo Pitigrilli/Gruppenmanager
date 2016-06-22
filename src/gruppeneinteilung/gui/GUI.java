@@ -566,7 +566,20 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        if(jCheckBoxReligion.isSelected()){
+            aktuellerJahrgang.setNachReligion(true);
+             new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+             jButtonEinstellungReligion.setEnabled(true);
+        } else {
+            aktuellerJahrgang.setNachReligion(false);
+            aktuellerJahrgang.clearReligionsgruppen();
+            jButtonEinstellungReligion.setEnabled(false);
+            jPanelReligion.removeAll();
+            jPanelReligion.revalidate();
+            jPanelReligion.repaint();
+            
+        }
+        
 
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
@@ -623,12 +636,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelReligionFocusGained
 
     private void jCheckBoxReligionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxReligionStateChanged
-//        if(jCheckBoxReligion.isSelected()){
-//            aktuellerJahrgang.setNachReligion(true);
-//             new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
-//        } else {
-//            aktuellerJahrgang.setNachReligion(false);
-//        }
+
     }//GEN-LAST:event_jCheckBoxReligionStateChanged
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -778,15 +786,29 @@ public class GUI extends javax.swing.JFrame {
 
         aktuellerJahrgang = ge.getJahrgang(n);
         ge.setAktJahrgang(aktuellerJahrgang);
-        System.out.println("Aktueller Jahrgang gesetzt: " + ge.getAktJahrgang().getJahrgang());
         aktuellerJahrgang.setKlassenanzahl();
         int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
         jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
 
         aktiviereJahrgangComponents(true);
         klassenAnzeigen();
+        aktualisiereLabelJahrgang();
+        
+        if(aktuellerJahrgang.istNachReligion()){
+            jCheckBoxReligion.setSelected(true);
+            jButtonEinstellungReligion.setEnabled(true);
+            religionsgruppenAnzeigen();
+        }
 
-        if (n == 5 || n == 6) {
+
+
+        jPanelKlassen.revalidate();
+        jPanelKlassen.repaint();
+
+    }
+    public void aktualisiereLabelJahrgang(){
+        int n = aktuellerJahrgang.getJahrgang();
+                if (n == 5 || n == 6) {
             String anzahlGY = aktuellerJahrgang.getGY() + "";
             //jLabel1Anzahl.setText(anzahlGY);
             jLabelZweig1.setText("ohne Zweig: " + anzahlGY);
@@ -835,10 +857,6 @@ public class GUI extends javax.swing.JFrame {
         String anzahlWeiblich = aktuellerJahrgang.getWeiblich() + "";
         jLabelWeiblich.setText("Weiblich: " + anzahlWeiblich);
         //jLabelWeiblichAnzahl.setText(anzahlWeiblich);
-
-        jPanelKlassen.revalidate();
-        jPanelKlassen.repaint();
-
     }
 
     public void klassenAnzeigen() {
@@ -866,9 +884,9 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelReligion.removeAll();
         for (Religionsgruppe r : aktuellerJahrgang.getReligionsgruppen()) {
-            if (r.getZahl() > 0) {
-                jPanelReligion.add(new GruppenPanel(r.getSchueler(), "" + r.getZahl()));
-            }
+            
+                jPanelReligion.add(new GruppenPanel(r.getSchueler(), ""+r.getReligion()+": " + r.getReligiongroesse()+" Schüler"));
+     
         }
         jPanelReligion.revalidate();
         jPanelReligion.repaint();
@@ -877,9 +895,9 @@ public class GUI extends javax.swing.JFrame {
     public void zweiggruppenAnzeigen() {
         jPanelZweig.removeAll();
         for (Zweiggruppe r : aktuellerJahrgang.getZweiggruppen()) {
-            if (r.getZahl() > 0) {
+
                 jPanelZweig.add(new GruppenPanel(r.getSchueler(), "" + r.getZahl()));
-            }
+
         }
         jPanelZweig.revalidate();
         jPanelZweig.repaint();

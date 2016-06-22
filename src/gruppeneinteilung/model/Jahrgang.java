@@ -37,7 +37,8 @@ public class Jahrgang implements Serializable {
     private int klassenanzahl;
     private boolean nachReligion;
     private boolean nachZweig;
-    private boolean nachFremdsprache;
+    private boolean nachSprache;
+    private boolean nachSport;
     private int sportgruppenzahl;
     private int religionsgruppenzahl;
     private int zweiggruppenzahl;
@@ -160,7 +161,7 @@ public class Jahrgang implements Serializable {
     public void setNachSprache(boolean b) {
         //nachReligion = false;
         //nachZweig = false;
-        nachFremdsprache = b;
+        nachSprache = b;
     }
 
     public void studentEinfuegen(Student s) {
@@ -591,6 +592,22 @@ public class Jahrgang implements Serializable {
 
     public int getFremdsprachengruppenzahl() {
         return fremdsprachengruppen.size();
+    }
+    
+    public boolean istNachReligion(){
+        return nachReligion;
+    }
+    
+    public boolean istNachZweig(){
+        return nachZweig;
+    }
+    
+    public boolean istNachSprache(){
+        return nachSprache;
+    }
+    
+    public boolean istNachSport(){
+        return nachSport;
     }
 
     /**
