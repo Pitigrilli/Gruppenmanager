@@ -586,6 +586,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
+        //aktuellerJahrgang.testKlassen();
         new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 

@@ -48,26 +48,23 @@ public class Jahrgang implements Serializable {
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
-        Jahrgang j = ge.getJahrgang(5);
+        Jahrgang j = ge.getJahrgang(7);
         Klasse k = j.getKlasse("b");
-      //  ge.testeEinteilung();
+        //  ge.testeEinteilung();
 //        for (int i = 5; i < 11; i++) {
 //            ge.getJahrgang(i).testKlassen();
 //        }
-        
-        System.out.println(k);
-        k.test();
-        k.sortierenName();
-      //  ge.getJahrgang(5).getKlasse("b").test();
-       // ge.getJahrgang(5).getKlasse("b").sortierenGeschlecht();
-     //   ge.getJahrgang(5).getKlasse("b").test();
+        j.testKlassen();
+        //System.out.println(k);
+        //k.test();
+        //k.sortierenName();
+        //  ge.getJahrgang(5).getKlasse("b").test();
+        // ge.getJahrgang(5).getKlasse("b").sortierenGeschlecht();
+        //   ge.getJahrgang(5).getKlasse("b").test();
 
-     
         //j.religionsgruppeErstellen("ETH");
         //j.getReligionsgruppen().get(0).klasseHinzufügen("a");
-       // j.religionsgruppenZuordnen();
-        
-
+        // j.religionsgruppenZuordnen();
     }
 
     public Jahrgang(int n) {
@@ -600,20 +597,20 @@ public class Jahrgang implements Serializable {
     public int getFremdsprachengruppenzahl() {
         return fremdsprachengruppen.size();
     }
-    
-    public boolean istNachReligion(){
+
+    public boolean istNachReligion() {
         return nachReligion;
     }
-    
-    public boolean istNachZweig(){
+
+    public boolean istNachZweig() {
         return nachZweig;
     }
-    
-    public boolean istNachSprache(){
+
+    public boolean istNachSprache() {
         return nachSprache;
     }
-    
-    public boolean istNachSport(){
+
+    public boolean istNachSport() {
         return nachSport;
     }
 
@@ -621,22 +618,43 @@ public class Jahrgang implements Serializable {
      * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
      */
     public void religionsgruppenZuordnen() {
-        for (Religionsgruppe aktuelleRG: religionsgruppen) {
-           List klassenList = Arrays.asList(aktuelleRG.getKlassen());
+        int i = 1;
+        for (Religionsgruppe aktuelleRG : religionsgruppen) {
+            String religion = aktuelleRG.getReligion();
+            System.out.println("ReliGruppe " + i + ": " + religion);
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
 
-            for (Student student: alle) {
-                
-                if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
-//                        student.getReligion().equals(aktuelleRG.getReligion())
-//                        && (student.getKlasse().equals(aktuelleRG.getKlassen()[0])
-//                        || student.getKlasse().equals(aktuelleRG.getKlassen()[1]) ||
-//                        student.getKlasse().equals(aktuelleRG.getKlassen()[2]) || 
-//                        student.getKlasse().equals(aktuelleRG.getKlassen()[3]) || 
-//                        student.getKlasse().equals(aktuelleRG.getKlassen()[4]))
-                        ) {
-                    aktuelleRG.studentHinzufuegen(student);
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            System.out.println("Klassen in List:" + klassenList + "\n");
+
+            for (Klasse k : klassen) {
+                if (k.getKlassengroesse() > 0) {
+                    for (Student student : k.getSchueler()) {
+                        if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
+                                ) {
+                            aktuelleRG.studentHinzufuegen(student);
+                        }
+                    }
                 }
             }
+
+//            for (Student student: alle) {
+//                System.out.println(student);
+//                if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
+////                        student.getReligion().equals(aktuelleRG.getReligion())
+////                        && (student.getKlasse().equals(aktuelleRG.getKlassen()[0])
+////                        || student.getKlasse().equals(aktuelleRG.getKlassen()[1]) ||
+////                        student.getKlasse().equals(aktuelleRG.getKlassen()[2]) || 
+////                        student.getKlasse().equals(aktuelleRG.getKlassen()[3]) || 
+////                        student.getKlasse().equals(aktuelleRG.getKlassen()[4]))
+//                        ) {
+//                    //if(student.getKlasse().equals("e")){
+//                        
+//                    //}
+//                    aktuelleRG.studentHinzufuegen(student);
+//                }
+//            }
         }
     }
 //    

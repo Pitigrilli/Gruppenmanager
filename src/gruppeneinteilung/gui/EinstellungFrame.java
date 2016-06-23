@@ -7,9 +7,7 @@ package gruppeneinteilung.gui;
 
 //import gruppeneinteilung.model.Student;
 //import gruppeneinteilung.gui.ReligionsPanel;
-import gruppeneinteilung.model.Gruppeneinteilung;
 //import java.awt.FlowLayout;
-import javax.swing.JPanel;
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Religionsgruppe;
 import java.util.ArrayList;
@@ -30,6 +28,8 @@ public class EinstellungFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form StudentEditFrame
+     * @param j
+     * @param parent
      */
     public EinstellungFrame(Jahrgang j, JFrame parent) {
         this.parent = (GUI) parent;
@@ -44,7 +44,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
             rp.setReligion(religion);
 //            System.out.println("Religion: "+religion);
             String[] klassen = rg.getKlassen();
-//            System.out.println("Anzahl KLassen: "+klassen.length);
+//            System.out.println("Anzahl Klassen: "+klassen.length);
 //            int i=0;
 //            for(String s: klassen){
 //                System.out.println("Klasse "+i+":"+s);
@@ -163,14 +163,17 @@ public class EinstellungFrame extends javax.swing.JFrame {
             String religion = rp.getReligion();
             jahrgang.religionsgruppeErstellen(religion);
             String[] klassen = rp.getKlassen();
-            List<String> list = new ArrayList<String>(Arrays.asList(klassen));
-//            System.out.println(list);
+            List<String> list = new ArrayList<>(Arrays.asList(klassen));
+            System.out.println(list);
             list.removeAll(Arrays.asList("", null));
-//            System.out.println(list);
+            System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
+            
             jahrgang.getReligionsgruppen().get(i).setKlassen(klassen);
         }
         jahrgang.testKlassen();
+        System.out.println("____________________________________________________________");
+        jahrgang.ausgabeAlle();
         jahrgang.religionsgruppenZuordnen();
         parent.religionsgruppenAnzeigen();
         
