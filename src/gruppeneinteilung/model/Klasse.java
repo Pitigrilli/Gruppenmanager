@@ -15,8 +15,6 @@ public class Klasse extends SortierbareGruppe implements Serializable{
     private final String buchstabe;
     //private final ArrayList<Student> schueler;
     
-    public static String sortierung;
-
     public Klasse(String b, int j) {
         buchstabe = b;
         jahrgang = j;

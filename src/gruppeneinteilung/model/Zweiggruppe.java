@@ -11,8 +11,7 @@ public class Zweiggruppe extends SortierbareGruppe implements Serializable{
     private final int jahrgang;
     private String Zweig;
     private final int zahl;
-    private String[] klassen;
-    //private final ArrayList<Student> schueler;
+    private final String[] klassen;
 
     public Zweiggruppe (int z, int j,String g) {
        zahl = z;

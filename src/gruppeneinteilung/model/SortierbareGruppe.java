@@ -8,10 +8,10 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.io.Serializable;
 /**
- *
+ * Sortierbare Gruppe ist die Supperklasse von Klasse und den anderen Gruppen.
  * @author floth.rene
  */
-public class SortierbareGruppe implements Serializable
+public abstract class SortierbareGruppe implements Serializable
 {
     protected ArrayList <Student> schueler;
     public static String sortierung;

@@ -48,20 +48,25 @@ public class Jahrgang implements Serializable {
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
-        ge.testeEinteilung();
-        for (int i = 5; i < 11; i++) {
-            //ge.getJahrgang(i).testKlassen();
-        }
-        ge.getJahrgang(5).getKlasse("b").sortierenName();
-        ge.getJahrgang(5).getKlasse("b").test();
-        ge.getJahrgang(5).getKlasse("b").sortierenGeschlecht();
-        ge.getJahrgang(5).getKlasse("b").test();
-
         Jahrgang j = ge.getJahrgang(5);
-        j.religionsgruppeErstellen("ETH");
-        j.getReligionsgruppen().get(0).klasseHinzufügen("a");
-        j.religionsgruppenZuordnen();
-       // for(int i = 0; i < j.getReligionsgruppen()[0].getschüler().size(); i++)
+        Klasse k = j.getKlasse("b");
+      //  ge.testeEinteilung();
+//        for (int i = 5; i < 11; i++) {
+//            ge.getJahrgang(i).testKlassen();
+//        }
+        
+        System.out.println(k);
+        k.test();
+        k.sortierenName();
+      //  ge.getJahrgang(5).getKlasse("b").test();
+       // ge.getJahrgang(5).getKlasse("b").sortierenGeschlecht();
+     //   ge.getJahrgang(5).getKlasse("b").test();
+
+     
+        //j.religionsgruppeErstellen("ETH");
+        //j.getReligionsgruppen().get(0).klasseHinzufügen("a");
+       // j.religionsgruppenZuordnen();
+        
 
     }
 
