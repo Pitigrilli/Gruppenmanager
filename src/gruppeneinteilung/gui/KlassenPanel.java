@@ -13,27 +13,34 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import static javax.swing.TransferHandler.MOVE;
 
 public class KlassenPanel extends JPanel {
 
-    String gruppenName;
-    ArrayList<Student> gruppe;
-    JList<Student> gruppenListe;
-    DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
-    DefaultListModel<Student> dlm = new DefaultListModel<>();
-    JPopupMenu jpopupmenu;
+    private String anzeige;
+    private final String buchstabe;
+    private final String name;
+    private final JLabel titel;
+    private final ArrayList<Student> gruppe;
+    private final JList<Student> gruppenListe;
+    private final DataFlavor studentFlavor;
+    private final DefaultListModel<Student> dlm = new DefaultListModel<>();
+    private final JPopupMenu jpopupmenu;
 
     public KlassenPanel(ArrayList<Student> gruppe, String name) {
+        this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
         this.gruppe = gruppe;
-        this.gruppenName = name;
+        this.name = name;
+               
+        buchstabe = name.substring(name.length()-1);
 
         setLayout(new java.awt.BorderLayout());
         // Titel
-        JLabel titel = new JLabel(name);
+         titel= new JLabel();
+         setzeTitel();
+         System.out.println(anzeige);
         add(titel, BorderLayout.NORTH);
         
         //Popupmenu
@@ -102,8 +109,7 @@ public class KlassenPanel extends JPanel {
 
     public void enableDnD() {
         gruppenListe.setDragEnabled(true);
-        gruppenListe.setTransferHandler(
-                new TransferHandler() {
+        gruppenListe.setTransferHandler(new TransferHandler() {
                     //Student student;
 
                     @Override
@@ -132,6 +138,7 @@ public class KlassenPanel extends JPanel {
                         if (action == MOVE) {
                             listModel.removeElement(student);
                             gruppe.remove(student);
+                            setzeTitel();
                         }
                     }
 
@@ -168,8 +175,10 @@ public class KlassenPanel extends JPanel {
                         if (insert) {
                             listModel.add(index, student);
                             // Der Schüler bekommt seine Klasse richtig gesetzt
-                            student.setKlasse(gruppenName.substring(gruppenName.length() - 1));
+                            
+                            student.setKlasse(buchstabe);
                             gruppe.add(index, student);
+                            setzeTitel();
                         }
 
                         return true;
@@ -183,6 +192,10 @@ public class KlassenPanel extends JPanel {
      public int getAnzahlSchueler(){
         return gruppe.size();
     }
+     private void setzeTitel(){
+          anzeige = name+": "+gruppe.size()+" Schüler";
+          titel.setText(anzeige);
+     }
 
     static class KlassenCellRenderer extends DefaultListCellRenderer {
 

@@ -65,6 +65,7 @@ public class Speicherung {
             Object obj = objectStream.readObject();
             if(obj instanceof Gruppeneinteilung)
             ge = (Gruppeneinteilung) obj;
+            ge.setFile(file);
 //            if (obj instanceof ArrayList<?>) {
 //                ArrayList<?> al = (ArrayList<?>) obj;
 //                if (al.size() > 0) {

@@ -905,7 +905,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
-                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang.getJahrgang() + k.getBuchstabe()+": "+k.getKlassengroesse()+" Schüler");
+                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
                 jPanelKlassen.add(gp);
             }
         }
