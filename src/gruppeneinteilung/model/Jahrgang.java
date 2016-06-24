@@ -315,6 +315,15 @@ public class Jahrgang implements Serializable {
         }
     }
 
+    public void testReligionsgruppen() {
+        for (Religionsgruppe rg : religionsgruppen) {
+            System.out.println("Gruppe: " + rg.getReligion());
+            for (Student s : rg.getSchueler()) {
+                System.out.println(s);
+            }
+        }
+    }
+
     public void sportgruppeErstellen(String geschlecht, int z) {
         Sportgruppe sp = new Sportgruppe(geschlecht, z);
         sportgruppenzahl++;
@@ -631,32 +640,36 @@ public class Jahrgang implements Serializable {
             for (Klasse k : klassen) {
                 if (k.getKlassengroesse() > 0) {
                     for (Student student : k.getSchueler()) {
-                        if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
-                                ) {
+                        if (klassenList.contains(student.getKlasse()) && student.getReligion().equals(aktuelleRG.getReligion())) {
                             aktuelleRG.studentHinzufuegen(student);
                         }
                     }
                 }
             }
 
-//            for (Student student: alle) {
-//                System.out.println(student);
-//                if (klassenList.contains(student.getKlasse())&& student.getReligion().equals(aktuelleRG.getReligion())
-////                        student.getReligion().equals(aktuelleRG.getReligion())
-////                        && (student.getKlasse().equals(aktuelleRG.getKlassen()[0])
-////                        || student.getKlasse().equals(aktuelleRG.getKlassen()[1]) ||
-////                        student.getKlasse().equals(aktuelleRG.getKlassen()[2]) || 
-////                        student.getKlasse().equals(aktuelleRG.getKlassen()[3]) || 
-////                        student.getKlasse().equals(aktuelleRG.getKlassen()[4]))
-//                        ) {
-//                    //if(student.getKlasse().equals("e")){
-//                        
-//                    //}
-//                    aktuelleRG.studentHinzufuegen(student);
-//                }
-//            }
         }
     }
+
+    public void religionsgruppenRemove(Student student) {
+        for (Religionsgruppe aktuelleRG : religionsgruppen) {
+            if (aktuelleRG.getSchueler().contains(student)) {
+                aktuelleRG.getSchueler().remove(student);
+            }
+        }
+    }
+
+    public void religionsgruppenAdd(Student student) {
+        for (Religionsgruppe aktuelleRG : religionsgruppen) {
+            String religion = aktuelleRG.getReligion();
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            if (klassenList.contains(student.getKlasse()) && student.getReligion().equals(aktuelleRG.getReligion())) {
+                aktuelleRG.studentHinzufuegen(student);
+            }
+        }
+
+    }
+
 //    
 //    public void religionsgruppenZuordnen2(){
 //        
@@ -668,7 +681,6 @@ public class Jahrgang implements Serializable {
 //            }
 //        }
 //    }
-
     public void clearReligionsgruppen() {
         religionsgruppen = new ArrayList<>();
     }

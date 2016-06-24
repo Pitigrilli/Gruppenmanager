@@ -631,7 +631,7 @@ public class GUI extends javax.swing.JFrame {
             }
             System.out.println(aktuellerJahrgang.getJahrgang() + neuBuchstabeKlasse);
             Klasse klasseNeu = aktuellerJahrgang.getKlasse(neuBuchstabeKlasse);
-            KlassenPanel gp = new KlassenPanel(klasseNeu.getSchueler(), aktuellerJahrgang.getJahrgang() + klasseNeu.getBuchstabe());
+            KlassenPanel gp = new KlassenPanel(klasseNeu.getSchueler(),aktuellerJahrgang, aktuellerJahrgang.getJahrgang() + klasseNeu.getBuchstabe());
             jPanelKlassen.add(gp);
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
@@ -667,7 +667,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jPanelReligionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelReligionFocusGained
         // TODO add your handling code here:
-
+        this.religionsgruppenAnzeigen();
     }//GEN-LAST:event_jPanelReligionFocusGained
 
     private void jCheckBoxReligionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxReligionStateChanged
@@ -905,7 +905,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
-                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
+                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang,aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
                 jPanelKlassen.add(gp);
             }
         }

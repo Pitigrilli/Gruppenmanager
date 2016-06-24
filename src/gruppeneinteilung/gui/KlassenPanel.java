@@ -4,6 +4,7 @@ package gruppeneinteilung.gui;
  *
  * @author Claus Behl
  */
+import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,6 +21,7 @@ import static javax.swing.TransferHandler.MOVE;
 public class KlassenPanel extends JPanel {
 
     private String anzeige;
+    private Jahrgang jahrgang;
     private final String buchstabe;
     private final String name;
     private final JLabel titel;
@@ -29,11 +31,11 @@ public class KlassenPanel extends JPanel {
     private final DefaultListModel<Student> dlm = new DefaultListModel<>();
     private final JPopupMenu jpopupmenu;
 
-    public KlassenPanel(ArrayList<Student> gruppe, String name) {
+    public KlassenPanel(ArrayList<Student> gruppe, Jahrgang j, String name) {
         this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
         this.gruppe = gruppe;
         this.name = name;
-               
+        this.jahrgang = j;       
         buchstabe = name.substring(name.length()-1);
 
         setLayout(new java.awt.BorderLayout());
@@ -138,6 +140,7 @@ public class KlassenPanel extends JPanel {
                         if (action == MOVE) {
                             listModel.removeElement(student);
                             gruppe.remove(student);
+                            jahrgang.religionsgruppenRemove(student);
                             setzeTitel();
                         }
                     }
@@ -179,6 +182,13 @@ public class KlassenPanel extends JPanel {
                             student.setKlasse(buchstabe);
                             gruppe.add(index, student);
                             setzeTitel();
+                            
+                            //AktualisiereGruppenzugehörigkeit
+                            jahrgang.religionsgruppenAdd(student);
+                            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
+                            GUI gui = (GUI) topFrame;
+                            gui.religionsgruppenAnzeigen();
+                            jahrgang.testReligionsgruppen();
                         }
 
                         return true;
