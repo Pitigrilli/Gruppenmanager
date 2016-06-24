@@ -35,7 +35,7 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
-        
+
         initComponents();
         ladeDatei();
     }
@@ -567,10 +567,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
         // TODO add your handling code here:
-        if(jCheckBoxReligion.isSelected()){
+        if (jCheckBoxReligion.isSelected()) {
             aktuellerJahrgang.setNachReligion(true);
-             new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
-             jButtonEinstellungReligion.setEnabled(true);
+            new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+            jButtonEinstellungReligion.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachReligion(false);
             aktuellerJahrgang.clearReligionsgruppen();
@@ -578,9 +578,9 @@ public class GUI extends javax.swing.JFrame {
             jPanelReligion.removeAll();
             jPanelReligion.revalidate();
             jPanelReligion.repaint();
-            
+
         }
-        
+
 
     }//GEN-LAST:event_jCheckBoxReligionActionPerformed
 
@@ -616,34 +616,50 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         int aktWert = Integer.parseInt(jSpinnerAnzahlKlassen.getValue().toString());
         int anzahlKlassenPanel = jPanelKlassen.getComponentCount();
-        
+
         if (aktWert == anzahlKlassenPanel + 1) {
-            String  neuBuchstabeKlasse="";
-            switch(aktWert){
-                case 1: neuBuchstabeKlasse="a"; break;
-                case 2: neuBuchstabeKlasse="b"; break;
-                case 3: neuBuchstabeKlasse="c"; break;
-                case 4: neuBuchstabeKlasse="d"; break;
-                case 5: neuBuchstabeKlasse="e"; break;
-                case 6: neuBuchstabeKlasse="f"; break;
-                case 7: neuBuchstabeKlasse="g"; break;
-                case 8: neuBuchstabeKlasse="h"; break;
+            String neuBuchstabeKlasse = "";
+            switch (aktWert) {
+                case 1:
+                    neuBuchstabeKlasse = "a";
+                    break;
+                case 2:
+                    neuBuchstabeKlasse = "b";
+                    break;
+                case 3:
+                    neuBuchstabeKlasse = "c";
+                    break;
+                case 4:
+                    neuBuchstabeKlasse = "d";
+                    break;
+                case 5:
+                    neuBuchstabeKlasse = "e";
+                    break;
+                case 6:
+                    neuBuchstabeKlasse = "f";
+                    break;
+                case 7:
+                    neuBuchstabeKlasse = "g";
+                    break;
+                case 8:
+                    neuBuchstabeKlasse = "h";
+                    break;
             }
-            System.out.println(aktuellerJahrgang.getJahrgang() + neuBuchstabeKlasse);
+            //System.out.println(aktuellerJahrgang.getJahrgang() + neuBuchstabeKlasse);
             Klasse klasseNeu = aktuellerJahrgang.getKlasse(neuBuchstabeKlasse);
-            KlassenPanel gp = new KlassenPanel(klasseNeu.getSchueler(),aktuellerJahrgang, aktuellerJahrgang.getJahrgang() + klasseNeu.getBuchstabe());
+            KlassenPanel gp = new KlassenPanel(klasseNeu.getSchueler(), aktuellerJahrgang, aktuellerJahrgang.getJahrgang() + klasseNeu.getBuchstabe());
             jPanelKlassen.add(gp);
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
         } else if (aktWert == anzahlKlassenPanel - 1) {
-            int  indexLetztesPanel = jPanelKlassen.getComponentCount() - 1;
-            KlassenPanel gp  = (KlassenPanel) jPanelKlassen.getComponent(indexLetztesPanel);
-            if(gp.getAnzahlSchueler()>0){
+            int indexLetztesPanel = jPanelKlassen.getComponentCount() - 1;
+            KlassenPanel gp = (KlassenPanel) jPanelKlassen.getComponent(indexLetztesPanel);
+            if (gp.getAnzahlSchueler() > 0) {
                 JOptionPane.showMessageDialog(null, "Die letzte Gruppe ist nicht leer.\n Entfernen nicht möglich.");
                 jSpinnerAnzahlKlassen.setValue(anzahlKlassenPanel);
                 return;
             }
-                
+
             jPanelKlassen.remove(indexLetztesPanel);
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
@@ -676,7 +692,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -827,8 +843,8 @@ public class GUI extends javax.swing.JFrame {
         aktiviereJahrgangComponents(true);
         klassenAnzeigen();
         aktualisiereLabelJahrgang();
-        
-        if(aktuellerJahrgang.istNachReligion()){
+
+        if (aktuellerJahrgang.istNachReligion()) {
             jCheckBoxReligion.setSelected(true);
             jButtonEinstellungReligion.setEnabled(true);
             religionsgruppenAnzeigen();
@@ -839,18 +855,17 @@ public class GUI extends javax.swing.JFrame {
             jPanelReligion.removeAll();
             jPanelReligion.revalidate();
             jPanelReligion.repaint();
-            
+
         }
-
-
 
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
 
     }
-    public void aktualisiereLabelJahrgang(){
+
+    public void aktualisiereLabelJahrgang() {
         int n = aktuellerJahrgang.getJahrgang();
-                if (n == 5 || n == 6) {
+        if (n == 5 || n == 6) {
             String anzahlGY = aktuellerJahrgang.getGY() + "";
             //jLabel1Anzahl.setText(anzahlGY);
             jLabelZweig1.setText("ohne Zweig: " + anzahlGY);
@@ -905,7 +920,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.removeAll();
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
-                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang,aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
+                KlassenPanel gp = new KlassenPanel(k.getSchueler(), aktuellerJahrgang, aktuellerJahrgang.getJahrgang() + k.getBuchstabe());
                 jPanelKlassen.add(gp);
             }
         }
@@ -926,9 +941,9 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelReligion.removeAll();
         for (Religionsgruppe r : aktuellerJahrgang.getReligionsgruppen()) {
-            
-                jPanelReligion.add(new GruppenPanel(r.getSchueler(), ""+r.getReligion()+": " + r.getReligiongroesse()+" Schüler"));
-     
+
+            jPanelReligion.add(new GruppenPanel(r.getSchueler(), "" + r.getReligion() + ": " + r.getReligiongroesse() + " Schüler"));
+
         }
         jPanelReligion.revalidate();
         jPanelReligion.repaint();
@@ -938,7 +953,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelZweig.removeAll();
         for (Zweiggruppe r : aktuellerJahrgang.getZweiggruppen()) {
 
-                jPanelZweig.add(new GruppenPanel(r.getSchueler(), "" + r.getZahl()));
+            jPanelZweig.add(new GruppenPanel(r.getSchueler(), "" + r.getZahl()));
 
         }
         jPanelZweig.revalidate();
@@ -971,19 +986,23 @@ public class GUI extends javax.swing.JFrame {
     public void ladeDatei() {
         try {
             File ini = new File("ge.ini");
-            if(ini.exists()){
-            FileReader fr = new FileReader(ini);
-            BufferedReader br = new BufferedReader(fr);
-
-            String dateiname = br.readLine();
-            Speicherung sp = new Speicherung(dateiname);
-            ge = sp.serialisierungLaden();
-            file = ge.getFile();
-            jahrgangAuswahlAktivieren();
-            
-            br.close();
+            if (ini.exists()) {
+                FileReader fr = new FileReader(ini);
+                BufferedReader br = new BufferedReader(fr);
+                File fileNeu = null;
+                String dateiname = br.readLine();
+                fileNeu = new File(dateiname);
+                if (fileNeu.exists()) {
+                    Speicherung sp = new Speicherung(dateiname);
+                    ge = sp.serialisierungLaden();
+                    file = ge.getFile();
+                    jahrgangAuswahlAktivieren();
+                }
+                br.close();
             }
         } catch (IOException ex) {
+
+        } catch (NullPointerException ex) {
 
         }
     }

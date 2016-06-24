@@ -35,16 +35,16 @@ public class KlassenPanel extends JPanel {
         this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
         this.gruppe = gruppe;
         this.name = name;
-        this.jahrgang = j;       
-        buchstabe = name.substring(name.length()-1);
+        this.jahrgang = j;
+        buchstabe = name.substring(name.length() - 1);
 
         setLayout(new java.awt.BorderLayout());
         // Titel
-         titel= new JLabel();
-         setzeTitel();
-         System.out.println(anzeige);
+        titel = new JLabel();
+        setzeTitel();
+        //System.out.println(anzeige);
         add(titel, BorderLayout.NORTH);
-        
+
         //Popupmenu
         jpopupmenu = new JPopupMenu();
         JMenuItem item = new JMenuItem("Edit");
@@ -94,13 +94,13 @@ public class KlassenPanel extends JPanel {
         // Scrollbar ins Panel
         add(scrollPane, BorderLayout.CENTER);
     }
-    
-    private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+
+    private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-       Student s = gruppenListe.getSelectedValue();
-       new StudentEditFrame(s).setVisible(true);
-       System.out.println("Popup: "+s.getName());
-    }   
+        Student s = gruppenListe.getSelectedValue();
+        new StudentEditFrame(s).setVisible(true);
+        System.out.println("Popup: " + s.getName());
+    }
 
     public void aktualisiereListModel() {
         dlm.clear();
@@ -111,101 +111,106 @@ public class KlassenPanel extends JPanel {
 
     public void enableDnD() {
         gruppenListe.setDragEnabled(true);
-        gruppenListe.setTransferHandler(new TransferHandler() {
-                    //Student student;
-
-                    @Override
-                    public int getSourceActions(JComponent c) {
-                        return MOVE;
-                    }
-
-                    @Override
-                    protected Transferable createTransferable(JComponent c) {
-                        JList list = (JList) c;
-                        Student student = (Student) list.getSelectedValue();
-                        DefaultListModel lm = (DefaultListModel) list.getModel();
-                        int index = lm.indexOf(student);
-                        //System.out.println("Ausgewählt:"+student+" Index: "+index);
-
-                        return new TransferableStudent(student);
-                    }
-
-                    @Override
-                    protected void exportDone(JComponent c, Transferable t, int action) {
-                        TransferableStudent ts = (TransferableStudent) t;
-                        Student student = ts.getStudent();
-                        JList list = (JList) c;
-                        DefaultListModel listModel = (DefaultListModel) list.getModel();
-
-                        if (action == MOVE) {
-                            listModel.removeElement(student);
-                            gruppe.remove(student);
-                            jahrgang.religionsgruppenRemove(student);
-                            setzeTitel();
-                        }
-                    }
-
-                    @Override
-                    public boolean canImport(TransferHandler.TransferSupport info) {
-
-                        return info.isDataFlavorSupported(studentFlavor);
-                    }
-
-                    @Override
-                    public boolean importData(TransferHandler.TransferSupport info) {
-                        if (!info.isDrop()) {
-                            return false;
-                        }
-
-                        JList list = (JList) info.getComponent();
-
-                        @SuppressWarnings("unchecked")
-                        DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
-
-                        JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
-                        int index = dl.getIndex();
-                        boolean insert = dl.isInsert();
-
-                        Transferable t = info.getTransferable();
-                        Student student;
-                        try {
-                            student = (Student) t.getTransferData(studentFlavor);
-                        } catch (Exception e) {
-                            return false;
-                        }
-
-                        //System.out.println("Drop:"+student);
-                        if (insert) {
-                            listModel.add(index, student);
-                            // Der Schüler bekommt seine Klasse richtig gesetzt
-                            
-                            student.setKlasse(buchstabe);
-                            gruppe.add(index, student);
-                            setzeTitel();
-                            
-                            //AktualisiereGruppenzugehörigkeit
-                            jahrgang.religionsgruppenAdd(student);
-                            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
-                            GUI gui = (GUI) topFrame;
-                            gui.religionsgruppenAnzeigen();
-                            jahrgang.testReligionsgruppen();
-                        }
-
-                        return true;
-                    }
-
-                });
-        /*  Ende der Definition des TransferHandler  */
         gruppenListe.setDropMode(DropMode.INSERT);
+        gruppenListe.setTransferHandler(new TransferHandler() {
+            //Student student;
+
+            @Override
+            public int getSourceActions(JComponent c) {
+                return MOVE;
+            }
+
+            @Override
+            protected Transferable createTransferable(JComponent c) {
+                JList list = (JList) c;
+                Student student = (Student) list.getSelectedValue();
+                DefaultListModel lm = (DefaultListModel) list.getModel();
+                int index = lm.indexOf(student);
+                //System.out.println("Ausgewählt:" + student + " Index: " + index);
+
+                return new TransferableStudent(student);
+            }
+
+            @Override
+            public boolean canImport(TransferHandler.TransferSupport info) {
+
+                return info.isDataFlavorSupported(studentFlavor);
+            }
+
+            @Override
+            public boolean importData(TransferHandler.TransferSupport info) {
+                if (!info.isDrop()) {
+                    return false;
+                }
+
+                JList list = (JList) info.getComponent();
+
+                @SuppressWarnings("unchecked")
+                DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
+
+                JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
+                int index = dl.getIndex();
+                boolean insert = dl.isInsert();
+
+                Transferable t = info.getTransferable();
+                Student student;
+                try {
+                    student = (Student) t.getTransferData(studentFlavor);
+                } catch (Exception e) {
+                    return false;
+                }
+
+                //System.out.println("Drop:" + student);
+                if (insert) {
+                    listModel.add(index, student);
+                    // Der Schüler bekommt seine Klasse richtig gesetzt
+
+                    student.setKlasse(buchstabe);
+                    gruppe.add(index, student);
+                    setzeTitel();
+
+                    //AktualisiereGruppenzugehörigkeit
+                    jahrgang.religionsgruppenAdd(student);
+                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
+                    GUI gui = (GUI) topFrame;
+                    gui.religionsgruppenAnzeigen();
+                    //jahrgang.testReligionsgruppen();
+                }
+
+                return true;
+            }
+
+            @Override
+            protected void exportDone(JComponent c, Transferable t, int action) {
+                TransferableStudent ts = (TransferableStudent) t;
+                Student student = ts.getStudent();
+                JList list = (JList) c;
+                DefaultListModel listModel = (DefaultListModel) list.getModel();
+
+                if (action == MOVE) {
+                    listModel.removeElement(student);
+                    gruppe.remove(student);
+                    jahrgang.religionsgruppenRemove(student);
+                    //System.out.println("Remove:" + student);
+                    setzeTitel();
+                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
+                    GUI gui = (GUI) topFrame;
+                    gui.religionsgruppenAnzeigen();
+                }
+            }
+
+        }); /*  Ende der Definition des TransferHandler  */
 
     }
-     public int getAnzahlSchueler(){
+
+    public int getAnzahlSchueler() {
         return gruppe.size();
     }
-     private void setzeTitel(){
-          anzeige = name+": "+gruppe.size()+" Schüler";
-          titel.setText(anzeige);
-     }
+
+    private void setzeTitel() {
+        anzeige = name + ": " + gruppe.size() + " Schüler";
+        titel.setText(anzeige);
+    }
 
     static class KlassenCellRenderer extends DefaultListCellRenderer {
 
@@ -234,16 +239,16 @@ public class KlassenPanel extends JPanel {
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getJahrgang()+" "+
-                    s.getKlasse()+" "+
-                    s.getName() + " " + 
-                    s.getGeschlecht() + " " + 
-                    s.getZweig() + " " + 
-                    s.getReligion() + " " + 
-                    s.getFs2() + " " + 
-                    s.getFs3() + " " + 
-                    s.getFs4() + " " +
-                    s.getBemerkung()
+            l.setText(s.getJahrgang() + " "
+                    + s.getKlasse() + " "
+                    + s.getName() + " "
+                    + s.getGeschlecht() + " "
+                    + s.getZweig() + " "
+                    + s.getReligion() + " "
+                    + s.getFs2() + " "
+                    + s.getFs3() + " "
+                    + s.getFs4() + " "
+                    + s.getBemerkung()
             ); //s.getKlasse()+" "+
             return l;
         }

@@ -9,7 +9,10 @@ import gruppeneinteilung.model.Student;
 import gruppeneinteilung.model.Jahrgang;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Speicherung {
@@ -20,7 +23,7 @@ public class Speicherung {
     public Speicherung(Gruppeneinteilung ge) {
         this.ge = ge;
         if (ge.getFile() == null) {
-            file = new FileAuswahl().waehleFile();
+            file = new FileAuswahl().getFile();
             ge.setFile(file);
         } else {
             file = ge.getFile();
@@ -35,8 +38,13 @@ public class Speicherung {
 
     public Speicherung() {
         ge = new Gruppeneinteilung();
-        file = new FileAuswahl().waehleFile();
+        file = waehleFile();
         ge.setFile(file);
+    }
+    
+    public File waehleFile(){
+        File fileNeu = new FileAuswahl().getFile();
+        return fileNeu;
     }
 
     public void speichern() {
@@ -52,7 +60,7 @@ public class Speicherung {
     }
 
     public void speichernUnter() {
-        file = new FileAuswahl().waehleFile();
+        file = new FileAuswahl().getFile();
         ge.setFile(file);
         speichern();
     }
@@ -62,42 +70,22 @@ public class Speicherung {
         try {
             FileInputStream fileStream = new FileInputStream(file);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            Object obj = objectStream.readObject();
-            if(obj instanceof Gruppeneinteilung)
-            ge = (Gruppeneinteilung) obj;
-            ge.setFile(file);
-//            if (obj instanceof ArrayList<?>) {
-//                ArrayList<?> al = (ArrayList<?>) obj;
-//                if (al.size() > 0) {
-//                    // Iterate.
-//                    for (int i = 0; i < al.size(); i++) {
-//                        // Still not enough for a type.
-//                        Object o = al.get(i);
-//                        if (o instanceof Student) {
-//                            Student v = (Student) o;
-//                            ge.getStudents().add(v);
-//                        }
-//                    }
-//                }
-//            }
-//            obj = objectStream.readObject();
-//            if (obj instanceof ArrayList<?>) {
-//                ArrayList<?> al = (ArrayList<?>) obj;
-//                if (al.size() > 0) {
-//                    // Iterate.
-//                    for (int i = 0; i < al.size(); i++) {
-//                        // Still not enough for a type.
-//                        Object o = al.get(i);
-//                        if (o instanceof Jahrgang) {
-//                            Jahrgang v = (Jahrgang) o;
-//                            ge.getJahrgaenge().add(v);
-//                        }
-//                    }
-//                }
-//            }
+            Object obj = null;
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            obj = objectStream.readObject();
+
+            if (obj instanceof Gruppeneinteilung) {
+                ge = (Gruppeneinteilung) obj;
+            }
+            ge.setFile(file);
+
+        } catch (InvalidClassException ex) {
+            JOptionPane.showMessageDialog(null, "Die GED-Datei ist ungültig. Laden Sie eine andere Datei\n"
+                    + "oder importieren Sie eine ASV-Datei.");
+        } catch (IOException ex) {
+            Logger.getLogger(Speicherung.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Speicherung.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ge;
     }
@@ -140,7 +128,7 @@ class FileAuswahl {
         file = fileGewaehlt;
     }
 
-    public File waehleFile() {
+    public File getFile() {
         return file;
     }
 }

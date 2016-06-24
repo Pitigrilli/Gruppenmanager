@@ -630,12 +630,12 @@ public class Jahrgang implements Serializable {
         int i = 1;
         for (Religionsgruppe aktuelleRG : religionsgruppen) {
             String religion = aktuelleRG.getReligion();
-            System.out.println("ReliGruppe " + i + ": " + religion);
+            //System.out.println("ReliGruppe " + i + ": " + religion);
             String[] klassenBuchstaben = aktuelleRG.getKlassen();
-            System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
+            //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
 
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
-            System.out.println("Klassen in List:" + klassenList + "\n");
+            //System.out.println("Klassen in List:" + klassenList + "\n");
 
             for (Klasse k : klassen) {
                 if (k.getKlassengroesse() > 0) {

@@ -164,16 +164,16 @@ public class EinstellungFrame extends javax.swing.JFrame {
             jahrgang.religionsgruppeErstellen(religion);
             String[] klassen = rp.getKlassen();
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
-            System.out.println(list);
+            //System.out.println(list);
             list.removeAll(Arrays.asList("", null));
-            System.out.println(list);
+            //System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
             
             jahrgang.getReligionsgruppen().get(i).setKlassen(klassen);
         }
-        jahrgang.testKlassen();
-        System.out.println("____________________________________________________________");
-        jahrgang.ausgabeAlle();
+        //jahrgang.testKlassen();
+        //System.out.println("____________________________________________________________");
+        //jahrgang.ausgabeAlle();
         jahrgang.religionsgruppenZuordnen();
         parent.religionsgruppenAnzeigen();
         
