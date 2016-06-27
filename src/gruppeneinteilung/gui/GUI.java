@@ -1,6 +1,6 @@
 /**
  *
- * @author heske.timjonathan
+ * @author heske.timjonathan,zimmer.lennard
  */
 package gruppeneinteilung.gui;
 
@@ -569,7 +569,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jCheckBoxReligion.isSelected()) {
             aktuellerJahrgang.setNachReligion(true);
-            new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+            new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
             jButtonEinstellungReligion.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachReligion(false);
@@ -587,29 +587,53 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
         //aktuellerJahrgang.testKlassen();
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
     private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+         if (jCheckBoxSport.isSelected()) {
+            aktuellerJahrgang.setNachGeschlecht(true);
+            new EinstellungFrameSport(aktuellerJahrgang, this).setVisible(true);
+            jButtonEinstellungSport.setEnabled(true);
+        } else {
+            aktuellerJahrgang.setNachGeschlecht(false);
+            aktuellerJahrgang.clearSportgruppen();
+            jButtonEinstellungSport.setEnabled(false);
+            jPanelSport.removeAll();
+            jPanelSport.revalidate();
+            jPanelSport.repaint();
+
+        }
 
     }//GEN-LAST:event_jCheckBoxSportActionPerformed
 
     private void jCheckBoxZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        if (jCheckBoxZweig.isSelected()) {
+            aktuellerJahrgang.setNachZweig(true);
+            new EinstellungFrameZweig(aktuellerJahrgang, this).setVisible(true);
+            jButtonEinstellungSport.setEnabled(true);
+        } else {
+            aktuellerJahrgang.setNachZweig(false);
+            aktuellerJahrgang.clearZweiggruppen();
+            jButtonEinstellungZweig.setEnabled(false);
+            jPanelZweig.removeAll();
+            jPanelZweig.revalidate();
+            jPanelZweig.repaint();
+
+        }
 
     }//GEN-LAST:event_jCheckBoxZweigActionPerformed
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
@@ -669,12 +693,24 @@ public class GUI extends javax.swing.JFrame {
 
     private void jCheckBoxFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdsprachenActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+         if (jCheckBoxFremdsprachen.isSelected()) {
+            aktuellerJahrgang.setNachFremdsprachen(true);
+            new EinstellungFrameFremdsprachen(aktuellerJahrgang, this).setVisible(true);
+            jButtonEinstellungFremdsprachen.setEnabled(true);
+        } else {
+            aktuellerJahrgang.setNachFremdsprachen(false);
+            aktuellerJahrgang.clearFremdsprachengruppen();
+            jButtonEinstellungSport.setEnabled(false);
+            jPanelFremdsprachen.removeAll();
+            jPanelFremdsprachen.revalidate();
+            jPanelFremdsprachen.repaint();
+
+        }
     }//GEN-LAST:event_jCheckBoxFremdsprachenActionPerformed
 
     private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrame(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged

@@ -19,7 +19,7 @@ import javax.swing.JFrame;
  *
  * @author zimmer.lennard
  */
-public class EinstellungFrame extends javax.swing.JFrame {
+public class EinstellungFrameReligion extends javax.swing.JFrame {
 
     Jahrgang jahrgang;
 //    Gruppeneinteilung ge;
@@ -31,7 +31,7 @@ public class EinstellungFrame extends javax.swing.JFrame {
      * @param j
      * @param parent
      */
-    public EinstellungFrame(Jahrgang j, JFrame parent) {
+    public EinstellungFrameReligion(Jahrgang j, JFrame parent) {
         this.parent = (GUI) parent;
         this.jahrgang = j;
         initComponents();
@@ -85,7 +85,6 @@ public class EinstellungFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(new java.awt.Dimension(400, 400));
 
         jLabelAnzahlKlassen.setText("Anzahl der Gruppen");
 
