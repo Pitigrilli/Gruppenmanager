@@ -680,7 +680,7 @@ public class Jahrgang implements Serializable {
     
     
     /**
-     * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
+     * Ordnet die Schüler den entsprechenden Zweiggruppen zu.
      */
     public void zweiggruppenZuordnen() {
         int i = 1;
@@ -726,7 +726,9 @@ public class Jahrgang implements Serializable {
 
     }
     
-    
+    /**
+     * Ordnet die Schüler den entsprechenden Fremdsprachengruppen zu.
+     */
     
         public void fremdsprachengruppenZuordnen() {
         int i = 1;
@@ -772,7 +774,9 @@ public class Jahrgang implements Serializable {
 
     }
     
-    
+    /**
+     * Ordnet die Schüler den entsprechenden Sportgruppen zu.
+     */
      public void sportgruppenZuordnen() {
         int i = 1;
         for (Sportgruppe aktuelleRG : sportgruppen) {
@@ -836,7 +840,7 @@ public class Jahrgang implements Serializable {
     public void clearZweiggruppen() {
         zweiggruppen = new ArrayList<>();
     }
-    public void clearSportgruppengruppen() {
+    public void clearSportgruppen() {
         sportgruppen = new ArrayList<>();
     }
     public void clearFremdsprachengruppen() {
