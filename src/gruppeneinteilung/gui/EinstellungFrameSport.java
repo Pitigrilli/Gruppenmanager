@@ -40,7 +40,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
 
         for (Sportgruppe rg : j.getSportgruppen()) {
             SportPanel rp = new SportPanel();
-            String sport = rg.getSport();
+            String sport = rg.getGeschlecht();
             rp.setSport(sport);
 //            System.out.println("Religion: "+religion);
             String[] klassen = rg.getKlassen();

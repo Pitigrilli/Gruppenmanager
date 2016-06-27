@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Religionsgruppe;
+import gruppeneinteilung.model.Fremdsprachengruppe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -157,7 +157,7 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
-        jahrgang.clearFremdsprachengruppe();
+        jahrgang.clearFremdsprachengruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
             FremdsprachenPanel rp = (FremdsprachenPanel) jPanel1.getComponent(i);
             String zweig = rp.getFremdsprache();

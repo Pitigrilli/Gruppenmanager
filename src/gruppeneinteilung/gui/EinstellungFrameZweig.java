@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Religionsgruppe;
+import gruppeneinteilung.model.Zweiggruppe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -157,7 +157,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
-        jahrgang.clearZweiggruppe();
+        jahrgang.clearZweiggruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
             ZweigPanel rp = (ZweigPanel) jPanel1.getComponent(i);
             String zweig = rp.getZweig();

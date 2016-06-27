@@ -340,6 +340,11 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
+        jPanelFremdsprachen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelFremdsprachenFocusGained(evt);
+            }
+        });
         jPanelFremdsprachen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Fremdsprachengruppen", jPanelFremdsprachen);
 
@@ -351,30 +356,20 @@ public class GUI extends javax.swing.JFrame {
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
 
-        javax.swing.GroupLayout jPanelSportLayout = new javax.swing.GroupLayout(jPanelSport);
-        jPanelSport.setLayout(jPanelSportLayout);
-        jPanelSportLayout.setHorizontalGroup(
-            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1017, Short.MAX_VALUE)
-        );
-        jPanelSportLayout.setVerticalGroup(
-            jPanelSportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
-        );
-
+        jPanelSport.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelSportFocusGained(evt);
+            }
+        });
+        jPanelSport.setLayout(new java.awt.GridLayout());
         jTabbedPane1.addTab("Sportgruppen", jPanelSport);
 
-        javax.swing.GroupLayout jPanelZweigLayout = new javax.swing.GroupLayout(jPanelZweig);
-        jPanelZweig.setLayout(jPanelZweigLayout);
-        jPanelZweigLayout.setHorizontalGroup(
-            jPanelZweigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1017, Short.MAX_VALUE)
-        );
-        jPanelZweigLayout.setVerticalGroup(
-            jPanelZweigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
-        );
-
+        jPanelZweig.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelZweigFocusGained(evt);
+            }
+        });
+        jPanelZweig.setLayout(new java.awt.GridLayout());
         jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
         jMenu1.setText("Datei");
@@ -413,7 +408,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSaveAs.setEnabled(false);
         jMenu1.add(jMenuItemSaveAs);
 
-        jMenuItemSettings.setText("Einstellungen");
+        jMenuItemSettings.setText("Zusammensetzung drucken");
         jMenuItemSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSettingsActionPerformed(evt);
@@ -694,11 +689,11 @@ public class GUI extends javax.swing.JFrame {
     private void jCheckBoxFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFremdsprachenActionPerformed
         // TODO add your handling code here:
          if (jCheckBoxFremdsprachen.isSelected()) {
-            aktuellerJahrgang.setNachFremdsprachen(true);
+            aktuellerJahrgang.setNachSprache(true);
             new EinstellungFrameFremdsprachen(aktuellerJahrgang, this).setVisible(true);
             jButtonEinstellungFremdsprachen.setEnabled(true);
         } else {
-            aktuellerJahrgang.setNachFremdsprachen(false);
+            aktuellerJahrgang.setNachSprache(false);
             aktuellerJahrgang.clearFremdsprachengruppen();
             jButtonEinstellungSport.setEnabled(false);
             jPanelFremdsprachen.removeAll();
@@ -735,6 +730,18 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         merkeGeladeneDatei();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jPanelSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSportFocusGained
+        this.sportgruppenAnzeigen();
+    }//GEN-LAST:event_jPanelSportFocusGained
+
+    private void jPanelFremdsprachenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelFremdsprachenFocusGained
+        this.fremdsprachengruppenAnzeigen();
+    }//GEN-LAST:event_jPanelFremdsprachenFocusGained
+
+    private void jPanelZweigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelZweigFocusGained
+        this.zweiggruppenAnzeigen();
+    }//GEN-LAST:event_jPanelZweigFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEinstellungFremdsprachen;
