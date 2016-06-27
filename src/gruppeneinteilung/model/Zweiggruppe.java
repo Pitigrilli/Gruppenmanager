@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Zweiggruppe extends SortierbareGruppe implements Serializable{
     private final int jahrgang;
     private String Zweig;
-    private final int zahl;
-    private final String[] klassen;
+    private  int zahl;
+    private  String[] klassen;
 
     public Zweiggruppe (int z, int j,String g) {
        zahl = z;
@@ -61,5 +61,8 @@ public void setZweig(String zweig){
     public String[] getKlassen()
     {
         return klassen;
+    }
+    public void setKlassen(String[] klassen) {
+        this.klassen = klassen;
     }
 }

@@ -19,7 +19,7 @@ public class Fremdsprachengruppe extends SortierbareGruppe implements Serializab
     private  String fremdsprache;
     private String[] klassen;
     
-    private final int zahl;
+    private int zahl;
     //private  ArrayList<Student> schueler;
 
     public Fremdsprachengruppe (int z, int j,String r) {
@@ -70,5 +70,8 @@ public String[] getKlassen()
     {
         return klassen;
     }
+public void setKlassen(String[] klassen) {
+        this.klassen = klassen;
+}
     
 }

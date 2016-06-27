@@ -330,8 +330,8 @@ public class Jahrgang implements Serializable {
         }
     }
 
-    public void sportgruppeErstellen(String geschlecht, int z) {
-        Sportgruppe sp = new Sportgruppe(geschlecht, z);
+    public void sportgruppeErstellen(String geschlecht ) {
+        Sportgruppe sp = new Sportgruppe(sportgruppenzahl,jahrgang,geschlecht );
         sportgruppenzahl++;
         sportgruppen.add(sp);
     }

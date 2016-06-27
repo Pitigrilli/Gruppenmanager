@@ -17,10 +17,12 @@ public class Sportgruppe extends SortierbareGruppe implements Serializable {
     private String geschlecht;
     private String[] klassen;
     private int zahl;
+    private final int jahrgang;
     //private final ArrayList<Student> schueler;
 
-    public Sportgruppe (String g, int z) {
+    public Sportgruppe (int z,int j,String g) {
         zahl = z;
+        jahrgang = j;
         schueler = new ArrayList<>();
         geschlecht = g;
         klassen = new String[8];
@@ -66,5 +68,8 @@ public class Sportgruppe extends SortierbareGruppe implements Serializable {
     public String[] getKlassen()
     {
         return klassen;
+    }
+    public void setKlassen(String[] klassen) {
+        this.klassen = klassen;
     }
 }
