@@ -63,4 +63,8 @@ public class Sportgruppe extends SortierbareGruppe implements Serializable {
             {
                 return zahl;
             }
+    public String[] getKlassen()
+    {
+        return klassen;
+    }
 }
