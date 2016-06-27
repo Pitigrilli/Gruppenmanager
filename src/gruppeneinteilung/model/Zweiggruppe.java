@@ -58,5 +58,8 @@ public class Zweiggruppe extends SortierbareGruppe implements Serializable{
 public void setZweig(String zweig){
     this.Zweig=zweig;
 }
-    
+    public String[] getKlassen()
+    {
+        return klassen;
+    }
 }

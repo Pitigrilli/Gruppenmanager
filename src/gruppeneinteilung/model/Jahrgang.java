@@ -161,6 +161,12 @@ public class Jahrgang implements Serializable {
         nachZweig = b;
         //nachFremdsprache = false;
     }
+    
+    public void setNachGeschlecht(boolean b) {
+        //nachReligion = false;
+        nachSport= b;
+        //nachFremdsprache = false;
+    }
 
     public void setNachSprache(boolean b) {
         //nachReligion = false;
@@ -670,6 +676,149 @@ public class Jahrgang implements Serializable {
 
     }
 
+    
+    
+    
+    /**
+     * Ordnet die Schüler den entsprechenden Religionsgruppen zu.
+     */
+    public void zweiggruppenZuordnen() {
+        int i = 1;
+        for (Zweiggruppe aktuelleRG : zweiggruppen) {
+            String zweig = aktuelleRG.getZweig();
+            //System.out.println("ReliGruppe " + i + ": " + religion);
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
+
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            //System.out.println("Klassen in List:" + klassenList + "\n");
+
+            for (Klasse k : klassen) {
+                if (k.getKlassengroesse() > 0) {
+                    for (Student student : k.getSchueler()) {
+                        if (klassenList.contains(student.getKlasse()) && student.getZweig().equals(aktuelleRG.getZweig())) {
+                            aktuelleRG.studentHinzufuegen(student);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void zweiggruppenRemove(Student student) {
+        for (Zweiggruppe aktuelleRG : zweiggruppen) {
+            if (aktuelleRG.getSchueler().contains(student)) {
+                aktuelleRG.getSchueler().remove(student);
+            }
+        }
+    }
+
+    public void zweiggruppenAdd(Student student) {
+        for (Zweiggruppe aktuelleRG : zweiggruppen) {
+            String zweig = aktuelleRG.getZweig();
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            if (klassenList.contains(student.getKlasse()) && student.getZweig().equals(aktuelleRG.getZweig())) {
+                aktuelleRG.studentHinzufuegen(student);
+            }
+        }
+
+    }
+    
+    
+    
+        public void fremdsprachengruppenZuordnen() {
+        int i = 1;
+        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+            String fremdsprache = aktuelleRG.getFremdsprache();
+            //System.out.println("ReliGruppe " + i + ": " + religion);
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
+
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            //System.out.println("Klassen in List:" + klassenList + "\n");
+
+            for (Klasse k : klassen) {
+                if (k.getKlassengroesse() > 0) {
+                    for (Student student : k.getSchueler()) {
+                        if (klassenList.contains(student.getKlasse()) && student.getFs2().equals(aktuelleRG.getFremdsprache())) {
+                            aktuelleRG.studentHinzufuegen(student);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void fremsprachengruppenRemove(Student student) {
+        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+            if (aktuelleRG.getSchueler().contains(student)) {
+                aktuelleRG.getSchueler().remove(student);
+            }
+        }
+    }
+
+    public void fremdsprachengruppenAdd(Student student) {
+        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+            String fremdsprache = aktuelleRG.getFremdsprache();
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            if (klassenList.contains(student.getKlasse()) && student.getFs2().equals(aktuelleRG.getFremdsprache())) {
+                aktuelleRG.studentHinzufuegen(student);
+            }
+        }
+
+    }
+    
+    
+     public void sportgruppenZuordnen() {
+        int i = 1;
+        for (Sportgruppe aktuelleRG : sportgruppen) {
+            String geschlecht = aktuelleRG.getGeschlecht();
+            //System.out.println("ReliGruppe " + i + ": " + religion);
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
+
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            //System.out.println("Klassen in List:" + klassenList + "\n");
+
+            for (Klasse k : klassen) {
+                if (k.getKlassengroesse() > 0) {
+                    for (Student student : k.getSchueler()) {
+                        if (klassenList.contains(student.getKlasse()) && student.getGeschlecht().equals(aktuelleRG.getGeschlecht())) {
+                            aktuelleRG.studentHinzufuegen(student);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void SportgruppenRemove(Student student) {
+        for (Sportgruppe aktuelleRG : sportgruppen) {
+            if (aktuelleRG.getSchueler().contains(student)) {
+                aktuelleRG.getSchueler().remove(student);
+            }
+        }
+    }
+
+    public void SportgruppenAdd(Student student) {
+        for (Sportgruppe aktuelleRG : sportgruppen) {
+            String geschlecht = aktuelleRG.getGeschlecht();
+            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+            List<String> klassenList = Arrays.asList(klassenBuchstaben);
+            if (klassenList.contains(student.getKlasse()) && student.getGeschlecht().equals(aktuelleRG.getGeschlecht())) {
+                aktuelleRG.studentHinzufuegen(student);
+            }
+        }
+
+    }
+    
+    
+
 //    
 //    public void religionsgruppenZuordnen2(){
 //        
@@ -683,5 +832,14 @@ public class Jahrgang implements Serializable {
 //    }
     public void clearReligionsgruppen() {
         religionsgruppen = new ArrayList<>();
+    }
+    public void clearZweiggruppen() {
+        zweiggruppen = new ArrayList<>();
+    }
+    public void clearSportgruppengruppen() {
+        sportgruppen = new ArrayList<>();
+    }
+    public void clearFremdsprachengruppen() {
+        fremdsprachengruppen = new ArrayList<>();
     }
 }

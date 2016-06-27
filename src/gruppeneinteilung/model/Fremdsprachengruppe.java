@@ -66,5 +66,9 @@ public void klasseHinzufügen(String k)
     }
     klassen[i] = k;
 }
+public String[] getKlassen()
+    {
+        return klassen;
+    }
     
 }
