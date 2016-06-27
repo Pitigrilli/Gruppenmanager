@@ -17,9 +17,9 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author zimmer.lennard
+ * @author zimmer.lennard / bauer.yannik / lutz.laurens
  */
-public class EinstellungFrame extends javax.swing.JFrame {
+public class EinstellungFrameZweig extends javax.swing.JFrame {
 
     Jahrgang jahrgang;
 //    Gruppeneinteilung ge;
@@ -31,17 +31,17 @@ public class EinstellungFrame extends javax.swing.JFrame {
      * @param j
      * @param parent
      */
-    public EinstellungFrame(Jahrgang j, JFrame parent) {
+    public EinstellungFrameZweig(Jahrgang j, JFrame parent) {
         this.parent = (GUI) parent;
         this.jahrgang = j;
         initComponents();
-        anzahlGruppen = j.getReligionsgruppen().size();
+        anzahlGruppen = j.getZweiggruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Religionsgruppe rg : j.getReligionsgruppen()) {
-            ReligionsPanel rp = new ReligionsPanel();
-            String religion = rg.getReligion();
-            rp.setReligion(religion);
+        for (Zweiggruppe rg : j.getZweiggruppen()) {
+            ZweigPanel rp = new ZweigPanel();
+            String zweig = rg.getZweig();
+            rp.setZweig(zweig);
 //            System.out.println("Religion: "+religion);
             String[] klassen = rg.getKlassen();
 //            System.out.println("Anzahl Klassen: "+klassen.length);
@@ -157,11 +157,11 @@ public class EinstellungFrame extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
-        jahrgang.clearReligionsgruppen();
+        jahrgang.clearZweiggruppe();
         for (int i = 0; i < anzahlGruppen; i++) {
-            ReligionsPanel rp = (ReligionsPanel) jPanel1.getComponent(i);
-            String religion = rp.getReligion();
-            jahrgang.religionsgruppeErstellen(religion);
+            ZweigPanel rp = (ZweigPanel) jPanel1.getComponent(i);
+            String zweig = rp.getZweig();
+            jahrgang.zweiggruppeErstellen(zweig);
             String[] klassen = rp.getKlassen();
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
             //System.out.println(list);
@@ -169,13 +169,13 @@ public class EinstellungFrame extends javax.swing.JFrame {
             //System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
             
-            jahrgang.getReligionsgruppen().get(i).setKlassen(klassen);
+            jahrgang.getZweiggruppen().get(i).setKlassen(klassen);
         }
         //jahrgang.testKlassen();
         //System.out.println("____________________________________________________________");
         //jahrgang.ausgabeAlle();
-        jahrgang.religionsgruppenZuordnen();
-        parent.religionsgruppenAnzeigen();
+        jahrgang.zweiggruppenZuordnen();
+        parent.zweiggruppenAnzeigen();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed
@@ -202,9 +202,9 @@ public class EinstellungFrame extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            ReligionsPanel religion = new ReligionsPanel();
-            jPanel1.add(religion);
-            religion.setVisible(true);
+            ZweigPanel zweig = new ZweigPanel();
+            jPanel1.add(zweig);
+            zweig.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
             jPanel1.remove(jPanel1.getComponentCount() - 1);
