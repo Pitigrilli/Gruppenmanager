@@ -607,8 +607,9 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jCheckBoxZweig.isSelected()) {
             aktuellerJahrgang.setNachZweig(true);
+            jButtonEinstellungZweig.setEnabled(true);
             new EinstellungFrameZweig(aktuellerJahrgang, this).setVisible(true);
-            jButtonEinstellungSport.setEnabled(true);
+            
         } else {
             aktuellerJahrgang.setNachZweig(false);
             aktuellerJahrgang.clearZweiggruppen();
@@ -623,12 +624,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameSport(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
+        new EinstellungFrameZweig(aktuellerJahrgang, this).setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
@@ -900,10 +901,36 @@ public class GUI extends javax.swing.JFrame {
             jPanelReligion.repaint();
 
         }
+        
+        if (aktuellerJahrgang.istNachSport()) {
+            jCheckBoxSport.setSelected(true);
+            jButtonEinstellungSport.setEnabled(true);
+            sportgruppenAnzeigen();
+        } else {
+            aktuellerJahrgang.clearSportgruppen();
+            jCheckBoxSport.setSelected(false);
+            jButtonEinstellungSport.setEnabled(false);
+            jPanelSport.removeAll();
+            jPanelSport.revalidate();
+            jPanelSport.repaint();
 
+        }
+        
+        if (aktuellerJahrgang.istNachZweig()) {
+            jCheckBoxZweig.setSelected(true);
+            jButtonEinstellungZweig.setEnabled(true);
+            zweiggruppenAnzeigen();
+        } else {
+            aktuellerJahrgang.clearZweiggruppen();
+            jCheckBoxZweig.setSelected(false);
+            jButtonEinstellungZweig.setEnabled(false);
+            jPanelZweig.removeAll();
+            jPanelZweig.revalidate();
+            jPanelZweig.repaint();
+
+        }
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
-
     }
 
     public void aktualisiereLabelJahrgang() {
@@ -994,10 +1021,8 @@ public class GUI extends javax.swing.JFrame {
 
     public void zweiggruppenAnzeigen() {
         jPanelZweig.removeAll();
-        for (Zweiggruppe r : aktuellerJahrgang.getZweiggruppen()) {
-
-            jPanelZweig.add(new GruppenPanel(r.getSchueler(), "" + r.getZahl()));
-
+        for (Zweiggruppe zg : aktuellerJahrgang.getZweiggruppen()) {
+            jPanelZweig.add(new GruppenPanel(zg.getSchueler(), "" + zg.getZweig() + ": " +zg.getZweiggroesse() + " Schüler"));
         }
         jPanelZweig.revalidate();
         jPanelZweig.repaint();

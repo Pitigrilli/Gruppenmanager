@@ -85,7 +85,6 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(new java.awt.Dimension(400, 400));
 
         jLabelAnzahlKlassen.setText("Anzahl der Gruppen");
 
@@ -96,7 +95,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setValue(jahrgang.getReligionsgruppenzahl());
+        jSpinner1.setValue(jahrgang.getZweiggruppenzahl());
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 8, 1));
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -158,15 +157,17 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearZweiggruppen();
+        System.out.println(anzahlGruppen);
         for (int i = 0; i < anzahlGruppen; i++) {
-            ZweigPanel rp = (ZweigPanel) jPanel1.getComponent(i);
-            String zweig = rp.getZweig();
+            ZweigPanel zp = (ZweigPanel) jPanel1.getComponent(i);
+            String zweig = zp.getZweig();
+            System.out.println(zweig);
             jahrgang.zweiggruppeErstellen(zweig);
-            String[] klassen = rp.getKlassen();
+            String[] klassen = zp.getKlassen();
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
             //System.out.println(list);
             list.removeAll(Arrays.asList("", null));
-            //System.out.println(list);
+            System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
             
             jahrgang.getZweiggruppen().get(i).setKlassen(klassen);

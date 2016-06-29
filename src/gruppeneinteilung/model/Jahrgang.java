@@ -22,7 +22,7 @@ public class Jahrgang implements Serializable {
     private ArrayList<Sportgruppe> sportgruppen;
     private ArrayList<Religionsgruppe> religionsgruppen;
     private ArrayList<Zweiggruppe> zweiggruppen;
-    private ArrayList<Fremdsprachengruppe> fremdsprachengruppen;
+    private ArrayList<Fremdsprachengruppe> sprachengruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -44,7 +44,7 @@ public class Jahrgang implements Serializable {
     private int sportgruppenzahl;
     private int religionsgruppenzahl;
     private int zweiggruppenzahl;
-    private int fremdsprachengruppenzahl;
+    private int sprachengruppenzahl;
 
     public static void main(String[] args) {
         Gruppeneinteilung ge = new Gruppeneinteilung("ASV.csv");
@@ -73,6 +73,7 @@ public class Jahrgang implements Serializable {
         sportgruppen = new ArrayList<>();
         religionsgruppen = new ArrayList<>();
         zweiggruppen = new ArrayList<>();
+        sprachengruppen = new ArrayList<>();
         jahrgang = n;
         alle = new ArrayList<>();
 
@@ -515,61 +516,61 @@ public class Jahrgang implements Serializable {
     }
 
     public void fremdsprachengruppeErstellen(String fremdsprache) {
-        Fremdsprachengruppe fg = new Fremdsprachengruppe(fremdsprachengruppenzahl, jahrgang, fremdsprache);
-        fremdsprachengruppenzahl++;
-        fremdsprachengruppen.add(fg);
+        Fremdsprachengruppe fg = new Fremdsprachengruppe(sprachengruppenzahl, jahrgang, fremdsprache);
+        sprachengruppenzahl++;
+        sprachengruppen.add(fg);
     }
 
     public void fremdsprachengruppenKlasseHinzufügen(int fremdsprachengruppe, String buchstabe) {
 
-        fremdsprachengruppen.get(fremdsprachengruppe + 1).klasseHinzufügen(buchstabe);
+        sprachengruppen.get(fremdsprachengruppe + 1).klasseHinzufügen(buchstabe);
         switch (buchstabe) {
             case "a":
                 for (int i = 0; i < klassen.get(0).getKlassengroesse(); i++) {
                     if (klassen.get(0).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(0).getSchueler().get(i));
                     }
                 }
                 break;
             case "b":
                 for (int i = 0; i < klassen.get(1).getKlassengroesse(); i++) {
                     if (klassen.get(1).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(1).getSchueler().get(i));
                     }
                 }
                 break;
             case "c":
                 for (int i = 0; i < klassen.get(2).getKlassengroesse(); i++) {
                     if (klassen.get(2).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(2).getSchueler().get(i));
                     }
                 }
                 break;
             case "d":
                 for (int i = 0; i < klassen.get(3).getKlassengroesse(); i++) {
                     if (klassen.get(3).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(3).getSchueler().get(i));
                     }
                 }
                 break;
             case "e":
                 for (int i = 0; i < klassen.get(4).getKlassengroesse(); i++) {
                     if (klassen.get(4).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(4).getSchueler().get(i));
                     }
                 }
                 break;
             case "f":
                 for (int i = 0; i < klassen.get(5).getKlassengroesse(); i++) {
                     if (klassen.get(5).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(5).getSchueler().get(i));
                     }
                 }
                 break;
             case "g":
                 for (int i = 0; i < klassen.get(6).getKlassengroesse(); i++) {
                     if (klassen.get(6).getSchueler().get(i).getZweig().equals(buchstabe)) {
-                        fremdsprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
+                        sprachengruppen.get(fremdsprachengruppe).studentHinzufuegen(klassen.get(6).getSchueler().get(i));
                     }
                 }
                 break;
@@ -593,7 +594,7 @@ public class Jahrgang implements Serializable {
 
     public ArrayList<Fremdsprachengruppe> getFremdsprachengruppen() {
 
-        return fremdsprachengruppen;
+        return sprachengruppen;
     }
 
     public int getSportgruppenzahl() {
@@ -610,7 +611,7 @@ public class Jahrgang implements Serializable {
     }
 
     public int getFremdsprachengruppenzahl() {
-        return fremdsprachengruppen.size();
+        return sprachengruppen.size();
     }
 
     public boolean istNachReligion() {
@@ -684,10 +685,10 @@ public class Jahrgang implements Serializable {
      */
     public void zweiggruppenZuordnen() {
         int i = 1;
-        for (Zweiggruppe aktuelleRG : zweiggruppen) {
-            String zweig = aktuelleRG.getZweig();
-            //System.out.println("ReliGruppe " + i + ": " + religion);
-            String[] klassenBuchstaben = aktuelleRG.getKlassen();
+        for (Zweiggruppe aktuelleZG : zweiggruppen) {
+            String zweig = aktuelleZG.getZweig();
+            //System.out.println("ZweigGruppe " + i + ": " + zweig);
+            String[] klassenBuchstaben = aktuelleZG.getKlassen();
             //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
 
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
@@ -696,8 +697,8 @@ public class Jahrgang implements Serializable {
             for (Klasse k : klassen) {
                 if (k.getKlassengroesse() > 0) {
                     for (Student student : k.getSchueler()) {
-                        if (klassenList.contains(student.getKlasse()) && student.getZweig().equals(aktuelleRG.getZweig())) {
-                            aktuelleRG.studentHinzufuegen(student);
+                        if (klassenList.contains(student.getKlasse()) && student.getZweig().equals(aktuelleZG.getZweig())) {
+                            aktuelleZG.studentHinzufuegen(student);
                         }
                     }
                 }
@@ -732,7 +733,7 @@ public class Jahrgang implements Serializable {
     
         public void fremdsprachengruppenZuordnen() {
         int i = 1;
-        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
             String fremdsprache = aktuelleRG.getFremdsprache();
             //System.out.println("ReliGruppe " + i + ": " + religion);
             String[] klassenBuchstaben = aktuelleRG.getKlassen();
@@ -755,7 +756,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void fremsprachengruppenRemove(Student student) {
-        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
             if (aktuelleRG.getSchueler().contains(student)) {
                 aktuelleRG.getSchueler().remove(student);
             }
@@ -763,7 +764,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void fremdsprachengruppenAdd(Student student) {
-        for (Fremdsprachengruppe aktuelleRG : fremdsprachengruppen) {
+        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
             String fremdsprache = aktuelleRG.getFremdsprache();
             String[] klassenBuchstaben = aktuelleRG.getKlassen();
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
@@ -844,6 +845,6 @@ public class Jahrgang implements Serializable {
         sportgruppen = new ArrayList<>();
     }
     public void clearFremdsprachengruppen() {
-        fremdsprachengruppen = new ArrayList<>();
+        sprachengruppen = new ArrayList<>();
     }
 }
