@@ -25,6 +25,7 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
 //    Gruppeneinteilung ge;
     int anzahlGruppen;
     GUI parent;
+    int n = 1;
 
     /**
      * Creates new form StudentEditFrame
@@ -39,7 +40,8 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
         jSpinner1.setValue(anzahlGruppen);
 
         for (Fremdsprachengruppe rg : j.getFremdsprachengruppen()) {
-            FremdsprachenPanel rp = new FremdsprachenPanel();
+            PanelFremdsprachen rp = new PanelFremdsprachen(n);
+            n++;
             String fremdsprache = rg.getFremdsprache();
             rp.setFremdsprache(fremdsprache);
 //            System.out.println("Religion: "+religion);
@@ -159,7 +161,7 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearFremdsprachengruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
-            FremdsprachenPanel rp = (FremdsprachenPanel) jPanel1.getComponent(i);
+            PanelFremdsprachen rp = (PanelFremdsprachen) jPanel1.getComponent(i);
             String zweig = rp.getFremdsprache();
             jahrgang.fremdsprachengruppeErstellen(zweig);
             String[] klassen = rp.getKlassen();
@@ -202,11 +204,13 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            FremdsprachenPanel fremdsprache = new FremdsprachenPanel();
+            PanelFremdsprachen fremdsprache = new PanelFremdsprachen(n);
+            n++;
             jPanel1.add(fremdsprache);
             fremdsprache.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
+            n--;
             jPanel1.remove(jPanel1.getComponentCount() - 1);
             anzahlGruppen--;
             jPanel1.revalidate();

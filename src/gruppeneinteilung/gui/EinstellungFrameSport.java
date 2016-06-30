@@ -25,6 +25,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
 //    Gruppeneinteilung ge;
     int anzahlGruppen;
     GUI parent;
+    int n = 1;
 
     /**
      * Creates new form StudentEditFrame
@@ -39,7 +40,8 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
         jSpinner1.setValue(anzahlGruppen);
 
         for (Sportgruppe rg : j.getSportgruppen()) {
-            SportPanel rp = new SportPanel();
+            PanelSport rp = new PanelSport(n);
+            n++;
             String sport = rg.getGeschlecht();
             rp.setSport(sport);
 //            System.out.println("Religion: "+religion);
@@ -158,7 +160,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearSportgruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
-            SportPanel rp = (SportPanel) jPanel1.getComponent(i);
+            PanelSport rp = (PanelSport) jPanel1.getComponent(i);
             String sport = rp.getSport();
             jahrgang.sportgruppeErstellen(sport);
             String[] klassen = rp.getKlassen();
@@ -201,11 +203,13 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            SportPanel sport = new SportPanel();
+            PanelSport sport = new PanelSport(n);
+            n++;
             jPanel1.add(sport);
             sport.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
+            n--;
             jPanel1.remove(jPanel1.getComponentCount() - 1);
             anzahlGruppen--;
             jPanel1.revalidate();

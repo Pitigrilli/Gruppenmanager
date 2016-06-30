@@ -25,6 +25,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
 //    Gruppeneinteilung ge;
     int anzahlGruppen;
     GUI parent;
+    int n = 1;
 
     /**
      * Creates new form StudentEditFrame
@@ -39,7 +40,8 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
         jSpinner1.setValue(anzahlGruppen);
 
         for (Zweiggruppe rg : j.getZweiggruppen()) {
-            ZweigPanel rp = new ZweigPanel();
+            PanelZweig rp = new PanelZweig(n);
+            n++;
             String zweig = rg.getZweig();
             rp.setZweig(zweig);
 //            System.out.println("Religion: "+religion);
@@ -159,7 +161,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
         jahrgang.clearZweiggruppen();
         System.out.println(anzahlGruppen);
         for (int i = 0; i < anzahlGruppen; i++) {
-            ZweigPanel zp = (ZweigPanel) jPanel1.getComponent(i);
+            PanelZweig zp = (PanelZweig) jPanel1.getComponent(i);
             String zweig = zp.getZweig();
             System.out.println(zweig);
             jahrgang.zweiggruppeErstellen(zweig);
@@ -203,11 +205,13 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            ZweigPanel zweig = new ZweigPanel();
+            PanelZweig zweig = new PanelZweig(n);
+            n++;
             jPanel1.add(zweig);
             zweig.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
+            n--;
             jPanel1.remove(jPanel1.getComponentCount() - 1);
             anzahlGruppen--;
             jPanel1.revalidate();

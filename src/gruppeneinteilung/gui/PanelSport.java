@@ -10,13 +10,14 @@ import java.awt.LayoutManager;
 
 /**
  *
- * @author lutz.laurens / bauer.yannik
+ * @author lennard.zimmer
  */
-public class ZweigPanel extends JPanel {
+public class PanelSport extends JPanel {
 
     // Die Objektvariablen für die Elemente auf dem JFrame:
     // Auf dem JPanel wird alles angeordnet. 
     // Die sichtbaren Elemente werden als Objektvariablen angelegt:
+    private final javax.swing.JLabel JLabelNummer = new javax.swing.JLabel();
     private final javax.swing.JCheckBox JCheckBoxA;
     private final javax.swing.JCheckBox JCheckBoxB = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxC = new javax.swing.JCheckBox();
@@ -25,10 +26,12 @@ public class ZweigPanel extends JPanel {
     private final javax.swing.JCheckBox JCheckBoxF = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxG = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
-    private final javax.swing.JComboBox<String> JComboBoxZweig;
+    private final javax.swing.JComboBox<String> JComboBoxSport;
 
-    public ZweigPanel() {
+    public PanelSport(int n) {
         this.setLayout(new java.awt.FlowLayout());
+        this.add(JLabelNummer);
+        JLabelNummer.setText(n+":");
         JCheckBoxA = new javax.swing.JCheckBox("a");
         this.add(JCheckBoxA);
         JCheckBoxA.setText("a");
@@ -47,13 +50,13 @@ public class ZweigPanel extends JPanel {
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
 
-        String[] auswahl = {"Zweig wählen", "GY", "GY_MU", "GY_TH", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8"};
-        JComboBoxZweig = new javax.swing.JComboBox<>(auswahl);
-        this.add(JComboBoxZweig);
+        String[] auswahl = {"Geschlecht wählen", "M", "W"};
+        JComboBoxSport = new javax.swing.JComboBox<>(auswahl);
+        this.add(JComboBoxSport);
     }
 
-    public void setZweig(String zw) {
-        JComboBoxZweig.getModel().setSelectedItem(zw);
+    public void setSport(String spo) {
+        JComboBoxSport.getModel().setSelectedItem(spo);
     }
 
     public String[] getKlassen() {
@@ -85,8 +88,8 @@ public class ZweigPanel extends JPanel {
         return klassen;
     }
 
-    public String getZweig() {
-        return (String) JComboBoxZweig.getModel().getSelectedItem();
+    public String getSport() {
+        return (String) JComboBoxSport.getModel().getSelectedItem();
     }
 
     public void checkKlassen(String[] args) {

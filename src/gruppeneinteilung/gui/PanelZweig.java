@@ -10,13 +10,14 @@ import java.awt.LayoutManager;
 
 /**
  *
- * @author lutz.laurens
+ * @author lutz.laurens / bauer.yannik
  */
-public class ReligionsPanel extends JPanel {
+public class PanelZweig extends JPanel {
 
     // Die Objektvariablen für die Elemente auf dem JFrame:
     // Auf dem JPanel wird alles angeordnet. 
     // Die sichtbaren Elemente werden als Objektvariablen angelegt:
+    private final javax.swing.JLabel JLabelNummer = new javax.swing.JLabel();
     private final javax.swing.JCheckBox JCheckBoxA;
     private final javax.swing.JCheckBox JCheckBoxB = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxC = new javax.swing.JCheckBox();
@@ -25,10 +26,12 @@ public class ReligionsPanel extends JPanel {
     private final javax.swing.JCheckBox JCheckBoxF = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxG = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
-    private final javax.swing.JComboBox<String> JComboBoxReligion;
+    private final javax.swing.JComboBox<String> JComboBoxZweig;
 
-    public ReligionsPanel() {
+    public PanelZweig(int n) {
         this.setLayout(new java.awt.FlowLayout());
+        this.add(JLabelNummer);
+        JLabelNummer.setText(n+":");
         JCheckBoxA = new javax.swing.JCheckBox("a");
         this.add(JCheckBoxA);
         JCheckBoxA.setText("a");
@@ -47,13 +50,13 @@ public class ReligionsPanel extends JPanel {
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
 
-        String[] auswahl = {"Religion wählen", "RK", "ETH", "EV", "ORTH"};
-        JComboBoxReligion = new javax.swing.JComboBox<>(auswahl);
-        this.add(JComboBoxReligion);
+        String[] auswahl = {"Zweig wählen", "GY", "GY_MU", "GY_TH", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8"};
+        JComboBoxZweig = new javax.swing.JComboBox<>(auswahl);
+        this.add(JComboBoxZweig);
     }
 
-    public void setReligion(String rel) {
-        JComboBoxReligion.getModel().setSelectedItem(rel);
+    public void setZweig(String zw) {
+        JComboBoxZweig.getModel().setSelectedItem(zw);
     }
 
     public String[] getKlassen() {
@@ -85,8 +88,8 @@ public class ReligionsPanel extends JPanel {
         return klassen;
     }
 
-    public String getReligion() {
-        return (String) JComboBoxReligion.getModel().getSelectedItem();
+    public String getZweig() {
+        return (String) JComboBoxZweig.getModel().getSelectedItem();
     }
 
     public void checkKlassen(String[] args) {

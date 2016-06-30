@@ -30,6 +30,10 @@ public class GUI extends javax.swing.JFrame {
     private Gruppeneinteilung ge;
     private Jahrgang aktuellerJahrgang;
     private File file;
+    private EinstellungFrameFremdsprachen einstellungFrameFremdsprachen;
+    private EinstellungFrameReligion einstellungFrameReligion;
+    private EinstellungFrameSport einstellungFrameSport;
+    private EinstellungFrameZweig einstellungFrameZweig;
 
     /**
      * Creates new form GUI
@@ -54,7 +58,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<String>();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -308,7 +312,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxZweig)
                     .addComponent(jButtonEinstellungZweig))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelKatholisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,17 +320,17 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelEthik, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEvangelisch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelMännlich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelZweig1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -361,7 +365,7 @@ public class GUI extends javax.swing.JFrame {
                 jPanelSportFocusGained(evt);
             }
         });
-        jPanelSport.setLayout(new java.awt.GridLayout());
+        jPanelSport.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Sportgruppen", jPanelSport);
 
         jPanelZweig.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -369,7 +373,7 @@ public class GUI extends javax.swing.JFrame {
                 jPanelZweigFocusGained(evt);
             }
         });
-        jPanelZweig.setLayout(new java.awt.GridLayout());
+        jPanelZweig.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
         jMenu1.setText("Datei");
@@ -564,7 +568,8 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jCheckBoxReligion.isSelected()) {
             aktuellerJahrgang.setNachReligion(true);
-            new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
+            einstellungFrameReligion = new EinstellungFrameReligion(aktuellerJahrgang, this);
+            einstellungFrameReligion.setVisible(true);
             jButtonEinstellungReligion.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachReligion(false);
@@ -582,14 +587,15 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
         //aktuellerJahrgang.testKlassen();
-        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
+        einstellungFrameReligion.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
     private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
         // TODO add your handling code here:
          if (jCheckBoxSport.isSelected()) {
             aktuellerJahrgang.setNachGeschlecht(true);
-            new EinstellungFrameSport(aktuellerJahrgang, this).setVisible(true);
+            einstellungFrameSport = new EinstellungFrameSport(aktuellerJahrgang, this);
+            einstellungFrameSport.setVisible(true);
             jButtonEinstellungSport.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachGeschlecht(false);
@@ -608,8 +614,8 @@ public class GUI extends javax.swing.JFrame {
         if (jCheckBoxZweig.isSelected()) {
             aktuellerJahrgang.setNachZweig(true);
             jButtonEinstellungZweig.setEnabled(true);
-            new EinstellungFrameZweig(aktuellerJahrgang, this).setVisible(true);
-            
+            einstellungFrameZweig = new EinstellungFrameZweig(aktuellerJahrgang, this);
+            einstellungFrameZweig.setVisible(true);
         } else {
             aktuellerJahrgang.setNachZweig(false);
             aktuellerJahrgang.clearZweiggruppen();
@@ -624,12 +630,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrameSport(aktuellerJahrgang, this).setVisible(true);
+        einstellungFrameSport.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrameZweig(aktuellerJahrgang, this).setVisible(true);
+        einstellungFrameZweig.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
     private void jSpinnerAnzahlKlassenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerAnzahlKlassenStateChanged
@@ -691,7 +697,8 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (jCheckBoxFremdsprachen.isSelected()) {
             aktuellerJahrgang.setNachSprache(true);
-            new EinstellungFrameFremdsprachen(aktuellerJahrgang, this).setVisible(true);
+            einstellungFrameFremdsprachen = new EinstellungFrameFremdsprachen(aktuellerJahrgang, this);
+            einstellungFrameFremdsprachen.setVisible(true);
             jButtonEinstellungFremdsprachen.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachSprache(false);
@@ -706,7 +713,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonEinstellungFremdsprachenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungFremdsprachenActionPerformed
         // TODO add your handling code here:
-        new EinstellungFrameReligion(aktuellerJahrgang, this).setVisible(true);
+        einstellungFrameFremdsprachen.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungFremdsprachenActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged

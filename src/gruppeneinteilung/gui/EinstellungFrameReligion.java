@@ -25,6 +25,7 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
 //    Gruppeneinteilung ge;
     int anzahlGruppen;
     GUI parent;
+    int n = 1;
 
     /**
      * Creates new form StudentEditFrame
@@ -39,7 +40,8 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
         jSpinner1.setValue(anzahlGruppen);
 
         for (Religionsgruppe rg : j.getReligionsgruppen()) {
-            ReligionsPanel rp = new ReligionsPanel();
+            PanelReligion rp = new PanelReligion(n);
+            n++;
             String religion = rg.getReligion();
             rp.setReligion(religion);
 //            System.out.println("Religion: "+religion);
@@ -158,7 +160,7 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearReligionsgruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
-            ReligionsPanel rp = (ReligionsPanel) jPanel1.getComponent(i);
+            PanelReligion rp = (PanelReligion) jPanel1.getComponent(i);
             String religion = rp.getReligion();
             jahrgang.religionsgruppeErstellen(religion);
             String[] klassen = rp.getKlassen();
@@ -201,11 +203,13 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            ReligionsPanel religion = new ReligionsPanel();
+            PanelReligion religion = new PanelReligion(n);
+            n++;
             jPanel1.add(religion);
             religion.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
+            n--;
             jPanel1.remove(jPanel1.getComponentCount() - 1);
             anzahlGruppen--;
             jPanel1.revalidate();

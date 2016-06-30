@@ -10,13 +10,14 @@ import java.awt.LayoutManager;
 
 /**
  *
- * @author lutz.laurens / bauer.yannik
+ * @author lutz.laurens
  */
-public class FremdsprachenPanel extends JPanel {
+public class PanelReligion extends JPanel {
 
     // Die Objektvariablen für die Elemente auf dem JFrame:
     // Auf dem JPanel wird alles angeordnet. 
     // Die sichtbaren Elemente werden als Objektvariablen angelegt:
+    private final javax.swing.JLabel JLabelNummer = new javax.swing.JLabel();
     private final javax.swing.JCheckBox JCheckBoxA;
     private final javax.swing.JCheckBox JCheckBoxB = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxC = new javax.swing.JCheckBox();
@@ -25,10 +26,12 @@ public class FremdsprachenPanel extends JPanel {
     private final javax.swing.JCheckBox JCheckBoxF = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxG = new javax.swing.JCheckBox();
     private final javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
-    private final javax.swing.JComboBox<String> JComboBoxFremdsprache;
+    private final javax.swing.JComboBox<String> JComboBoxReligion;
 
-    public FremdsprachenPanel() {
+    public PanelReligion(int n) {
         this.setLayout(new java.awt.FlowLayout());
+        this.add(JLabelNummer);
+        JLabelNummer.setText(n+":");
         JCheckBoxA = new javax.swing.JCheckBox("a");
         this.add(JCheckBoxA);
         JCheckBoxA.setText("a");
@@ -47,13 +50,13 @@ public class FremdsprachenPanel extends JPanel {
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
 
-        String[] auswahl = {"Fremdsprachen wählen", "Englisch", "Französisch", "Latein", "Spanisch"};
-        JComboBoxFremdsprache = new javax.swing.JComboBox<>(auswahl);
-        this.add(JComboBoxFremdsprache);
+        String[] auswahl = {"Religion wählen", "RK", "ETH", "EV", "ORTH"};
+        JComboBoxReligion = new javax.swing.JComboBox<>(auswahl);
+        this.add(JComboBoxReligion);
     }
 
-    public void setFremdsprache(String zw) {
-        JComboBoxFremdsprache.getModel().setSelectedItem(zw);
+    public void setReligion(String rel) {
+        JComboBoxReligion.getModel().setSelectedItem(rel);
     }
 
     public String[] getKlassen() {
@@ -85,8 +88,8 @@ public class FremdsprachenPanel extends JPanel {
         return klassen;
     }
 
-    public String getFremdsprache() {
-        return (String) JComboBoxFremdsprache.getModel().getSelectedItem();
+    public String getReligion() {
+        return (String) JComboBoxReligion.getModel().getSelectedItem();
     }
 
     public void checkKlassen(String[] args) {
