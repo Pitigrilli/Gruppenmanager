@@ -293,7 +293,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1))"/>
-            <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);"/>
+            <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private javax.swing.SpinnerModel modelAnzahlKlassen = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jSpinnerAnzahlKlassen.setEnabled(false);"/>
           </AuxValues>
         </Component>
@@ -557,9 +557,9 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanelFremdsprachen">
+        <Container class="javax.swing.JPanel" name="jPanelSprachen">
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelFremdsprachenFocusGained"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jPanelSprachenFocusGained"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">

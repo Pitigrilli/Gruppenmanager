@@ -22,7 +22,7 @@ public class Jahrgang implements Serializable {
     private ArrayList<Sportgruppe> sportgruppen;
     private ArrayList<Religionsgruppe> religionsgruppen;
     private ArrayList<Zweiggruppe> zweiggruppen;
-    private ArrayList<Fremdsprachengruppe> sprachengruppen;
+    private ArrayList<Sprachengruppe> sprachengruppen;
     private final ArrayList<Student> alle;
     private int schuelerAnzahl;
     private int weiblich;
@@ -515,13 +515,13 @@ public class Jahrgang implements Serializable {
         }
     }
 
-    public void fremdsprachengruppeErstellen(String fremdsprache) {
-        Fremdsprachengruppe fg = new Fremdsprachengruppe(sprachengruppenzahl, jahrgang, fremdsprache);
+    public void sprachengruppeErstellen(String fremdsprache, int wievielte) {
+        Sprachengruppe fg = new Sprachengruppe(sprachengruppenzahl, jahrgang, fremdsprache, wievielte);
         sprachengruppenzahl++;
         sprachengruppen.add(fg);
     }
 
-    public void fremdsprachengruppenKlasseHinzufügen(int fremdsprachengruppe, String buchstabe) {
+    public void sprachengruppenKlasseHinzufügen(int fremdsprachengruppe, String buchstabe) {
 
         sprachengruppen.get(fremdsprachengruppe + 1).klasseHinzufügen(buchstabe);
         switch (buchstabe) {
@@ -592,7 +592,7 @@ public class Jahrgang implements Serializable {
         return sportgruppen;
     }
 
-    public ArrayList<Fremdsprachengruppe> getFremdsprachengruppen() {
+    public ArrayList<Sprachengruppe> getSprachengruppen() {
 
         return sprachengruppen;
     }
@@ -610,9 +610,10 @@ public class Jahrgang implements Serializable {
 
     }
 
-    public int getFremdsprachengruppenzahl() {
+    public int getSprachengruppenzahl() {
         return sprachengruppen.size();
     }
+    
 
     public boolean istNachReligion() {
         return nachReligion;
@@ -731,22 +732,38 @@ public class Jahrgang implements Serializable {
      * Ordnet die Schüler den entsprechenden Fremdsprachengruppen zu.
      */
     
-        public void fremdsprachengruppenZuordnen() {
-        int i = 1;
-        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
-            String fremdsprache = aktuelleRG.getFremdsprache();
-            //System.out.println("ReliGruppe " + i + ": " + religion);
-            String[] klassenBuchstaben = aktuelleRG.getKlassen();
-            //System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben) + "\n");
-
+    public void sprachengruppenZuordnen() {
+        int i = 0;
+        for (Sprachengruppe aktuelleSG : sprachengruppen) {
+            i++;
+            String fremdsprache = aktuelleSG.getFremdsprache();
+            int wievielte = aktuelleSG.getWievielteSprache();
+            String[] klassenBuchstaben = aktuelleSG.getKlassen();
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
-            //System.out.println("Klassen in List:" + klassenList + "\n");
+            
+            System.out.println("Gruppe " + i + ": Sprache: " + fremdsprache+" Folge: "+wievielte);
+            System.out.println("Klassen:" + Arrays.toString(klassenBuchstaben));
+            System.out.println("Klassen in List:" + klassenList + "\n");
 
+            /*
+            Beim Zuordnen der Schüler zu den Sprachengruppen ergibt sich das Problem, die wievielte Sprache soll eigentlich 
+            abgefragt werden. Stand ist: L und F gibt es nur als 2. FS, Sp ist immer 3. FS, aber Sps ist 3. FS für die Schüler 
+            aus dem Gymnasium und 2. FS für Schüler in der Übertrittsklasse. Die Schüler werden auch häufig in einer Gruppe 
+            unterrichtet.	
+            Es wird für jeden Studenten eine Liste der Sprachen angelegt. Enthält die Liste der Sprachen die Fremdsprache 
+            der aktuellen Gruppe und enthält die Liste der Klassen für die aktuelle Gruppe die Klasse des Studenten, so wird 
+            der Student zur Gruppe hinzugefügt.
+            */
             for (Klasse k : klassen) {
                 if (k.getKlassengroesse() > 0) {
                     for (Student student : k.getSchueler()) {
-                        if (klassenList.contains(student.getKlasse()) && student.getFs2().equals(aktuelleRG.getFremdsprache())) {
-                            aktuelleRG.studentHinzufuegen(student);
+                        List<String> sprachenList = new ArrayList<>();
+                        sprachenList.add(student.getFs2());
+                        sprachenList.add(student.getFs3());
+                        sprachenList.add(student.getFs4());
+     
+                        if (klassenList.contains(student.getKlasse()) && sprachenList.contains(fremdsprache)) {
+                            aktuelleSG.studentHinzufuegen(student);
                         }
                     }
                 }
@@ -755,16 +772,16 @@ public class Jahrgang implements Serializable {
         }
     }
 
-    public void fremsprachengruppenRemove(Student student) {
-        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
+    public void sprachengruppenRemove(Student student) {
+        for (Sprachengruppe aktuelleRG : sprachengruppen) {
             if (aktuelleRG.getSchueler().contains(student)) {
                 aktuelleRG.getSchueler().remove(student);
             }
         }
     }
 
-    public void fremdsprachengruppenAdd(Student student) {
-        for (Fremdsprachengruppe aktuelleRG : sprachengruppen) {
+    public void sprachengruppenAdd(Student student) {
+        for (Sprachengruppe aktuelleRG : sprachengruppen) {
             String fremdsprache = aktuelleRG.getFremdsprache();
             String[] klassenBuchstaben = aktuelleRG.getKlassen();
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
@@ -824,17 +841,6 @@ public class Jahrgang implements Serializable {
     
     
 
-//    
-//    public void religionsgruppenZuordnen2(){
-//        
-//        for(Klasse k: klassen){
-//            for(Student s: k.getSchueler()){
-//                String b = s.getKlasse();
-//                String r = s.getReligion();
-//                
-//            }
-//        }
-//    }
     public void clearReligionsgruppen() {
         religionsgruppen = new ArrayList<>();
     }
@@ -844,7 +850,7 @@ public class Jahrgang implements Serializable {
     public void clearSportgruppen() {
         sportgruppen = new ArrayList<>();
     }
-    public void clearFremdsprachengruppen() {
+    public void clearSprachengruppen() {
         sprachengruppen = new ArrayList<>();
     }
 }

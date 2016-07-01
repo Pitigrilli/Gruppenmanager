@@ -413,7 +413,7 @@ public class PrintPDF {
 
         Jahrgang aktuellerJahrgang = j;
         int n = 0;
-        n= aktuellerJahrgang.getFremdsprachengruppenzahl();   
+        n= aktuellerJahrgang.getSprachengruppenzahl();   
         System.out.println(n);
 
         PdfPTable table = new PdfPTable(n); 
@@ -422,11 +422,11 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);      
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getFremdsprachengruppen().get(i).getZahl()+""+ aktuellerJahrgang.getFremdsprachengruppen().get(i).getFremdsprache() ,
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getSprachengruppen().get(i).getZahl()+""+ aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprache() ,
                     tableHeadFont));
             //Änderung für anderes 
             
-            for (Student s : aktuellerJahrgang.getFremdsprachengruppen().get(i).getSchueler()) { 
+            for (Student s : aktuellerJahrgang.getSprachengruppen().get(i).getSchueler()) { 
 
                 switch (s.getReligion()) {
                     case "RK":

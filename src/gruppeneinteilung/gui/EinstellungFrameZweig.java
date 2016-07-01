@@ -159,17 +159,17 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearZweiggruppen();
-        System.out.println(anzahlGruppen);
+        //System.out.println(anzahlGruppen);
         for (int i = 0; i < anzahlGruppen; i++) {
             PanelZweig zp = (PanelZweig) jPanel1.getComponent(i);
             String zweig = zp.getZweig();
-            System.out.println(zweig);
+            //System.out.println(zweig);
             jahrgang.zweiggruppeErstellen(zweig);
             String[] klassen = zp.getKlassen();
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
             //System.out.println(list);
             list.removeAll(Arrays.asList("", null));
-            System.out.println(list);
+            //System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
             
             jahrgang.getZweiggruppen().get(i).setKlassen(klassen);

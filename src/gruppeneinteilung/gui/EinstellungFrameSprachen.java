@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Fremdsprachengruppe;
+import gruppeneinteilung.model.Sprachengruppe;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ import javax.swing.JFrame;
  *
  * @author zimmer.lennard
  */
-public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
+public class EinstellungFrameSprachen extends javax.swing.JFrame {
 
     Jahrgang jahrgang;
 //    Gruppeneinteilung ge;
@@ -32,15 +32,15 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
      * @param j
      * @param parent
      */
-    public EinstellungFrameFremdsprachen(Jahrgang j, JFrame parent) {
+    public EinstellungFrameSprachen(Jahrgang j, JFrame parent) {
         this.parent = (GUI) parent;
         this.jahrgang = j;
         initComponents();
-        anzahlGruppen = j.getFremdsprachengruppen().size();
+        anzahlGruppen = j.getSprachengruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Fremdsprachengruppe rg : j.getFremdsprachengruppen()) {
-            PanelFremdsprachen rp = new PanelFremdsprachen(n);
+        for (Sprachengruppe rg : j.getSprachengruppen()) {
+            PanelSprachen rp = new PanelSprachen(n);
             n++;
             String fremdsprache = rg.getFremdsprache();
             rp.setFremdsprache(fremdsprache);
@@ -87,7 +87,6 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(new java.awt.Dimension(400, 400));
 
         jLabelAnzahlKlassen.setText("Anzahl der Gruppen");
 
@@ -159,25 +158,26 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
-        jahrgang.clearFremdsprachengruppen();
+        jahrgang.clearSprachengruppen();
         for (int i = 0; i < anzahlGruppen; i++) {
-            PanelFremdsprachen rp = (PanelFremdsprachen) jPanel1.getComponent(i);
-            String zweig = rp.getFremdsprache();
-            jahrgang.fremdsprachengruppeErstellen(zweig);
-            String[] klassen = rp.getKlassen();
+            PanelSprachen sp = (PanelSprachen) jPanel1.getComponent(i);
+            String sprache = sp.getSprache();
+            int wievielte = sp.getWievielteSprache();
+            jahrgang.sprachengruppeErstellen(sprache, wievielte);
+            String[] klassen = sp.getKlassen();
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
             //System.out.println(list);
             list.removeAll(Arrays.asList("", null));
             //System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
             
-            jahrgang.getFremdsprachengruppen().get(i).setKlassen(klassen);
+            jahrgang.getSprachengruppen().get(i).setKlassen(klassen);
         }
         //jahrgang.testKlassen();
         //System.out.println("____________________________________________________________");
         //jahrgang.ausgabeAlle();
-        jahrgang.fremdsprachengruppenZuordnen();
-        parent.zweiggruppenAnzeigen();
+        jahrgang.sprachengruppenZuordnen();
+        parent.sprachengruppenAnzeigen();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed
@@ -204,7 +204,7 @@ public class EinstellungFrameFremdsprachen extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            PanelFremdsprachen fremdsprache = new PanelFremdsprachen(n);
+            PanelSprachen fremdsprache = new PanelSprachen(n);
             n++;
             jPanel1.add(fremdsprache);
             fremdsprache.setVisible(true);

@@ -11,6 +11,7 @@ import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Religionsgruppe;
 import gruppeneinteilung.model.Sportgruppe;
+import gruppeneinteilung.model.Sprachengruppe;
 import gruppeneinteilung.model.Zweiggruppe;
 import java.awt.Component;
 import java.awt.Desktop;
@@ -30,7 +31,7 @@ public class GUI extends javax.swing.JFrame {
     private Gruppeneinteilung ge;
     private Jahrgang aktuellerJahrgang;
     private File file;
-    private EinstellungFrameFremdsprachen einstellungFrameFremdsprachen;
+    private EinstellungFrameSprachen einstellungFrameFremdsprachen;
     private EinstellungFrameReligion einstellungFrameReligion;
     private EinstellungFrameSport einstellungFrameSport;
     private EinstellungFrameZweig einstellungFrameZweig;
@@ -58,7 +59,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<>();
+        jComboBoxSortierung = new javax.swing.JComboBox<String>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -79,7 +80,7 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungFremdsprachen = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
-        jPanelFremdsprachen = new javax.swing.JPanel();
+        jPanelSprachen = new javax.swing.JPanel();
         jPanelReligion = new javax.swing.JPanel();
         jPanelSport = new javax.swing.JPanel();
         jPanelZweig = new javax.swing.JPanel();
@@ -344,13 +345,13 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Allgemein", jPanelKlassen);
 
-        jPanelFremdsprachen.addFocusListener(new java.awt.event.FocusAdapter() {
+        jPanelSprachen.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelFremdsprachenFocusGained(evt);
+                jPanelSprachenFocusGained(evt);
             }
         });
-        jPanelFremdsprachen.setLayout(new java.awt.GridLayout(1, 8));
-        jTabbedPane1.addTab("Fremdsprachengruppen", jPanelFremdsprachen);
+        jPanelSprachen.setLayout(new java.awt.GridLayout(1, 8));
+        jTabbedPane1.addTab("Fremdsprachengruppen", jPanelSprachen);
 
         jPanelReligion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -587,6 +588,9 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonEinstellungReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungReligionActionPerformed
         // TODO add your handling code here:
         //aktuellerJahrgang.testKlassen();
+        if(einstellungFrameReligion==null){
+            einstellungFrameReligion = new EinstellungFrameReligion(aktuellerJahrgang, this);
+        }
         einstellungFrameReligion.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
@@ -630,11 +634,17 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonEinstellungSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSportActionPerformed
         // TODO add your handling code here:
+        if(einstellungFrameSport==null){
+            einstellungFrameSport = new EinstellungFrameSport(aktuellerJahrgang, this);
+        }
         einstellungFrameSport.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
         // TODO add your handling code here:
+        if(einstellungFrameZweig==null){
+            einstellungFrameZweig = new EinstellungFrameZweig(aktuellerJahrgang, this);
+        }
         einstellungFrameZweig.setVisible(true);
     }//GEN-LAST:event_jButtonEinstellungZweigActionPerformed
 
@@ -697,16 +707,16 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (jCheckBoxFremdsprachen.isSelected()) {
             aktuellerJahrgang.setNachSprache(true);
-            einstellungFrameFremdsprachen = new EinstellungFrameFremdsprachen(aktuellerJahrgang, this);
+            einstellungFrameFremdsprachen = new EinstellungFrameSprachen(aktuellerJahrgang, this);
             einstellungFrameFremdsprachen.setVisible(true);
             jButtonEinstellungFremdsprachen.setEnabled(true);
         } else {
             aktuellerJahrgang.setNachSprache(false);
-            aktuellerJahrgang.clearFremdsprachengruppen();
+            aktuellerJahrgang.clearSprachengruppen();
             jButtonEinstellungSport.setEnabled(false);
-            jPanelFremdsprachen.removeAll();
-            jPanelFremdsprachen.revalidate();
-            jPanelFremdsprachen.repaint();
+            jPanelSprachen.removeAll();
+            jPanelSprachen.revalidate();
+            jPanelSprachen.repaint();
 
         }
     }//GEN-LAST:event_jCheckBoxFremdsprachenActionPerformed
@@ -743,9 +753,9 @@ public class GUI extends javax.swing.JFrame {
         this.sportgruppenAnzeigen();
     }//GEN-LAST:event_jPanelSportFocusGained
 
-    private void jPanelFremdsprachenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelFremdsprachenFocusGained
-        this.fremdsprachengruppenAnzeigen();
-    }//GEN-LAST:event_jPanelFremdsprachenFocusGained
+    private void jPanelSprachenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSprachenFocusGained
+        this.sprachengruppenAnzeigen();
+    }//GEN-LAST:event_jPanelSprachenFocusGained
 
     private void jPanelZweigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelZweigFocusGained
         this.zweiggruppenAnzeigen();
@@ -787,13 +797,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSaveAs;
     private javax.swing.JMenuItem jMenuItemSettings;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelFremdsprachen;
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
     private javax.swing.JPanel jPanelSport;
+    private javax.swing.JPanel jPanelSprachen;
     private javax.swing.JPanel jPanelZweig;
     private javax.swing.JSpinner jSpinnerAnzahlKlassen;
-    private javax.swing.SpinnerModel modelKlassenAnzahl = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
+    private javax.swing.SpinnerModel modelAnzahlKlassen = new javax.swing.SpinnerNumberModel(0, 0, 10, 1);
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
@@ -1035,15 +1045,15 @@ public class GUI extends javax.swing.JFrame {
         jPanelZweig.repaint();
     }
 
-    public void fremdsprachengruppenAnzeigen() {
-        //   jPanelFremdsprachen.removeAll();
-        //   for (Fremdsprachengruppen f : aktuellerJahrgang.gibFremdsprachengruppen()) {
-        //       if (f.getZahl() > 0) {
-        //           jPanelFremdsprachen.add(new GruppenPanel(f.getSchueler(), ""+f.getZahl()));
-        //       }
-        //   }
-        //   jPanelFremdsprachen.revalidate();
-        //   jPanelFremdsprachen.repaint();
+    public void sprachengruppenAnzeigen() {
+           jPanelSprachen.removeAll();
+           for (Sprachengruppe f : aktuellerJahrgang.getSprachengruppen()) {
+               if (f.getZahl() > 0) {
+                   jPanelSprachen.add(new GruppenPanel(f.getSchueler(), ""+f.getZahl()));
+               }
+           }
+           jPanelSprachen.revalidate();
+           jPanelSprachen.repaint();
     }
 
     public void merkeGeladeneDatei() {

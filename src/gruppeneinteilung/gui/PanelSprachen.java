@@ -12,7 +12,7 @@ import java.awt.LayoutManager;
  *
  * @author lutz.laurens / bauer.yannik
  */
-public class PanelFremdsprachen extends JPanel {
+public class PanelSprachen extends JPanel {
 
     // Die Objektvariablen für die Elemente auf dem JFrame:
     // Auf dem JPanel wird alles angeordnet. 
@@ -28,7 +28,7 @@ public class PanelFremdsprachen extends JPanel {
     private final javax.swing.JCheckBox JCheckBoxH = new javax.swing.JCheckBox();
     private final javax.swing.JComboBox<String> JComboBoxFremdsprache;
 
-    public PanelFremdsprachen(int n) {
+    public PanelSprachen(int n) {
         this.setLayout(new java.awt.FlowLayout());
         this.add(JLabelNummer);
         JLabelNummer.setText(n+":");
@@ -50,7 +50,7 @@ public class PanelFremdsprachen extends JPanel {
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
 
-        String[] auswahl = {"Fremdsprachen wählen", "Englisch", "Französisch", "Latein", "Spanisch"};
+        String[] auswahl = {"Fremdsprachen wählen", "L", "F", "Sp", "Sps"};
         JComboBoxFremdsprache = new javax.swing.JComboBox<>(auswahl);
         this.add(JComboBoxFremdsprache);
     }
@@ -88,8 +88,22 @@ public class PanelFremdsprachen extends JPanel {
         return klassen;
     }
 
-    public String getFremdsprache() {
-        return (String) JComboBoxFremdsprache.getModel().getSelectedItem();
+    public String getSprache() {
+        String auswahl = (String) JComboBoxFremdsprache.getModel().getSelectedItem();
+        //String sprachekuerzel = auswahl.substring(0, auswahl.length()-1);
+        return auswahl;//sprachekuerzel;
+    }
+    
+    public int getWievielteSprache(){
+        String auswahl = (String) JComboBoxFremdsprache.getModel().getSelectedItem();
+        int wievielteSprache = 2;
+        switch(auswahl){
+            case "F": wievielteSprache = 2;break;
+            case "L": wievielteSprache = 2;break;
+            case "Sp": wievielteSprache = 3;break;
+            case "Sps": wievielteSprache = 3;break;
+        }
+        return wievielteSprache;
     }
 
     public void checkKlassen(String[] args) {
