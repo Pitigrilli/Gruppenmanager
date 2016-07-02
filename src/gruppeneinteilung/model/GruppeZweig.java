@@ -71,4 +71,14 @@ public void setZweig(String zweig){
     public void setKlassen(String[] klassen) {
         this.klassen = klassen;
     }
+    
+public void aktualisiereKlassen(){
+        klassen = new String[8];
+        ArrayList<String> klassenList =  new ArrayList<>();
+        for(Student s: schueler){
+            if(!klassenList.contains(s.getKlasse()))klassenList.add(s.getKlasse());
+        }
+        klassen = klassenList.toArray(new String[0]);
+        Arrays.sort(klassen);
+    }
 }

@@ -57,4 +57,8 @@ public class Klasse extends SortierbareGruppe implements Serializable{
             System.out.println(schueler.get(i).getName() + ", " + schueler.get(i).getGeschlecht());
         }
     }
+    
+    public void aktualisiereKlassen(){
+       
+    }
 }

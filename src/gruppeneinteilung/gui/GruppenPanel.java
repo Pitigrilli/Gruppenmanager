@@ -151,6 +151,8 @@ public class GruppenPanel extends JPanel {
                             listModel.removeElement(student);
                             schuelerListe.remove(student);
                         }
+                       
+                       gruppe.aktualisiereKlassen();
                        aktualisiereTitel();
                     }
 
@@ -188,6 +190,7 @@ public class GruppenPanel extends JPanel {
                             listModel.add(index, student);
                             schuelerListe.add(index, student);
                         }
+                        gruppe.aktualisiereKlassen();
                         aktualisiereTitel();
                         return true;
                     }
