@@ -215,7 +215,7 @@ public class PrintPDF {
     }
     // NOCH IN ARBEIT :D
     /**
-     * Druckt die ausgewählte Religionsgruppe,erwartet als Eingabe einen Jahrgang und einen String als Name für die PDF-Datei
+     * Druckt die ausgewählte GruppeReligion,erwartet als Eingabe einen Jahrgang und einen String als Name für die PDF-Datei
      * @param j
      * @param name 
      */
@@ -294,7 +294,7 @@ public class PrintPDF {
 
     }
    /**
-    * Druckt die ausgewählte Sportgruppe,erwartet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
+    * Druckt die ausgewählte GruppeSport,erwartet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
     * @param j
     * @param name 
     */
@@ -422,7 +422,7 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);      
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getSprachengruppen().get(i).getZahl()+""+ aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprache() ,
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getSprachengruppen().get(i).getZahl()+""+ aktuellerJahrgang.getSprachengruppen().get(i).getSprache() ,
                     tableHeadFont));
             //Änderung für anderes 
             
@@ -462,7 +462,7 @@ public class PrintPDF {
         }
     }
 /**
- * Druckt die ausgewählte Zweiggruppe,erwatet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
+ * Druckt die ausgewählte GruppeZweig,erwatet als Eingabe einen Jahrgang und einen String für den Namen der PDF-Datei
  * @param document
  * @param j
  * @throws DocumentException 

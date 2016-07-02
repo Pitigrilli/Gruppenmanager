@@ -5,6 +5,7 @@ package gruppeneinteilung.gui;
  * @author Claus Behl
  */
 import gruppeneinteilung.model.Jahrgang;
+import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,23 +21,33 @@ import static javax.swing.TransferHandler.MOVE;
 
 public class KlassenPanel extends JPanel {
 
-    private String anzeige;
-    private Jahrgang jahrgang;
+    
+    private final Jahrgang jahrgang;
+    private final Klasse klasse;
     private final String buchstabe;
     private final String name;
+    private final ArrayList<Student> schueler;
+    
     private final JLabel titel;
-    private final ArrayList<Student> gruppe;
+    private String anzeige;
     private final JList<Student> gruppenListe;
-    private final DataFlavor studentFlavor;
-    private final DefaultListModel<Student> dlm = new DefaultListModel<>();
+    
     private final JPopupMenu jpopupmenu;
+    private final GUI parent;
+    
+    private final DefaultListModel<Student> dlm = new DefaultListModel<>();
+    
+    private final DataFlavor studentFlavor;
 
-    public KlassenPanel(ArrayList<Student> gruppe, Jahrgang j, String name) {
+
+    public KlassenPanel(Klasse k,GUI g) {
+        klasse = k;
+        this.schueler = klasse.getSchueler();
+        this.name = klasse.getTitel();
+        this.jahrgang = klasse.getJahrgang();
+        parent = g;//(GUI) SwingUtilities.getWindowAncestor(this);
+        buchstabe = klasse.getBuchstabe();
         this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
-        this.gruppe = gruppe;
-        this.name = name;
-        this.jahrgang = j;
-        buchstabe = name.substring(name.length() - 1);
 
         setLayout(new java.awt.BorderLayout());
         // Titel
@@ -56,7 +67,7 @@ public class KlassenPanel extends JPanel {
         });
 
         // Listenmodell
-        for (Student student : gruppe) {
+        for (Student student : schueler) {
             dlm.addElement(student);
         }
 
@@ -98,13 +109,13 @@ public class KlassenPanel extends JPanel {
     private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Student s = gruppenListe.getSelectedValue();
-        new StudentEditFrame(s).setVisible(true);
+        new StudentEditFrame(s,jahrgang,parent).setVisible(true);
         System.out.println("Popup: " + s.getName());
     }
 
     public void aktualisiereListModel() {
         dlm.clear();
-        for (Student student : gruppe) {
+        for (Student student : schueler) {
             dlm.addElement(student);
         }
     }
@@ -166,7 +177,7 @@ public class KlassenPanel extends JPanel {
                     // Der Schüler bekommt seine Klasse richtig gesetzt
 
                     student.setKlasse(buchstabe);
-                    gruppe.add(index, student);
+                    schueler.add(index, student);
                     setzeTitel();
 
                     //AktualisiereGruppenzugehörigkeit
@@ -189,7 +200,7 @@ public class KlassenPanel extends JPanel {
 
                 if (action == MOVE) {
                     listModel.removeElement(student);
-                    gruppe.remove(student);
+                    schueler.remove(student);
                     jahrgang.religionsgruppenRemove(student);
                     //System.out.println("Remove:" + student);
                     setzeTitel();
@@ -204,11 +215,11 @@ public class KlassenPanel extends JPanel {
     }
 
     public int getAnzahlSchueler() {
-        return gruppe.size();
+        return schueler.size();
     }
 
     private void setzeTitel() {
-        anzeige = name + ": " + gruppe.size() + " Schüler";
+        anzeige = name + schueler.size() + " Schüler";
         titel.setText(anzeige);
     }
 

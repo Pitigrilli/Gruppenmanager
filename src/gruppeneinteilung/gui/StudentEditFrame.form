@@ -211,7 +211,7 @@
     <Component class="javax.swing.JComboBox" name="jComboKlasse">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot; })" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;,&quot;g&quot;,&quot;h&quot; })" type="code"/>
         </Property>
       </Properties>
       <Events>

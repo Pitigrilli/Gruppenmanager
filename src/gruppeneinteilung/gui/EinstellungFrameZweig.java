@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Zweiggruppe;
+import gruppeneinteilung.model.GruppeZweig;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
         anzahlGruppen = j.getZweiggruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Zweiggruppe rg : j.getZweiggruppen()) {
+        for (GruppeZweig rg : j.getZweiggruppen()) {
             PanelZweig rp = new PanelZweig(n);
             n++;
             String zweig = rg.getZweig();

@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Sportgruppe;
+import gruppeneinteilung.model.GruppeSport;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
         anzahlGruppen = j.getSportgruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Sportgruppe rg : j.getSportgruppen()) {
+        for (GruppeSport rg : j.getSportgruppen()) {
             PanelSport rp = new PanelSport(n);
             n++;
             String sport = rg.getGeschlecht();

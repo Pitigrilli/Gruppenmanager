@@ -187,13 +187,13 @@
                       <Component id="jLabelZweig3" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jCheckBoxFremdsprachen" max="32767" attributes="0"/>
+                              <Component id="jCheckBoxSprache" max="32767" attributes="0"/>
                               <Component id="jCheckBoxReligion" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonEinstellungReligion" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
-                              <Component id="jButtonEinstellungFremdsprachen" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="jButtonEinstellungSprache" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -227,8 +227,8 @@
                   <Component id="jButtonJahrgangDrucken" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jCheckBoxFremdsprachen" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonEinstellungFremdsprachen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBoxSprache" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonEinstellungSprache" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -505,30 +505,30 @@
             <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jButtonEinstellungZweig.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBoxFremdsprachen">
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxSprache">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;Fremdsprachen&quot;" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFremdsprachenActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxSpracheActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jCheckBoxFremdsprachen.setEnabled(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jCheckBoxSprache.setEnabled(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonEinstellungFremdsprachen">
+        <Component class="javax.swing.JButton" name="jButtonEinstellungSprache">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;Einstellungen&quot;" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungFremdsprachenActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEinstellungSpracheActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jButtonEinstellungFremdsprachen.setEnabled(false);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jButtonEinstellungSprache.setEnabled(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>

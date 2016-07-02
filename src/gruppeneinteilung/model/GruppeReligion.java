@@ -6,6 +6,7 @@
 package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 
 
-public class Religionsgruppe extends SortierbareGruppe implements Serializable {
+public class GruppeReligion extends SortierbareGruppe implements Serializable {
     private final int jahrgang;
     private String religion;
     /**
@@ -21,12 +22,12 @@ public class Religionsgruppe extends SortierbareGruppe implements Serializable {
      */
     private String[] klassen;
     /**
-     * Nummer der Religionsgruppe im Jahrgang
+     * Nummer der GruppeReligion im Jahrgang
      */
     private final int zahl;
     //private  ArrayList<Student> schueler;
 
-    public Religionsgruppe (int z, int j,String r) {
+    public GruppeReligion (int z, int j,String r) {
         zahl=z;
         jahrgang = j;
         schueler = new ArrayList<>();
@@ -78,6 +79,11 @@ public void klasseHinzufügen(String k)
         i ++;
     }
     klassen[i] = k;
+}
+
+public String getTitel(){
+    titel = getReligion()+" "+Arrays.toString(klassen)+": ";
+    return titel;
 }
     
 }

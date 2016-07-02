@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Sprachengruppe;
+import gruppeneinteilung.model.GruppeSprache;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,10 +39,10 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
         anzahlGruppen = j.getSprachengruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Sprachengruppe rg : j.getSprachengruppen()) {
+        for (GruppeSprache rg : j.getSprachengruppen()) {
             PanelSprachen rp = new PanelSprachen(n);
             n++;
-            String fremdsprache = rg.getFremdsprache();
+            String fremdsprache = rg.getSprache();
             rp.setFremdsprache(fremdsprache);
 //            System.out.println("Religion: "+religion);
             String[] klassen = rg.getKlassen();

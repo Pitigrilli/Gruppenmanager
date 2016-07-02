@@ -9,7 +9,7 @@ package gruppeneinteilung.gui;
 //import gruppeneinteilung.gui.ReligionsPanel;
 //import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Religionsgruppe;
+import gruppeneinteilung.model.GruppeReligion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +39,7 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
         anzahlGruppen = j.getReligionsgruppen().size();
         jSpinner1.setValue(anzahlGruppen);
 
-        for (Religionsgruppe rg : j.getReligionsgruppen()) {
+        for (GruppeReligion rg : j.getReligionsgruppen()) {
             PanelReligion rp = new PanelReligion(n);
             n++;
             String religion = rg.getReligion();

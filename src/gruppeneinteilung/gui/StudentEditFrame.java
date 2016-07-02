@@ -5,6 +5,7 @@
  */
 package gruppeneinteilung.gui;
 
+import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Student;
 
 /**
@@ -14,11 +15,15 @@ import gruppeneinteilung.model.Student;
 public class StudentEditFrame extends javax.swing.JFrame {
 
     Student s;
+    Jahrgang  jahrgang;
+    GUI gui;
     /**
      * Creates new form StudentEditFrame
      */
-    public StudentEditFrame(Student s) {
+    public StudentEditFrame(Student s, Jahrgang j, GUI g) {
         this.s=s;
+        jahrgang = j;
+        gui = g;
         initComponents();
         
     }
@@ -91,7 +96,7 @@ public class StudentEditFrame extends javax.swing.JFrame {
 
         jTextFieldBem.setText(s.getBemerkung());
 
-        jComboKlasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "a", "b", "c", "d", "e", "f" }));
+        jComboKlasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "a", "b", "c", "d", "e", "f","g","h" }));
         jComboKlasse.setSelectedItem(s.getKlasse());
         jComboKlasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +229,8 @@ public class StudentEditFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Speichere die Einträge
+        String klasseNeu=jComboKlasse.getModel().getSelectedItem().toString();
+        String klasseAlt = s.getKlasse();
         s.setReligion(jComboReligion.getModel().getSelectedItem().toString());
         s.setBemerkung(jTextFieldBem.getText());
         s.setName(jTextFieldName.getText());
@@ -233,6 +240,12 @@ public class StudentEditFrame extends javax.swing.JFrame {
         s.setFs2(jComboFremdsprache2.getModel().getSelectedItem().toString());
         s.setFs3(jComboFremdsprache3.getModel().getSelectedItem().toString());
         s.setFs4(jComboFremdsprache4.getModel().getSelectedItem().toString());
+        //Klassenwechsel
+        if(!klasseNeu.equals(klasseAlt)){//Klassenwechsel
+            jahrgang.getKlasse(klasseAlt).studentEntfernen(s);
+            jahrgang.getKlasse(klasseNeu).studentHinzufuegen(s);
+            gui.klassenAnzeigen();
+        }
         //Schließt das Fenster
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -7,12 +7,13 @@ package gruppeneinteilung.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author floth.rene
  */
-public class Sprachengruppe extends SortierbareGruppe implements Serializable {
+public class GruppeSprache extends SortierbareGruppe implements Serializable {
 
     private final int jahrgang;
     private String fremdsprache;
@@ -21,7 +22,7 @@ public class Sprachengruppe extends SortierbareGruppe implements Serializable {
     private int zahl;
     //private  ArrayList<Student> schueler; wird gerbt
 
-    public Sprachengruppe(int z, int j, String r, int w) {
+    public GruppeSprache(int z, int j, String r, int w) {
         zahl = z;
         jahrgang = j;
         schueler = new ArrayList<>();
@@ -51,7 +52,7 @@ public class Sprachengruppe extends SortierbareGruppe implements Serializable {
         return schueler;
     }
 
-    public String getFremdsprache() {
+    public String getSprache() {
         return fremdsprache;
     }
 
@@ -73,6 +74,11 @@ public class Sprachengruppe extends SortierbareGruppe implements Serializable {
 
     public String[] getKlassen() {
         return klassen;
+    }
+    
+    public String getTitel() {
+        titel = getSprache() + " " + Arrays.toString(klassen) + ": ";
+        return titel;
     }
 
     public void setKlassen(String[] klassen) {

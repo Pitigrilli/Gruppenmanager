@@ -2,6 +2,7 @@ package gruppeneinteilung.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -11,11 +12,11 @@ import java.util.Collections;
  */
 public class Klasse extends SortierbareGruppe implements Serializable{
 
-    private final int jahrgang;
+    private final Jahrgang jahrgang;
+
     private final String buchstabe;
-    //private final ArrayList<Student> schueler;
     
-    public Klasse(String b, int j) {
+    public Klasse(String b, Jahrgang j) {
         buchstabe = b;
         jahrgang = j;
         schueler = new ArrayList<>();
@@ -37,9 +38,16 @@ public class Klasse extends SortierbareGruppe implements Serializable{
     public String getBuchstabe() {
         return buchstabe;
     }
+    
+    public Jahrgang getJahrgang() {
+        return jahrgang;
+    }
 
-    public ArrayList<Student> getSchueler() {
-        return schueler;
+    
+    
+        public String getTitel() {
+        titel = jahrgang.getJahrgang()+getBuchstabe() + ": ";
+        return titel;
     }
     
     public void test()     

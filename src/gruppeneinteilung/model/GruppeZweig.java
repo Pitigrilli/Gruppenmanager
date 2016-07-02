@@ -6,25 +6,19 @@
 package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Arrays;
 
-/**
- *
- * @author schwindt.christian
- */
-public class Sportgruppe extends SortierbareGruppe implements Serializable {
-    private String geschlecht;
-    private String[] klassen;
-    private int zahl;
+public class GruppeZweig extends SortierbareGruppe implements Serializable{
     private final int jahrgang;
-    //private final ArrayList<Student> schueler;
+    private String Zweig;
+    private  int zahl;
+    private  String[] klassen;
 
-    public Sportgruppe (int z,int j,String g) {
-        zahl = z;
+    public GruppeZweig (int z, int j,String g) {
+       zahl = z;
         jahrgang = j;
         schueler = new ArrayList<>();
-        geschlecht = g;
+        Zweig = g;
         klassen = new String[8];
     }
 
@@ -37,15 +31,19 @@ public class Sportgruppe extends SortierbareGruppe implements Serializable {
         return s;
     }
 
-    public int getSportgroesse() {
+    public int getZweiggroesse() {
         return schueler.size();
+    }
+
+    public int getZahl() {
+        return zahl;
     }
 
     public ArrayList<Student> getSchueler() {
         return schueler;
     }
-    public String getGeschlecht(){
-        return geschlecht;
+    public String getZweig(){
+        return Zweig;
         
     }
     public void klasseHinzufügen(String k)
@@ -57,17 +55,18 @@ public class Sportgruppe extends SortierbareGruppe implements Serializable {
     }
     klassen[i] = k;
 }
-    public void setGeschlecht(String geschlecht){
-    this.geschlecht=geschlecht;
-    }
-    
-    public int getZahl()
-            {
-                return zahl;
-            }
+
+public void setZweig(String zweig){
+    this.Zweig=zweig;
+}
     public String[] getKlassen()
     {
         return klassen;
+    }
+    
+    public String getTitel() {
+        titel = getZweig() + " " + Arrays.toString(klassen) + ": ";
+        return titel;
     }
     public void setKlassen(String[] klassen) {
         this.klassen = klassen;

@@ -4,60 +4,69 @@
  * and open the template in the editor.
  */
 package gruppeneinteilung.model;
+
 import java.util.Collections;
 import java.util.ArrayList;
 import java.io.Serializable;
+
 /**
  * Sortierbare Gruppe ist die Supperklasse von Klasse und den anderen Gruppen.
+ *
  * @author floth.rene
  */
-public abstract class SortierbareGruppe implements Serializable
-{
-    protected ArrayList <Student> schueler;
+public abstract class SortierbareGruppe implements Serializable {
+
+    protected ArrayList<Student> schueler;
+    protected String titel;
+
     public static String sortierung;
-    
-    public void sortierenGeschlecht()
-    {
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public ArrayList<Student> getSchueler() {
+        return schueler;
+    }
+
+    public void sortierenGeschlecht() {
         sortierung = "Geschlecht";
         Collections.sort(schueler);
-        
+
     }
-    
-    public void sortierenZweig()
-    {
+
+    public void sortierenZweig() {
 
         sortierung = "Zweig";
         Collections.sort(schueler);
-        
+
     }
-    public void sortierenReligion()
-    {
+
+    public void sortierenReligion() {
 
         sortierung = "Religion";
         Collections.sort(schueler);
-        
+
     }
-    
-    public void sortierenFremdsprache()
-    {
+
+    public void sortierenFremdsprache() {
 
         sortierung = "Fremdsprache";
         Collections.sort(schueler);
-        
+
     }
-    
-    public void sortierenName()
-    {
+
+    public void sortierenName() {
 
         sortierung = "Alphabet";
         Collections.sort(schueler);
-        
+
     }
-    public void sortierenBemerkung()
-    {
+
+    public void sortierenBemerkung() {
 
         sortierung = "Bemerkung";
         Collections.sort(schueler);
-        
+
     }
 }

@@ -4,6 +4,7 @@ package gruppeneinteilung.gui;
  *
  * @author Claus Behl
  */
+import gruppeneinteilung.model.SortierbareGruppe;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,23 +20,26 @@ import javax.swing.*;
 
 public class GruppenPanel extends JPanel {
 
-    String gruppenName;
-    ArrayList<Student> gruppe;
+    String anzeige;
+    SortierbareGruppe gruppe;
+    ArrayList<Student> schuelerListe;
+    JLabel titel;
     JList<Student> gruppenListe;
     DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
     DefaultListModel<Student> dlm = new DefaultListModel<>();
 
-    public GruppenPanel(ArrayList<Student> gruppe, String name) {
+    public GruppenPanel(SortierbareGruppe gruppe) {
         this.gruppe = gruppe;
-        this.gruppenName = name;
+        this.schuelerListe = gruppe.getSchueler();
+        this.anzeige = gruppe.getTitel()+schuelerListe.size()+" Schüler";
 
         setLayout(new java.awt.BorderLayout());
         // Titel
-        JLabel titel = new JLabel(name);
+        titel= new JLabel(anzeige);
         add(titel, BorderLayout.NORTH);
 
         // Listenmodell
-        for (Student student : gruppe) {
+        for (Student student : schuelerListe) {
             dlm.addElement(student);
         }
 
@@ -57,13 +61,18 @@ public class GruppenPanel extends JPanel {
 
     public void aktualisiereListModel() {
         dlm.clear();
-        for (Student student : gruppe) {
+        for (Student student : schuelerListe) {
             dlm.addElement(student);
         }
     }
     
     public int getAnzahlSchueler(){
-        return gruppe.size();
+        return schuelerListe.size();
+    }
+    
+    private void aktualisiereTitel() {
+        anzeige = gruppe.getTitel()+schuelerListe.size()+" Schüler";
+        titel.setText(anzeige);
     }
 
     static class GruppenCellRenderer extends DefaultListCellRenderer {
@@ -112,8 +121,7 @@ public class GruppenPanel extends JPanel {
 
     public void enableDnD() {
         gruppenListe.setDragEnabled(true);
-        gruppenListe.setTransferHandler(
-                new TransferHandler() {
+        gruppenListe.setTransferHandler(new TransferHandler() {
                     //Student student;
 
                     @Override
@@ -141,8 +149,9 @@ public class GruppenPanel extends JPanel {
 
                         if (action == MOVE) {
                             listModel.removeElement(student);
-                            gruppe.remove(student);
+                            schuelerListe.remove(student);
                         }
+                       aktualisiereTitel();
                     }
 
                     @Override
@@ -177,9 +186,9 @@ public class GruppenPanel extends JPanel {
                         //System.out.println("Drop:"+student);
                         if (insert) {
                             listModel.add(index, student);
-                            gruppe.add(index, student);
+                            schuelerListe.add(index, student);
                         }
-
+                        aktualisiereTitel();
                         return true;
                     }
 
