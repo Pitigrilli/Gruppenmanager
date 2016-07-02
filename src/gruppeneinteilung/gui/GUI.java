@@ -902,13 +902,15 @@ public class GUI extends javax.swing.JFrame {
         aktuellerJahrgang = ge.getJahrgang(n);
         ge.setAktJahrgang(aktuellerJahrgang);
         aktuellerJahrgang.setKlassenanzahl();
-        int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
-        jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
-
+        
         aktiviereJahrgangComponents(true);
         klassenAnzeigen();
         aktualisiereLabelJahrgang();
+        
+        int klassenanzahl = aktuellerJahrgang.getKlassenanzahl();
+        jSpinnerAnzahlKlassen.getModel().setValue(klassenanzahl);
 
+        
         if (aktuellerJahrgang.istNachReligion()) {
             jCheckBoxReligion.setSelected(true);
             jButtonEinstellungReligion.setEnabled(true);
