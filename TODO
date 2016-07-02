@@ -1,0 +1,13 @@
+Beim Wechsel von  einem Jahrgang mit 4 Klassen (5,7,8,9) auf einen Jahrgang mit drei 4 Klassen (6)
+ erscheint die Meldung letzte Gruppe nicht leer.
+
+Beim Erstellen der ersten Sprachengruppe, erscheint die Gruppe erst, wenn man ein zweitesmal auf Erstellen klickt.
+
+Beim Wechsel des Jahrgangs müssen EinstellungFrame-Fenster geschlossen werden.
+
+Schüler  in einen anderen Jahrgang verschieben +1/-1
+
+Druckausgabe für die Panels erstellen.
+
+Später:
+Klären, warum die Schüler in jahrgang.alle nicht identisch sind mit den Schülern in jahrgang.klassen.
