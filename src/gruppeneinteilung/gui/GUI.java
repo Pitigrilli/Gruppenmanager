@@ -443,7 +443,12 @@ public class GUI extends javax.swing.JFrame {
 
         jMenu2.setText("Bearbeiten");
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText("New Student");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("jMenuItem3");
@@ -764,6 +769,11 @@ public class GUI extends javax.swing.JFrame {
     private void jPanelZweigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelZweigFocusGained
         this.zweiggruppenAnzeigen();
     }//GEN-LAST:event_jPanelZweigFocusGained
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new StudentNewFrame(this).setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEinstellungReligion;
