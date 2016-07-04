@@ -36,7 +36,7 @@ public class PrintPDF {
     private static Font tableHeadFont = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.BOLD); // Klassenbezeichner
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-            Font.BOLD);  // Überschrift
+            Font.BOLD);  // Ãœberschrift
 
     private Gruppeneinteilung ge;
     private String name;
@@ -47,11 +47,13 @@ public class PrintPDF {
          
        }
     /**
-     * Druckt alle Jahrgänge,erwartet einen String als Name für die PDF-Datei
+     * Druckt alle JahrgÃ¤nge,erwartet einen String als Name fÃ¼r die PDF-Datei
      * @param name 
      */
     public void Drucken(String name){     
 
+        
+        
         try {
             erstellen(name);
             PdfWriter.getInstance(document, new FileOutputStream(file));
@@ -87,7 +89,7 @@ public class PrintPDF {
         Paragraph preface = new Paragraph();
 
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph("" + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -102,12 +104,14 @@ public class PrintPDF {
     }
     
     /**
-     * Druckt den übergebenen Jahrgang,erwartet einen Jahrgang und einen String für die PDF-Datei
+     * Druckt den Ã¼bergebenen Jahrgang,erwartet einen Jahrgang und einen String fÃ¼r die PDF-Datei
      * @param j
      * @param name 
      */
-    public void druckeJahrgang(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
-
+    public void druckeKlassen(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+            
+        name = j.getJahrgang() + ".Klassen";
+        
         try {
             
             erstellen(name);
@@ -119,6 +123,7 @@ public class PrintPDF {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
     
     
@@ -129,7 +134,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph("" + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -194,13 +199,13 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("20160624.ged");
+       Speicherung sp = new Speicherung ("20160704.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(5);
-        String b = "ReligruppeTest";
+        Jahrgang j= ge.getJahrgang(6);
+        String b = "Jahrgang_6";
       //   pdf.TestdruckeJahrgang(j,b);
-       pdf.druckeReligionsGruppe(j,b);
+       pdf.druckeKlassen(j);
        // try{
        
        // catch(DocumentException e){}
@@ -222,7 +227,7 @@ public class PrintPDF {
     
     
     
-     public void druckeReligionsGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
+     public void druckeReligionsGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
 
         try {
             
@@ -245,7 +250,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph("" + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -309,7 +314,7 @@ public class PrintPDF {
     
     
     
-         public void druckeSportGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
+         public void druckeSportGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
 
         try {
             
@@ -332,7 +337,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph(""+ new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -394,7 +399,7 @@ public class PrintPDF {
     
     
     
-           public void druckeFremdsprachenGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
+           public void druckeFremdsprachenGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
 
         try {
             
@@ -417,7 +422,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph("" + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -445,7 +450,7 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getSprachengruppen().get(i).getSprache() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getSprachengruppen().get(i).getSprache()+ " Anzahl: "+aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprachengroesse() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getSprachengruppen().get(i).getSchueler()) {
@@ -478,7 +483,7 @@ public class PrintPDF {
     
     
     
-               public void druckeZweigGruppe(Jahrgang j,String name){    //druckt den übergebenen Jahrgang erwartet einen Jahrgang und einen String für PDF 
+               public void druckeZweigGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
 
         try {
             
@@ -501,7 +506,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("Erstellt von: " + System.getProperty("user.name") + ", " + new Date(), smallBold));
+        preface.add(new Paragraph("" + new Date(), smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -529,7 +534,7 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getZweiggruppen().get(i).getZweig() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getZweiggruppen().get(i).getZweig()+ " Anzahl: "+aktuellerJahrgang.getZweiggruppen().get(i).getZweiggroesse() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getZweiggruppen().get(i).getSchueler()) {
@@ -558,7 +563,94 @@ public class PrintPDF {
         newTable.add(table);
 
     }
- 
+ public void druckeGesammterJahrgang(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+            
+        try {
+            
+            erstellen(name);
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            addMetaData(document);
+            ausgewaehlterJahrgangGruppenDrucken(document,j);
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        druckeReligionsGruppe(j,name);//name muss noch ausgetauscht werden
+        druckeFremdsprachenGruppe(j,name);
+        druckeSportGruppe(j,name);
+        druckeZweigGruppe(j,name);
+        
+        
+        
+    }
+    
+    
+    
+    
+       
+    private void ausgewaehlterJahrgangGruppenDrucken(Document document,Jahrgang j) throws DocumentException {
+
+        Paragraph preface = new Paragraph();
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("" + new Date(), smallBold));
+        addEmptyLine(preface, 1);
+        document.add(preface);
+
+        Paragraph tabelle = new Paragraph();
+
+        createTableJahrgangGruppen(tabelle, j);
+        document.add(tabelle);
+        // Start a new page
+        document.newPage();
+
+    }
+
+    
+
+    private void createTableJahrgangGruppen(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getKlassenanzahl();
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
+                    tableHeadFont));
+
+            for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
+
+                switch (s.getReligion()) {
+                    case "RK":
+                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        break;
+                    case "EV":
+                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        break;
+                    case "ETH":
+                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        break;
+
+                    default:
+                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                }
+
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
+
+    }
     
 }
 
