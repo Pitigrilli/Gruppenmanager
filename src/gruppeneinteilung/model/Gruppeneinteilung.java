@@ -102,9 +102,7 @@ public class Gruppeneinteilung implements Serializable {
         }
     }
     //aus allen gruppen 
-public void removeStudent(Student s){
-    
-}
+
 
 public void moveStudent(Student s, Jahrgang j){
     

@@ -821,4 +821,7 @@ public class Jahrgang implements Serializable {
     public void addStudent(Student s){
         
     }
+    public void removeStudent(Student s){
+    
+}
 }
