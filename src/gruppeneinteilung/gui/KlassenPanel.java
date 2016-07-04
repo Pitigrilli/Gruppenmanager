@@ -58,13 +58,38 @@ public class KlassenPanel extends JPanel {
 
         //Popupmenu
         jpopupmenu = new JPopupMenu();
-        JMenuItem item = new JMenuItem("Edit");
+        JMenuItem item = new JMenuItem("Bearbeiten");
+        JMenuItem item2 = new JMenuItem("Löschen");
+        JMenuItem item3 = new JMenuItem("Jahrgang aufsteigen");
+        JMenuItem item4 = new JMenuItem("Jahrgang absteigen");
         jpopupmenu.add(item);
+        jpopupmenu.add(item2);
+        jpopupmenu.add(item3);
+        jpopupmenu.add(item4);
         item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 popupEditActionPerformed(evt);
             }
         });
+        item2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student s = gruppenListe.getSelectedValue();
+                jahrgang.removeStudent(s);
+            }
+        });
+        item3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student s = gruppenListe.getSelectedValue();
+                parent.ge.moveStudent(s,s.getJahrgang()+1);
+            }
+        });
+        item4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Student s = gruppenListe.getSelectedValue();
+                parent.ge.moveStudent(s,s.getJahrgang()-1);
+            }
+        });
+       
 
         // Listenmodell
         for (Student student : schueler) {
