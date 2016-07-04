@@ -817,11 +817,56 @@ public class Jahrgang implements Serializable {
     public void clearSprachengruppen() {
         sprachengruppen = new ArrayList<>();
     }
-    // in jahrgang einordnen und in alle gruppen
-    public void addStudent(Student s){
+// in jahrgang einordnen und in alle gruppen
+public void addStudent(Student s){
         
     }
-    public void removeStudent(Student s){
+/**
+ * entfernt den Schüler aus der Anzahlen Anzeige 
+ * @param s 
+ */
+ public void studentAusStatistikEntfernen(Student s){
     
-}
+        schuelerAnzahl--;
+        switch (s.getGeschlecht()) {
+            case "M":
+                maennlich--;
+                break;
+            case "W":
+                weiblich--;
+                break;
+        }
+        switch (s.getReligion()) {
+            case "RK":
+                katholisch--;
+                break;
+            case "EV":
+                evangelisch--;
+                break;
+            case "ETH":
+                ethik--;
+                break;
+        }
+        switch (s.getZweig()) {
+            case "GY":
+                GY--;
+                break;
+            case "GY_MU":
+                GY_MU--;
+                break;
+            case "GY_TH":
+                GY_TH--;
+                break;
+            case "GY_NTG_8":
+                GY_NTG--;
+                break;
+            case "GY_WSG-S_8":
+                GY_WSG--;
+                break;
+            case "GY_SG_8":
+                GY_SG--;
+                break;
+        }
+ }
+   
 }

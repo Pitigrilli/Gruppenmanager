@@ -101,14 +101,72 @@ public class Gruppeneinteilung implements Serializable {
             //jahrgang.printAlle();
         }
     }
-    //aus allen gruppen 
+   
 
 
-public void moveStudent(Student s, Jahrgang j){
-    
+public void moveStudent(Student s, int j)
+{
+    if(j<= 10 && j >= 5)
+    {
+    s.setJahrgang(j);
+    removeStudent(s);
+    jahrgaenge.get(s.getJahrgang()).studentAusStatistikEntfernen(s);
+    addInGroups(s);
+    }
 }
+
 //in alle gruppen des jahrgangs einfügen
-public void addInGroup(Student s){
+public void addInGroups(Student s){
+      Jahrgang ak = getJahrgaenge().get(s.getJahrgang());
+     ak.studentEinfuegen(s);
+     
+}
+
+ public void removeStudent(Student s){
+    Jahrgang jg = getJahrgang(s.getJahrgang()); 
+   jg.gibAlle().remove(s); // aus Jahrgang entfernt
+   for(int i = 0; i < jg.getKlassenanzahl(); i++)
+   {
+       if(jg.getKlassen().get(i).getSchueler().contains(s))
+       {
+          jg.getKlassen().get(i).getSchueler().remove(s); //aus Klasse entfernt
+       }
+       
+   }
+   for(int i = 0; i < jg.getReligionsgruppenzahl(); i++)
+   {
+       if(jg.getReligionsgruppen().get(i).getSchueler().contains(s))
+       {
+          jg.getReligionsgruppen().get(i).getSchueler().remove(s); //aus Religruppe entfernt
+       }
+       
+   }
+   for(int i = 0; i < jg.getZweiggruppenzahl(); i++)
+   {
+       if(jg.getZweiggruppen().get(i).getSchueler().contains(s))
+       {
+          jg.getZweiggruppen().get(i).getSchueler().remove(s); //aus Zweiggruppe entfernt
+       }
+       
+   }
+   for(int i = 0; i < jg.getSprachengruppenzahl(); i++)
+   {
+       if(jg.getSprachengruppen().get(i).getSchueler().contains(s))
+       {
+          jg.getSprachengruppen().get(i).getSchueler().remove(s); //aus Sprachengruppe entfernt
+       }
+       
+   }
+   for(int i = 0; i < jg.getSportgruppenzahl(); i++)
+   {
+       if(jg.getSportgruppen().get(i).getSchueler().contains(s))
+       {
+          jg.getSportgruppen().get(i).getSchueler().remove(s); //aus Sportgruppe entfernt
+       }
+       
+   }
+   students.remove(s);
+   
     
 }
 }
