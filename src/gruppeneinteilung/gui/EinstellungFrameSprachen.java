@@ -178,6 +178,7 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
         //jahrgang.ausgabeAlle();
         jahrgang.sprachengruppenZuordnen();
         parent.sprachengruppenAnzeigen();
+        parent.jComboBoxJahrgangFreigeben();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed

@@ -59,7 +59,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<String>();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -99,10 +99,10 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemAllesDrucken = new javax.swing.JMenuItem();
         jMenuItemJahrgangDrucken = new javax.swing.JMenuItem();
         jMenuItemKlassenDrucken = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItemFremdsprachenGruppenDrucken = new javax.swing.JMenuItem();
+        jMenuItemReligionsGruppenDrucken = new javax.swing.JMenuItem();
+        jMenuItemSportGruppenDrucken = new javax.swing.JMenuItem();
+        jMenuItemZweigGruppenDrucken = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -250,7 +250,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonAnsichtDrucken.setEnabled(true);
+        jButtonAnsichtDrucken.setEnabled(false);
         jButtonAnsichtDrucken.setText("Ansicht drucken");
         jButtonAnsichtDrucken.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,7 +345,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelZweig1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelZweig2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,17 +482,37 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenuDrucken.add(jMenuItemKlassenDrucken);
 
-        jMenuItem5.setText("jMenuItem5");
-        jMenuDrucken.add(jMenuItem5);
+        jMenuItemFremdsprachenGruppenDrucken.setText("Fremdsprachengruppen drucken");
+        jMenuItemFremdsprachenGruppenDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFremdsprachenGruppenDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemFremdsprachenGruppenDrucken);
 
-        jMenuItem7.setText("jMenuItem7");
-        jMenuDrucken.add(jMenuItem7);
+        jMenuItemReligionsGruppenDrucken.setText("Religionsgruppen drucken");
+        jMenuItemReligionsGruppenDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReligionsGruppenDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemReligionsGruppenDrucken);
 
-        jMenuItem8.setText("jMenuItem8");
-        jMenuDrucken.add(jMenuItem8);
+        jMenuItemSportGruppenDrucken.setText("Sportgruppen drucken");
+        jMenuItemSportGruppenDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSportGruppenDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemSportGruppenDrucken);
 
-        jMenuItem6.setText("jMenuItem6");
-        jMenuDrucken.add(jMenuItem6);
+        jMenuItemZweigGruppenDrucken.setText("Zweiggruppen drucken");
+        jMenuItemZweigGruppenDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemZweigGruppenDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemZweigGruppenDrucken);
 
         jMenuBar1.add(jMenuDrucken);
 
@@ -562,7 +582,7 @@ public class GUI extends javax.swing.JFrame {
         PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
-        printPdf.druckeJahrgang(j);
+        printPdf.druckeGesammterJahrgangMitGruppen(j);
     }//GEN-LAST:event_jButtonJahrgangDruckenActionPerformed
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
@@ -572,6 +592,7 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameReligion = new EinstellungFrameReligion(aktuellerJahrgang, this);
             einstellungFrameReligion.setVisible(true);
             jButtonEinstellungReligion.setEnabled(true);
+            jComboBoxJahrgang.setEnabled(false);
         } else {
             aktuellerJahrgang.setNachReligion(false);
             aktuellerJahrgang.clearReligionsgruppen();
@@ -592,6 +613,7 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameReligion = new EinstellungFrameReligion(aktuellerJahrgang, this);
         }
         einstellungFrameReligion.setVisible(true);
+        jComboBoxJahrgang.setEnabled(false);
     }//GEN-LAST:event_jButtonEinstellungReligionActionPerformed
 
     private void jCheckBoxSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSportActionPerformed
@@ -601,6 +623,7 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameSport = new EinstellungFrameSport(aktuellerJahrgang, this);
             einstellungFrameSport.setVisible(true);
             jButtonEinstellungSport.setEnabled(true);
+            jComboBoxJahrgang.setEnabled(false);
         } else {
             aktuellerJahrgang.setNachGeschlecht(false);
             aktuellerJahrgang.clearSportgruppen();
@@ -620,6 +643,7 @@ public class GUI extends javax.swing.JFrame {
             jButtonEinstellungZweig.setEnabled(true);
             einstellungFrameZweig = new EinstellungFrameZweig(aktuellerJahrgang, this);
             einstellungFrameZweig.setVisible(true);
+            jComboBoxJahrgang.setEnabled(false);
         } else {
             aktuellerJahrgang.setNachZweig(false);
             aktuellerJahrgang.clearZweiggruppen();
@@ -638,6 +662,8 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameSport = new EinstellungFrameSport(aktuellerJahrgang, this);
         }
         einstellungFrameSport.setVisible(true);
+        jComboBoxJahrgang.setEnabled(false);
+        jComboBoxJahrgang.setEnabled(false);
     }//GEN-LAST:event_jButtonEinstellungSportActionPerformed
 
     private void jButtonEinstellungZweigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungZweigActionPerformed
@@ -710,6 +736,7 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameSprachen = new EinstellungFrameSprachen(aktuellerJahrgang, this);
             einstellungFrameSprachen.setVisible(true);
             jButtonEinstellungSprache.setEnabled(true);
+            jComboBoxJahrgang.setEnabled(false);
         } else {
             aktuellerJahrgang.setNachSprache(false);
             aktuellerJahrgang.clearSprachengruppen();
@@ -719,6 +746,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelSprachen.repaint();
 
         }
+        
     }//GEN-LAST:event_jCheckBoxSpracheActionPerformed
 
     private void jButtonEinstellungSpracheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEinstellungSpracheActionPerformed
@@ -728,6 +756,7 @@ public class GUI extends javax.swing.JFrame {
             einstellungFrameSprachen = new EinstellungFrameSprachen(aktuellerJahrgang, this);
         }
         einstellungFrameSprachen.setVisible(true);
+        jComboBoxJahrgang.setEnabled(false);
     }//GEN-LAST:event_jButtonEinstellungSpracheActionPerformed
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
@@ -766,7 +795,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelZweigFocusGained
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+       
         new StudentNewFrame(this).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -776,7 +805,7 @@ public class GUI extends javax.swing.JFrame {
         Jahrgang j = ge.getJahrgang(n);
 
         if (jPanelKlassen.getFocusTraversalKeysEnabled() == true){
-            printPdf.druckeKlasse(j);
+            printPdf.druckeKlassen(j);
         }else if (jPanelSprachen.getFocusTraversalKeysEnabled() == true){
             printPdf.druckeFremdsprachenGruppe(j);
         }else if (jPanelReligion.getFocusTraversalKeysEnabled() == true){
@@ -832,15 +861,43 @@ public class GUI extends javax.swing.JFrame {
        PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
-        printPdf.druckeJahrgang(j);
+        printPdf.druckeGesammterJahrgangMitGruppen(j);
     }//GEN-LAST:event_jMenuItemJahrgangDruckenActionPerformed
 
     private void jMenuItemKlassenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKlassenDruckenActionPerformed
          PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);    
-            printPdf.druckeKlasse(j);
+            printPdf.druckeKlassen(j);
     }//GEN-LAST:event_jMenuItemKlassenDruckenActionPerformed
+
+    private void jMenuItemReligionsGruppenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReligionsGruppenDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);    
+            printPdf.druckeReligionsGruppe(j);
+    }//GEN-LAST:event_jMenuItemReligionsGruppenDruckenActionPerformed
+
+    private void jMenuItemFremdsprachenGruppenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFremdsprachenGruppenDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);    
+            printPdf.druckeFremdsprachenGruppe(j);
+    }//GEN-LAST:event_jMenuItemFremdsprachenGruppenDruckenActionPerformed
+
+    private void jMenuItemSportGruppenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSportGruppenDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);    
+            printPdf.druckeSportGruppe(j);
+    }//GEN-LAST:event_jMenuItemSportGruppenDruckenActionPerformed
+
+    private void jMenuItemZweigGruppenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemZweigGruppenDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);    
+            printPdf.druckeZweigGruppe(j);
+    }//GEN-LAST:event_jMenuItemZweigGruppenDruckenActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnsichtDrucken;
@@ -872,18 +929,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItemAllesDrucken;
     private javax.swing.JMenuItem jMenuItemClose;
+    private javax.swing.JMenuItem jMenuItemFremdsprachenGruppenDrucken;
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemJahrgangDrucken;
     private javax.swing.JMenuItem jMenuItemKlassenDrucken;
     private javax.swing.JMenuItem jMenuItemOpen;
+    private javax.swing.JMenuItem jMenuItemReligionsGruppenDrucken;
     private javax.swing.JMenuItem jMenuItemSave;
     private javax.swing.JMenuItem jMenuItemSaveAs;
+    private javax.swing.JMenuItem jMenuItemSportGruppenDrucken;
+    private javax.swing.JMenuItem jMenuItemZweigGruppenDrucken;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
@@ -1197,5 +1254,9 @@ public class GUI extends javax.swing.JFrame {
 
         }
     }
+    public void jComboBoxJahrgangFreigeben(){
+        jComboBoxJahrgang.setEnabled(true);
+    }
+            
 
 }

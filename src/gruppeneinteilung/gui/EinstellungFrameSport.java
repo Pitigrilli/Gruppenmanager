@@ -177,6 +177,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
         //jahrgang.ausgabeAlle();
         jahrgang.sportgruppenZuordnen();
         parent.sportgruppenAnzeigen();
+        parent.jComboBoxJahrgangFreigeben();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed

@@ -177,6 +177,7 @@ public class EinstellungFrameReligion extends javax.swing.JFrame {
         //jahrgang.ausgabeAlle();
         jahrgang.religionsgruppenZuordnen();
         parent.religionsgruppenAnzeigen();
+        parent.jComboBoxJahrgangFreigeben();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed

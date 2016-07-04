@@ -179,6 +179,7 @@ public class EinstellungFrameZweig extends javax.swing.JFrame {
         //jahrgang.ausgabeAlle();
         jahrgang.zweiggruppenZuordnen();
         parent.zweiggruppenAnzeigen();
+        parent.jComboBoxJahrgangFreigeben();
         
         dispose();
     }//GEN-LAST:event_jButtonErstellenActionPerformed

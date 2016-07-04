@@ -94,9 +94,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAllesDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;Alles drucken&quot;" type="code"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Alles drucken"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAllesDruckenActionPerformed"/>
@@ -112,33 +110,43 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemKlassenDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;Klassen drucken&quot;" type="code"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Klassen drucken"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemKlassenDruckenActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFremdsprachenGruppenDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem5"/>
+                <Property name="text" type="java.lang.String" value="Fremdsprachengruppen drucken"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFremdsprachenGruppenDruckenActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemReligionsGruppenDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem7"/>
+                <Property name="text" type="java.lang.String" value="Religionsgruppen drucken"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemReligionsGruppenDruckenActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSportGruppenDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem8"/>
+                <Property name="text" type="java.lang.String" value="Sportgruppen drucken"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSportGruppenDruckenActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemZweigGruppenDrucken">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem6"/>
+                <Property name="text" type="java.lang.String" value="Zweiggruppen drucken"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemZweigGruppenDruckenActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -298,7 +306,7 @@
                   <Component id="jLabelWeiblich" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabelZweig1" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabelZweig2" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelZweig3" min="-2" pref="24" max="-2" attributes="0"/>
@@ -580,7 +588,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnsichtDruckenActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jButtonAnsichtDrucken.setEnabled(true);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jButtonAnsichtDrucken.setEnabled(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
