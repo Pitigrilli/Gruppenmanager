@@ -203,10 +203,10 @@ public class PrintPDF {
        Speicherung sp = new Speicherung ("20160704.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(5);
+        Jahrgang j= ge.getJahrgang(10);
         
-      //   pdf.TestdruckeJahrgang(j,b);
-       pdf.druckeGesammterJahrgangMitGruppen(j);
+       
+      // pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
       // pdf.druckeReligionsGruppe(j);
        // catch(DocumentException e){}
@@ -664,6 +664,15 @@ if(j.getZweiggruppenzahl()== 0){}else{
         newTable.add(table);
 
     }
+    
+    
+    
+    
+ 
+
+    
+
+   
     
 }
 
