@@ -101,5 +101,15 @@ public class Gruppeneinteilung implements Serializable {
             //jahrgang.printAlle();
         }
     }
+    //aus allen gruppen 
 
+
+public void moveStudent(Student s, Jahrgang j){
+    
 }
+//in alle gruppen des jahrgangs einfügen
+public void addInGroup(Student s){
+    
+}
+}
+
