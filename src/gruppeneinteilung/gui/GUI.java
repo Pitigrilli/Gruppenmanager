@@ -28,7 +28,7 @@ import javax.swing.SpinnerNumberModel;
 
 public class GUI extends javax.swing.JFrame {
 
-    private Gruppeneinteilung ge;
+    public Gruppeneinteilung ge;
     private Jahrgang aktuellerJahrgang;
     private File file;
     private EinstellungFrameSprachen einstellungFrameSprachen;
@@ -78,6 +78,7 @@ public class GUI extends javax.swing.JFrame {
         jButtonEinstellungZweig = new javax.swing.JButton();
         jCheckBoxSprache = new javax.swing.JCheckBox();
         jButtonEinstellungSprache = new javax.swing.JButton();
+        jButtonAnsichtDrucken = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelKlassen = new javax.swing.JPanel();
         jPanelSprachen = new javax.swing.JPanel();
@@ -90,12 +91,18 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemOpen = new javax.swing.JMenuItem();
         jMenuItemSave = new javax.swing.JMenuItem();
         jMenuItemSaveAs = new javax.swing.JMenuItem();
-        jMenuItemSettings = new javax.swing.JMenuItem();
-        jMenuItemPrint = new javax.swing.JMenuItem();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuDrucken = new javax.swing.JMenu();
+        jMenuItemAllesDrucken = new javax.swing.JMenuItem();
+        jMenuItemJahrgangDrucken = new javax.swing.JMenuItem();
+        jMenuItemKlassenDrucken = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -243,6 +250,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonAnsichtDrucken.setEnabled(true);
+        jButtonAnsichtDrucken.setText("Ansicht drucken");
+        jButtonAnsichtDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnsichtDruckenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -257,6 +272,9 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabelKlassen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinnerAnzahlKlassen, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelZweig2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelZweig3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAnsichtDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelSchülergesamt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelKatholisch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelEthik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,8 +282,6 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabelZweig1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelMännlich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelWeiblich, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelZweig2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelZweig3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jCheckBoxSprache, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -297,6 +313,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jComboBoxSortierung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonJahrgangDrucken)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAnsichtDrucken)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxSprache)
@@ -327,11 +345,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelZweig1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabelZweig2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -413,24 +431,6 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemSaveAs.setEnabled(false);
         jMenu1.add(jMenuItemSaveAs);
 
-        jMenuItemSettings.setText("Zusammensetzung drucken");
-        jMenuItemSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSettingsActionPerformed(evt);
-            }
-        });
-        jMenuItemSettings.setEnabled(false);
-        jMenu1.add(jMenuItemSettings);
-
-        jMenuItemPrint.setText("Alles drucken");
-        jMenuItemPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemPrintActionPerformed(evt);
-            }
-        });
-        jMenuItemPrint.setEnabled(false);
-        jMenu1.add(jMenuItemPrint);
-
         jMenuItemClose.setText("Schließen");
         jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,6 +455,46 @@ public class GUI extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
+
+        jMenuDrucken.setText("Drucken");
+
+        jMenuItemAllesDrucken.setText("Alles drucken");
+        jMenuItemAllesDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAllesDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemAllesDrucken);
+
+        jMenuItemJahrgangDrucken.setText("Jahrgang drucken");
+        jMenuItemJahrgangDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemJahrgangDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemJahrgangDrucken);
+
+        jMenuItemKlassenDrucken.setText("Klassen drucken");
+        jMenuItemKlassenDrucken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemKlassenDruckenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemKlassenDrucken);
+
+        jMenuItem5.setText("jMenuItem5");
+        jMenuDrucken.add(jMenuItem5);
+
+        jMenuItem7.setText("jMenuItem7");
+        jMenuDrucken.add(jMenuItem7);
+
+        jMenuItem8.setText("jMenuItem8");
+        jMenuDrucken.add(jMenuItem8);
+
+        jMenuItem6.setText("jMenuItem6");
+        jMenuDrucken.add(jMenuItem6);
+
+        jMenuBar1.add(jMenuDrucken);
 
         setJMenuBar(jMenuBar1);
 
@@ -487,37 +527,6 @@ public class GUI extends javax.swing.JFrame {
         evalueteJahrgangsAuswahl();
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
-    private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
-        Speicherung sp = new Speicherung();
-        ge = sp.serialisierungLaden();
-        file = ge.getFile();
-        jahrgangAuswahlAktivieren();
-    }//GEN-LAST:event_jMenuItemOpenActionPerformed
-
-    private void jMenuItemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemSettingsActionPerformed
-
-    private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
-        // TODO add your handling code here:
-        ge = new Gruppeneinteilung();
-        ge.asvImport();
-        jahrgangAuswahlAktivieren();
-    }//GEN-LAST:event_jMenuItemImportActionPerformed
-
-    private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
-        // TODO add your handling code here:
-        merkeGeladeneDatei();
-        dispose();
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItemCloseActionPerformed
-
-    private void jMenuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveActionPerformed
-        // TODO add your handling code here:
-        new Speicherung(ge).speichern();
-        file = ge.getFile();
-    }//GEN-LAST:event_jMenuItemSaveActionPerformed
-
     private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
         // TODO add your handling code here:
         String sortierung = jComboBoxSortierung.getSelectedItem().toString();
@@ -548,26 +557,12 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.repaint();
     }//GEN-LAST:event_jComboBoxSortierungActionPerformed
 
-    private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
-        // TODO add your handling code here:
-        new Speicherung(ge).speichernUnter();
-        this.setTitle("Kursmanager - " + ge.getFile().toString());
-        file = ge.getFile();
-    }//GEN-LAST:event_jMenuItemSaveAsActionPerformed
-
-    private void jMenuItemPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrintActionPerformed
-        // TODO add your handling code here:
-        PrintPDF printPdf = new PrintPDF(ge);
-        printPdf.Drucken("Alle Klassen");
-    }//GEN-LAST:event_jMenuItemPrintActionPerformed
-
     private void jButtonJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJahrgangDruckenActionPerformed
         // TODO add your handling code here:
         PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
-        String z = Integer.toString(n);
-        printPdf.druckeJahrgang(j, "Jahrgang" + z);
+        printPdf.druckeJahrgang(j);
     }//GEN-LAST:event_jButtonJahrgangDruckenActionPerformed
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
@@ -775,7 +770,80 @@ public class GUI extends javax.swing.JFrame {
         new StudentNewFrame(this).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jButtonAnsichtDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnsichtDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);
+
+        if (jPanelKlassen.getFocusTraversalKeysEnabled() == true){
+            printPdf.druckeKlasse(j);
+        }else if (jPanelSprachen.getFocusTraversalKeysEnabled() == true){
+            printPdf.druckeFremdsprachenGruppe(j);
+        }else if (jPanelReligion.getFocusTraversalKeysEnabled() == true){
+            printPdf.druckeReligionsGruppe(j);
+        }else if (jPanelSport.getFocusTraversalKeysEnabled() == true){
+            printPdf.druckeSportGruppe(j);
+        }else if (jPanelZweig.getFocusTraversalKeysEnabled() == true){
+            printPdf.druckeZweigGruppe(j);
+        }
+        
+    }//GEN-LAST:event_jButtonAnsichtDruckenActionPerformed
+
+    private void jMenuItemAllesDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAllesDruckenActionPerformed
+        PrintPDF printPdf = new PrintPDF(ge);
+        printPdf.Drucken();
+    }//GEN-LAST:event_jMenuItemAllesDruckenActionPerformed
+
+    private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
+        // TODO add your handling code here:
+        merkeGeladeneDatei();
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemCloseActionPerformed
+
+    private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
+        // TODO add your handling code here:
+        new Speicherung(ge).speichernUnter();
+        this.setTitle("Kursmanager - " + ge.getFile().toString());
+        file = ge.getFile();
+    }//GEN-LAST:event_jMenuItemSaveAsActionPerformed
+
+    private void jMenuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveActionPerformed
+        // TODO add your handling code here:
+        new Speicherung(ge).speichern();
+        file = ge.getFile();
+    }//GEN-LAST:event_jMenuItemSaveActionPerformed
+
+    private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
+        Speicherung sp = new Speicherung();
+        ge = sp.serialisierungLaden();
+        file = ge.getFile();
+        jahrgangAuswahlAktivieren();
+    }//GEN-LAST:event_jMenuItemOpenActionPerformed
+
+    private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
+        // TODO add your handling code here:
+        ge = new Gruppeneinteilung();
+        ge.asvImport();
+        jahrgangAuswahlAktivieren();
+    }//GEN-LAST:event_jMenuItemImportActionPerformed
+
+    private void jMenuItemJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJahrgangDruckenActionPerformed
+       PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);
+        printPdf.druckeJahrgang(j);
+    }//GEN-LAST:event_jMenuItemJahrgangDruckenActionPerformed
+
+    private void jMenuItemKlassenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKlassenDruckenActionPerformed
+         PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);    
+            printPdf.druckeKlasse(j);
+    }//GEN-LAST:event_jMenuItemKlassenDruckenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAnsichtDrucken;
     private javax.swing.JButton jButtonEinstellungReligion;
     private javax.swing.JButton jButtonEinstellungSport;
     private javax.swing.JButton jButtonEinstellungSprache;
@@ -800,16 +868,22 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuDrucken;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItemAllesDrucken;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemImport;
+    private javax.swing.JMenuItem jMenuItemJahrgangDrucken;
+    private javax.swing.JMenuItem jMenuItemKlassenDrucken;
     private javax.swing.JMenuItem jMenuItemOpen;
-    private javax.swing.JMenuItem jMenuItemPrint;
     private javax.swing.JMenuItem jMenuItemSave;
     private javax.swing.JMenuItem jMenuItemSaveAs;
-    private javax.swing.JMenuItem jMenuItemSettings;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelKlassen;
     private javax.swing.JPanel jPanelReligion;
@@ -859,7 +933,7 @@ public class GUI extends javax.swing.JFrame {
     public void jahrgangAuswahlAktivieren() {
         jMenuItemSave.setEnabled(true);
         jMenuItemSaveAs.setEnabled(true);
-        jMenuItemPrint.setEnabled(true);
+        
         jComboBoxJahrgang.setEnabled(true);
         String dateiname;
         if (ge.getFile() == null) {
@@ -876,6 +950,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void aktiviereJahrgangComponents(boolean istAn) {
         jButtonJahrgangDrucken.setEnabled(istAn);
+        jButtonAnsichtDrucken.setEnabled(istAn);
         jSpinnerAnzahlKlassen.setEnabled(istAn);
         jComboBoxSortierung.setEnabled(istAn);
         jCheckBoxReligion.setEnabled(istAn);
