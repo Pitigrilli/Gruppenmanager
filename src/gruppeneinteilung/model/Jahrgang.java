@@ -817,4 +817,8 @@ public class Jahrgang implements Serializable {
     public void clearSprachengruppen() {
         sprachengruppen = new ArrayList<>();
     }
+    // in jahrgang einordnen und in alle gruppen
+    public void addStudent(){
+        
+    }
 }
