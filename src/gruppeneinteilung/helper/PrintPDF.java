@@ -50,8 +50,9 @@ public class PrintPDF {
      * Druckt alle JahrgÃ¤nge,erwartet einen String als Name fÃ¼r die PDF-Datei
      * @param name 
      */
-    public void Drucken(String name){     
-
+    public void Drucken(){     
+        
+        name = "AlleJahrgängeohneGruppen";
         
         
         try {
@@ -202,12 +203,12 @@ public class PrintPDF {
        Speicherung sp = new Speicherung ("20160704.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(6);
-        String b = "Jahrgang_6";
+        Jahrgang j= ge.getJahrgang(5);
+        
       //   pdf.TestdruckeJahrgang(j,b);
-       pdf.druckeKlassen(j);
+       pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
-       
+      // pdf.druckeReligionsGruppe(j);
        // catch(DocumentException e){}
         
         
@@ -227,8 +228,10 @@ public class PrintPDF {
     
     
     
-     public void druckeReligionsGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
-
+     public void druckeReligionsGruppe(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+if(j.getReligionsgruppenzahl()== 0){}else{
+          name = j.getJahrgang() + ".Klassen_Religionsgruppen";
+         
         try {
             
             erstellen(name);
@@ -241,7 +244,7 @@ public class PrintPDF {
             e.printStackTrace();
         }
     }
-    
+     }
     
     
     
@@ -314,8 +317,10 @@ public class PrintPDF {
     
     
     
-         public void druckeSportGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
-
+         public void druckeSportGruppe(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+if(j.getSportgruppenzahl()== 0){}else{
+              name = j.getJahrgang() + ".Klassen_Sportgruppen";
+             
         try {
             
             erstellen(name);
@@ -328,7 +333,7 @@ public class PrintPDF {
             e.printStackTrace();
         }
     }
-    
+         }  
     
     
     
@@ -399,8 +404,10 @@ public class PrintPDF {
     
     
     
-           public void druckeFremdsprachenGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
-
+           public void druckeFremdsprachenGruppe(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+               if(j.getSprachengruppenzahl()== 0){}else{
+                name = j.getJahrgang() + ".Klassen_Fremdsprachengruppen";
+               
         try {
             
             erstellen(name);
@@ -414,7 +421,7 @@ public class PrintPDF {
         }
     }
     
-    
+           }
     
     
        
@@ -483,8 +490,10 @@ public class PrintPDF {
     
     
     
-               public void druckeZweigGruppe(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
-
+               public void druckeZweigGruppe(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+if(j.getZweiggruppenzahl()== 0){}else{
+                    name = j.getJahrgang() + ".Klassen_Zweiggruppen";
+                   
         try {
             
             erstellen(name);
@@ -498,7 +507,7 @@ public class PrintPDF {
         }
     }
     
-    
+               } 
     
     
        
@@ -563,8 +572,10 @@ public class PrintPDF {
         newTable.add(table);
 
     }
- public void druckeGesammterJahrgang(Jahrgang j,String name){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
+ public void druckeGesammterJahrgangMitGruppen(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
             
+        name = j.getJahrgang() + ".Klassen";
+     
         try {
             
             erstellen(name);
@@ -577,10 +588,10 @@ public class PrintPDF {
             e.printStackTrace();
         }
         
-        druckeReligionsGruppe(j,name);//name muss noch ausgetauscht werden
-        druckeFremdsprachenGruppe(j,name);
-        druckeSportGruppe(j,name);
-        druckeZweigGruppe(j,name);
+       druckeReligionsGruppe(j);//name muss noch ausgetauscht werden
+        druckeFremdsprachenGruppe(j);
+        druckeSportGruppe(j);
+        druckeZweigGruppe(j);
         
         
         
@@ -599,12 +610,14 @@ public class PrintPDF {
         document.add(preface);
 
         Paragraph tabelle = new Paragraph();
+        
 
         createTableJahrgangGruppen(tabelle, j);
         document.add(tabelle);
         // Start a new page
         document.newPage();
-
+        
+        
     }
 
     
