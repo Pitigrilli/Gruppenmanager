@@ -216,32 +216,7 @@ public class Jahrgang implements Serializable {
         }
         String buchstabe = s.getKlasse();
         this.getKlasse(buchstabe).studentHinzufuegen(s);
-//        switch (s.getKlasse()) {
-//            case "a":
-//                klassen.get(0).studentHinzufuegen(s);
-//                break;
-//            case "b":
-//                klassen.get(1).studentHinzufuegen(s);
-//                break;
-//            case "c":
-//                klassen.get(2).studentHinzufuegen(s);
-//                break;
-//            case "d":
-//                klassen.get(3).studentHinzufuegen(s);
-//                break;
-//            case "e":
-//                klassen.get(4).studentHinzufuegen(s);
-//                break;
-//            case "f":
-//                klassen.get(5).studentHinzufuegen(s);
-//                break;
-//            case "g":
-//                klassen.get(6).studentHinzufuegen(s);
-//                break;
-//            case "h":
-//                klassen.get(7).studentHinzufuegen(s);
-//                break;
-//        }
+        addInGroups(s);
 
     }
     
@@ -825,6 +800,48 @@ public void addStudent(Student s){
  * entfernt den Schüler aus der Anzahlen Anzeige 
  * @param s 
  */
+
+//in alle gruppen des jahrgangs einfügen
+public void addInGroups(Student s){
+      if (istNachReligion()) {
+          for(GruppeReligion rg: religionsgruppen){
+              if(rg.contains(s.getKlasse())&& rg.getReligion().equals(s.getReligion())){
+                  rg.addSchueler(s);
+              }
+          }
+      }
+      
+      if (istNachZweig()) {
+          for(GruppeZweig zg: zweiggruppen){
+              if(zg.contains(s.getKlasse())&& zg.getZweig().equals(s.getZweig())){
+                  zg.addSchueler(s);
+              }
+          }
+      }
+      
+      if (istNachSprache()) {
+          ArrayList<String> sprachenSchueler = new ArrayList<>();
+          sprachenSchueler.add(s.getFs2());
+          sprachenSchueler.add(s.getFs3());
+          sprachenSchueler.add(s.getFs4());
+          for(GruppeSprache sg: sprachengruppen){
+              
+              if(sg.contains(s.getKlasse())&& sprachenSchueler.contains(sg.getSprache())){
+                  sg.addSchueler(s);
+              }
+          }
+      }
+      
+      if (istNachSport()) {
+          for(GruppeSport sg: sportgruppen){
+              if(sg.contains(s.getKlasse())&& sg.getGeschlecht().equals(s.getGeschlecht())){
+                  sg.addSchueler(s);
+              }
+          }
+      }
+     
+}
+
  public void studentAusStatistikEntfernen(Student s){
     
         schuelerAnzahl--;

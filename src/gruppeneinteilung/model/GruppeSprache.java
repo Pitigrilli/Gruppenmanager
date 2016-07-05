@@ -8,6 +8,7 @@ package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -95,4 +96,8 @@ public class GruppeSprache extends SortierbareGruppe implements Serializable {
         Arrays.sort(klassen);
     }
 
+ public boolean contains(String k) {
+        List<String> list = Arrays.asList(klassen);
+        return list.contains(k);
+    }
 }

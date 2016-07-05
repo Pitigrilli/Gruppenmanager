@@ -110,17 +110,12 @@ public void moveStudent(Student s, int j)
     {
     s.setJahrgang(j);
     removeStudent(s);
-    jahrgaenge.get(s.getJahrgang()).studentAusStatistikEntfernen(s);
-    addInGroups(s);
+    Jahrgang aktuellerJahrgang = jahrgaenge.get(s.getJahrgang());
+    aktuellerJahrgang.studentEinfuegen(s);
     }
 }
 
-//in alle gruppen des jahrgangs einfügen
-public void addInGroups(Student s){
-      Jahrgang ak = getJahrgaenge().get(s.getJahrgang());
-     ak.studentEinfuegen(s);
-     
-}
+
 
  public void removeStudent(Student s){// ok, ich hoffe die anzahl der klassen und gruppen sind richtig, oder Alternative s. U.
     Jahrgang jg = getJahrgang(s.getJahrgang()); 
@@ -166,7 +161,7 @@ public void addInGroups(Student s){
        
    }
    students.remove(s);
-   
+   jg.studentAusStatistikEntfernen(s);
     
 }
 }

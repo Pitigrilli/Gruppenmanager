@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -90,5 +91,10 @@ public void aktualisiereKlassen(){
         }
         klassen = klassenList.toArray(new String[0]);
         Arrays.sort(klassen);
+    }
+
+public boolean contains(String k) {
+        List<String> list = Arrays.asList(klassen);
+        return list.contains(k);
     }
 }

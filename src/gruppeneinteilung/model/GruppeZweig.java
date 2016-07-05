@@ -7,6 +7,7 @@ package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GruppeZweig extends SortierbareGruppe implements Serializable{
     private final int jahrgang;
@@ -80,5 +81,10 @@ public void aktualisiereKlassen(){
         }
         klassen = klassenList.toArray(new String[0]);
         Arrays.sort(klassen);
+    }
+
+public boolean contains(String k) {
+        List<String> list = Arrays.asList(klassen);
+        return list.contains(k);
     }
 }
