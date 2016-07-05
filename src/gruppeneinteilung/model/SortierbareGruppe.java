@@ -69,5 +69,13 @@ public abstract class SortierbareGruppe implements Serializable {
         Collections.sort(schueler);
 
     }
+    
+    public void addSchueler(Student s){
+        schueler.add(s);
+    }
+    
+    public void removeSchueler(Student s){
+        schueler.remove(s);
+    }
     public abstract void aktualisiereKlassen();
 }

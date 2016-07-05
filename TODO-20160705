@@ -1,0 +1,55 @@
+
+>>>>>>>>>>>>>Schüler: entfernen<<<<<<<<<<<<<<<<<<<<<<<<<  
+GUI: Die Labels im GUI müssen angepasst werden.
+
+
+>>>>>>>>>>>>>>>>>>Schüler  in einen anderen Jahrgang verschieben +1/-1<<<<<<<<<<<<<<<<<<
+Methodenkopf festlegen, (Methode in Klasse Gruppeneinteilung 
+Methode ruft die Methode "Schüler entfernen" auf und verwendet eine zu schreibende Methode 
+"Schüler in Jahrgang einfügen" (diese Methode muss in Jahrgang sein).
+Welche Objekte den Schüler aufnehmen siehe liste oben.
+Bemerkung automatisch ergänzen (zB: "aus J8")
+
+GUI: PopupMenu in Klassenpanel
+
+>>>>>>>>>>>>>>>>>>>>ganz neue Schüler müssen aufgenommen werden können.<<<<<<<<<<<<<<<<<<<<<<<<<
+Methode (in Gruppeneinteilung), welche einen Schüler in einen Jahrgang, d.h. in die richtige Klasse aufnimmt 
+und in die passende Religionsgruppe, usw. einfügt. Verwendet die Methode schüler in einen Jahrgang aufnehmen.
+
+GUI: Item in Menu, Submenu Bearbeiten (Name?)
+
+
+>>>>>>>>>>>>>>>>>>>>>>>Druckausgabe für jede Ansicht<<<<<<<<<<<<<<<<<<<<
+Kopf der Methode festlegen: Jahrgang und um welche Gruppen es sich handelt muss als Parameter übergeben werden
+
+GUI: Button Ansicht drucken im Hauptfenster. Die Auswahl erfolgt darüber, welches Panel gerade den Fokus hat.
+
+>>>>>>>>>>>>>>> Gruppe Druck >>>>>>>>>>>>>>>>
+Kopf der erzeugten Dokumente bearbeiten, dh sinnvolle Überschrift.
+Aufruf des System-pdf-viewer wenn das Dokument erzeugt worden ist. 
+(siehe: http://stackoverflow.com/questions/2546968/open-pdf-file-on-the-fly-from-a-java-application)
+Nicht alle Angaben sind sinnvoll bei jeder Druckausgabe: zB muss die Klasse des Schülers nicht mit 
+ausgegeben werden, da die Klasse drüber steht o.Ä. Dadurch muss weniger ausgegebn werden und es 
+passt in eine Zeile.
+
+
+
+>>>>>>>>>>>>>>>>> GUI <<<<<<<<<<<<<<<<<<
+Neues Menu mit Items: Alles Drucken, Jahrgang drucken, Klassen drucken, Religionsgruppen, mit 
+Einstellungen drucken, usw..
+
+Neues Menu Hilfe: Unterpunkte: Anleitung und About
+About ruft den PDF-Viewer des Systems auf mit der Anleitung von Florian .
+
+Begrüßungsfenster beim Starten anzeigen? (oder ist das Schnickschnack?)
+
+
+>>>>>>>>>>>>>>>>>> BUGS <<<<<<<<<<<<<<<<<<<<<<<
+
+BUG: Beim Erstellen der ersten Sprachengruppe, erscheint die Gruppe erst, wenn man ein zweitesmal auf Erstellen klickt.
+
+BUG: Beim Wechsel des Jahrgangs müssen EinstellungFrame-Fenster geschlossen werden.
+
+
+Später:
+Klären, warum die Schüler in jahrgang.alle nicht identisch sind mit den Schülern in jahrgang.klassen.

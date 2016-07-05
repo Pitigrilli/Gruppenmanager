@@ -122,14 +122,14 @@ public void addInGroups(Student s){
      
 }
 
- public void removeStudent(Student s){
+ public void removeStudent(Student s){// ok, ich hoffe die anzahl der klassen und gruppen sind richtig, oder Alternative s. U.
     Jahrgang jg = getJahrgang(s.getJahrgang()); 
    jg.gibAlle().remove(s); // aus Jahrgang entfernt
-   for(int i = 0; i < jg.getKlassenanzahl(); i++)
+   for(int i = 0; i < jg.getKlassenanzahl(); i++)//for(Klasse k: jg.getKlassen())
    {
-       if(jg.getKlassen().get(i).getSchueler().contains(s))
+       if(jg.getKlassen().get(i).getSchueler().contains(s))// if(k.contains(s))
        {
-          jg.getKlassen().get(i).getSchueler().remove(s); //aus Klasse entfernt
+          jg.getKlassen().get(i).getSchueler().remove(s); //aus Klasse entfernt, k.removeSchueler(s);
        }
        
    }
