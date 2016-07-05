@@ -4,13 +4,11 @@ GUI: Die Labels im GUI müssen angepasst werden.
 
 
 >>>>>>>>>>>>>>>>>>Schüler  in einen anderen Jahrgang verschieben +1/-1<<<<<<<<<<<<<<<<<<
-Methodenkopf festlegen, (Methode in Klasse Gruppeneinteilung 
-Methode ruft die Methode "Schüler entfernen" auf und verwendet eine zu schreibende Methode 
-"Schüler in Jahrgang einfügen" (diese Methode muss in Jahrgang sein).
-Welche Objekte den Schüler aufnehmen siehe liste oben.
-Bemerkung automatisch ergänzen (zB: "aus J8")
 
-GUI: PopupMenu in Klassenpanel
+Methode ruft die Methode "Schüler entfernen" auf und verwendet eine zu schreibende Methode 
+"Schüler in Jahrgang einfügen" (diese Methode muss in Jahrgang sein). Evtl kann die Methode studentEinfuegen() benutzt
+ werden, aber ergänzt um das Einfügen in die Gruppen. Welche Objekte den Schüler aufnehmen siehe liste oben.
+Bemerkung automatisch ergänzen (zB: "aus J8")
 
 >>>>>>>>>>>>>>>>>>>>ganz neue Schüler müssen aufgenommen werden können.<<<<<<<<<<<<<<<<<<<<<<<<<
 Methode (in Gruppeneinteilung), welche einen Schüler in einen Jahrgang, d.h. in die richtige Klasse aufnimmt 
@@ -35,13 +33,10 @@ passt in eine Zeile.
 
 
 >>>>>>>>>>>>>>>>> GUI <<<<<<<<<<<<<<<<<<
-Neues Menu mit Items: Alles Drucken, Jahrgang drucken, Klassen drucken, Religionsgruppen, mit 
-Einstellungen drucken, usw..
-
 Neues Menu Hilfe: Unterpunkte: Anleitung und About
 About ruft den PDF-Viewer des Systems auf mit der Anleitung von Florian .
 
-Begrüßungsfenster beim Starten anzeigen? (oder ist das Schnickschnack?)
+Begrüßungsfenster (Splash-Screen) beim Starten anzeigen? 
 
 
 >>>>>>>>>>>>>>>>>> BUGS <<<<<<<<<<<<<<<<<<<<<<<
