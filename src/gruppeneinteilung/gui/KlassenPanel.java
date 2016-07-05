@@ -21,26 +21,24 @@ import static javax.swing.TransferHandler.MOVE;
 
 public class KlassenPanel extends JPanel {
 
-    
     private final Jahrgang jahrgang;
     private final Klasse klasse;
     private final String buchstabe;
     private final String name;
     private final ArrayList<Student> schueler;
-    
+
     private final JLabel titel;
     private String anzeige;
     private final JList<Student> gruppenListe;
-    
+
     private final JPopupMenu jpopupmenu;
     private final GUI parent;
-    
+
     private final DefaultListModel<Student> dlm = new DefaultListModel<>();
-    
+
     private final DataFlavor studentFlavor;
 
-
-    public KlassenPanel(Klasse k,GUI g) {
+    public KlassenPanel(Klasse k, GUI g) {
         klasse = k;
         this.schueler = klasse.getSchueler();
         this.name = klasse.getTitel();
@@ -77,21 +75,21 @@ public class KlassenPanel extends JPanel {
                 parent.ge.removeStudent(s);
                 aktualisiereListModel();
                 parent.aktualisiereLabelJahrgang();
+                parent.revalidate();
             }
         });
         item3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
-                parent.ge.moveStudent(s,s.getJahrgang()+1);
+                parent.ge.moveStudent(s, s.getJahrgang() + 1);
             }
         });
         item4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
-                parent.ge.moveStudent(s,s.getJahrgang()-1);
+                parent.ge.moveStudent(s, s.getJahrgang() - 1);
             }
         });
-       
 
         // Listenmodell
         for (Student student : schueler) {
@@ -136,7 +134,7 @@ public class KlassenPanel extends JPanel {
     private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Student s = gruppenListe.getSelectedValue();
-        new StudentEditFrame(s,jahrgang,parent).setVisible(true);
+        new StudentEditFrame(s, jahrgang, parent).setVisible(true);
         System.out.println("Popup: " + s.getName());
     }
 
