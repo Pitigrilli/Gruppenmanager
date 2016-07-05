@@ -94,7 +94,6 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuDrucken = new javax.swing.JMenu();
         jMenuItemAllesDrucken = new javax.swing.JMenuItem();
         jMenuItemJahrgangDrucken = new javax.swing.JMenuItem();
@@ -443,9 +442,10 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setEnabled(false);
         jMenu2.setText("Bearbeiten");
 
-        jMenuItem2.setText("New Student");
+        jMenuItem2.setText("Neuer Schüler");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -453,11 +453,9 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("jMenuItem3");
-        jMenu2.add(jMenuItem3);
-
         jMenuBar1.add(jMenu2);
 
+        jMenuDrucken.setEnabled(false);
         jMenuDrucken.setText("Drucken");
 
         jMenuItemAllesDrucken.setText("Alles drucken");
@@ -930,7 +928,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuDrucken;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAllesDrucken;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemFremdsprachenGruppenDrucken;
@@ -1026,6 +1023,8 @@ public class GUI extends javax.swing.JFrame {
         jLabelZweig1.setVisible(istAn);
         jLabelZweig2.setVisible(istAn);
         jLabelZweig3.setVisible(istAn);
+        jMenu2.setEnabled(istAn);
+        jMenuDrucken.setEnabled(istAn);
     }
 
     public void evalueteJahrgangsAuswahl() {

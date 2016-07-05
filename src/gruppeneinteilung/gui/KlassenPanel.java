@@ -75,6 +75,8 @@ public class KlassenPanel extends JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
                 parent.ge.removeStudent(s);
+                aktualisiereListModel();
+                parent.aktualisiereLabelJahrgang();
             }
         });
         item3.addActionListener(new java.awt.event.ActionListener() {

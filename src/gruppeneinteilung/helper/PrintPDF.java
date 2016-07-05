@@ -174,17 +174,17 @@ public class PrintPDF {
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFont));
                 }
 
             }
@@ -200,12 +200,12 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("20160704.ged");
+       Speicherung sp = new Speicherung ("test.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
         Jahrgang j= ge.getJahrgang(10);
         
-       
+       pdf.druckeKlassen(j);
       // pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
       // pdf.druckeReligionsGruppe(j);
@@ -281,24 +281,24 @@ if(j.getReligionsgruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getReligionsgruppen().get(i).getReligion()+ " Anzahl: "+aktuellerJahrgang.getReligionsgruppen().get(i).getReligiongroesse() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getReligionsgruppen().get(i).getTitel()+ " Anzahl: "+aktuellerJahrgang.getReligionsgruppen().get(i).getReligiongroesse() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) {
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFont));
                 }
 
             }
@@ -370,24 +370,24 @@ if(j.getSportgruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getSportgruppen().get(i).getGeschlecht() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - Sport - "+ aktuellerJahrgang.getSportgruppen().get(i).getTitel() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) {
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getBemerkung()), tableFont));
                 }
 
             }
@@ -457,24 +457,24 @@ if(j.getSportgruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getSprachengruppen().get(i).getSprache()+ " Anzahl: "+aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprachengroesse() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getSprachengruppen().get(i).getTitel()+ " Anzahl: "+aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprachengroesse() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getSprachengruppen().get(i).getSchueler()) {
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getZweig()+ " " + s.getBemerkung()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getZweig()+ " " + s.getBemerkung()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getZweig()+ " " + s.getBemerkung()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getZweig()+ " " + s.getBemerkung()), tableFont));
                 }
 
             }
@@ -543,24 +543,24 @@ if(j.getZweiggruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getZweiggruppen().get(i).getZweig()+ " Anzahl: "+aktuellerJahrgang.getZweiggruppen().get(i).getZweiggroesse() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - "+ aktuellerJahrgang.getZweiggruppen().get(i).getTitel()+ " Anzahl: "+aktuellerJahrgang.getZweiggruppen().get(i).getZweiggroesse() ,tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getZweiggruppen().get(i).getSchueler()) {
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getFs2()+" " + s.getFs3()+ " " + s.getBemerkung()+ " "+ s.getFs4()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getFs2()+" " + s.getFs3()+ " " + s.getBemerkung()+ " "+ s.getFs4()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getFs2()+" " + s.getFs3()+ " " + s.getBemerkung()+ " "+ s.getFs4()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName()+ " " + s.getGeschlecht()+ " " + s.getFs2()+" " + s.getFs3()+ " " + s.getBemerkung()+ " "+ s.getFs4()), tableFont));
                 }
 
             }
@@ -588,7 +588,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
             e.printStackTrace();
         }
         
-       druckeReligionsGruppe(j);//name muss noch ausgetauscht werden
+       druckeReligionsGruppe(j);
         druckeFremdsprachenGruppe(j);
         druckeSportGruppe(j);
         druckeZweigGruppe(j);
@@ -642,17 +642,17 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
                 switch (s.getReligion()) {
                     case "RK":
-                        tableI.addCell(new Phrase((s.toString()), tableFontRot));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontRot));
                         break;
                     case "EV":
-                        tableI.addCell(new Phrase((s.toString()), tableFontGruen));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontGruen));
                         break;
                     case "ETH":
-                        tableI.addCell(new Phrase((s.toString()), tableFontBlau));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFontBlau));
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.toString()), tableFont));
+                        tableI.addCell(new Phrase((s.getName() + " "+ s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " +s.getFs4() + " "+ s.getReligion() + " " + s.getBemerkung()), tableFont));
                 }
 
             }
