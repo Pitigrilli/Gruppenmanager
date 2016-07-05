@@ -806,7 +806,7 @@ public void addInGroups(Student s){
       if (istNachReligion()) {
           for(GruppeReligion rg: religionsgruppen){
               if(rg.contains(s.getKlasse())&& rg.getReligion().equals(s.getReligion())){
-                  rg.addSchueler(s);
+                  rg.addSchueler(s);break;
               }
           }
       }
@@ -814,7 +814,7 @@ public void addInGroups(Student s){
       if (istNachZweig()) {
           for(GruppeZweig zg: zweiggruppen){
               if(zg.contains(s.getKlasse())&& zg.getZweig().equals(s.getZweig())){
-                  zg.addSchueler(s);
+                  zg.addSchueler(s);break;
               }
           }
       }
@@ -827,7 +827,7 @@ public void addInGroups(Student s){
           for(GruppeSprache sg: sprachengruppen){
               
               if(sg.contains(s.getKlasse())&& sprachenSchueler.contains(sg.getSprache())){
-                  sg.addSchueler(s);
+                  sg.addSchueler(s);break;
               }
           }
       }
@@ -835,7 +835,7 @@ public void addInGroups(Student s){
       if (istNachSport()) {
           for(GruppeSport sg: sportgruppen){
               if(sg.contains(s.getKlasse())&& sg.getGeschlecht().equals(s.getGeschlecht())){
-                  sg.addSchueler(s);
+                  sg.addSchueler(s);break;
               }
           }
       }

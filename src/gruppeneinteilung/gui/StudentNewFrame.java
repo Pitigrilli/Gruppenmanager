@@ -246,10 +246,18 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Speichere die Einträge
-       Student s = new Student(Integer.parseInt(jComboJahrgang.getSelectedItem().toString()), jComboKlasse.getSelectedItem().toString(), jTextFieldName.getText(), jComboBoxGeschlecht.getSelectedItem().toString(), jComboZweig.getSelectedItem().toString(), jComboFremdsprache2.getSelectedItem().toString(), jComboFremdsprache3.getSelectedItem().toString(), jComboFremdsprache4.getSelectedItem().toString(), jComboReligion.getSelectedItem().toString());
-         gui.aktualisiereLabelJahrgang(); 
+       Student s = new Student(Integer.parseInt(jComboJahrgang.getSelectedItem().toString()), 
+               jComboKlasse.getSelectedItem().toString(), jTextFieldName.getText(), 
+               jComboBoxGeschlecht.getSelectedItem().toString(), jComboZweig.getSelectedItem().toString(), 
+               jComboFremdsprache2.getSelectedItem().toString(), jComboFremdsprache3.getSelectedItem().toString(), 
+               jComboFremdsprache4.getSelectedItem().toString(), jComboReligion.getSelectedItem().toString());
+               
+       s.setBemerkung(jTextFieldBem.getText());
+         
          Jahrgang j = gui.ge.getJahrgang(Integer.parseInt(jComboJahrgang.getSelectedItem().toString()));
          j.studentEinfuegen(s);
+         gui.aktualisiereLabelJahrgang(); 
+         gui.klassenAnzeigen();
          gui.revalidate();
          gui.repaint();
 //Schließt das Fenster

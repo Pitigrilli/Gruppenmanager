@@ -56,20 +56,24 @@ public class KlassenPanel extends JPanel {
 
         //Popupmenu
         jpopupmenu = new JPopupMenu();
-        JMenuItem item = new JMenuItem("Bearbeiten");
-        JMenuItem item2 = new JMenuItem("Löschen");
-        JMenuItem item3 = new JMenuItem("Jahrgang aufsteigen");
-        JMenuItem item4 = new JMenuItem("Jahrgang absteigen");
-        jpopupmenu.add(item);
-        jpopupmenu.add(item2);
-        jpopupmenu.add(item3);
-        jpopupmenu.add(item4);
-        item.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItem itemBearbeiten = new JMenuItem("Bearbeiten");
+        JMenuItem itemLoeschen = new JMenuItem("Löschen");
+        JMenuItem itemJahrgangHoch = new JMenuItem("Jahrgang aufsteigen");
+        JMenuItem itemJahrgangRunter = new JMenuItem("Jahrgang absteigen");
+        jpopupmenu.add(itemBearbeiten);
+        jpopupmenu.add(itemLoeschen);
+        jpopupmenu.add(itemJahrgangHoch);
+        jpopupmenu.add(itemJahrgangRunter);
+
+        itemBearbeiten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                popupEditActionPerformed(evt);
+                Student s = gruppenListe.getSelectedValue();
+                new StudentEditFrame(s, jahrgang, parent).setVisible(true);
+                System.out.println("Popup: " + s.getName());
             }
         });
-        item2.addActionListener(new java.awt.event.ActionListener() {
+
+        itemLoeschen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
                 parent.ge.removeStudent(s);
@@ -78,13 +82,15 @@ public class KlassenPanel extends JPanel {
                 parent.revalidate();
             }
         });
-        item3.addActionListener(new java.awt.event.ActionListener() {
+
+        itemJahrgangHoch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
                 parent.ge.moveStudent(s, s.getJahrgang() + 1);
             }
         });
-        item4.addActionListener(new java.awt.event.ActionListener() {
+
+        itemJahrgangRunter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student s = gruppenListe.getSelectedValue();
                 parent.ge.moveStudent(s, s.getJahrgang() - 1);
@@ -114,7 +120,7 @@ public class KlassenPanel extends JPanel {
 
             public void check(MouseEvent e) {
                 if (e.isPopupTrigger()) { //if the event shows the menu
-                    gruppenListe.setSelectedIndex(gruppenListe.locationToIndex(e.getPoint())); //select the item
+                    gruppenListe.setSelectedIndex(gruppenListe.locationToIndex(e.getPoint())); //select the itemBearbeiten
                     jpopupmenu.show(gruppenListe, e.getX(), e.getY()); //and show the menu
                 }
             }
@@ -129,13 +135,6 @@ public class KlassenPanel extends JPanel {
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Scrollbar ins Panel
         add(scrollPane, BorderLayout.CENTER);
-    }
-
-    private void popupEditActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        Student s = gruppenListe.getSelectedValue();
-        new StudentEditFrame(s, jahrgang, parent).setVisible(true);
-        System.out.println("Popup: " + s.getName());
     }
 
     public void aktualisiereListModel() {

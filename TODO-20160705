@@ -1,8 +1,8 @@
 
->>>>>>>>>>>>>Schüler: entfernen<<<<<<<<<<<<<<<<<<<<<<<<<  
+Beim Ändern der Klasse wird beim neu eingefügten Schüler (Sportgruppe) keine Anpassungen vorgenommen. 
+Das Verschieben der Schüler in den Klassen und in den Gruppen führt zu Fehlern.
 
 GUI: Die Labels im GUI müssen angepasst werden.
-
 
 >>>>>>>>>>>>>>>>>>Schüler  in einen anderen Jahrgang verschieben +1/-1<<<<<<<<<<<<<<<<<<
 
@@ -17,7 +17,6 @@ und in die passende Religionsgruppe, usw. einfügt. Verwendet die Methode schül
 
 GUI: Item in Menu, Submenu Bearbeiten (Name?)
 
-
 >>>>>>>>>>>>>>>>>>>>>>>Druckausgabe für jede Ansicht<<<<<<<<<<<<<<<<<<<<
 Kopf der Methode festlegen: Jahrgang und um welche Gruppen es sich handelt muss als Parameter übergeben werden
 
@@ -31,21 +30,17 @@ Nicht alle Angaben sind sinnvoll bei jeder Druckausgabe: zB muss die Klasse des 
 ausgegeben werden, da die Klasse drüber steht o.Ä. Dadurch muss weniger ausgegebn werden und es 
 passt in eine Zeile.
 
-
-
 >>>>>>>>>>>>>>>>> GUI <<<<<<<<<<<<<<<<<<
 Neues Menu Hilfe: Unterpunkte: Anleitung und About
 About ruft den PDF-Viewer des Systems auf mit der Anleitung von Florian .
 
 Begrüßungsfenster (Splash-Screen) beim Starten anzeigen? 
 
-
 >>>>>>>>>>>>>>>>>> BUGS <<<<<<<<<<<<<<<<<<<<<<<
 
 BUG: Beim Erstellen der ersten Sprachengruppe, erscheint die Gruppe erst, wenn man ein zweitesmal auf Erstellen klickt.
 
 BUG: Beim Wechsel des Jahrgangs müssen EinstellungFrame-Fenster geschlossen werden.
-
 
 Später:
 Klären, warum die Schüler in jahrgang.alle nicht identisch sind mit den Schülern in jahrgang.klassen.
