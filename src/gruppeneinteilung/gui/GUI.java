@@ -62,7 +62,7 @@ public class GUI extends javax.swing.JFrame {
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<String>();
+        jComboBoxSortierung = new javax.swing.JComboBox<>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -364,18 +364,43 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jPanelKlassen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelKlassenFocusGained(evt);
+            }
+        });
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Klassen", jPanelKlassen);
 
+        jPanelSprachen.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelSprachenFocusGained(evt);
+            }
+        });
         jPanelSprachen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Sprachengruppen", jPanelSprachen);
 
+        jPanelReligion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelReligionFocusGained(evt);
+            }
+        });
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
 
+        jPanelSport.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelSportFocusGained(evt);
+            }
+        });
         jPanelSport.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Sportgruppen", jPanelSport);
 
+        jPanelZweig.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelZweigFocusGained(evt);
+            }
+        });
         jPanelZweig.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
@@ -797,15 +822,15 @@ public class GUI extends javax.swing.JFrame {
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
 
-        if (jPanelKlassen.getFocusTraversalKeysEnabled() == true) {
+        if (selectedTab.equals("Klassen")) {
             printPdf.druckeKlassen(j);
-        } else if (jPanelSprachen.getFocusTraversalKeysEnabled() == true) {
+        } else if (selectedTab.equals("Sprachen")) {
             printPdf.druckeFremdsprachenGruppe(j);
-        } else if (jPanelReligion.getFocusTraversalKeysEnabled() == true) {
+        } else if (selectedTab.equals("Religion")) {
             printPdf.druckeReligionsGruppe(j);
-        } else if (jPanelSport.getFocusTraversalKeysEnabled() == true) {
+        } else if (selectedTab.equals("Sport")) {
             printPdf.druckeSportGruppe(j);
-        } else if (jPanelZweig.getFocusTraversalKeysEnabled() == true) {
+        } else if (selectedTab.equals("Zweig")) {
             printPdf.druckeZweigGruppe(j);
         }
 
@@ -891,6 +916,26 @@ public class GUI extends javax.swing.JFrame {
         Jahrgang j = ge.getJahrgang(n);
         printPdf.druckeZweigGruppe(j);
     }//GEN-LAST:event_jMenuItemZweigGruppenDruckenActionPerformed
+
+    private void jPanelSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSportFocusGained
+        selectedTab = "Sport";
+    }//GEN-LAST:event_jPanelSportFocusGained
+
+    private void jPanelKlassenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelKlassenFocusGained
+        selectedTab = "Klassen";
+    }//GEN-LAST:event_jPanelKlassenFocusGained
+
+    private void jPanelSprachenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSprachenFocusGained
+        selectedTab = "Sprachen";
+    }//GEN-LAST:event_jPanelSprachenFocusGained
+
+    private void jPanelReligionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelReligionFocusGained
+        selectedTab = "Religion";
+    }//GEN-LAST:event_jPanelReligionFocusGained
+
+    private void jPanelZweigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelZweigFocusGained
+        selectedTab = "Religion";
+    }//GEN-LAST:event_jPanelZweigFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnsichtDrucken;
