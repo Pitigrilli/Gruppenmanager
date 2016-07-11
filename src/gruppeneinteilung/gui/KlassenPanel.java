@@ -203,13 +203,11 @@ public class KlassenPanel extends JPanel {
                     student.setKlasse(buchstabe);
                     schueler.add(index, student);
                     setzeTitel();
-
                     //AktualisiereGruppenzugehörigkeit
                     jahrgang.religionsgruppenAdd(student);
-                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
-                    GUI gui = (GUI) topFrame;
-                    gui.religionsgruppenAnzeigen();
-                    //jahrgang.testReligionsgruppen();
+                    jahrgang.sportgruppenAdd(student);
+                    jahrgang.zweiggruppenAdd(student);
+                    jahrgang.sprachengruppenAdd(student);
                 }
 
                 return true;
@@ -226,11 +224,11 @@ public class KlassenPanel extends JPanel {
                     listModel.removeElement(student);
                     schueler.remove(student);
                     jahrgang.religionsgruppenRemove(student);
+                    jahrgang.sportgruppenRemove(student);
+                    jahrgang.sprachengruppenRemove(student);
+                    jahrgang.zweiggruppenRemove(student);
                     //System.out.println("Remove:" + student);
                     setzeTitel();
-                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(KlassenPanel.this);
-                    GUI gui = (GUI) topFrame;
-                    gui.religionsgruppenAnzeigen();
                 }
             }
 
