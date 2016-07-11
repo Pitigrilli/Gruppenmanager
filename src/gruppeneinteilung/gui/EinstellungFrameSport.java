@@ -87,6 +87,11 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabelAnzahlKlassen.setText("Anzahl der Gruppen");
 
@@ -188,7 +193,7 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
      * @param evt
      */
     private void jButtonSchließenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSchließenActionPerformed
-        // TODO add your handling code here:
+        parent.jComboBoxJahrgangFreigeben();
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jButtonSchließenActionPerformed
@@ -217,6 +222,10 @@ public class EinstellungFrameSport extends javax.swing.JFrame {
             jPanel1.repaint();
         }
     }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        parent.jComboBoxJahrgangFreigeben();
+    }//GEN-LAST:event_formWindowClosing
 
 //    /**
 //     * @param args the command line arguments
