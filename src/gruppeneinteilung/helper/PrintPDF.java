@@ -19,6 +19,8 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
+import java.awt.Desktop;
+import java.io.IOException;
 
 public class PrintPDF {
 
@@ -217,10 +219,16 @@ public class PrintPDF {
         PrintPDF pdf =new PrintPDF(ge);
         Jahrgang j= ge.getJahrgang(6);
         
+        pdf.druckeReligionsGruppe(j);
+        
+    
+        // no application registered for PDFs
+    
+
        //pdf.druckeKlassen(j);
       // pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
-        pdf.druckeReligionsGruppe(j);
+        
        // catch(DocumentException e){}
         //pdf.Drucken();
         
@@ -256,6 +264,15 @@ if(j.getReligionsgruppenzahl()== 0){}else{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if (Desktop.isDesktopSupported()) {
+    try {
+        String titel = j.getJahrgang() + ".Klassen_Religionsgruppen";
+        File myFile = new File("titel");
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+    }
+}
     }
      }
     
