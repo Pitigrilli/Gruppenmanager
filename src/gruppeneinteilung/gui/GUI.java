@@ -58,11 +58,17 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
         jPanel2 = new javax.swing.JPanel();
         jComboBoxJahrgang = new javax.swing.JComboBox();
         jSpinnerAnzahlKlassen = new javax.swing.JSpinner(new SpinnerNumberModel(4,1,10,1));
         jLabelKlassen = new javax.swing.JLabel();
-        jComboBoxSortierung = new javax.swing.JComboBox<>();
+        jComboBoxSortierung = new javax.swing.JComboBox<String>();
         jButtonJahrgangDrucken = new javax.swing.JButton();
         jLabelSchülergesamt = new javax.swing.JLabel();
         jLabelKatholisch = new javax.swing.JLabel();
@@ -105,8 +111,22 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemReligionsGruppenDrucken = new javax.swing.JMenuItem();
         jMenuItemSportGruppenDrucken = new javax.swing.JMenuItem();
         jMenuItemZweigGruppenDrucken = new javax.swing.JMenuItem();
+        jMenuHilfe = new javax.swing.JMenu();
+        jMenuItemAnleitung = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenu3.setText("jMenu3");
+
+        jMenu4.setText("File");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("Edit");
+        jMenuBar2.add(jMenu5);
+
+        jMenu6.setText("jMenu6");
+
+        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kursmanager");
@@ -114,11 +134,11 @@ public class GUI extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1200, 900));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -349,11 +369,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelWeiblich, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelZweig1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelZweig3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap(8217, Short.MAX_VALUE))
         );
 
         jComboBoxSortierung.getAccessibleContext().setAccessibleName("");
@@ -523,6 +543,18 @@ public class GUI extends javax.swing.JFrame {
         jMenuDrucken.add(jMenuItemZweigGruppenDrucken);
 
         jMenuBar1.add(jMenuDrucken);
+
+        jMenuHilfe.setText("Hilfe");
+
+        jMenuItemAnleitung.setText("Anleitung");
+        jMenuItemAnleitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAnleitungActionPerformed(evt);
+            }
+        });
+        jMenuHilfe.add(jMenuItemAnleitung);
+
+        jMenuBar1.add(jMenuHilfe);
 
         setJMenuBar(jMenuBar1);
 
@@ -937,6 +969,18 @@ public class GUI extends javax.swing.JFrame {
         selectedTab = "Religion";
     }//GEN-LAST:event_jPanelZweigFocusGained
 
+    private void jMenuItemAnleitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnleitungActionPerformed
+       
+if (Desktop.isDesktopSupported()) {
+    try {
+        File myFile = new File("Anleitung.pdf");
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+    }
+}
+    }//GEN-LAST:event_jMenuItemAnleitungActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnsichtDrucken;
     private javax.swing.JButton jButtonEinstellungReligion;
@@ -962,11 +1006,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelZweig3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuDrucken;
+    private javax.swing.JMenu jMenuHilfe;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAllesDrucken;
+    private javax.swing.JMenuItem jMenuItemAnleitung;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JMenuItem jMenuItemFremdsprachenGruppenDrucken;
     private javax.swing.JMenuItem jMenuItemImport;
