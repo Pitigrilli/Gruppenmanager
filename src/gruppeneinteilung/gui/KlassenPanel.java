@@ -205,7 +205,7 @@ public class KlassenPanel extends JPanel {
                     setzeTitel();
                     //AktualisiereGruppenzugehörigkeit
                     jahrgang.religionsgruppenAdd(student);
-                    jahrgang.SportgruppenAdd(student);
+                    jahrgang.sportgruppenAdd(student);
                     jahrgang.zweiggruppenAdd(student);
                     jahrgang.sprachengruppenAdd(student);
                 }
@@ -224,7 +224,7 @@ public class KlassenPanel extends JPanel {
                     listModel.removeElement(student);
                     schueler.remove(student);
                     jahrgang.religionsgruppenRemove(student);
-                    jahrgang.SportgruppenRemove(student);
+                    jahrgang.sportgruppenRemove(student);
                     jahrgang.sprachengruppenRemove(student);
                     jahrgang.zweiggruppenRemove(student);
                     //System.out.println("Remove:" + student);

@@ -15,17 +15,18 @@ import gruppeneinteilung.model.Student;
 public class StudentEditFrame extends javax.swing.JFrame {
 
     Student s;
-    Jahrgang  jahrgang;
+    Jahrgang jahrgang;
     GUI gui;
+
     /**
      * Creates new form StudentEditFrame
      */
     public StudentEditFrame(Student s, Jahrgang j, GUI g) {
-        this.s=s;
+        this.s = s;
         jahrgang = j;
         gui = g;
         initComponents();
-        
+
     }
 
     /**
@@ -112,7 +113,7 @@ public class StudentEditFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "NTG_8", "WSG_8", "SOG_8"}));
+        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8"}));
         jComboZweig.setSelectedItem(s.getZweig());
         jComboZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,22 +236,30 @@ public class StudentEditFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Speichere die Einträge
-        String klasseNeu=jComboKlasse.getModel().getSelectedItem().toString();
+        String klasseNeu = jComboKlasse.getModel().getSelectedItem().toString();
         String klasseAlt = s.getKlasse();
         s.setReligion(jComboReligion.getModel().getSelectedItem().toString());
         s.setBemerkung(jTextFieldBem.getText());
         s.setName(jTextFieldName.getText());
         s.setKlasse(jComboKlasse.getModel().getSelectedItem().toString());
-        s.setJahrgang(Integer.parseInt( jComboJahrgang.getModel().getSelectedItem().toString()));
+        s.setJahrgang(Integer.parseInt(jComboJahrgang.getModel().getSelectedItem().toString()));
         s.setZweig(jComboZweig.getModel().getSelectedItem().toString());
         s.setFs2(jComboFremdsprache2.getModel().getSelectedItem().toString());
         s.setFs3(jComboFremdsprache3.getModel().getSelectedItem().toString());
         s.setFs4(jComboFremdsprache4.getModel().getSelectedItem().toString());
         //Klassenwechsel
-        if(!klasseNeu.equals(klasseAlt)){//Klassenwechsel
+        if (!klasseNeu.equals(klasseAlt)) {//Klassenwechsel
             jahrgang.getKlasse(klasseAlt).studentEntfernen(s);
             jahrgang.getKlasse(klasseNeu).studentHinzufuegen(s);
             gui.klassenAnzeigen();
+            jahrgang.religionsgruppenRemove(s);
+            jahrgang.sportgruppenRemove(s);
+            jahrgang.sprachengruppenRemove(s);
+            jahrgang.zweiggruppenRemove(s);
+            jahrgang.religionsgruppenAdd(s);
+            jahrgang.sportgruppenAdd(s);
+            jahrgang.zweiggruppenAdd(s);
+            jahrgang.sprachengruppenAdd(s);
         }
         //Schließt das Fenster
         this.dispose();
@@ -302,8 +311,8 @@ public class StudentEditFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-               // new StudentEditFrame(s).setVisible(true);
+
+                // new StudentEditFrame(s).setVisible(true);
             }
         });
     }
