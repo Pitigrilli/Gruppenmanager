@@ -7,6 +7,7 @@ package gruppeneinteilung.gui;
 
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Student;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -98,32 +99,32 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
         jTextFieldBem.setText("");
 
-        jComboKlasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "a", "b", "c", "d", "e", "f","g","h" }));
+        jComboKlasse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Klasse auswählen", "a", "b", "c", "d", "e", "f","g","h" }));
         jComboKlasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboKlasseActionPerformed(evt);
             }
         });
 
-        jComboJahrgang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "6", "7", "8","9","10" }));
+        jComboJahrgang.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Jahrgang auswählen", "5", "6", "7", "8","9","10" }));
         jComboJahrgang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboJahrgangActionPerformed(evt);
             }
         });
 
-        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "NTG_8", "WSG_8", "SOG_8"}));
+        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Zweig auswählen", "GY", "NTG_8", "WSG_8", "SOG_8"}));
         jComboZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboZweigActionPerformed(evt);
             }
         });
 
-        jComboReligion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RK", "EV", "ETH", "ORTH" }));
+        jComboReligion.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Religion auswählen", "RK", "EV", "ETH", "ORTH" }));
 
         jLabel7.setText("Fremdsprache2");
 
-        jComboFremdsprache2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "L", "F"}));
+        jComboFremdsprache2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"2. Fremdsprache auswählen", "", "L", "F"}));
         jComboFremdsprache2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboFremdsprache2ActionPerformed(evt);
@@ -134,9 +135,9 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
         jLabel9.setText("Fremdsprache4");
 
-        jComboFremdsprache3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","Sps","F"}));
+        jComboFremdsprache3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"3. Fremdsprache auswählen", "","Sps","F"}));
 
-        jComboFremdsprache4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "Sps"}));
+        jComboFremdsprache4.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"4. Fremdsprache auswählen", "", "Sps"}));
         jComboFremdsprache4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboFremdsprache4ActionPerformed(evt);
@@ -145,7 +146,7 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Geschlecht");
 
-        jComboBoxGeschlecht.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "W"}));
+        jComboBoxGeschlecht.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Geschlecht auswählen", "M", "W"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,40 +155,45 @@ public class StudentNewFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboJahrgang, 0, 224, Short.MAX_VALUE)
-                            .addComponent(jComboZweig, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboReligion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxGeschlecht, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboKlasse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(212, 212, 212)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboFremdsprache4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboFremdsprache3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(185, 185, 185)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldName)
-                            .addComponent(jComboFremdsprache2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldBem, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
-                .addGap(36, 36, 36))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel7))
+                                .addGap(212, 212, 212)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboFremdsprache4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboFremdsprache3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldBem, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(jComboFremdsprache2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jComboJahrgang, 0, 224, Short.MAX_VALUE)
+                                    .addComponent(jComboZweig, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboReligion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxGeschlecht, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboKlasse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(185, 185, 185)
+                                .addComponent(jTextFieldName)))
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,10 +224,6 @@ public class StudentNewFrame extends javax.swing.JFrame {
                     .addComponent(jComboReligion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldBem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboFremdsprache2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,7 +234,11 @@ public class StudentNewFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboFremdsprache4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextFieldBem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(23, 23, 23))
         );
@@ -242,6 +248,8 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Speichere die Einträge
+        if(jTextFieldName.getText().equals("")||jComboJahrgang.getSelectedItem().toString().equals("Jahrgang auswählen")||jComboKlasse.getSelectedItem().toString().equals("Klasse auswählen")||jComboBoxGeschlecht.getSelectedItem().toString().equals("Geschlecht auswählen")||jComboZweig.getSelectedItem().toString().equals("Zweig auswählen")||jComboReligion.getSelectedItem().toString().equals("Religion auswählen")||jComboFremdsprache2.getSelectedItem().toString().equals("2. Fremdsprache auswählen")||jComboFremdsprache3.getSelectedItem().toString().equals("3. Fremdsprache auswählen")||jComboFremdsprache4.getSelectedItem().toString().equals("4. Fremdsprache auswählen"))
+        {JOptionPane.showMessageDialog(null, "Bitte füllen sie alle Felder aus");} else{
        Student s = new Student(Integer.parseInt(jComboJahrgang.getSelectedItem().toString()), 
                jComboKlasse.getSelectedItem().toString(), jTextFieldName.getText(), 
                jComboBoxGeschlecht.getSelectedItem().toString(), jComboZweig.getSelectedItem().toString(), 
@@ -257,7 +265,7 @@ public class StudentNewFrame extends javax.swing.JFrame {
          gui.revalidate();
          gui.repaint();
 //Schließt das Fenster
-        this.dispose();
+        this.dispose();}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboKlasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboKlasseActionPerformed

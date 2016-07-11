@@ -46,50 +46,58 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="240" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jComboJahrgang" alignment="1" pref="224" max="32767" attributes="0"/>
-                          <Component id="jComboZweig" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jComboReligion" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jComboBoxGeschlecht" max="32767" attributes="0"/>
-                          <Component id="jComboKlasse" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboFremdsprache4" max="32767" attributes="0"/>
-                          <Component id="jComboFremdsprache3" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jComboFremdsprache4" max="32767" attributes="0"/>
+                                  <Component id="jComboFremdsprache3" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldBem" alignment="0" pref="224" max="32767" attributes="0"/>
+                                  <Component id="jComboFremdsprache2" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboJahrgang" alignment="1" pref="224" max="32767" attributes="0"/>
+                                  <Component id="jComboZweig" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jComboReligion" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxGeschlecht" max="32767" attributes="0"/>
+                                  <Component id="jComboKlasse" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+                              <Component id="jTextFieldName" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldName" max="32767" attributes="0"/>
-                          <Component id="jComboFremdsprache2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBem" pref="224" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,11 +136,6 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldBem" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboFremdsprache2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -146,7 +149,12 @@
                   <Component id="jLabel9" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="jComboFremdsprache4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldBem" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -215,7 +223,7 @@
     <Component class="javax.swing.JComboBox" name="jComboKlasse">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;,&quot;g&quot;,&quot;h&quot; })" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Klasse ausw&#xe4;hlen&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;,&quot;g&quot;,&quot;h&quot; })" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -225,7 +233,7 @@
     <Component class="javax.swing.JComboBox" name="jComboJahrgang">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;,&quot;9&quot;,&quot;10&quot; })" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Jahrgang ausw&#xe4;hlen&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;,&quot;9&quot;,&quot;10&quot; })" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -235,7 +243,7 @@
     <Component class="javax.swing.JComboBox" name="jComboZweig">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;GY&quot;, &quot;NTG_8&quot;, &quot;WSG_8&quot;, &quot;SOG_8&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Zweig ausw&#xe4;hlen&quot;, &quot;GY&quot;, &quot;NTG_8&quot;, &quot;WSG_8&quot;, &quot;SOG_8&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -245,7 +253,7 @@
     <Component class="javax.swing.JComboBox" name="jComboReligion">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;RK&quot;, &quot;EV&quot;, &quot;ETH&quot;, &quot;ORTH&quot; })" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Religion ausw&#xe4;hlen&quot;, &quot;RK&quot;, &quot;EV&quot;, &quot;ETH&quot;, &quot;ORTH&quot; })" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -257,7 +265,7 @@
     <Component class="javax.swing.JComboBox" name="jComboFremdsprache2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;&quot;, &quot;L&quot;, &quot;F&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;2. Fremdsprache ausw&#xe4;hlen&quot;, &quot;&quot;, &quot;L&quot;, &quot;F&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -280,7 +288,7 @@
     <Component class="javax.swing.JComboBox" name="jComboFremdsprache3">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;&quot;,&quot;Sps&quot;,&quot;F&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;3. Fremdsprache ausw&#xe4;hlen&quot;, &quot;&quot;,&quot;Sps&quot;,&quot;F&quot;})" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -290,7 +298,7 @@
     <Component class="javax.swing.JComboBox" name="jComboFremdsprache4">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;&quot;, &quot;Sps&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;4. Fremdsprache ausw&#xe4;hlen&quot;, &quot;&quot;, &quot;Sps&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -305,7 +313,7 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxGeschlecht">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;M&quot;, &quot;W&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Geschlecht ausw&#xe4;hlen&quot;, &quot;M&quot;, &quot;W&quot;})" type="code"/>
         </Property>
       </Properties>
     </Component>
