@@ -37,6 +37,8 @@ public class PrintPDF {
             Font.BOLD); // Klassenbezeichner
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.BOLD);  // Ãœberschrift
+    private static Font Fußnote = new Font(Font.FontFamily.TIMES_ROMAN, 7,
+            Font.BOLD);  // Ãœberschrift
 
     private Gruppeneinteilung ge;
     private String name;
@@ -90,7 +92,9 @@ public class PrintPDF {
         Paragraph preface = new Paragraph();
 
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+       
+        preface.add(new Paragraph(  " Klassen ", smallBold));
+        
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -98,6 +102,10 @@ public class PrintPDF {
             Paragraph tabelle = new Paragraph();
             createTable(tabelle, j);
             document.add(tabelle);
+            Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
             // Start a new page
             document.newPage();
 
@@ -135,7 +143,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + " .Klassen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -143,6 +151,10 @@ public class PrintPDF {
 
         createTable(tabelle, j);
         document.add(tabelle);
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
 
@@ -200,17 +212,17 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("test.ged");
+       Speicherung sp = new Speicherung ("20160705.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(10);
+        Jahrgang j= ge.getJahrgang(6);
         
-       pdf.druckeKlassen(j);
+       //pdf.druckeKlassen(j);
       // pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
-      // pdf.druckeReligionsGruppe(j);
+        pdf.druckeReligionsGruppe(j);
        // catch(DocumentException e){}
-        
+        //pdf.Drucken();
         
         
         
@@ -239,6 +251,7 @@ if(j.getReligionsgruppenzahl()== 0){}else{
             document.open();
             addMetaData(document);
             religionsGruppeDrucken(document,j);
+            
             document.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -253,7 +266,7 @@ if(j.getReligionsgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+        preface.add(new Paragraph( j.getJahrgang() + " .Klassen: Religionsgruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -261,6 +274,11 @@ if(j.getReligionsgruppenzahl()== 0){}else{
 
         createTableReligionGruppe(tabelle, j);
         document.add(tabelle);
+        
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
 
@@ -305,6 +323,7 @@ if(j.getReligionsgruppenzahl()== 0){}else{
 
             table.addCell(tableI);
         }
+        
 
         table.addCell("1.1");
         newTable.add(table);
@@ -342,7 +361,7 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(""+ new Date(), smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + " .Klassen: Sportgruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -350,6 +369,10 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         createTableSportGruppe(tabelle, j);
         document.add(tabelle);
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
 
@@ -429,7 +452,7 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + " .Klassen: Fremdsprachengruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -437,6 +460,10 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         createTableFremdsprachenGruppe(tabelle, j);
         document.add(tabelle);
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
 
@@ -515,7 +542,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ".Klassen: Zweiggruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -523,6 +550,10 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         createTableZweigGruppe(tabelle, j);
         document.add(tabelle);
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
 
@@ -605,7 +636,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph("" + new Date(), smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ".Klassen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -614,6 +645,10 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         createTableJahrgangGruppen(tabelle, j);
         document.add(tabelle);
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph( ""+new Date(), Fußnote));
+        document.add(bottom);
         // Start a new page
         document.newPage();
         
