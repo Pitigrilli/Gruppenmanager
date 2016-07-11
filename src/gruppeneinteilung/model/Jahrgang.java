@@ -761,14 +761,14 @@ public class Jahrgang implements Serializable {
 
         }
     }
-    public void SportgruppenRemove(Student student) {
+    public void sportgruppenRemove(Student student) {
         for (GruppeSport aktuelleRG : sportgruppen) {
             if (aktuelleRG.getSchueler().contains(student)) {
                 aktuelleRG.getSchueler().remove(student);
             }
         }
     }
-    public void SportgruppenAdd(Student student) {
+    public void sportgruppenAdd(Student student) {
         for (GruppeSport aktuelleRG : sportgruppen) {
             String geschlecht = aktuelleRG.getGeschlecht();
             String[] klassenBuchstaben = aktuelleRG.getKlassen();
