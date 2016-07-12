@@ -37,8 +37,8 @@ public class Gruppeneinteilung implements Serializable {
         students = new ArrayList<Student>();
         jahrgaenge = new ArrayList<>();
         /*for (int i = 5; i < 11; i++) {
-            jahrgaenge.add(new Jahrgang(i));
-        }*/
+         jahrgaenge.add(new Jahrgang(i));
+         }*/
 
     }
 
@@ -72,8 +72,7 @@ public class Gruppeneinteilung implements Serializable {
     public void setAktJahrgang(Jahrgang aktJahrgang) {
         this.aktJahrgang = aktJahrgang;
     }
-    
-    
+
     public Jahrgang getAktJahrgang() {
         return aktJahrgang;
     }
@@ -101,68 +100,19 @@ public class Gruppeneinteilung implements Serializable {
             //jahrgang.printAlle();
         }
     }
-   
 
+    public void moveStudent(Student s, int j) {
+        if (j <= 10 && j >= 5) {
+            Jahrgang alterJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
+            alterJahrgang.removeStudent(s);
+            s.setJahrgang(j);
+            Jahrgang aktuellerJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
+            aktuellerJahrgang.studentEinfuegen(s);
+        }
+    }
 
-public void moveStudent(Student s, int j)
-{
-    if(j<= 10 && j >= 5)
-    {
-    s.setJahrgang(j);
-    removeStudent(s);
-    Jahrgang aktuellerJahrgang = jahrgaenge.get(s.getJahrgang());
-    aktuellerJahrgang.studentEinfuegen(s);
+    public void removeStudent(Student s) {// ok, ich hoffe die anzahl der klassen und gruppen sind richtig, oder Alternative s. U.
+        Jahrgang alterJahrgang = getJahrgang(s.getJahrgang());
+        alterJahrgang.removeStudent(s);
     }
 }
-
-
-
- public void removeStudent(Student s){// ok, ich hoffe die anzahl der klassen und gruppen sind richtig, oder Alternative s. U.
-    Jahrgang jg = getJahrgang(s.getJahrgang()); 
-   jg.gibAlle().remove(s); // aus Jahrgang entfernt
-   for(int i = 0; i < jg.getKlassenanzahl(); i++)//for(Klasse k: jg.getKlassen())
-   {
-       if(jg.getKlassen().get(i).getSchueler().contains(s))// if(k.contains(s))
-       {
-          jg.getKlassen().get(i).getSchueler().remove(s); //aus Klasse entfernt, k.removeSchueler(s);
-       }
-       
-   }
-   for(int i = 0; i < jg.getReligionsgruppenzahl(); i++)
-   {
-       if(jg.getReligionsgruppen().get(i).getSchueler().contains(s))
-       {
-          jg.getReligionsgruppen().get(i).getSchueler().remove(s); //aus Religruppe entfernt
-       }
-       
-   }
-   for(int i = 0; i < jg.getZweiggruppenzahl(); i++)
-   {
-       if(jg.getZweiggruppen().get(i).getSchueler().contains(s))
-       {
-          jg.getZweiggruppen().get(i).getSchueler().remove(s); //aus Zweiggruppe entfernt
-       }
-       
-   }
-   for(int i = 0; i < jg.getSprachengruppenzahl(); i++)
-   {
-       if(jg.getSprachengruppen().get(i).getSchueler().contains(s))
-       {
-          jg.getSprachengruppen().get(i).getSchueler().remove(s); //aus Sprachengruppe entfernt
-       }
-       
-   }
-   for(int i = 0; i < jg.getSportgruppenzahl(); i++)
-   {
-       if(jg.getSportgruppen().get(i).getSchueler().contains(s))
-       {
-          jg.getSportgruppen().get(i).getSchueler().remove(s); //aus Sportgruppe entfernt
-       }
-       
-   }
-   students.remove(s);
-   jg.studentAusStatistikEntfernen(s);
-    
-}
-}
-

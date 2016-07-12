@@ -88,15 +88,33 @@ public class KlassenPanel extends JPanel {
 
         itemJahrgangHoch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Student s = gruppenListe.getSelectedValue();
-                parent.ge.moveStudent(s, s.getJahrgang() + 1);
+                Student student = gruppenListe.getSelectedValue();
+                dlm.removeElement(student);
+                schueler.remove(student);
+                
+                //System.out.println("Remove:" + student);
+                setzeTitel();
+                parent.ge.moveStudent(student, student.getJahrgang() + 1);
+                aktualisiereListModel();
+                parent.aktualisiereLabelJahrgang();
+                parent.revalidate();
+                setzeTitel();
             }
         });
 
         itemJahrgangRunter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Student s = gruppenListe.getSelectedValue();
-                parent.ge.moveStudent(s, s.getJahrgang() - 1);
+                Student student = gruppenListe.getSelectedValue();
+                dlm.removeElement(student);
+                schueler.remove(student);
+                
+                //System.out.println("Remove:" + student);
+                setzeTitel();
+                parent.ge.moveStudent(student, student.getJahrgang() - 1);
+                aktualisiereListModel();
+                parent.aktualisiereLabelJahrgang();
+                parent.revalidate();
+                setzeTitel();
             }
         });
 
