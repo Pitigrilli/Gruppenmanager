@@ -37,7 +37,7 @@ public class GUI extends javax.swing.JFrame {
     private EinstellungFrameReligion einstellungFrameReligion;
     private EinstellungFrameSport einstellungFrameSport;
     private EinstellungFrameZweig einstellungFrameZweig;
-    private String selectedTab;
+    private String selectedTab="Klassen";
 
     /**
      * Creates new form GUI

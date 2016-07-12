@@ -75,11 +75,14 @@ public class KlassenPanel extends JPanel {
 
         itemLoeschen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Student s = gruppenListe.getSelectedValue();
-                parent.ge.removeStudent(s);
-                aktualisiereListModel();
-                parent.aktualisiereLabelJahrgang();
-                parent.revalidate();
+                int auswahl = JOptionPane.showConfirmDialog(null, "Schüler wirklich löschen", "Warnung", 0);
+                if (auswahl == JOptionPane.YES_OPTION) {
+                    Student s = gruppenListe.getSelectedValue();
+                    parent.ge.removeStudent(s);
+                    aktualisiereListModel();
+                    parent.aktualisiereLabelJahrgang();
+                    parent.revalidate();
+                }
             }
         });
 
