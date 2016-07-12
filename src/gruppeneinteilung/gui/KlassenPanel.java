@@ -282,10 +282,10 @@ public class KlassenPanel extends JPanel {
             Student s = (Student) value;
             switch (s.getReligion()) {
                 case "RK":
-                    c.setForeground(new Color(255, 0, 0));
+                    c.setForeground(new Color(255,0,0));
                     break;
                 case "EV":
-                    c.setForeground(new Color(0, 255, 0));
+                    c.setForeground(new Color(0,139,0));
                     break;
                 case "ETH":
                     c.setForeground(new Color(0, 0, 255));
