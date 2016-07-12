@@ -157,6 +157,7 @@ public class PrintPDF {
     
     
     
+    
        
     private void ausgewaehlterJahrgangDrucken(Document document,Jahrgang j) throws DocumentException {
 
@@ -231,7 +232,7 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("20160711.ged");
+       Speicherung sp = new Speicherung ("20160712.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
         Jahrgang j= ge.getJahrgang(8);
@@ -284,7 +285,7 @@ if(j.getReligionsgruppenzahl()== 0){}else{
             e.printStackTrace();
         }
       
-    }
+    
            if (Desktop.isDesktopSupported()) {
     try {
        String titel = j.getJahrgang() + ".Klassen_Religionsgruppen.pdf";
@@ -292,8 +293,10 @@ if(j.getReligionsgruppenzahl()== 0){}else{
         Desktop.getDesktop().open(myFile);
     } catch (IOException ex) {
         // no application registered for PDFs
-        }
+     
     }
+    }
+     }
      }
     
     
@@ -388,7 +391,7 @@ if(j.getSportgruppenzahl()== 0){}else{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    
            if (Desktop.isDesktopSupported()) {
     try {
        String titel = j.getJahrgang() + ".Klassen_Sportgruppen.pdf";
@@ -398,6 +401,7 @@ if(j.getSportgruppenzahl()== 0){}else{
         // no application registered for PDFs
         }
     }
+}
          }  
     
     
@@ -488,7 +492,7 @@ if(j.getSportgruppenzahl()== 0){}else{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+   
                if (Desktop.isDesktopSupported()) {
     try {
        String titel = j.getJahrgang() + ".Klassen_Fremdsprachengruppen.pdf";
@@ -498,6 +502,7 @@ if(j.getSportgruppenzahl()== 0){}else{
         // no application registered for PDFs
         }
     }
+                }
            }
     
     
@@ -586,8 +591,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-               if (Desktop.isDesktopSupported()) {
+                    if (Desktop.isDesktopSupported()) {
     try {
        String titel = j.getJahrgang() + ".Klassen_Zweiggruppen.pdf";
         File myFile = new File(titel);
@@ -596,6 +600,9 @@ if(j.getZweiggruppenzahl()== 0){}else{
         // no application registered for PDFs
         }
     }
+        
+    }
+   
                } 
     
     
@@ -681,10 +688,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
             e.printStackTrace();
         }
         
-       druckeReligionsGruppe(j);
-        druckeFremdsprachenGruppe(j);
-        druckeSportGruppe(j);
-        druckeZweigGruppe(j);
+      
         
         
                    if (Desktop.isDesktopSupported()) {
@@ -696,6 +700,10 @@ if(j.getZweiggruppenzahl()== 0){}else{
         // no application registered for PDFs
         }
     }
+                    druckeReligionsGruppe(j);
+        druckeFremdsprachenGruppe(j);
+        druckeSportGruppe(j);
+        druckeZweigGruppe(j);
     }
     
     
