@@ -134,7 +134,15 @@ public class PrintPDF {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+                   if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = j.getJahrgang() + ".Klassen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
     }
     
     
@@ -214,19 +222,21 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("20160705.ged");
+       Speicherung sp = new Speicherung ("20160711.ged");
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
-        Jahrgang j= ge.getJahrgang(6);
+        Jahrgang j= ge.getJahrgang(8);
         
-        pdf.druckeReligionsGruppe(j);
+       // pdf.druckeReligionsGruppe(j);
+        
+   
         
     
         // no application registered for PDFs
     
 
        //pdf.druckeKlassen(j);
-      // pdf.druckeGesammterJahrgangMitGruppen(j);
+      pdf.druckeGesammterJahrgangMitGruppen(j);
        // try{
         
        // catch(DocumentException e){}
@@ -250,7 +260,7 @@ public class PrintPDF {
     
      public void druckeReligionsGruppe(Jahrgang j){    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
 if(j.getReligionsgruppenzahl()== 0){}else{
-          name = j.getJahrgang() + ".Klassen_Religionsgruppen";
+         name = j.getJahrgang() + ".Klassen_Religionsgruppen";
          
         try {
             
@@ -264,15 +274,16 @@ if(j.getReligionsgruppenzahl()== 0){}else{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (Desktop.isDesktopSupported()) {
+      
+    }
+           if (Desktop.isDesktopSupported()) {
     try {
-        String titel = j.getJahrgang() + ".Klassen_Religionsgruppen";
-        File myFile = new File("titel");
+       String titel = j.getJahrgang() + ".Klassen_Religionsgruppen.pdf";
+        File myFile = new File(titel);
         Desktop.getDesktop().open(myFile);
     } catch (IOException ex) {
         // no application registered for PDFs
-    }
-}
+        }
     }
      }
     
@@ -369,6 +380,15 @@ if(j.getSportgruppenzahl()== 0){}else{
             e.printStackTrace();
         }
     }
+           if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = j.getJahrgang() + ".Klassen_Sportgruppen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
          }  
     
     
@@ -460,7 +480,15 @@ if(j.getSportgruppenzahl()== 0){}else{
             e.printStackTrace();
         }
     }
-    
+               if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = j.getJahrgang() + ".Klassen_Fremdsprachengruppen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
            }
     
     
@@ -550,7 +578,15 @@ if(j.getZweiggruppenzahl()== 0){}else{
             e.printStackTrace();
         }
     }
-    
+               if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = j.getJahrgang() + ".Klassen_Zweiggruppen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
                } 
     
     
@@ -642,7 +678,15 @@ if(j.getZweiggruppenzahl()== 0){}else{
         druckeZweigGruppe(j);
         
         
-        
+                   if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = j.getJahrgang() + ".Klassen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
     }
     
     
