@@ -31,8 +31,8 @@ public class Jahrgang implements Serializable {
     private int evangelisch;
     private int ethik;
     private int GY;
-    private int GY_MU;
-    private int GY_TH;
+    private int MU;
+    private int TH;
     private int GY_NTG;
     private int GY_WSG;
     private int GY_SG;
@@ -240,11 +240,11 @@ public class Jahrgang implements Serializable {
     }
 
     public int getGY_MU() {
-        return GY_MU;
+        return MU;
     }
 
     public int getGY_TH() {
-        return GY_TH;
+        return TH;
     }
 
     public int getGY_NTG() {
@@ -873,10 +873,10 @@ public class Jahrgang implements Serializable {
                 GY++;
                 break;
             case "GY_MU":
-                GY_MU++;
+                MU++;
                 break;
             case "GY_TH":
-                GY_TH++;
+               TH++;
                 break;
             case "GY_NTG_8":
                 GY_NTG++;
@@ -917,10 +917,10 @@ public class Jahrgang implements Serializable {
                 GY--;
                 break;
             case "GY_MU":
-                GY_MU--;
+               MU--;
                 break;
             case "GY_TH":
-                GY_TH--;
+               TH--;
                 break;
             case "GY_NTG_8":
                 GY_NTG--;
