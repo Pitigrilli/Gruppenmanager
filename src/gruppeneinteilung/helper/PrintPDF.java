@@ -56,7 +56,7 @@ public class PrintPDF {
      */
     public void Drucken(){     
         
-        name = "AlleJahrgängeohneGruppen";
+        name = "AlleJahrgängeOhneGruppen";
         
         
         try {
@@ -69,6 +69,15 @@ public class PrintPDF {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                   if (Desktop.isDesktopSupported()) {
+    try {
+       String titel = "AlleJahrgängeOhneGruppen.pdf";
+        File myFile = new File(titel);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+        }
+    }
     }
   
         
