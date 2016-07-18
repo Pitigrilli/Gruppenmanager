@@ -599,7 +599,7 @@ public class GUI extends javax.swing.JFrame {
     //    this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
     //    String z = jComboBoxJahrgang.getSelectedItem().toString();
     //    if (z.equals("Jahrgang wählen")) {
-    //        this.einstellungenZurücksetzen();
+    //        this.einstellungenZuruecksetzen();
     //    }
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
@@ -946,7 +946,7 @@ public class GUI extends javax.swing.JFrame {
         file = null;
         aktuellerJahrgang = null;
         jahrgangAuswahlAktivieren();
-        this.einstellungenZurücksetzen();
+        this.einstellungenZuruecksetzen();
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJahrgangDruckenActionPerformed
@@ -1271,7 +1271,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.repaint();
     }
 
-    public void einstellungenZurücksetzen() {
+    public void einstellungenZuruecksetzen() {
         jButtonEinstellungSprache.setEnabled(false);
         jButtonEinstellungReligion.setEnabled(false);
         jButtonEinstellungSport.setEnabled(false);
