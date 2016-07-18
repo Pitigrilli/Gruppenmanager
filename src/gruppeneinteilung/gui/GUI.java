@@ -13,6 +13,7 @@ import gruppeneinteilung.model.GruppeReligion;
 import gruppeneinteilung.model.GruppeSport;
 import gruppeneinteilung.model.GruppeSprache;
 import gruppeneinteilung.model.GruppeZweig;
+import gruppeneinteilung.model.SortierbareGruppe;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GridLayout;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -594,32 +596,48 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
-        this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
-        String s = jComboBoxJahrgang.getSelectedItem().toString();
-        if (s.equals("Jahrgang wählen")){
-            this.einstellungenZurücksetzen();
-        }
+    //    this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
+    //    String z = jComboBoxJahrgang.getSelectedItem().toString();
+    //    if (z.equals("Jahrgang wählen")) {
+    //        this.einstellungenZurücksetzen();
+    //    }
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
         // TODO add your handling code here:
         String sortierung = jComboBoxSortierung.getSelectedItem().toString();
-        for (Klasse k : aktuellerJahrgang.getKlassen()) {
-            switch (sortierung) {
-                case "Alphabetisch":
-                    k.sortierenName();
-                    break;
-                case "Männlich/Weiblich":
-                    k.sortierenGeschlecht();
-                    break;
-                case "Religion":
-                    k.sortierenReligion();
-                    break;
-                case "Zweig":
-                    k.sortierenZweig();
-                    break;
-            }
+
+        ArrayList gruppen = null;
+        if (selectedTab.equals("Klassen")) {
+            gruppen = aktuellerJahrgang.getKlassen();
+        } else if (selectedTab.equals("Sprachen")) {
+            gruppen = aktuellerJahrgang.getSprachengruppen();
+        } else if (selectedTab.equals("Religion")) {
+            gruppen = aktuellerJahrgang.getReligionsgruppen();
+        } else if (selectedTab.equals("Sport")) {
+            gruppen = aktuellerJahrgang.getSportgruppen();
+        } else if (selectedTab.equals("Zweig")) {
+            gruppen = aktuellerJahrgang.getZweiggruppen();
         }
+        
+        for (Object o : gruppen) {
+            SortierbareGruppe sg = (SortierbareGruppe) o;
+                switch (sortierung) {
+                    case "Alphabetisch":
+                        sg.sortierenName();
+                        break;
+                    case "Männlich/Weiblich":
+                        sg.sortierenGeschlecht();
+                        break;
+                    case "Religion":
+                        sg.sortierenReligion();
+                        break;
+                    case "Zweig":
+                        sg.sortierenZweig();
+                        break;
+                }
+            }
+
         Component[] comps = jPanelKlassen.getComponents();
         for (Component comp : comps) {
             KlassenPanel gp = (KlassenPanel) comp;
@@ -627,8 +645,7 @@ public class GUI extends javax.swing.JFrame {
             gp.revalidate();
             gp.repaint();
         }
-        jPanelKlassen.revalidate();
-        jPanelKlassen.repaint();
+        this.allePanelsAktualisieren();
     }//GEN-LAST:event_jComboBoxSortierungActionPerformed
 
     private void jButtonJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJahrgangDruckenActionPerformed
@@ -912,16 +929,16 @@ public class GUI extends javax.swing.JFrame {
         ge = sp.serialisierungLaden();
         file = ge.getFile();
         jahrgangAuswahlAktivieren();
-       
-        
+
+
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
         // TODO add your handling code here:
         ge = new Gruppeneinteilung();
         ge.asvImport();
-        file=null;
-        aktuellerJahrgang=null;
+        file = null;
+        aktuellerJahrgang = null;
         jahrgangAuswahlAktivieren();
         this.einstellungenZurücksetzen();
     }//GEN-LAST:event_jMenuItemImportActionPerformed
@@ -1001,7 +1018,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAnleitungActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        about = new About();
+        About about = new About();
         about.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -1112,12 +1129,12 @@ public class GUI extends javax.swing.JFrame {
             dateiname = " - " + ge.getFile().toString();
         }
         this.setTitle("Kursmanager" + dateiname);
-        
+
         if (ge.getAktJahrgang() != null) {
             aktuellerJahrgang = ge.getAktJahrgang();
             jComboBoxJahrgang.setSelectedIndex(aktuellerJahrgang.getJahrgang() - 4);
         } else {
-            
+
             jComboBoxJahrgang.setSelectedIndex(0);
             jPanelKlassen.removeAll();
             jPanelKlassen.revalidate();
@@ -1134,7 +1151,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelSprachen.removeAll();
             jPanelSprachen.revalidate();
             jPanelSprachen.repaint();
-            
+
             jTabbedPane1.revalidate();
             jTabbedPane1.repaint();
         }
@@ -1246,7 +1263,8 @@ public class GUI extends javax.swing.JFrame {
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
     }
-    public void einstellungenZurücksetzen(){
+
+    public void einstellungenZurücksetzen() {
         jButtonEinstellungSprache.setEnabled(false);
         jButtonEinstellungReligion.setEnabled(false);
         jButtonEinstellungSport.setEnabled(false);
@@ -1325,7 +1343,7 @@ public class GUI extends javax.swing.JFrame {
     public void sportgruppenAnzeigen() {
         jPanelSport.removeAll();
         for (GruppeSport s : aktuellerJahrgang.getSportgruppen()) {
-                jPanelSport.add(new GruppenPanel(s));
+            jPanelSport.add(new GruppenPanel(s));
         }
         jPanelSport.revalidate();
         jPanelSport.repaint();
@@ -1353,7 +1371,7 @@ public class GUI extends javax.swing.JFrame {
     public void sprachengruppenAnzeigen() {
         jPanelSprachen.removeAll();
         for (GruppeSprache f : aktuellerJahrgang.getSprachengruppen()) {
-                jPanelSprachen.add(new GruppenPanel(f));
+            jPanelSprachen.add(new GruppenPanel(f));
         }
         jPanelSprachen.revalidate();
         jPanelSprachen.repaint();
@@ -1369,9 +1387,9 @@ public class GUI extends javax.swing.JFrame {
                 System.out.println(file.getAbsolutePath());
                 bw.close();
             } else {
-                int auswahl = JOptionPane.showOptionDialog(null, "Schließen ohne zu Speichern?", "Warnung", 
+                int auswahl = JOptionPane.showOptionDialog(null, "Schließen ohne zu Speichern?", "Warnung",
                         JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
-                        new String[]{"Speichern", "Schließen"},"default");
+                        new String[]{"Speichern", "Schließen"}, "default");
                 if (auswahl == JOptionPane.YES_OPTION) {
                     new Speicherung(ge).speichern();
                     file = ge.getFile();
@@ -1397,8 +1415,8 @@ public class GUI extends javax.swing.JFrame {
                     ge = sp.serialisierungLaden();
                     file = ge.getFile();
                     jahrgangAuswahlAktivieren();
-                } 
-                
+                }
+
                 br.close();
             }
         } catch (IOException ex) {
@@ -1411,8 +1429,8 @@ public class GUI extends javax.swing.JFrame {
     public void jComboBoxJahrgangFreigeben() {
         jComboBoxJahrgang.setEnabled(true);
     }
-    
-    public void allePanelsAktualisieren(){
+
+    public void allePanelsAktualisieren() {
         klassenAnzeigen();
         religionsgruppenAnzeigen();
         sportgruppenAnzeigen();
