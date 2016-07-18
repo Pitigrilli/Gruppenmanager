@@ -58,6 +58,8 @@ public class Student implements Comparable<Student>, Serializable{
                
            case "Bemerkung":
                return bemerkung.compareTo(other.bemerkung);
+           case "Klasse":
+               return klasse.compareTo(other.klasse);
                
        }
             return name.compareTo(other.name);
