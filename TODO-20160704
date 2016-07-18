@@ -51,20 +51,21 @@ passt in eine Zeile.
 
 
 >>>>>>>>>>>>>>>>> GUI <<<<<<<<<<<<<<<<<<
-Neues Menu mit Items: Alles Drucken, Jahrgang drucken, Klassen drucken, Religionsgruppen, mit 
-Einstellungen drucken, usw..
+ok Neues Menu mit Items: Alles Drucken, Jahrgang drucken, Klassen drucken, Religionsgruppen, mit 
+        Einstellungen drucken, usw..
 
-Neues Menu Hilfe: Unterpunkte: Anleitung und About
-About ruft den PDF-Viewer des Systems auf mit der Anleitung von Florian .
+ok Neues Menu Hilfe: Unterpunkte: Anleitung und 
+About
+ok Anleitung  ruft den PDF-Viewer des Systems auf mit der Anleitung von Florian .
 
 Begrüßungsfenster beim Starten anzeigen? (oder ist das Schnickschnack?)
 
 
 >>>>>>>>>>>>>>>>>> BUGS <<<<<<<<<<<<<<<<<<<<<<<
 
-BUG: Beim Erstellen der ersten Sprachengruppe, erscheint die Gruppe erst, wenn man ein zweitesmal auf Erstellen klickt.
+ok BUG: Beim Erstellen der ersten Sprachengruppe, erscheint die Gruppe erst, wenn man ein zweitesmal auf Erstellen klickt.
 
-BUG: Beim Wechsel des Jahrgangs müssen EinstellungFrame-Fenster geschlossen werden.
+ok BUG: Beim Wechsel des Jahrgangs müssen EinstellungFrame-Fenster geschlossen werden.
 
 
 Später:
