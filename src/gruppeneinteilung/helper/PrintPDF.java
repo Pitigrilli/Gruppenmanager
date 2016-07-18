@@ -104,7 +104,7 @@ public class PrintPDF {
 
         addEmptyLine(preface, 1);
        
-        preface.add(new Paragraph(  " Klassen ", smallBold));
+        preface.add(new Paragraph(  "Klassen ", smallBold));
         
         addEmptyLine(preface, 1);
         document.add(preface);
@@ -163,7 +163,7 @@ public class PrintPDF {
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(j.getJahrgang() + " .Klassen", smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -199,7 +199,7 @@ public class PrintPDF {
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe()+ "  Anzahl: "+aktuellerJahrgang.getKlassen().get(i).getKlassengroesse(),
                     tableHeadFont));
 
             for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
@@ -306,7 +306,7 @@ if(j.getReligionsgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph( j.getJahrgang() + " .Klassen: Religionsgruppen", smallBold));
+        preface.add(new Paragraph( j.getJahrgang() + ". Klassen: Religionsgruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -411,7 +411,7 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(j.getJahrgang() + " .Klassen: Sportgruppen", smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen: Sportgruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -443,7 +443,7 @@ if(j.getSportgruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - Sport - "+ aktuellerJahrgang.getSportgruppen().get(i).getTitel() ,tableHeadFont)));
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() +" - Sport - "+ aktuellerJahrgang.getSportgruppen().get(i).getTitel() + "  Anzahl: "+aktuellerJahrgang.getKlassen().get(i).getKlassengroesse(),tableHeadFont)));
                     
 
             for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) {
@@ -511,7 +511,7 @@ if(j.getSportgruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(j.getJahrgang() + " .Klassen: Fremdsprachengruppen", smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen: Fremdsprachengruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -611,7 +611,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(j.getJahrgang() + ".Klassen: Zweiggruppen", smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen: Zweiggruppen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -714,7 +714,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
 
         Paragraph preface = new Paragraph();
         addEmptyLine(preface, 1);
-        preface.add(new Paragraph(j.getJahrgang() + ".Klassen", smallBold));
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen", smallBold));
         addEmptyLine(preface, 1);
         document.add(preface);
 
@@ -748,7 +748,7 @@ if(j.getZweiggruppenzahl()== 0){}else{
         for (int i = 0; i < n; i++) {
             PdfPTable tableI = new PdfPTable(1);
             tableI.setHeaderRows(1);
-            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe(),
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe()+ "  Anzahl: "+aktuellerJahrgang.getKlassen().get(i).getKlassengroesse(),
                     tableHeadFont));
 
             for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
