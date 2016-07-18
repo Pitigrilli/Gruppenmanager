@@ -50,8 +50,8 @@ public class ASVImport {
      */
     public ArrayList<Student> parseLines() {
         ArrayList<Student> students = new ArrayList<>();
+        if(asvexport!=null)
         lines.stream().forEach((String line) -> {
-
             String[] tokens;
             tokens = line.split("\t", -1);
             if (tokens[0].length() > 1 && Character.isDigit(tokens[0].charAt(0))) {

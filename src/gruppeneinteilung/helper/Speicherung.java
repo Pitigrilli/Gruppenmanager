@@ -27,6 +27,7 @@ public class Speicherung {
     
     // Die Datei wird übergeben aus der Die Gruppeneinteilung gelsesn werden soll.
     public Speicherung(File file) {
+        this.file=file;
         ge = new Gruppeneinteilung();
         if (file == null) {
             file = new FileAuswahl("open").getFile();
@@ -81,8 +82,10 @@ public class Speicherung {
             JOptionPane.showMessageDialog(null, "Die GED-Datei ist ungültig. Laden Sie eine andere Datei\n"
                     + "oder importieren Sie eine ASV-Datei.");
         } catch (IOException ex) {
+            System.out.println("IOException");
             Logger.getLogger(Speicherung.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            System.out.println("ClassNotFoundExceptionException");
             Logger.getLogger(Speicherung.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ge;

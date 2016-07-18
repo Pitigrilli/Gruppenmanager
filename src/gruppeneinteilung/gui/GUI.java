@@ -16,6 +16,7 @@ import gruppeneinteilung.model.GruppeZweig;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -27,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
 
 public class GUI extends javax.swing.JFrame {
 
@@ -898,13 +900,17 @@ public class GUI extends javax.swing.JFrame {
         ge = sp.serialisierungLaden();
         file = ge.getFile();
         jahrgangAuswahlAktivieren();
+       
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
         // TODO add your handling code here:
         ge = new Gruppeneinteilung();
         ge.asvImport();
+        file=null;
+        aktuellerJahrgang=null;
         jahrgangAuswahlAktivieren();
+        
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJahrgangDruckenActionPerformed
@@ -1079,7 +1085,6 @@ public class GUI extends javax.swing.JFrame {
     public void jahrgangAuswahlAktivieren() {
         jMenuItemSave.setEnabled(true);
         jMenuItemSaveAs.setEnabled(true);
-
         jComboBoxJahrgang.setEnabled(true);
         String dateiname;
         if (ge.getFile() == null) {
@@ -1088,9 +1093,31 @@ public class GUI extends javax.swing.JFrame {
             dateiname = " - " + ge.getFile().toString();
         }
         this.setTitle("Kursmanager" + dateiname);
+        
         if (ge.getAktJahrgang() != null) {
             aktuellerJahrgang = ge.getAktJahrgang();
             jComboBoxJahrgang.setSelectedIndex(aktuellerJahrgang.getJahrgang() - 4);
+        } else {
+            
+            jComboBoxJahrgang.setSelectedIndex(0);
+            jPanelKlassen.removeAll();
+            jPanelKlassen.revalidate();
+            jPanelKlassen.repaint();
+            jPanelSport.removeAll();
+            jPanelSport.revalidate();
+            jPanelSport.repaint();
+            jPanelZweig.removeAll();
+            jPanelZweig.revalidate();
+            jPanelZweig.repaint();
+            jPanelReligion.removeAll();
+            jPanelReligion.revalidate();
+            jPanelReligion.repaint();
+            jPanelSprachen.removeAll();
+            jPanelSprachen.revalidate();
+            jPanelSprachen.repaint();
+            
+            jTabbedPane1.revalidate();
+            jTabbedPane1.repaint();
         }
     }
 
@@ -1310,12 +1337,23 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void merkeGeladeneDatei() {
+
         try {
-            FileWriter fw = new FileWriter("ge.ini");
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(file.getAbsolutePath());
-            System.out.println(file.getAbsolutePath());
-            bw.close();
+            if (file != null) {
+                FileWriter fw = new FileWriter("ge.ini");
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(file.getAbsolutePath());
+                System.out.println(file.getAbsolutePath());
+                bw.close();
+            } else {
+                int auswahl = JOptionPane.showOptionDialog(null, "Schließen ohne zu Speichern?", "Warnung", 
+                        JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null,
+                        new String[]{"Speichern", "Schließen"},"default");
+                if (auswahl == JOptionPane.YES_OPTION) {
+                    new Speicherung(ge).speichern();
+                    file = ge.getFile();
+                }
+            }
         } catch (IOException ex) {
 
         }
@@ -1333,12 +1371,11 @@ public class GUI extends javax.swing.JFrame {
                 Speicherung sp;
                 if (fileNeu.exists()) {
                     sp = new Speicherung(fileNeu);
-                } else {
-                    sp = new Speicherung();
-                }
-                ge = sp.serialisierungLaden();
-                file = ge.getFile();
-                jahrgangAuswahlAktivieren();
+                    ge = sp.serialisierungLaden();
+                    file = ge.getFile();
+                    jahrgangAuswahlAktivieren();
+                } 
+                
                 br.close();
             }
         } catch (IOException ex) {
@@ -1350,6 +1387,14 @@ public class GUI extends javax.swing.JFrame {
 
     public void jComboBoxJahrgangFreigeben() {
         jComboBoxJahrgang.setEnabled(true);
+    }
+    
+    public void allePanelsAktualisieren(){
+        klassenAnzeigen();
+        religionsgruppenAnzeigen();
+        sportgruppenAnzeigen();
+        sprachengruppenAnzeigen();
+        zweiggruppenAnzeigen();
     }
 
 }
