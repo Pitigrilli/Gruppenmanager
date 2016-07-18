@@ -37,7 +37,7 @@ public class GUI extends javax.swing.JFrame {
     private EinstellungFrameReligion einstellungFrameReligion;
     private EinstellungFrameSport einstellungFrameSport;
     private EinstellungFrameZweig einstellungFrameZweig;
-    private String selectedTab="Klassen";
+    private String selectedTab = "Klassen";
 
     /**
      * Creates new form GUI
@@ -970,15 +970,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelZweigFocusGained
 
     private void jMenuItemAnleitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnleitungActionPerformed
-       
-if (Desktop.isDesktopSupported()) {
-    try {
-        File myFile = new File("Anleitung.pdf");
-        Desktop.getDesktop().open(myFile);
-    } catch (IOException ex) {
-        // no application registered for PDFs
-    }
-}
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File("Anleitung.pdf");
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                // no application registered for PDFs
+            }
+        }
     }//GEN-LAST:event_jMenuItemAnleitungActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1330,12 +1330,15 @@ if (Desktop.isDesktopSupported()) {
                 File fileNeu = null;
                 String dateiname = br.readLine();
                 fileNeu = new File(dateiname);
+                Speicherung sp;
                 if (fileNeu.exists()) {
-                    Speicherung sp = new Speicherung(dateiname);
-                    ge = sp.serialisierungLaden();
-                    file = ge.getFile();
-                    jahrgangAuswahlAktivieren();
+                    sp = new Speicherung(fileNeu);
+                } else {
+                    sp = new Speicherung();
                 }
+                ge = sp.serialisierungLaden();
+                file = ge.getFile();
+                jahrgangAuswahlAktivieren();
                 br.close();
             }
         } catch (IOException ex) {

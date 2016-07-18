@@ -5,10 +5,8 @@
 package gruppeneinteilung.helper;
 
 import gruppeneinteilung.model.Gruppeneinteilung;
-import gruppeneinteilung.model.Student;
 import gruppeneinteilung.model.Jahrgang;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -20,34 +18,34 @@ public class Speicherung {
     private Gruppeneinteilung ge;
     private File file;
 
+    // Die zu speichernde Gruppeneinteilung wird übergeben
     public Speicherung(Gruppeneinteilung ge) {
         this.ge = ge;
-        if (ge.getFile() == null) {
-            file = new FileAuswahl().getFile();
+        file = ge.getFile();
+        
+    }
+    
+    // Die Datei wird übergeben aus der Die Gruppeneinteilung gelsesn werden soll.
+    public Speicherung(File file) {
+        ge = new Gruppeneinteilung();
+        if (file == null) {
+            file = new FileAuswahl("open").getFile();
             ge.setFile(file);
-        } else {
-            file = ge.getFile();
         }
     }
 
-    public Speicherung(String filename) {
-        file = new File(filename);
-        ge = new Gruppeneinteilung();
-        ge.setFile(file);
-    }
-
+    // Die Gruppeneinteilung wird aus einer zu wählenden Datei gelesen
     public Speicherung() {
         ge = new Gruppeneinteilung();
-        file = waehleFile();
+        file = new FileAuswahl("open").getFile();
         ge.setFile(file);
     }
     
-    public File waehleFile(){
-        File fileNeu = new FileAuswahl().getFile();
-        return fileNeu;
-    }
-
     public void speichern() {
+        if (file == null) {
+            file = new FileAuswahl("save").getFile();
+            ge.setFile(file);
+        }
         try {
             FileOutputStream fileStream = new FileOutputStream(file, false);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
@@ -60,7 +58,7 @@ public class Speicherung {
     }
 
     public void speichernUnter() {
-        file = new FileAuswahl().getFile();
+        file = new FileAuswahl("save").getFile();
         ge.setFile(file);
         speichern();
     }
@@ -112,14 +110,20 @@ class FileAuswahl {
 
     File file;
 
-    public FileAuswahl() {
+    public FileAuswahl(String art) {
         File fileGewaehlt = null;
         JFileChooser chooser = new JFileChooser(new File(System.getProperty("user.dir")));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "GED-Datei", "ged");
         chooser.setFileFilter(filter);
-        int returnVal;
-        returnVal = chooser.showOpenDialog(null);
+        int returnVal=0;
+        if(art.equals("save")){
+            returnVal = chooser.showSaveDialog(null);
+        }
+        if(art.equals("open")){
+            returnVal = chooser.showOpenDialog(null);
+        }
+        
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             //System.out.println("You chose to open this file: "
             //        + chooser.getSelectedFile().getName());

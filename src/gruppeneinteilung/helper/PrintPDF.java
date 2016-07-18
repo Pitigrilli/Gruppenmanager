@@ -232,7 +232,7 @@ public class PrintPDF {
     
 
     public static void main(String[] args) {
-       Speicherung sp = new Speicherung ("20160712.ged");
+       Speicherung sp = new Speicherung ();
         Gruppeneinteilung ge = sp.serialisierungLaden();
         PrintPDF pdf =new PrintPDF(ge);
         Jahrgang j= ge.getJahrgang(8);
