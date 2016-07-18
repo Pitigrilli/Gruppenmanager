@@ -1296,9 +1296,7 @@ public class GUI extends javax.swing.JFrame {
     public void sportgruppenAnzeigen() {
         jPanelSport.removeAll();
         for (GruppeSport s : aktuellerJahrgang.getSportgruppen()) {
-            if (s.getSportgroesse() > 0) {
                 jPanelSport.add(new GruppenPanel(s));
-            }
         }
         jPanelSport.revalidate();
         jPanelSport.repaint();
@@ -1308,9 +1306,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanelReligion.removeAll();
         for (GruppeReligion r : aktuellerJahrgang.getReligionsgruppen()) {
-
             jPanelReligion.add(new GruppenPanel(r));
-
         }
         jPanelReligion.revalidate();
         jPanelReligion.repaint();
@@ -1328,9 +1324,7 @@ public class GUI extends javax.swing.JFrame {
     public void sprachengruppenAnzeigen() {
         jPanelSprachen.removeAll();
         for (GruppeSprache f : aktuellerJahrgang.getSprachengruppen()) {
-            if (f.getZahl() > 0) {
                 jPanelSprachen.add(new GruppenPanel(f));
-            }
         }
         jPanelSprachen.revalidate();
         jPanelSprachen.repaint();

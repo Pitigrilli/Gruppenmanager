@@ -5,9 +5,6 @@
  */
 package gruppeneinteilung.gui;
 
-//import gruppeneinteilung.model.Student;
-//import gruppeneinteilung.gui.ReligionsPanel;
-//import java.awt.FlowLayout;
 import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.GruppeSprache;
 import java.util.ArrayList;
@@ -22,10 +19,9 @@ import javax.swing.JFrame;
 public class EinstellungFrameSprachen extends javax.swing.JFrame {
 
     Jahrgang jahrgang;
-//    Gruppeneinteilung ge;
     int anzahlGruppen;
     GUI parent;
-    int n = 1;
+    
 
     /**
      * Creates new form StudentEditFrame
@@ -36,10 +32,10 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
         this.parent = (GUI) parent;
         this.jahrgang = j;
         initComponents();
-        anzahlGruppen = j.getSprachengruppen().size();
+        anzahlGruppen = jahrgang.getSprachengruppen().size();
         jSpinner1.setValue(anzahlGruppen);
-
-        for (GruppeSprache rg : j.getSprachengruppen()) {
+        int n = 1;
+        for (GruppeSprache rg : jahrgang.getSprachengruppen()) {
             PanelSprachen rp = new PanelSprachen(n);
             n++;
             String fremdsprache = rg.getSprache();
@@ -164,6 +160,7 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
      */
     private void jButtonErstellenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErstellenActionPerformed
         jahrgang.clearSprachengruppen();
+        System.out.println("Anzahl: "+anzahlGruppen);
         for (int i = 0; i < anzahlGruppen; i++) {
             PanelSprachen sp = (PanelSprachen) jPanel1.getComponent(i);
             String sprache = sp.getSprache();
@@ -173,15 +170,16 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
             List<String> list = new ArrayList<>(Arrays.asList(klassen));
             //System.out.println(list);
             list.removeAll(Arrays.asList("", null));
-            //System.out.println(list);
+            System.out.println(list);
             klassen = Arrays.copyOf(list.toArray(), list.toArray().length, String[].class);
-            
             jahrgang.getSprachengruppen().get(i).setKlassen(klassen);
         }
         //jahrgang.testKlassen();
         //System.out.println("____________________________________________________________");
         //jahrgang.ausgabeAlle();
         jahrgang.sprachengruppenZuordnen();
+        System.out.println("Anzahl Sprachengruppen "+jahrgang.getSprachengruppenzahl());
+        System.out.println("Anzahl Schüler "+jahrgang.getSprachengruppen().get(0).getSchueler().size());
         parent.sprachengruppenAnzeigen();
         parent.jComboBoxJahrgangFreigeben();
         
@@ -210,13 +208,11 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
         int aktWert = Integer.parseInt(jSpinner1.getValue().toString());
         if (aktWert == anzahlGruppen + 1) {
-            PanelSprachen fremdsprache = new PanelSprachen(n);
-            n++;
+            PanelSprachen fremdsprache = new PanelSprachen(aktWert);
             jPanel1.add(fremdsprache);
             fremdsprache.setVisible(true);
             anzahlGruppen++;
         } else if (aktWert == anzahlGruppen - 1) {
-            n--;
             jPanel1.remove(jPanel1.getComponentCount() - 1);
             anzahlGruppen--;
             jPanel1.revalidate();
