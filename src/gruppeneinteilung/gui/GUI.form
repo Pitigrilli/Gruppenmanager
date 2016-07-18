@@ -424,7 +424,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxSortierung">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Sortierung w&#xe4;hlen&quot;, &quot;Alphabetisch&quot;, &quot;M&#xe4;nnlich/Weiblich&quot;, &quot;Religion&quot;, &quot;Zweig&quot; })" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Sortierung w&#xe4;hlen&quot;, &quot;Alphabetisch&quot;, &quot;M&#xe4;nnlich/Weiblich&quot;, &quot;Religion&quot;, &quot;Zweig&quot;, &quot;Klassen&quot; })" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>

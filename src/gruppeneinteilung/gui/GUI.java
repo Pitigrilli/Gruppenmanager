@@ -165,7 +165,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelKlassen.setEnabled(false);
 
         jComboBoxSortierung.setEnabled(false);
-        jComboBoxSortierung.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sortierung wählen", "Alphabetisch", "Männlich/Weiblich", "Religion", "Zweig" }));
+        jComboBoxSortierung.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sortierung wählen", "Alphabetisch", "Männlich/Weiblich", "Religion", "Zweig", "Klassen" }));
         jComboBoxSortierung.setName(""); // NOI18N
         jComboBoxSortierung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -635,16 +635,19 @@ public class GUI extends javax.swing.JFrame {
                     case "Zweig":
                         sg.sortierenZweig();
                         break;
+                    case "Klassen":
+                        sg.sortierenKlasse();
+                        break;
                 }
             }
 
-        Component[] comps = jPanelKlassen.getComponents();
-        for (Component comp : comps) {
-            KlassenPanel gp = (KlassenPanel) comp;
-            gp.aktualisiereListModel();
-            gp.revalidate();
-            gp.repaint();
-        }
+//        Component[] comps = jPanelKlassen.getComponents();
+//        for (Component comp : comps) {
+//            KlassenPanel gp = (KlassenPanel) comp;
+//            gp.aktualisiereListModel();
+//            gp.revalidate();
+//            gp.repaint();
+//        }
         this.allePanelsAktualisieren();
     }//GEN-LAST:event_jComboBoxSortierungActionPerformed
 
@@ -752,6 +755,7 @@ public class GUI extends javax.swing.JFrame {
 
         if (aktWert == anzahlKlassenPanel + 1) {
             String neuBuchstabeKlasse = "";
+            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl()+1);
             switch (aktWert) {
                 case 1:
                     neuBuchstabeKlasse = "a";
@@ -785,6 +789,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
         } else if (aktWert == anzahlKlassenPanel - 1) {
+            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl()-1);
             int indexLetztesPanel = jPanelKlassen.getComponentCount() - 1;
             KlassenPanel gp = (KlassenPanel) jPanelKlassen.getComponent(indexLetztesPanel);
             if (gp.getAnzahlSchueler() > 0) {
@@ -797,6 +802,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
         }
+ 
 
     }//GEN-LAST:event_jSpinnerAnzahlKlassenStateChanged
 
@@ -1181,6 +1187,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void evalueteJahrgangsAuswahl() {
+   //     this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
         String auswahl = jComboBoxJahrgang.getSelectedItem().toString();
         int n;
         try {
