@@ -115,6 +115,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemZweigGruppenDrucken = new javax.swing.JMenuItem();
         jMenuHilfe = new javax.swing.JMenu();
         jMenuItemAnleitung = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -133,8 +134,6 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Kursmanager");
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1380, 820));
-        setSize(new java.awt.Dimension(1200, 900));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -556,6 +555,14 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenuHilfe.add(jMenuItemAnleitung);
 
+        jMenuItem3.setText("About");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenuHilfe.add(jMenuItem3);
+
         jMenuBar1.add(jMenuHilfe);
 
         setJMenuBar(jMenuBar1);
@@ -587,6 +594,11 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
+        this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
+        String s = jComboBoxJahrgang.getSelectedItem().toString();
+        if (s.equals("Jahrgang wählen")){
+            this.einstellungenZurücksetzen();
+        }
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
@@ -901,6 +913,7 @@ public class GUI extends javax.swing.JFrame {
         file = ge.getFile();
         jahrgangAuswahlAktivieren();
        
+        
     }//GEN-LAST:event_jMenuItemOpenActionPerformed
 
     private void jMenuItemImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportActionPerformed
@@ -910,7 +923,7 @@ public class GUI extends javax.swing.JFrame {
         file=null;
         aktuellerJahrgang=null;
         jahrgangAuswahlAktivieren();
-        
+        this.einstellungenZurücksetzen();
     }//GEN-LAST:event_jMenuItemImportActionPerformed
 
     private void jMenuItemJahrgangDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJahrgangDruckenActionPerformed
@@ -987,6 +1000,11 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemAnleitungActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        about = new About();
+        about.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnsichtDrucken;
     private javax.swing.JButton jButtonEinstellungReligion;
@@ -1023,6 +1041,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuHilfe;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAllesDrucken;
     private javax.swing.JMenuItem jMenuItemAnleitung;
     private javax.swing.JMenuItem jMenuItemClose;
@@ -1226,6 +1245,16 @@ public class GUI extends javax.swing.JFrame {
         }
         jPanelKlassen.revalidate();
         jPanelKlassen.repaint();
+    }
+    public void einstellungenZurücksetzen(){
+        jButtonEinstellungSprache.setEnabled(false);
+        jButtonEinstellungReligion.setEnabled(false);
+        jButtonEinstellungSport.setEnabled(false);
+        jButtonEinstellungZweig.setEnabled(false);
+        jCheckBoxSprache.setSelected(false);
+        jCheckBoxReligion.setSelected(false);
+        jCheckBoxSport.setSelected(false);
+        jCheckBoxZweig.setSelected(false);
     }
 
     public void aktualisiereLabelJahrgang() {
