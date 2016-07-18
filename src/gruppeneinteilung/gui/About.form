@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="1" pref="380" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="498" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -39,8 +39,8 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="123" max="-2" attributes="0"/>
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="193" max="-2" attributes="0"/>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,7 +49,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel()"/>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="BufferedImage myPicture = ImageIO.read(new File(&quot;jsg-logo.png&quot;));&#xa;JLabel picLabel = new JLabel(new ImageIcon(myPicture));&#xa;add(picLabel);"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="BufferedImage myPicture=null;&#xa;try{&#xa; myPicture= ImageIO.read(new File(&quot;jsg-logo.jpg&quot;));&#xa;} &#xa;catch(IOException e){&#xa;}&#xa;JLabel picLabel = new JLabel(new ImageIcon(myPicture));&#xa;picLabel.setVisible(true);"/>
       </AuxValues>
 
       <Layout>
