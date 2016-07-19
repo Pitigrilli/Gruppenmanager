@@ -596,18 +596,18 @@ public class GUI extends javax.swing.JFrame {
     private void jComboBoxJahrgangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxJahrgangActionPerformed
         // TODO add your handling code here:
         evalueteJahrgangsAuswahl();
-    //    this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
-    //    String z = jComboBoxJahrgang.getSelectedItem().toString();
-    //    if (z.equals("Jahrgang wählen")) {
-    //        this.einstellungenZuruecksetzen();
-    //    }
+        this.jComboBoxSortierung.setSelectedIndex(0);
+        String z = jComboBoxJahrgang.getSelectedItem().toString();
+        if (z.equals("Jahrgang wählen")) {
+           this.einstellungenZuruecksetzen();
+        }
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
     private void jComboBoxSortierungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortierungActionPerformed
         // TODO add your handling code here:
         String sortierung = jComboBoxSortierung.getSelectedItem().toString();
-
         ArrayList gruppen = null;
+        if(aktuellerJahrgang!=null){
         if (selectedTab.equals("Klassen")) {
             gruppen = aktuellerJahrgang.getKlassen();
         } else if (selectedTab.equals("Sprachen")) {
@@ -619,7 +619,8 @@ public class GUI extends javax.swing.JFrame {
         } else if (selectedTab.equals("Zweig")) {
             gruppen = aktuellerJahrgang.getZweiggruppen();
         }
-        
+        }
+        if(gruppen!=null)
         for (Object o : gruppen) {
             SortierbareGruppe sg = (SortierbareGruppe) o;
                 switch (sortierung) {
@@ -1337,6 +1338,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void klassenAnzeigen() {
         jPanelKlassen.removeAll();
+        if(aktuellerJahrgang!=null)
         for (Klasse k : aktuellerJahrgang.getKlassen()) {
             if (k.getKlassengroesse() > 0) {
                 KlassenPanel gp = new KlassenPanel(k, this);
@@ -1349,6 +1351,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void sportgruppenAnzeigen() {
         jPanelSport.removeAll();
+        if(aktuellerJahrgang!=null)
         for (GruppeSport s : aktuellerJahrgang.getSportgruppen()) {
             jPanelSport.add(new GruppenPanel(s));
         }
@@ -1359,6 +1362,7 @@ public class GUI extends javax.swing.JFrame {
     public void religionsgruppenAnzeigen() {
 
         jPanelReligion.removeAll();
+        if(aktuellerJahrgang!=null)
         for (GruppeReligion r : aktuellerJahrgang.getReligionsgruppen()) {
             jPanelReligion.add(new GruppenPanel(r));
         }
@@ -1368,6 +1372,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void zweiggruppenAnzeigen() {
         jPanelZweig.removeAll();
+        if(aktuellerJahrgang!=null)
         for (GruppeZweig zg : aktuellerJahrgang.getZweiggruppen()) {
             jPanelZweig.add(new GruppenPanel(zg));
         }
@@ -1377,6 +1382,7 @@ public class GUI extends javax.swing.JFrame {
 
     public void sprachengruppenAnzeigen() {
         jPanelSprachen.removeAll();
+        if(aktuellerJahrgang!=null)
         for (GruppeSprache f : aktuellerJahrgang.getSprachengruppen()) {
             jPanelSprachen.add(new GruppenPanel(f));
         }

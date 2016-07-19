@@ -4,12 +4,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[400, 520]"/>
+      <Dimension value="[399, 510]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
-    <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[400, 520]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -71,7 +68,7 @@
         <Property name="editable" type="boolean" value="false"/>
         <Property name="columns" type="int" value="20"/>
         <Property name="rows" type="int" value="5"/>
-        <Property name="text" type="java.lang.String" value="Das Programm Gruppenmanager wurde von der Q11&#xa;und Q12 des Jack Steinberger Gymnasium unter der &#xa;Leitung von Claus Behl als Softwareprojekt in der &#xa;11. Jahrgangsstufe geschrieben.&#xa;&#xa;Beteiligte Sch&#xfc;ler waren Tim-Jonathan Heske, Michael&#xa;Lose, Fabian M&#xfc;ller, Philipp Krapf, Lennard Zimmer, &#xa;Fabian R&#xf6;der, Florian Meyer, Yannik Bauer, Laurenz &#xa;Lutz, Fabian Gro&#xdf;mann, Christian Schwindt, Rene Floth &#xa;und Jan Brettschneider."/>
+        <Property name="text" type="java.lang.String" value="Das Programm Gruppenmanager wurde von der Q11&#xa;und Q12 des Jack Steinberger Gymnasium unter der &#xa;Leitung von Claus Behl als Softwareprojekt in der &#xa;11. Jahrgangsstufe geschrieben.&#xa;Beteiligte Sch&#xfc;ler waren Tim-Jonathan Heske, Michael&#xa;Lose, Fabian M&#xfc;ller, Philipp Krapf, Lennard Zimmer, &#xa;Fabian R&#xf6;der, Florian Meyer, Yannik Bauer, Laurenz &#xa;Lutz, Fabian Gro&#xdf;mann, Christian Schwindt, Rene Floth &#xa;und Jan Brettschneider."/>
       </Properties>
     </Component>
   </SubComponents>

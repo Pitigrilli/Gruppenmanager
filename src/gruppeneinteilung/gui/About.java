@@ -32,9 +32,8 @@ public class About extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 520));
+        setPreferredSize(new java.awt.Dimension(399, 510));
         setResizable(false);
-        setSize(new java.awt.Dimension(400, 520));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gruppeneinteilung/gui/jsglogo.jpg"))); // NOI18N
@@ -42,7 +41,7 @@ public class About extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Das Programm Gruppenmanager wurde von der Q11\nund Q12 des Jack Steinberger Gymnasium unter der \nLeitung von Claus Behl als Softwareprojekt in der \n11. Jahrgangsstufe geschrieben.\n\nBeteiligte Schüler waren Tim-Jonathan Heske, Michael\nLose, Fabian Müller, Philipp Krapf, Lennard Zimmer, \nFabian Röder, Florian Meyer, Yannik Bauer, Laurenz \nLutz, Fabian Großmann, Christian Schwindt, Rene Floth \nund Jan Brettschneider.");
+        jTextArea1.setText("Das Programm Gruppenmanager wurde von der Q11\nund Q12 des Jack Steinberger Gymnasium unter der \nLeitung von Claus Behl als Softwareprojekt in der \n11. Jahrgangsstufe geschrieben.\nBeteiligte Schüler waren Tim-Jonathan Heske, Michael\nLose, Fabian Müller, Philipp Krapf, Lennard Zimmer, \nFabian Röder, Florian Meyer, Yannik Bauer, Laurenz \nLutz, Fabian Großmann, Christian Schwindt, Rene Floth \nund Jan Brettschneider.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
