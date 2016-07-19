@@ -8,7 +8,9 @@ package gruppeneinteilung.helper;
 import gruppeneinteilung.model.Student;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -78,7 +80,15 @@ public class ASVImport {
         String filename;
         filename = "empty";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(asvexport))) {
+        try (
+                
+                BufferedReader reader = 
+                new BufferedReader(
+           new InputStreamReader(
+                      new FileInputStream(asvexport), "UTF8"));
+                
+               // new BufferedReader(new FileReader(asvexport))
+                ) {
             filename = asvexport.getCanonicalPath();
             String line;
             while ((line = reader.readLine()) != null) {
