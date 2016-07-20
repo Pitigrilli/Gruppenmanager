@@ -8,6 +8,7 @@ import gruppeneinteilung.helper.ASVImport;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Gruppeneinteilung implements Serializable {
 
@@ -103,11 +104,16 @@ public class Gruppeneinteilung implements Serializable {
 
     public void moveStudent(Student s, int j) {
         if (j <= 10 && j >= 5) {
+            // aus altem Jahrgang entfernen
             Jahrgang alterJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
             alterJahrgang.removeStudent(s);
+            
+            
             s.setJahrgang(j);
             Jahrgang aktuellerJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
             aktuellerJahrgang.studentEinfuegen(s);
+        } else {
+            JOptionPane.showMessageDialog(null, "Der Jahrgang "+j+" existiert nicht!");
         }
     }
 

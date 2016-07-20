@@ -187,11 +187,11 @@ public class Jahrgang implements Serializable {
     public void removeStudent(Student s) {
         alle.remove(s); // aus Jahrgang entfernt
 
-        for (int i = 0; i < getKlassenanzahl(); i++)//for(Klasse k: jg.getKlassen())
+        for(Klasse k: getKlassen())
         {
-            if (getKlassen().get(i).getSchueler().contains(s))// if(k.contains(s))
+             if(k.getSchueler().contains(s))
             {
-                getKlassen().get(i).getSchueler().remove(s); //aus Klasse entfernt, k.removeSchueler(s);
+                k.removeSchueler(s);
             }
 
         }
@@ -616,17 +616,24 @@ public class Jahrgang implements Serializable {
     }
 
     public void religionsgruppenRemove(Student student) {
-        int i = 1;// Der Trick mit dem i sorgt dafür, dass alle Exemplare des Schülers entefrnt werden, falls er 
+        int i = 0;// Der Trick mit dem i sorgt dafür, dass alle Exemplare des Schülers entefrnt werden, falls er 
         // Mehrfach in den Gruppen ist.
-        while (i > 0) {
-            i = 0;
+        while (i == 0) {
+            i = 1;
             for (GruppeReligion aktuelleRG : religionsgruppen) {
+                System.out.println("RG "+aktuelleRG.getTitel());
+                for(Student s: aktuelleRG.getSchueler()){
+                    System.out.println(s);
+                }
+                    
                 if (aktuelleRG.getSchueler().contains(student)) {
+                    System.out.println("Treffer");
                     aktuelleRG.getSchueler().remove(student);
                     System.out.println("entfernt: "+student);
-                    i++; // wenn der Schüler gefunden wurde, so wird i wieder auf 1 gesetzt und die while-Schleife wird nochmal durch
+                    i=0;break; // wenn der Schüler gefunden wurde, so wird i wieder auf 1 gesetzt und die while-Schleife wird nochmal durch
                     // laufen.
                 }
+                i++;
             }
         }
     }
@@ -821,11 +828,6 @@ public class Jahrgang implements Serializable {
         sprachengruppen = new ArrayList<>();
     }
 
-    /**
-     * entfernt den Schüler aus der Anzahlen Anzeige
-     *
-     * @param s
-     */
 //in alle gruppen des jahrgangs einfügen
     public void addInGroups(Student s) {
         if (istNachReligion()) {

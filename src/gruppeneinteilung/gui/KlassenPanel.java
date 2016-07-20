@@ -105,12 +105,11 @@ public class KlassenPanel extends JPanel {
         itemJahrgangRunter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student student = gruppenListe.getSelectedValue();
+
+                parent.ge.moveStudent(student, student.getJahrgang() - 1);
+                
                 dlm.removeElement(student);
                 schueler.remove(student);
-                
-                //System.out.println("Remove:" + student);
-                setzeTitel();
-                parent.ge.moveStudent(student, student.getJahrgang() - 1);
                 aktualisiereListModel();
                 parent.aktualisiereLabelJahrgang();
                 parent.revalidate();
