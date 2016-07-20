@@ -18,6 +18,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.io.File;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -30,14 +31,26 @@ public class PrintPDF {
     private File file;
     private Document document;
 
+    // Farben in der Tabelle
     private static final Font tableFontRot = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD, BaseColor.RED); // Schrift in Tabelle 
     private static final Font tableFontGruen = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD, BaseColor.GREEN); // Schrift in Tabelle 
     private static final Font tableFontBlau = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD, BaseColor.BLUE); // Schrift in Tabelle 
-    private static final Font tableFont = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+        private static final Font tableFontBlack = new Font(Font.FontFamily.TIMES_ROMAN, 8,
             Font.BOLD); // Schrift in Tabelle 
+    private static final Font tableFontOrange = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD, new BaseColor(255, 100, 0)); // Schrift in Tabelle 
+    private static final Font tableFontMagenta = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD, new BaseColor(255, 0, 255)); // Schrift in Tabelle 
+    private static final Font tableFontOlive = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD, new BaseColor(128, 128, 0)); // Schrift in Tabelle 
+    private static final Font tableFontCyan = new Font(Font.FontFamily.TIMES_ROMAN, 8,
+            Font.BOLD, new BaseColor(0, 255, 255)); // Schrift in Tabelle 
+
+    
+    
     private static final Font tableHeadFont = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.BOLD); // Klassenbezeichner
     private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -235,48 +248,6 @@ public class PrintPDF {
         }
     }
 
-    private void createTableReligionGruppe(Paragraph newTable, Jahrgang j)
-            throws BadElementException, DocumentException {
-
-        Jahrgang aktuellerJahrgang = j;
-        int n = aktuellerJahrgang.getReligionsgruppenzahl();
-        System.out.println(n);
-
-        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
-        table.setWidthPercentage(100f);
-
-        for (int i = 0; i < n; i++) {
-            PdfPTable tableI = new PdfPTable(1);
-            tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getReligionsgruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getReligionsgruppen().get(i).getReligiongroesse(), tableHeadFont)));
-
-            for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) {
-
-                switch (s.getReligion()) {
-                    case "RK":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontRot));
-                        break;
-                    case "EV":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontGruen));
-                        break;
-                    case "ETH":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontBlau));
-                        break;
-
-                    default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFont));
-                }
-
-            }
-
-            table.addCell(tableI);
-        }
-
-        table.addCell("1.1");
-        newTable.add(table);
-
-    }
-
     private void sportGruppeDrucken(Jahrgang j) throws DocumentException {
         if (j.getSportgruppenzahl() != 0) {
             Paragraph preface = new Paragraph();
@@ -296,50 +267,6 @@ public class PrintPDF {
             // Start a new page
             document.newPage();
         }
-    }
-
-    private void createTableSportGruppe(Paragraph newTable, Jahrgang j)
-            throws BadElementException, DocumentException {
-
-        Jahrgang aktuellerJahrgang = j;
-        int n = aktuellerJahrgang.getSportgruppenzahl();
-        System.out.println(n);
-
-        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
-        table.setWidthPercentage(100f);
-
-        for (int i = 0; i < n; i++) {
-            PdfPTable tableI = new PdfPTable(1);
-            tableI.setHeaderRows(1);
-            String titel = aktuellerJahrgang.getSportgruppen().get(i).getTitel();
-            int anzahl = aktuellerJahrgang.getSportgruppen().get(i).getSportgroesse();
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - Sport - " + titel + "  Anzahl: " + anzahl, tableHeadFont)));
-
-            for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) {
-
-                switch (s.getReligion()) {
-                    case "RK":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontRot));
-                        break;
-                    case "EV":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontGruen));
-                        break;
-                    case "ETH":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFontBlau));
-                        break;
-
-                    default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getBemerkung()), tableFont));
-                }
-
-            }
-
-            table.addCell(tableI);
-        }
-
-        table.addCell("1.1");
-        newTable.add(table);
-
     }
 
     private void fremdsprachenGruppeDrucken(Jahrgang j) throws DocumentException {
@@ -363,48 +290,6 @@ public class PrintPDF {
         }
     }
 
-    private void createTableFremdsprachenGruppe(Paragraph newTable, Jahrgang j)
-            throws BadElementException, DocumentException {
-
-        Jahrgang aktuellerJahrgang = j;
-        int n = aktuellerJahrgang.getSprachengruppenzahl();
-        System.out.println(n);
-
-        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
-        table.setWidthPercentage(100f);
-
-        for (int i = 0; i < n; i++) {
-            PdfPTable tableI = new PdfPTable(1);
-            tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getSprachengruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprachengroesse(), tableHeadFont)));
-
-            for (Student s : aktuellerJahrgang.getSprachengruppen().get(i).getSchueler()) {
-
-                switch (s.getReligion()) {
-                    case "RK":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getBemerkung()), tableFontRot));
-                        break;
-                    case "EV":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getBemerkung()), tableFontGruen));
-                        break;
-                    case "ETH":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getBemerkung()), tableFontBlau));
-                        break;
-
-                    default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getBemerkung()), tableFont));
-                }
-
-            }
-
-            table.addCell(tableI);
-        }
-
-        table.addCell("1.1");
-        newTable.add(table);
-
-    }
-
     private void zweigGruppeDrucken(Jahrgang j) throws DocumentException {
         if (j.getZweiggruppenzahl() != 0) {
             Paragraph preface = new Paragraph();
@@ -426,48 +311,6 @@ public class PrintPDF {
         }
     }
 
-    private void createTableZweigGruppe(Paragraph newTable, Jahrgang j)
-            throws BadElementException, DocumentException {
-
-        Jahrgang aktuellerJahrgang = j;
-        int n = aktuellerJahrgang.getZweiggruppenzahl();
-        System.out.println(n);
-
-        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
-        table.setWidthPercentage(100f);
-
-        for (int i = 0; i < n; i++) {
-            PdfPTable tableI = new PdfPTable(1);
-            tableI.setHeaderRows(1);
-            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getZweiggruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getZweiggruppen().get(i).getZweiggroesse(), tableHeadFont)));
-
-            for (Student s : aktuellerJahrgang.getZweiggruppen().get(i).getSchueler()) {
-
-                switch (s.getReligion()) {
-                    case "RK":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getBemerkung() + " " + s.getFs4()), tableFontRot));
-                        break;
-                    case "EV":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getBemerkung() + " " + s.getFs4()), tableFontGruen));
-                        break;
-                    case "ETH":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getBemerkung() + " " + s.getFs4()), tableFontBlau));
-                        break;
-
-                    default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getBemerkung() + " " + s.getFs4()), tableFont));
-                }
-
-            }
-
-            table.addCell(tableI);
-        }
-
-        table.addCell("1.1");
-        newTable.add(table);
-
-    }
-
     private void klassenDrucken(Jahrgang j) throws DocumentException {
 
         Paragraph preface = new Paragraph();
@@ -486,6 +329,121 @@ public class PrintPDF {
         document.add(bottom);
         // Start a new page
         document.newPage();
+
+    }
+
+    private void createTableReligionGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getReligionsgruppenzahl();
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getReligionsgruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getReligionsgruppen().get(i).getReligiongroesse(), tableHeadFont)));
+
+            for (Student s : aktuellerJahrgang.getReligionsgruppen().get(i).getSchueler()) {
+                Font font = getColorForClass(s);
+                tableI.addCell(new Phrase((s.getKlasse() + " " + s.getName() + " " + " " + s.getBemerkung()), font));
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
+
+    }
+
+    private void createTableSportGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getSportgruppenzahl();
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            String titel = aktuellerJahrgang.getSportgruppen().get(i).getTitel();
+            int anzahl = aktuellerJahrgang.getSportgruppen().get(i).getSportgroesse();
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - Sport - " + titel + "  Anzahl: " + anzahl, tableHeadFont)));
+
+            for (Student s : aktuellerJahrgang.getSportgruppen().get(i).getSchueler()) {
+                Font font = getColorForClass(s);
+                tableI.addCell(new Phrase((s.getKlasse() + " " + s.getName() + " " + " " + s.getBemerkung()), font));
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
+
+    }
+
+    private void createTableFremdsprachenGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getSprachengruppenzahl();
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getSprachengruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getSprachengruppen().get(i).getFremdsprachengroesse(), tableHeadFont)));
+
+            for (Student s : aktuellerJahrgang.getSprachengruppen().get(i).getSchueler()) {
+                Font font = getColorForClass(s);
+                tableI.addCell(new Phrase((s.getKlasse() + " " + s.getName() + " " + " " + s.getBemerkung()), font));
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
+
+    }
+
+    private void createTableZweigGruppe(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
+
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getZweiggruppenzahl();
+        System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell((new Phrase(aktuellerJahrgang.getJahrgang() + " - " + aktuellerJahrgang.getZweiggruppen().get(i).getTitel() + " Anzahl: " + aktuellerJahrgang.getZweiggruppen().get(i).getZweiggroesse(), tableHeadFont)));
+
+           for (Student s : aktuellerJahrgang.getZweiggruppen().get(i).getSchueler()) {
+
+               Font font = getColorForClass(s);
+                tableI.addCell(new Phrase((s.getKlasse() + " " + s.getName() + " " + " " + s.getBemerkung()), font));
+
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
 
     }
 
@@ -519,7 +477,7 @@ public class PrintPDF {
                         break;
 
                     default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFont));
+                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFontBlack));
                 }
 
             }
@@ -530,6 +488,43 @@ public class PrintPDF {
         table.addCell("1.1");
         newTable.add(table);
 
+    }
+
+    private Font getColorForClass(Student s) {
+        Font font = tableFontBlack;
+        switch (s.getKlasse()) {
+            case "a":
+                font = tableFontRot;
+                break;
+            case "b":
+                font = tableFontGruen;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "c":
+                font = tableFontBlau;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "d":
+                font = tableFontBlack;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "e":
+                font = tableFontCyan;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "f":
+                font = tableFontMagenta;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "g":
+                font = tableFontOlive;
+//                        tableI.addCell(new Phrase((s.getKlasse()+" "+s.getName() + " "  + " " + s.getBemerkung()), font));
+                break;
+            case "h":
+                font = tableFontOrange;
+                break;
+        }
+        return font;
     }
 
 }

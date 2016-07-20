@@ -31,11 +31,11 @@ public class GruppenPanel extends JPanel {
     public GruppenPanel(SortierbareGruppe gruppe) {
         this.gruppe = gruppe;
         this.schuelerListe = gruppe.getSchueler();
-        this.anzeige = gruppe.getTitel()+schuelerListe.size()+" Schüler";
+        this.anzeige = gruppe.getTitel() + schuelerListe.size() + " Schüler";
 
         setLayout(new java.awt.BorderLayout());
         // Titel
-        titel= new JLabel(anzeige);
+        titel = new JLabel(anzeige);
         add(titel, BorderLayout.NORTH);
 
         // Listenmodell
@@ -65,13 +65,13 @@ public class GruppenPanel extends JPanel {
             dlm.addElement(student);
         }
     }
-    
-    public int getAnzahlSchueler(){
+
+    public int getAnzahlSchueler() {
         return schuelerListe.size();
     }
-    
+
     private void aktualisiereTitel() {
-        anzeige = gruppe.getTitel()+schuelerListe.size()+" Schüler";
+        anzeige = gruppe.getTitel() + schuelerListe.size() + " Schüler";
         titel.setText(anzeige);
     }
 
@@ -103,18 +103,21 @@ public class GruppenPanel extends JPanel {
                     c.setForeground(new Color(0, 0, 0));
                     break;
                 case "e":
-                    c.setForeground(new Color(255, 100, 0));
+                    c.setForeground(new Color(0, 255, 255));
                     break;
                 case "f":
-                    c.setForeground(new Color(255, 0, 100));
+                    c.setForeground(new Color(255, 0, 255));
                     break;
                 case "g":
-                    c.setForeground(new Color(0, 255, 100));
+                    c.setForeground(new Color(128, 128, 0));
+                    break;
+                case "h":
+                    c.setForeground(new Color(255, 100, 0));
                     break;
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getKlasse() + " "+s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
+            l.setText(s.getKlasse() + " " + s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
             return l;
         }
     }
@@ -122,80 +125,80 @@ public class GruppenPanel extends JPanel {
     public void enableDnD() {
         gruppenListe.setDragEnabled(true);
         gruppenListe.setTransferHandler(new TransferHandler() {
-                    //Student student;
+            //Student student;
 
-                    @Override
-                    public int getSourceActions(JComponent c) {
-                        return MOVE;
-                    }
+            @Override
+            public int getSourceActions(JComponent c) {
+                return MOVE;
+            }
 
-                    @Override
-                    protected Transferable createTransferable(JComponent c) {
-                        JList list = (JList) c;
-                        Student student = (Student) list.getSelectedValue();
-                        DefaultListModel lm = (DefaultListModel) list.getModel();
-                        int index = lm.indexOf(student);
-                        //System.out.println("Ausgewählt:"+student+" Index: "+index);
+            @Override
+            protected Transferable createTransferable(JComponent c) {
+                JList list = (JList) c;
+                Student student = (Student) list.getSelectedValue();
+                DefaultListModel lm = (DefaultListModel) list.getModel();
+                int index = lm.indexOf(student);
+                //System.out.println("Ausgewählt:"+student+" Index: "+index);
 
-                        return new TransferableStudent(student);
-                    }
+                return new TransferableStudent(student);
+            }
 
-                    @Override
-                    protected void exportDone(JComponent c, Transferable t, int action) {
-                        TransferableStudent ts = (TransferableStudent) t;
-                        Student student = ts.getStudent();
-                        JList list = (JList) c;
-                        DefaultListModel listModel = (DefaultListModel) list.getModel();
+            @Override
+            protected void exportDone(JComponent c, Transferable t, int action) {
+                TransferableStudent ts = (TransferableStudent) t;
+                Student student = ts.getStudent();
+                JList list = (JList) c;
+                DefaultListModel listModel = (DefaultListModel) list.getModel();
 
-                        if (action == MOVE) {
-                            listModel.removeElement(student);
-                            schuelerListe.remove(student);
-                        }
-                       
-                       gruppe.aktualisiereKlassen();
-                       aktualisiereTitel();
-                    }
+                if (action == MOVE) {
+                    listModel.removeElement(student);
+                    schuelerListe.remove(student);
+                }
 
-                    @Override
-                    public boolean canImport(TransferHandler.TransferSupport info) {
+                gruppe.aktualisiereKlassen();
+                aktualisiereTitel();
+            }
 
-                        return info.isDataFlavorSupported(studentFlavor);
-                    }
+            @Override
+            public boolean canImport(TransferHandler.TransferSupport info) {
 
-                    @Override
-                    public boolean importData(TransferHandler.TransferSupport info) {
-                        if (!info.isDrop()) {
-                            return false;
-                        }
+                return info.isDataFlavorSupported(studentFlavor);
+            }
 
-                        JList list = (JList) info.getComponent();
+            @Override
+            public boolean importData(TransferHandler.TransferSupport info) {
+                if (!info.isDrop()) {
+                    return false;
+                }
 
-                        @SuppressWarnings("unchecked")
-                        DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
+                JList list = (JList) info.getComponent();
 
-                        JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
-                        int index = dl.getIndex();
-                        boolean insert = dl.isInsert();
+                @SuppressWarnings("unchecked")
+                DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
 
-                        Transferable t = info.getTransferable();
-                        Student student;
-                        try {
-                            student = (Student) t.getTransferData(studentFlavor);
-                        } catch (Exception e) {
-                            return false;
-                        }
+                JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
+                int index = dl.getIndex();
+                boolean insert = dl.isInsert();
 
-                        //System.out.println("Drop:"+student);
-                        if (insert) {
-                            listModel.add(index, student);
-                            schuelerListe.add(index, student);
-                        }
-                        gruppe.aktualisiereKlassen();
-                        aktualisiereTitel();
-                        return true;
-                    }
+                Transferable t = info.getTransferable();
+                Student student;
+                try {
+                    student = (Student) t.getTransferData(studentFlavor);
+                } catch (Exception e) {
+                    return false;
+                }
 
-                });
+                //System.out.println("Drop:"+student);
+                if (insert) {
+                    listModel.add(index, student);
+                    schuelerListe.add(index, student);
+                }
+                gruppe.aktualisiereKlassen();
+                aktualisiereTitel();
+                return true;
+            }
+
+        });
         /*  Ende der Definition des TransferHandler  */
         gruppenListe.setDropMode(DropMode.INSERT);
 
