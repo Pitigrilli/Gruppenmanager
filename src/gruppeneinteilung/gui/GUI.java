@@ -657,7 +657,7 @@ public class GUI extends javax.swing.JFrame {
         PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
-        printPdf.druckeGesammterJahrgangMitGruppen(j);
+        printPdf.druckeJahrgangMitGruppen(j);
     }//GEN-LAST:event_jButtonJahrgangDruckenActionPerformed
 
     private void jCheckBoxReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxReligionActionPerformed
@@ -908,7 +908,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jMenuItemAllesDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAllesDruckenActionPerformed
         PrintPDF printPdf = new PrintPDF(ge);
-        printPdf.Drucken();
+        printPdf.allesDrucken();
     }//GEN-LAST:event_jMenuItemAllesDruckenActionPerformed
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
@@ -954,7 +954,7 @@ public class GUI extends javax.swing.JFrame {
         PrintPDF printPdf = new PrintPDF(ge);
         int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
         Jahrgang j = ge.getJahrgang(n);
-        printPdf.druckeGesammterJahrgangMitGruppen(j);
+        printPdf.druckeJahrgangMitGruppen(j);
     }//GEN-LAST:event_jMenuItemJahrgangDruckenActionPerformed
 
     private void jMenuItemKlassenDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKlassenDruckenActionPerformed
