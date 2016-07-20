@@ -187,10 +187,8 @@ public class Jahrgang implements Serializable {
     public void removeStudent(Student s) {
         alle.remove(s); // aus Jahrgang entfernt
 
-        for(Klasse k: getKlassen())
-        {
-             if(k.getSchueler().contains(s))
-            {
+        for (Klasse k : getKlassen()) {
+            if (k.getSchueler().contains(s)) {
                 k.removeSchueler(s);
             }
 
@@ -616,26 +614,21 @@ public class Jahrgang implements Serializable {
     }
 
     public void religionsgruppenRemove(Student student) {
-        int i = 0;// Der Trick mit dem i sorgt dafür, dass alle Exemplare des Schülers entefrnt werden, falls er 
-        // Mehrfach in den Gruppen ist.
-        while (i == 0) {
-            i = 1;
-            for (GruppeReligion aktuelleRG : religionsgruppen) {
-                System.out.println("RG "+aktuelleRG.getTitel());
-                for(Student s: aktuelleRG.getSchueler()){
-                    System.out.println(s);
-                }
+        
+        for (GruppeReligion aktuelleGruppe : religionsgruppen) {
+            Student removableStudent=null;
+            
+            for (Student s : aktuelleGruppe.getSchueler()) {
+                
+                if (s.istGleich(student)) {
+                    removableStudent = s;
                     
-                if (aktuelleRG.getSchueler().contains(student)) {
-                    System.out.println("Treffer");
-                    aktuelleRG.getSchueler().remove(student);
-                    System.out.println("entfernt: "+student);
-                    i=0;break; // wenn der Schüler gefunden wurde, so wird i wieder auf 1 gesetzt und die while-Schleife wird nochmal durch
-                    // laufen.
                 }
-                i++;
             }
+            aktuelleGruppe.getSchueler().remove(removableStudent);
+
         }
+
     }
 
     public void religionsgruppenAdd(Student student) {
@@ -679,10 +672,17 @@ public class Jahrgang implements Serializable {
     }
 
     public void zweiggruppenRemove(Student student) {
-        for (GruppeZweig aktuelleRG : zweiggruppen) {
-            if (aktuelleRG.getSchueler().contains(student)) {
-                aktuelleRG.getSchueler().remove(student);
+        for (GruppeZweig aktuelleGruppe : zweiggruppen) {
+            Student removableStudent=null;
+            
+            for (Student s : aktuelleGruppe.getSchueler()) {
+                
+                if (s.istGleich(student)) {
+                    removableStudent = s;
+                    
+                }
             }
+            aktuelleGruppe.getSchueler().remove(removableStudent);
         }
     }
 
@@ -743,10 +743,17 @@ public class Jahrgang implements Serializable {
     }
 
     public void sprachengruppenRemove(Student student) {
-        for (GruppeSprache aktuelleRG : sprachengruppen) {
-            if (aktuelleRG.getSchueler().contains(student)) {
-                aktuelleRG.getSchueler().remove(student);
+        for (GruppeSprache aktuelleGruppe : sprachengruppen) {
+            Student removableStudent=null;
+            
+            for (Student s : aktuelleGruppe.getSchueler()) {
+                
+                if (s.istGleich(student)) {
+                    removableStudent = s;
+                    
+                }
             }
+            aktuelleGruppe.getSchueler().remove(removableStudent);
         }
     }
 
@@ -792,10 +799,17 @@ public class Jahrgang implements Serializable {
     }
 
     public void sportgruppenRemove(Student student) {
-        for (GruppeSport aktuelleRG : sportgruppen) {
-            if (aktuelleRG.getSchueler().contains(student)) {
-                aktuelleRG.getSchueler().remove(student);
+        for (GruppeSport aktuelleGruppe : sportgruppen) {
+            Student removableStudent=null;
+            
+            for (Student s : aktuelleGruppe.getSchueler()) {
+                
+                if (s.istGleich(student)) {
+                    removableStudent = s;
+                    
+                }
             }
+            aktuelleGruppe.getSchueler().remove(removableStudent);
         }
     }
 
@@ -878,7 +892,7 @@ public class Jahrgang implements Serializable {
                 MU++;
                 break;
             case "GY_TH":
-               TH++;
+                TH++;
                 break;
             case "GY_NTG_8":
                 GY_NTG++;
@@ -919,10 +933,10 @@ public class Jahrgang implements Serializable {
                 GY--;
                 break;
             case "GY_MU":
-               MU--;
+                MU--;
                 break;
             case "GY_TH":
-               TH--;
+                TH--;
                 break;
             case "GY_NTG_8":
                 GY_NTG--;

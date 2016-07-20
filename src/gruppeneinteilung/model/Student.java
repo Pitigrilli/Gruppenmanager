@@ -148,6 +148,13 @@ public class Student implements Comparable<Student>, Serializable{
     {
         return bemerkung;
     }
+    public boolean istGleich(Student s){
+        boolean istgleich;
+        istgleich = jahrgang==s.jahrgang && klasse.equals(s.klasse) && name.equals(s.name) && geschlecht.equals(s.geschlecht) 
+                && zweig.equals(s.zweig) && religion.equals(s.religion) && fs2.equals(s.fs2) && fs3.equals(s.fs3) && fs4.equals(s.fs4) 
+                && bemerkung.equals(s.bemerkung);
+        return istgleich;
+    }
  }
     
 
