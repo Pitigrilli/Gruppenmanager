@@ -4,6 +4,8 @@ package gruppeneinteilung.gui;
  *
  * @author Claus Behl
  */
+import gruppeneinteilung.model.Jahrgang;
+import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.SortierbareGruppe;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
@@ -22,6 +24,7 @@ public class GruppenPanel extends JPanel {
 
     String anzeige;
     SortierbareGruppe gruppe;
+    Jahrgang jahrgang;
     ArrayList<Student> schuelerListe;
     JLabel titel;
     JList<Student> gruppenListe;
@@ -30,6 +33,8 @@ public class GruppenPanel extends JPanel {
 
     public GruppenPanel(SortierbareGruppe gruppe) {
         this.gruppe = gruppe;
+        jahrgang = gruppe.getJahrgang();
+        gruppe.aktualisiereKlassen();
         this.schuelerListe = gruppe.getSchueler();
         this.anzeige = gruppe.getTitel() + schuelerListe.size() + " Schüler";
 
@@ -187,7 +192,18 @@ public class GruppenPanel extends JPanel {
                 } catch (Exception e) {
                     return false;
                 }
-
+     // Beim Verschieben wird ein neues StudentenObjekt erzeugt, mit den gleichen Werten
+                // wie das Verschobene. Damit existieren zwei Studentenobjekte mit den gleichen Werten
+                // einmal in der ArrayList Jahrgang.alle und das in der Klasse durch Drop erzeugte.
+                // Wir suchen das zu dem verschobenen Studentenobejekt gehörende Objekt in Jahrgang.alle 
+                // und ersetzen damit das Objekt das durch den Drop-Vorgang erzeugte.
+                for(Student s: jahrgang.gibAlle()){
+                    if(s.istGleich(student)){
+                        student = s;
+                        //System.out.println("Gefunden");
+                        break;
+                    }
+                }
                 //System.out.println("Drop:"+student);
                 if (insert) {
                     listModel.add(index, student);

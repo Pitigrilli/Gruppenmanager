@@ -45,6 +45,7 @@ public class KlassenPanel extends JPanel {
         this.jahrgang = klasse.getJahrgang();
         parent = g;//(GUI) SwingUtilities.getWindowAncestor(this);
         buchstabe = klasse.getBuchstabe();
+        
         this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
 
         setLayout(new java.awt.BorderLayout());
@@ -91,29 +92,24 @@ public class KlassenPanel extends JPanel {
                 Student student = gruppenListe.getSelectedValue();
                 dlm.removeElement(student);
                 schueler.remove(student);
-                
-                //System.out.println("Remove:" + student);
-                setzeTitel();
                 parent.ge.moveStudent(student, student.getJahrgang() + 1);
                 aktualisiereListModel();
+                setzeTitel();
                 parent.aktualisiereLabelJahrgang();
                 parent.revalidate();
-                setzeTitel();
             }
         });
 
         itemJahrgangRunter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Student student = gruppenListe.getSelectedValue();
-
-                parent.ge.moveStudent(student, student.getJahrgang() - 1);
-                
                 dlm.removeElement(student);
                 schueler.remove(student);
+                parent.ge.moveStudent(student, student.getJahrgang() - 1);
                 aktualisiereListModel();
+                setzeTitel();
                 parent.aktualisiereLabelJahrgang();
                 parent.revalidate();
-                setzeTitel();
             }
         });
 
@@ -215,7 +211,18 @@ public class KlassenPanel extends JPanel {
                     return false;
                 }
 
-                //System.out.println("Drop:" + student);
+                // Beim Verschieben wird ein neues StudentenObjekt erzeugt, mit den gleichen Werten
+                // wie das Verschobene. Damit existieren zwei Studentenobjekte mit den gleichen Werten
+                // einmal in der ArrayList Jahrgang.alle und das in der Klasse durch Drop erzeugte.
+                // Wir suchen das zu dem verschobenen Studentenobejekt gehörende Objekt in Jahrgang.alle 
+                // und ersetzen damit das Objekt das durch den Drop-Vorgang erzeugte.
+                for(Student s: jahrgang.gibAlle()){
+                    if(s.istGleich(student)){
+                        student = s;
+                        //System.out.println("Gefunden");
+                        break;
+                    }
+                }
                 if (insert) {
                     listModel.add(index, student);
                     // Der Schüler bekommt seine Klasse richtig gesetzt

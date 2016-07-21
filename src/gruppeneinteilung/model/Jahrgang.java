@@ -288,7 +288,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void sportgruppeErstellen(String geschlecht) {
-        GruppeSport sp = new GruppeSport(sportgruppenzahl, jahrgang, geschlecht);
+        GruppeSport sp = new GruppeSport(sportgruppenzahl, this, geschlecht);
         sportgruppenzahl++;
         sportgruppen.add(sp);
     }
@@ -349,7 +349,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void religionsgruppeErstellen(String religion) {
-        GruppeReligion re = new GruppeReligion(religionsgruppenzahl, jahrgang, religion);
+        GruppeReligion re = new GruppeReligion(religionsgruppenzahl, this, religion);
         religionsgruppenzahl++;
         religionsgruppen.add(re);
     }
@@ -411,7 +411,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void zweiggruppeErstellen(String zweig) {
-        GruppeZweig re = new GruppeZweig(zweiggruppenzahl, jahrgang, zweig);
+        GruppeZweig re = new GruppeZweig(zweiggruppenzahl, this, zweig);
         zweiggruppenzahl++;
         zweiggruppen.add(re);
     }
@@ -472,7 +472,7 @@ public class Jahrgang implements Serializable {
     }
 
     public void sprachengruppeErstellen(String fremdsprache, int wievielte) {
-        GruppeSprache fg = new GruppeSprache(sprachengruppenzahl, jahrgang, fremdsprache, wievielte);
+        GruppeSprache fg = new GruppeSprache(sprachengruppenzahl, this, fremdsprache, wievielte);
         sprachengruppenzahl++;
         sprachengruppen.add(fg);
     }

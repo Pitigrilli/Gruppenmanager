@@ -21,10 +21,10 @@ public class GruppeSport extends SortierbareGruppe implements Serializable {
     private String geschlecht;
     private String[] klassen;
     private int zahl;
-    private final int jahrgang;
+    private final Jahrgang jahrgang;
     //private final ArrayList<Student> schueler;
 
-    public GruppeSport(int z, int j, String g) {
+    public GruppeSport(int z, Jahrgang j, String g) {
         zahl = z;
         jahrgang = j;
         schueler = new ArrayList<>();
@@ -43,6 +43,10 @@ public class GruppeSport extends SortierbareGruppe implements Serializable {
 
     public int getSportgroesse() {
         return schueler.size();
+    }
+
+    public Jahrgang getJahrgang() {
+        return jahrgang;
     }
 
     public ArrayList<Student> getSchueler() {
@@ -82,18 +86,20 @@ public class GruppeSport extends SortierbareGruppe implements Serializable {
     public void setKlassen(String[] klassen) {
         this.klassen = klassen;
     }
-    
-public void aktualisiereKlassen(){
+
+    public void aktualisiereKlassen() {
         klassen = new String[8];
-        ArrayList<String> klassenList =  new ArrayList<>();
-        for(Student s: schueler){
-            if(!klassenList.contains(s.getKlasse()))klassenList.add(s.getKlasse());
+        ArrayList<String> klassenList = new ArrayList<>();
+        for (Student s : schueler) {
+            if (!klassenList.contains(s.getKlasse())) {
+                klassenList.add(s.getKlasse());
+            }
         }
         klassen = klassenList.toArray(new String[0]);
         Arrays.sort(klassen);
     }
 
-public boolean contains(String k) {
+    public boolean contains(String k) {
         List<String> list = Arrays.asList(klassen);
         return list.contains(k);
     }

@@ -108,7 +108,7 @@ public class Gruppeneinteilung implements Serializable {
             Jahrgang alterJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
             alterJahrgang.removeStudent(s);
             
-            
+            // in neuen Jahrgang einfügen
             s.setJahrgang(j);
             Jahrgang aktuellerJahrgang = jahrgaenge.get(s.getJahrgang() - 5);
             aktuellerJahrgang.studentEinfuegen(s);

@@ -21,6 +21,7 @@ public abstract class SortierbareGruppe implements Serializable {
 
     protected ArrayList<Student> schueler;
     protected String titel;
+    protected Jahrgang jahrgang;
 
     public static String sortierung;
 
@@ -30,6 +31,10 @@ public abstract class SortierbareGruppe implements Serializable {
 
     public ArrayList<Student> getSchueler() {
         return schueler;
+    }
+    
+    public Jahrgang getJahrgang(){
+        return jahrgang;
     }
 
     public void sortierenGeschlecht() {

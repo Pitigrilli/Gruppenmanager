@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class GruppeReligion extends SortierbareGruppe implements Serializable {
 
-    private final int jahrgang;
+    private final Jahrgang jahrgang;
     private String religion;
     /**
      * Liste der Buchstaben der zugehörigen Klassen
@@ -28,7 +28,7 @@ public class GruppeReligion extends SortierbareGruppe implements Serializable {
     private final int zahl;
     //private  ArrayList<Student> schueler;
 
-    public GruppeReligion(int z, int j, String r) {
+    public GruppeReligion(int z, Jahrgang j, String r) {
         zahl = z;
         jahrgang = j;
         schueler = new ArrayList<>();
@@ -84,6 +84,10 @@ public class GruppeReligion extends SortierbareGruppe implements Serializable {
     public String getTitel() {
         titel = getReligion() + " " + Arrays.toString(klassen) + ": ";
         return titel;
+    }
+    
+    public Jahrgang getJahrgang(){
+        return jahrgang;
     }
 
     public void aktualisiereKlassen() {
