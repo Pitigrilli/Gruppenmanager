@@ -253,17 +253,16 @@ public class StudentEditFrame extends javax.swing.JFrame {
             jahrgang.getKlasse(klasseAlt).studentEntfernen(s);
             jahrgang.getKlasse(klasseNeu).studentHinzufuegen(s);
             gui.klassenAnzeigen();
-            
         }
         jahrgang.religionsgruppenRemove(s);
-            jahrgang.sportgruppenRemove(s);
-            jahrgang.sprachengruppenRemove(s);
-            jahrgang.zweiggruppenRemove(s);
-            jahrgang.religionsgruppenAdd(s);
-            jahrgang.sportgruppenAdd(s);
-            jahrgang.zweiggruppenAdd(s);
-            jahrgang.sprachengruppenAdd(s);
-            gui.allePanelsAktualisieren();
+        jahrgang.sportgruppenRemove(s);
+        jahrgang.sprachengruppenRemove(s);
+        jahrgang.zweiggruppenRemove(s);
+        jahrgang.religionsgruppenAdd(s);
+        jahrgang.sportgruppenAdd(s);
+        jahrgang.zweiggruppenAdd(s);
+        jahrgang.sprachengruppenAdd(s);
+        gui.allePanelsAktualisieren();
         //Schließt das Fenster
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
