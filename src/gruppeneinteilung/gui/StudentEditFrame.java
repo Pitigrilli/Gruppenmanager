@@ -248,21 +248,27 @@ public class StudentEditFrame extends javax.swing.JFrame {
         s.setFs2(jComboFremdsprache2.getModel().getSelectedItem().toString());
         s.setFs3(jComboFremdsprache3.getModel().getSelectedItem().toString());
         s.setFs4(jComboFremdsprache4.getModel().getSelectedItem().toString());
+
         //Klassenwechsel
         if (!klasseNeu.equals(klasseAlt)) {//Klassenwechsel
-            jahrgang.getKlasse(klasseAlt).studentEntfernen(s);
-            jahrgang.getKlasse(klasseNeu).studentHinzufuegen(s);
+            jahrgang.getKlasse(klasseAlt).removeSchueler(s);
+            jahrgang.getKlasse(klasseNeu).addSchueler(s);
+
+            jahrgang.gruppenRemove(s);
+            jahrgang.gruppenAdd(s);
+//        jahrgang.religionsgruppenAdd(s);
+//        jahrgang.sportgruppenAdd(s);
+//        jahrgang.zweiggruppenAdd(s);
+//        jahrgang.sprachengruppenAdd(s);
             gui.klassenAnzeigen();
+        } else // Kein Klassenwechsel, s bleibt in der Gruppe in der er war. Die aktuellen Werte werden
+        // angezeigt.
+        {
+            jahrgang.gruppenAktualisieren(s);
         }
-        jahrgang.religionsgruppenRemove(s);
-        jahrgang.sportgruppenRemove(s);
-        jahrgang.sprachengruppenRemove(s);
-        jahrgang.zweiggruppenRemove(s);
-        jahrgang.religionsgruppenAdd(s);
-        jahrgang.sportgruppenAdd(s);
-        jahrgang.zweiggruppenAdd(s);
-        jahrgang.sprachengruppenAdd(s);
+
         gui.allePanelsAktualisieren();
+
         //Schließt das Fenster
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -4,55 +4,37 @@ package gruppeneinteilung.gui;
  *
  * @author Claus Behl
  */
-import gruppeneinteilung.model.Jahrgang;
 import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.*;
 import static javax.swing.TransferHandler.MOVE;
 
-public class KlassenPanel extends JPanel {
+public class KlassenPanel extends GruppenPanel {
 
-    private final Jahrgang jahrgang;
-    private final Klasse klasse;
     private final String buchstabe;
-    private final String name;
-    private final ArrayList<Student> schueler;
-
-    private final JLabel titel;
-    private String anzeige;
-    private final JList<Student> gruppenListe;
-
     private final JPopupMenu jpopupmenu;
+    private final Klasse klasse;
     private final GUI parent;
 
-    private final DefaultListModel<Student> dlm = new DefaultListModel<>();
-
-    private final DataFlavor studentFlavor;
-
     public KlassenPanel(Klasse k, GUI g) {
+        super(k);
         klasse = k;
-        this.schueler = klasse.getSchueler();
-        this.name = klasse.getTitel();
-        this.jahrgang = klasse.getJahrgang();
+        klasse.addBeobachter(this);
         parent = g;//(GUI) SwingUtilities.getWindowAncestor(this);
+        jahrgang = parent.getAktuellerJahrgang();
         buchstabe = klasse.getBuchstabe();
-        
-        this.studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
 
         setLayout(new java.awt.BorderLayout());
+        
         // Titel
         titel = new JLabel();
-        setzeTitel();
-        //System.out.println(anzeige);
+        aktualisiereTitel();
         add(titel, BorderLayout.NORTH);
 
         //Popupmenu
@@ -94,7 +76,7 @@ public class KlassenPanel extends JPanel {
                 schueler.remove(student);
                 parent.ge.moveStudent(student, student.getJahrgang() + 1);
                 aktualisiereListModel();
-                setzeTitel();
+                aktualisiereTitel();
                 parent.aktualisiereLabelJahrgang();
                 parent.revalidate();
             }
@@ -107,20 +89,12 @@ public class KlassenPanel extends JPanel {
                 schueler.remove(student);
                 parent.ge.moveStudent(student, student.getJahrgang() - 1);
                 aktualisiereListModel();
-                setzeTitel();
+                aktualisiereTitel();
                 parent.aktualisiereLabelJahrgang();
                 parent.revalidate();
             }
         });
 
-        // Listenmodell
-        for (Student student : schueler) {
-            dlm.addElement(student);
-        }
-
-        // JList
-        gruppenListe = new JList<>(dlm);
-        //gruppenListe.setFixedCellWidth(200);
         gruppenListe.setCellRenderer(new KlassenPanel.KlassenCellRenderer());
         //Contextmenu
         gruppenListe.addMouseListener(new MouseAdapter() {
@@ -142,33 +116,23 @@ public class KlassenPanel extends JPanel {
             }
         });// ende MouseAdapter
 
-        //dnd
-        enableDnD();
-
         // JList in Scrollbar
         JScrollPane scrollPane = new JScrollPane(gruppenListe,
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        // Scrollbar ins Panel
+         //Scrollbar ins Panel
         add(scrollPane, BorderLayout.CENTER);
-    }
-
-    public void aktualisiereListModel() {
-        dlm.clear();
-        for (Student student : schueler) {
-            dlm.addElement(student);
-        }
     }
 
     public void enableDnD() {
         gruppenListe.setDragEnabled(true);
         gruppenListe.setDropMode(DropMode.INSERT);
         gruppenListe.setTransferHandler(new TransferHandler() {
-            //Student student;
 
             @Override
-            public int getSourceActions(JComponent c) {
-                return MOVE;
+            public boolean canImport(TransferHandler.TransferSupport info) {
+                
+                return info.isDataFlavorSupported(TransferableStudent.studentFlavor);
             }
 
             @Override
@@ -176,16 +140,36 @@ public class KlassenPanel extends JPanel {
                 JList list = (JList) c;
                 Student student = (Student) list.getSelectedValue();
                 DefaultListModel lm = (DefaultListModel) list.getModel();
-                int index = lm.indexOf(student);
+                //int index = lm.indexOf(student);
                 //System.out.println("Ausgewählt:" + student + " Index: " + index);
 
                 return new TransferableStudent(student);
             }
 
             @Override
-            public boolean canImport(TransferHandler.TransferSupport info) {
+            protected void exportDone(JComponent c, Transferable t, int action) {
+                TransferableStudent ts = (TransferableStudent) t;
+                Student student = ts.getStudent();
+                JList list = (JList) c;
+                DefaultListModel listModel = (DefaultListModel) list.getModel();
+//                System.out.println("ExportDone: mit "+MOVE+" ist gleich ? "+action);
+//                if (action == MOVE) {
+                    listModel.removeElement(student);
+                    klasse.removeSchueler(student);
+                    
+                    jahrgang.religionsgruppenRemove(student);
+                    jahrgang.sportgruppenRemove(student);
+                    jahrgang.sprachengruppenRemove(student);
+                    jahrgang.zweiggruppenRemove(student);
+                    //System.out.println("Remove:" + student);
+                    aktualisiereTitel();
+                    parent.allePanelsAktualisieren();
+               //}
+            }
 
-                return info.isDataFlavorSupported(studentFlavor);
+            @Override
+            public int getSourceActions(JComponent c) {
+                return MOVE;
             }
 
             @Override
@@ -197,8 +181,8 @@ public class KlassenPanel extends JPanel {
                 JList list = (JList) info.getComponent();
 
                 @SuppressWarnings("unchecked")
-                DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
-
+                        DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
+                
                 JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
                 int index = dl.getIndex();
                 boolean insert = dl.isInsert();
@@ -206,30 +190,18 @@ public class KlassenPanel extends JPanel {
                 Transferable t = info.getTransferable();
                 Student student;
                 try {
-                    student = (Student) t.getTransferData(studentFlavor);
+                    student = (Student) t.getTransferData(TransferableStudent.studentFlavor);
                 } catch (Exception e) {
                     return false;
                 }
-
-                // Beim Verschieben wird ein neues StudentenObjekt erzeugt, mit den gleichen Werten
-                // wie das Verschobene. Damit existieren zwei Studentenobjekte mit den gleichen Werten
-                // einmal in der ArrayList Jahrgang.alle und das in der Klasse durch Drop erzeugte.
-                // Wir suchen das zu dem verschobenen Studentenobejekt gehörende Objekt in Jahrgang.alle 
-                // und ersetzen damit das Objekt das durch den Drop-Vorgang erzeugte.
-                for(Student s: jahrgang.gibAlle()){
-                    if(s.istGleich(student)){
-                        student = s;
-                        //System.out.println("Gefunden");
-                        break;
-                    }
-                }
                 if (insert) {
-                    listModel.add(index, student);
                     // Der Schüler bekommt seine Klasse richtig gesetzt
-
                     student.setKlasse(buchstabe);
+                    listModel.add(index, student);
+                    
                     schueler.add(index, student);
-                    setzeTitel();
+                    aktualisiereTitel();
+                    
                     //AktualisiereGruppenzugehörigkeit
                     jahrgang.religionsgruppenAdd(student);
                     jahrgang.sportgruppenAdd(student);
@@ -240,36 +212,8 @@ public class KlassenPanel extends JPanel {
                 return true;
             }
 
-            @Override
-            protected void exportDone(JComponent c, Transferable t, int action) {
-                TransferableStudent ts = (TransferableStudent) t;
-                Student student = ts.getStudent();
-                JList list = (JList) c;
-                DefaultListModel listModel = (DefaultListModel) list.getModel();
-
-                if (action == MOVE) {
-                    listModel.removeElement(student);
-                    schueler.remove(student);
-                    jahrgang.religionsgruppenRemove(student);
-                    jahrgang.sportgruppenRemove(student);
-                    jahrgang.sprachengruppenRemove(student);
-                    jahrgang.zweiggruppenRemove(student);
-                    //System.out.println("Remove:" + student);
-                    setzeTitel();
-                }
-            }
-
         }); /*  Ende der Definition des TransferHandler  */
 
-    }
-
-    public int getAnzahlSchueler() {
-        return schueler.size();
-    }
-
-    private void setzeTitel() {
-        anzeige = name + schueler.size() + " Schüler";
-        titel.setText(anzeige);
     }
 
     static class KlassenCellRenderer extends DefaultListCellRenderer {
@@ -309,6 +253,7 @@ public class KlassenPanel extends JPanel {
                     + s.getFs3() + " "
                     + s.getFs4() + " "
                     + s.getBemerkung()
+//                    + '@' + Integer.toHexString(s.hashCode())
             ); //s.getKlasse()+" "+
             return l;
         }

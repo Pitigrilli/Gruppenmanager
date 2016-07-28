@@ -10,6 +10,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +21,17 @@ public class TransferableStudent implements Transferable {
 
     Student student;
 
-    DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
+    public static DataFlavor studentFlavor;
+    static {
+        try {
+            //studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName()); // Mit Serialisierung
+            studentFlavor = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType //ohne Serialisierung
+                    + ";class=gruppeneinteilung.model.Student");
+        } catch (ClassNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, "ClassNotFoundException");
+        }
+    }
+    
     
     TransferableStudent(Student student) {
         this.student = student;

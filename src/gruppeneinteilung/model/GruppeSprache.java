@@ -20,11 +20,10 @@ public class GruppeSprache extends SortierbareGruppe implements Serializable {
     private String fremdsprache;
     private String[] klassen;
     private int wievielteSprache; // die wievielte Fremdsprache ist es
-    private int zahl;
+
     //private  ArrayList<Student> schueler; wird gerbt
 
-    public GruppeSprache(int z, Jahrgang j, String r, int w) {
-        zahl = z;
+    public GruppeSprache(Jahrgang j, String r, int w) {
         jahrgang = j;
         schueler = new ArrayList<>();
         fremdsprache = r;
@@ -32,29 +31,8 @@ public class GruppeSprache extends SortierbareGruppe implements Serializable {
         wievielteSprache = w;
     }
 
-    public void studentHinzufuegen(Student s) {
-        schueler.add(s);
-    }
-
-    public Student studentEntfernen(Student s) {
-        schueler.remove(s);
-        return s;
-    }
-
     public int getFremdsprachengroesse() {
         return schueler.size();
-    }
-
-    public int getZahl() {
-        return zahl;
-    }
-
-    public Jahrgang getJahrgang() {
-        return jahrgang;
-    }
-
-    public ArrayList<Student> getSchueler() {
-        return schueler;
     }
 
     public String getSprache() {

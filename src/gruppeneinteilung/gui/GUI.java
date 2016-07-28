@@ -36,6 +36,9 @@ public class GUI extends javax.swing.JFrame {
 
     public Gruppeneinteilung ge;
     private Jahrgang aktuellerJahrgang;
+
+    
+
     private File file;
     private EinstellungFrameSprachen einstellungFrameSprachen;
     private EinstellungFrameReligion einstellungFrameReligion;
@@ -387,43 +390,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jPanelKlassen.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelKlassenFocusGained(evt);
-            }
-        });
         jPanelKlassen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Klassen", jPanelKlassen);
 
-        jPanelSprachen.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelSprachenFocusGained(evt);
-            }
-        });
         jPanelSprachen.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Sprachengruppen", jPanelSprachen);
 
-        jPanelReligion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelReligionFocusGained(evt);
-            }
-        });
         jPanelReligion.setLayout(new java.awt.GridLayout(1, 8));
         jTabbedPane1.addTab("Religionsgruppen", jPanelReligion);
 
-        jPanelSport.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelSportFocusGained(evt);
-            }
-        });
         jPanelSport.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Sportgruppen", jPanelSport);
 
-        jPanelZweig.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanelZweigFocusGained(evt);
-            }
-        });
         jPanelZweig.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Zweiggruppen", jPanelZweig);
 
@@ -599,7 +577,7 @@ public class GUI extends javax.swing.JFrame {
         this.jComboBoxSortierung.setSelectedIndex(0);
         String z = jComboBoxJahrgang.getSelectedItem().toString();
         if (z.equals("Jahrgang wählen")) {
-           this.einstellungenZuruecksetzen();
+            this.einstellungenZuruecksetzen();
         }
     }//GEN-LAST:event_jComboBoxJahrgangActionPerformed
 
@@ -607,22 +585,22 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String sortierung = jComboBoxSortierung.getSelectedItem().toString();
         ArrayList gruppen = null;
-        if(aktuellerJahrgang!=null){
-        if (selectedTab.equals("Klassen")) {
-            gruppen = aktuellerJahrgang.getKlassen();
-        } else if (selectedTab.equals("Sprachen")) {
-            gruppen = aktuellerJahrgang.getSprachengruppen();
-        } else if (selectedTab.equals("Religion")) {
-            gruppen = aktuellerJahrgang.getReligionsgruppen();
-        } else if (selectedTab.equals("Sport")) {
-            gruppen = aktuellerJahrgang.getSportgruppen();
-        } else if (selectedTab.equals("Zweig")) {
-            gruppen = aktuellerJahrgang.getZweiggruppen();
+        if (aktuellerJahrgang != null) {
+            if (selectedTab.equals("Klassen")) {
+                gruppen = aktuellerJahrgang.getKlassen();
+            } else if (selectedTab.equals("Sprachen")) {
+                gruppen = aktuellerJahrgang.getSprachengruppen();
+            } else if (selectedTab.equals("Religion")) {
+                gruppen = aktuellerJahrgang.getReligionsgruppen();
+            } else if (selectedTab.equals("Sport")) {
+                gruppen = aktuellerJahrgang.getSportgruppen();
+            } else if (selectedTab.equals("Zweig")) {
+                gruppen = aktuellerJahrgang.getZweiggruppen();
+            }
         }
-        }
-        if(gruppen!=null)
-        for (Object o : gruppen) {
-            SortierbareGruppe sg = (SortierbareGruppe) o;
+        if (gruppen != null) {
+            for (Object o : gruppen) {
+                SortierbareGruppe sg = (SortierbareGruppe) o;
                 switch (sortierung) {
                     case "Alphabetisch":
                         sg.sortierenName();
@@ -641,6 +619,7 @@ public class GUI extends javax.swing.JFrame {
                         break;
                 }
             }
+        }
 
 //        Component[] comps = jPanelKlassen.getComponents();
 //        for (Component comp : comps) {
@@ -756,7 +735,7 @@ public class GUI extends javax.swing.JFrame {
 
         if (aktWert == anzahlKlassenPanel + 1) {
             String neuBuchstabeKlasse = "";
-            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl()+1);
+            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl() + 1);
             switch (aktWert) {
                 case 1:
                     neuBuchstabeKlasse = "a";
@@ -790,7 +769,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
         } else if (aktWert == anzahlKlassenPanel - 1) {
-            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl()-1);
+            aktuellerJahrgang.setKlassenanzahl(aktuellerJahrgang.getKlassenanzahl() - 1);
             int indexLetztesPanel = jPanelKlassen.getComponentCount() - 1;
             KlassenPanel gp = (KlassenPanel) jPanelKlassen.getComponent(indexLetztesPanel);
             if (gp.getAnzahlSchueler() > 0) {
@@ -803,7 +782,7 @@ public class GUI extends javax.swing.JFrame {
             jPanelKlassen.revalidate();
             jPanelKlassen.repaint();
         }
- 
+
 
     }//GEN-LAST:event_jSpinnerAnzahlKlassenStateChanged
 
@@ -889,19 +868,19 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonAnsichtDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnsichtDruckenActionPerformed
         PrintPDF printPdf = new PrintPDF(ge);
-        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
-        Jahrgang j = ge.getJahrgang(n);
+//        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+//        Jahrgang j = ge.getJahrgang(n);
 
         if (selectedTab.equals("Klassen")) {
-            printPdf.druckeKlassen(j);
+            printPdf.druckeKlassen(aktuellerJahrgang);
         } else if (selectedTab.equals("Sprachen")) {
-            printPdf.druckeFremdsprachenGruppe(j);
+            printPdf.druckeFremdsprachenGruppe(aktuellerJahrgang);
         } else if (selectedTab.equals("Religion")) {
-            printPdf.druckeReligionsGruppe(j);
+            printPdf.druckeReligionsGruppe(aktuellerJahrgang);
         } else if (selectedTab.equals("Sport")) {
-            printPdf.druckeSportGruppe(j);
+            printPdf.druckeSportGruppe(aktuellerJahrgang);
         } else if (selectedTab.equals("Zweig")) {
-            printPdf.druckeZweigGruppe(j);
+            printPdf.druckeZweigGruppe(aktuellerJahrgang);
         }
 
     }//GEN-LAST:event_jButtonAnsichtDruckenActionPerformed
@@ -991,26 +970,6 @@ public class GUI extends javax.swing.JFrame {
         Jahrgang j = ge.getJahrgang(n);
         printPdf.druckeZweigGruppe(j);
     }//GEN-LAST:event_jMenuItemZweigGruppenDruckenActionPerformed
-
-    private void jPanelSportFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSportFocusGained
-        selectedTab = "Sport";
-    }//GEN-LAST:event_jPanelSportFocusGained
-
-    private void jPanelKlassenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelKlassenFocusGained
-        selectedTab = "Klassen";
-    }//GEN-LAST:event_jPanelKlassenFocusGained
-
-    private void jPanelSprachenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelSprachenFocusGained
-        selectedTab = "Sprachen";
-    }//GEN-LAST:event_jPanelSprachenFocusGained
-
-    private void jPanelReligionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelReligionFocusGained
-        selectedTab = "Religion";
-    }//GEN-LAST:event_jPanelReligionFocusGained
-
-    private void jPanelZweigFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelZweigFocusGained
-        selectedTab = "Religion";
-    }//GEN-LAST:event_jPanelZweigFocusGained
 
     private void jMenuItemAnleitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAnleitungActionPerformed
 
@@ -1188,7 +1147,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void evalueteJahrgangsAuswahl() {
-   //     this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
+        //     this.jComboBoxSortierung.setSelectedItem("Sortierung wählen");
         String auswahl = jComboBoxJahrgang.getSelectedItem().toString();
         int n;
         try {
@@ -1338,11 +1297,12 @@ public class GUI extends javax.swing.JFrame {
 
     public void klassenAnzeigen() {
         jPanelKlassen.removeAll();
-        if(aktuellerJahrgang!=null)
-        for (Klasse k : aktuellerJahrgang.getKlassen()) {
-            if (k.getKlassengroesse() > 0) {
-                KlassenPanel gp = new KlassenPanel(k, this);
-                jPanelKlassen.add(gp);
+        if (aktuellerJahrgang != null) {
+            for (Klasse k : aktuellerJahrgang.getKlassen()) {
+                if (k.getKlassengroesse() > 0) {
+                    KlassenPanel gp = new KlassenPanel(k, this);
+                    jPanelKlassen.add(gp);
+                }
             }
         }
         jPanelKlassen.revalidate();
@@ -1351,9 +1311,10 @@ public class GUI extends javax.swing.JFrame {
 
     public void sportgruppenAnzeigen() {
         jPanelSport.removeAll();
-        if(aktuellerJahrgang!=null)
-        for (GruppeSport s : aktuellerJahrgang.getSportgruppen()) {
-            jPanelSport.add(new GruppenPanel(s));
+        if (aktuellerJahrgang != null) {
+            for (GruppeSport s : aktuellerJahrgang.getSportgruppen()) {
+                jPanelSport.add(new GruppenPanel(s));
+            }
         }
         jPanelSport.revalidate();
         jPanelSport.repaint();
@@ -1362,9 +1323,11 @@ public class GUI extends javax.swing.JFrame {
     public void religionsgruppenAnzeigen() {
 
         jPanelReligion.removeAll();
-        if(aktuellerJahrgang!=null)
-        for (GruppeReligion r : aktuellerJahrgang.getReligionsgruppen()) {
-            jPanelReligion.add(new GruppenPanel(r));
+        if (aktuellerJahrgang != null) {
+            for (GruppeReligion r : aktuellerJahrgang.getReligionsgruppen()) {
+                System.out.println("RG: " + r);
+                jPanelReligion.add(new GruppenPanel(r));
+            }
         }
         jPanelReligion.revalidate();
         jPanelReligion.repaint();
@@ -1372,9 +1335,10 @@ public class GUI extends javax.swing.JFrame {
 
     public void zweiggruppenAnzeigen() {
         jPanelZweig.removeAll();
-        if(aktuellerJahrgang!=null)
-        for (GruppeZweig zg : aktuellerJahrgang.getZweiggruppen()) {
-            jPanelZweig.add(new GruppenPanel(zg));
+        if (aktuellerJahrgang != null) {
+            for (GruppeZweig zg : aktuellerJahrgang.getZweiggruppen()) {
+                jPanelZweig.add(new GruppenPanel(zg));
+            }
         }
         jPanelZweig.revalidate();
         jPanelZweig.repaint();
@@ -1382,9 +1346,10 @@ public class GUI extends javax.swing.JFrame {
 
     public void sprachengruppenAnzeigen() {
         jPanelSprachen.removeAll();
-        if(aktuellerJahrgang!=null)
-        for (GruppeSprache f : aktuellerJahrgang.getSprachengruppen()) {
-            jPanelSprachen.add(new GruppenPanel(f));
+        if (aktuellerJahrgang != null) {
+            for (GruppeSprache f : aktuellerJahrgang.getSprachengruppen()) {
+                jPanelSprachen.add(new GruppenPanel(f));
+            }
         }
         jPanelSprachen.revalidate();
         jPanelSprachen.repaint();
@@ -1444,11 +1409,24 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void allePanelsAktualisieren() {
+        for (Object o : this.jTabbedPane1.getComponents()) {
+            JPanel panel = (JPanel) o;
+            for (Object q : panel.getComponents()) {
+                if (q instanceof GruppenPanel) {
+                    GruppenPanel gp = (GruppenPanel) q;
+                    gp.aktualisiereListModel();
+                }
+            }
+        }
         klassenAnzeigen();
         religionsgruppenAnzeigen();
         sportgruppenAnzeigen();
         sprachengruppenAnzeigen();
         zweiggruppenAnzeigen();
+    }
+    
+    public Jahrgang getAktuellerJahrgang() {
+        return aktuellerJahrgang;
     }
 
 }

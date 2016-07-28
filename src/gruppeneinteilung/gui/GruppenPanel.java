@@ -5,46 +5,42 @@ package gruppeneinteilung.gui;
  * @author Claus Behl
  */
 import gruppeneinteilung.model.Jahrgang;
-import gruppeneinteilung.model.Klasse;
 import gruppeneinteilung.model.SortierbareGruppe;
 import gruppeneinteilung.model.Student;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class GruppenPanel extends JPanel {
+public class GruppenPanel extends JPanel   {
 
     String anzeige;
-    SortierbareGruppe gruppe;
-    Jahrgang jahrgang;
-    ArrayList<Student> schuelerListe;
-    JLabel titel;
-    JList<Student> gruppenListe;
-    DataFlavor studentFlavor = new DataFlavor(Student.class, Student.class.getSimpleName());
     DefaultListModel<Student> dlm = new DefaultListModel<>();
+    SortierbareGruppe gruppe;
+    JList<Student> gruppenListe;
+    Jahrgang jahrgang;
+    ArrayList<Student> schueler;
+    JLabel titel;
 
     public GruppenPanel(SortierbareGruppe gruppe) {
         this.gruppe = gruppe;
+        gruppe.addBeobachter(this);
         jahrgang = gruppe.getJahrgang();
         gruppe.aktualisiereKlassen();
-        this.schuelerListe = gruppe.getSchueler();
-        this.anzeige = gruppe.getTitel() + schuelerListe.size() + " Schüler";
+        this.schueler = gruppe.getSchueler();
+        this.anzeige = gruppe.getTitel() + schueler.size() + " Schüler";
 
         setLayout(new java.awt.BorderLayout());
+        
         // Titel
         titel = new JLabel(anzeige);
         add(titel, BorderLayout.NORTH);
 
         // Listenmodell
-        for (Student student : schuelerListe) {
+        for (Student student : schueler) {
             dlm.addElement(student);
         }
 
@@ -66,33 +62,114 @@ public class GruppenPanel extends JPanel {
 
     public void aktualisiereListModel() {
         dlm.clear();
-        for (Student student : schuelerListe) {
+        for (Student student : schueler) {
             dlm.addElement(student);
         }
     }
 
-    public int getAnzahlSchueler() {
-        return schuelerListe.size();
-    }
-
-    private void aktualisiereTitel() {
-        anzeige = gruppe.getTitel() + schuelerListe.size() + " Schüler";
+    protected void aktualisiereTitel() {
+        anzeige = gruppe.getTitel() + getAnzahlSchueler() + " Schüler";
         titel.setText(anzeige);
     }
+    
+   public void enableDnD() {
+        gruppenListe.setDragEnabled(true);
+        gruppenListe.setDropMode(DropMode.INSERT);
+        gruppenListe.setTransferHandler(new TransferHandler() {
 
+            @Override
+            public boolean canImport(TransferHandler.TransferSupport info) {
+                
+                return info.isDataFlavorSupported(TransferableStudent.studentFlavor);
+            }
+
+            @Override
+            protected Transferable createTransferable(JComponent c) {
+                JList list = (JList) c;
+                Student student = (Student) list.getSelectedValue();
+                DefaultListModel lm = (DefaultListModel) list.getModel();
+                return new TransferableStudent(student);
+            }
+
+            @Override
+            protected void exportDone(JComponent c, Transferable t, int action) {
+                TransferableStudent ts = (TransferableStudent) t;
+                Student student = ts.getStudent();
+                JList list = (JList) c;
+                DefaultListModel listModel = (DefaultListModel) list.getModel();
+
+                if (action == MOVE) {
+                    listModel.removeElement(student);
+                    schueler.remove(student);
+                    jahrgang.religionsgruppenRemove(student);
+                    jahrgang.sportgruppenRemove(student);
+                    jahrgang.sprachengruppenRemove(student);
+                    jahrgang.zweiggruppenRemove(student);
+                    gruppe.aktualisiereKlassen();
+                aktualisiereTitel();
+                }
+
+                
+            }
+            
+            @Override
+            public int getSourceActions(JComponent c) {
+                return MOVE;
+            }
+
+            @Override
+            public boolean importData(TransferHandler.TransferSupport info) {
+                if (!info.isDrop()) {
+                    return false;
+                }
+
+                JList list = (JList) info.getComponent();
+
+                @SuppressWarnings("unchecked")
+                        DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
+                
+                JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
+                int index = dl.getIndex();
+                boolean insert = dl.isInsert();
+
+                Transferable t = info.getTransferable();
+                Student student;
+                try {
+                    student = (Student) t.getTransferData(TransferableStudent.studentFlavor);
+                } catch (Exception e) {
+                    return false;
+                }
+                if (insert) {
+                    listModel.add(index, student);
+                    schueler.add(index, student);
+                }
+                gruppe.aktualisiereKlassen();
+                aktualisiereTitel();
+                return true;
+            }
+
+        });
+        /*  Ende der Definition des TransferHandler  */
+       
+    }
+    
+    public int getAnzahlSchueler() {
+        return gruppe.getSchueler().size();
+    }
+    
     static class GruppenCellRenderer extends DefaultListCellRenderer {
-
+        
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-
+            
             if (isSelected) {
                 this.setBackground(Color.LIGHT_GRAY);
             } else {
                 c.setBackground(Color.white);
-
+                
             }
-
+            
             Student s = (Student) value;
             switch (s.getKlasse()) {
                 case "a":
@@ -122,102 +199,15 @@ public class GruppenPanel extends JPanel {
             }
             JLabel l = (JLabel) c;
             l.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.black));
-            l.setText(s.getKlasse() + " " + s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4()); //s.getKlasse()+" "+
+            l.setText(s.getKlasse() + " " + s.getName()
+                    + " " + s.getGeschlecht() + " " + s.getZweig() + " " +
+                    s.getReligion() + " " + s.getFs2() + " " + s.getFs3() + " " + 
+                    s.getFs4()+" "+s.getBemerkung()
+//                    + '@' + Integer.toHexString(s.hashCode())
+            ); //s.getKlasse()+" "+; //s.getKlasse()+" "+
+            
             return l;
         }
-    }
-
-    public void enableDnD() {
-        gruppenListe.setDragEnabled(true);
-        gruppenListe.setTransferHandler(new TransferHandler() {
-            //Student student;
-
-            @Override
-            public int getSourceActions(JComponent c) {
-                return MOVE;
-            }
-
-            @Override
-            protected Transferable createTransferable(JComponent c) {
-                JList list = (JList) c;
-                Student student = (Student) list.getSelectedValue();
-                DefaultListModel lm = (DefaultListModel) list.getModel();
-                int index = lm.indexOf(student);
-                //System.out.println("Ausgewählt:"+student+" Index: "+index);
-
-                return new TransferableStudent(student);
-            }
-
-            @Override
-            protected void exportDone(JComponent c, Transferable t, int action) {
-                TransferableStudent ts = (TransferableStudent) t;
-                Student student = ts.getStudent();
-                JList list = (JList) c;
-                DefaultListModel listModel = (DefaultListModel) list.getModel();
-
-                if (action == MOVE) {
-                    listModel.removeElement(student);
-                    schuelerListe.remove(student);
-                }
-
-                gruppe.aktualisiereKlassen();
-                aktualisiereTitel();
-            }
-
-            @Override
-            public boolean canImport(TransferHandler.TransferSupport info) {
-
-                return info.isDataFlavorSupported(studentFlavor);
-            }
-
-            @Override
-            public boolean importData(TransferHandler.TransferSupport info) {
-                if (!info.isDrop()) {
-                    return false;
-                }
-
-                JList list = (JList) info.getComponent();
-
-                @SuppressWarnings("unchecked")
-                DefaultListModel<Student> listModel = (DefaultListModel<Student>) list.getModel();
-
-                JList.DropLocation dl = (JList.DropLocation) info.getDropLocation();
-                int index = dl.getIndex();
-                boolean insert = dl.isInsert();
-
-                Transferable t = info.getTransferable();
-                Student student;
-                try {
-                    student = (Student) t.getTransferData(studentFlavor);
-                } catch (Exception e) {
-                    return false;
-                }
-     // Beim Verschieben wird ein neues StudentenObjekt erzeugt, mit den gleichen Werten
-                // wie das Verschobene. Damit existieren zwei Studentenobjekte mit den gleichen Werten
-                // einmal in der ArrayList Jahrgang.alle und das in der Klasse durch Drop erzeugte.
-                // Wir suchen das zu dem verschobenen Studentenobejekt gehörende Objekt in Jahrgang.alle 
-                // und ersetzen damit das Objekt das durch den Drop-Vorgang erzeugte.
-                for(Student s: jahrgang.gibAlle()){
-                    if(s.istGleich(student)){
-                        student = s;
-                        //System.out.println("Gefunden");
-                        break;
-                    }
-                }
-                //System.out.println("Drop:"+student);
-                if (insert) {
-                    listModel.add(index, student);
-                    schuelerListe.add(index, student);
-                }
-                gruppe.aktualisiereKlassen();
-                aktualisiereTitel();
-                return true;
-            }
-
-        });
-        /*  Ende der Definition des TransferHandler  */
-        gruppenListe.setDropMode(DropMode.INSERT);
-
     }
 
 }

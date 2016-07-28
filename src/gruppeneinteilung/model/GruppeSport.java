@@ -8,8 +8,6 @@ package gruppeneinteilung.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,37 +18,17 @@ public class GruppeSport extends SortierbareGruppe implements Serializable {
 
     private String geschlecht;
     private String[] klassen;
-    private int zahl;
     private final Jahrgang jahrgang;
-    //private final ArrayList<Student> schueler;
 
-    public GruppeSport(int z, Jahrgang j, String g) {
-        zahl = z;
+    public GruppeSport( Jahrgang j, String g) {
         jahrgang = j;
         schueler = new ArrayList<>();
         geschlecht = g;
         klassen = new String[8];
     }
 
-    public void studentHinzufuegen(Student s) {
-        schueler.add(s);
-    }
-
-    public Student studentEntfernen(Student s) {
-        schueler.remove(s);
-        return s;
-    }
-
     public int getSportgroesse() {
         return schueler.size();
-    }
-
-    public Jahrgang getJahrgang() {
-        return jahrgang;
-    }
-
-    public ArrayList<Student> getSchueler() {
-        return schueler;
     }
 
     public String getGeschlecht() {
@@ -68,10 +46,6 @@ public class GruppeSport extends SortierbareGruppe implements Serializable {
 
     public void setGeschlecht(String geschlecht) {
         this.geschlecht = geschlecht;
-    }
-
-    public int getZahl() {
-        return zahl;
     }
 
     public String[] getKlassen() {
