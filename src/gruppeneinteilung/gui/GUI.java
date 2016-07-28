@@ -823,23 +823,23 @@ public class GUI extends javax.swing.JFrame {
             switch (i) {
                 case 0:
                     selectedTab = "Klassen";
-                    klassenAnzeigen();
+                   // klassenAnzeigen();
                     break;
                 case 1:
                     selectedTab = "Sprachen";
-                    sprachengruppenAnzeigen();
+                   // sprachengruppenAnzeigen();
                     break;
                 case 2:
                     selectedTab = "Religion";
-                    religionsgruppenAnzeigen();
+                   // religionsgruppenAnzeigen();
                     break;
                 case 3:
                     selectedTab = "Sport";
-                    sportgruppenAnzeigen();
+                   // sportgruppenAnzeigen();
                     break;
                 case 4:
                     selectedTab = "Zweig";
-                    zweiggruppenAnzeigen();
+                   // zweiggruppenAnzeigen();
                     break;
             }
             System.out.println("Selected: " + selectedTab);
@@ -1325,8 +1325,8 @@ public class GUI extends javax.swing.JFrame {
         jPanelReligion.removeAll();
         if (aktuellerJahrgang != null) {
             for (GruppeReligion r : aktuellerJahrgang.getReligionsgruppen()) {
-                System.out.println("RG: " + r);
-                jPanelReligion.add(new GruppenPanel(r));
+                GruppenPanel gp = new GruppenPanel(r);
+                jPanelReligion.add(gp);
             }
         }
         jPanelReligion.revalidate();

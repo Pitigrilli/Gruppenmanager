@@ -265,6 +265,8 @@ public class StudentEditFrame extends javax.swing.JFrame {
         // angezeigt.
         {
             jahrgang.gruppenAktualisieren(s);
+            jahrgang.gruppenRemove(s);
+            jahrgang.gruppenAdd(s);
         }
 
         gui.allePanelsAktualisieren();

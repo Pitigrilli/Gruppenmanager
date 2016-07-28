@@ -101,10 +101,12 @@ public class GruppenPanel extends JPanel   {
                 if (action == MOVE) {
                     listModel.removeElement(student);
                     schueler.remove(student);
-                    jahrgang.religionsgruppenRemove(student);
-                    jahrgang.sportgruppenRemove(student);
-                    jahrgang.sprachengruppenRemove(student);
-                    jahrgang.zweiggruppenRemove(student);
+                    
+                    //AktualisiereGruppenzugehörigkeit
+                    
+                    aktualisiereTitel();
+                    //parent.allePanelsAktualisieren();//AktualisiereGruppenzugehörigkeit
+
                     gruppe.aktualisiereKlassen();
                 aktualisiereTitel();
                 }

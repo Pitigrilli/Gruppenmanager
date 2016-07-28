@@ -162,6 +162,11 @@ public class KlassenPanel extends GruppenPanel {
                     jahrgang.sprachengruppenRemove(student);
                     jahrgang.zweiggruppenRemove(student);
                     //System.out.println("Remove:" + student);
+                    //AktualisiereGruppenzugehörigkeit
+                    jahrgang.religionsgruppenAdd(student);
+                    jahrgang.sportgruppenAdd(student);
+                    jahrgang.zweiggruppenAdd(student);
+                    jahrgang.sprachengruppenAdd(student);
                     aktualisiereTitel();
                     parent.allePanelsAktualisieren();
                //}
@@ -202,11 +207,7 @@ public class KlassenPanel extends GruppenPanel {
                     schueler.add(index, student);
                     aktualisiereTitel();
                     
-                    //AktualisiereGruppenzugehörigkeit
-                    jahrgang.religionsgruppenAdd(student);
-                    jahrgang.sportgruppenAdd(student);
-                    jahrgang.zweiggruppenAdd(student);
-                    jahrgang.sprachengruppenAdd(student);
+                    
                 }
 
                 return true;
