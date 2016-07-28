@@ -323,7 +323,7 @@ public class Jahrgang implements Serializable {
             List<String> klassenList = Arrays.asList(klassenBuchstaben);
 
             if (klassenList.contains(student.getKlasse()) && student.getReligion().equals(aktuelleRG.getReligion())) {
-                System.out.println(aktuelleRG.getTitel() + aktuelleRG + " Student: " + student);
+                System.out.println(aktuelleRG.getTitel() + aktuelleRG + " Add Student: " + student);
                 aktuelleRG.addSchueler(student);
                 break;
             }
@@ -401,7 +401,12 @@ public class Jahrgang implements Serializable {
 
                 }
             }
-            aktuelleGruppe.removeSchueler(removableStudent);
+            if(removableStudent!=null){
+                System.out.println(aktuelleGruppe.getTitel() + aktuelleGruppe + " Remove Student: " + student);
+                aktuelleGruppe.removeSchueler(removableStudent);
+                
+            }
+            
 
         }
 
