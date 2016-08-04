@@ -108,6 +108,19 @@ public class PrintPDF {
         }
         druckBeenden();
     }
+    
+        public void druckeKlassenNurNamen(Jahrgang j) {
+
+        dateiname = j.getJahrgang() + ".Klassen";
+        druckVorbereiten(dateiname);
+        try {
+            addMetaData(document);
+            klassenDruckenNurNamen(j);
+        } catch (DocumentException e) {
+            System.out.println("Fehler beim Hinzufügen des Inhalts");
+        }
+        druckBeenden();
+    }
 
     public void druckeZweigGruppe(Jahrgang j) {    //druckt den Ã¼bergebenen Jahrgang erwartet einen Jahrgang und einen String fÃ¼r PDF 
         if (j.getZweiggruppenzahl() == 0) {
@@ -331,6 +344,27 @@ public class PrintPDF {
         document.newPage();
 
     }
+    
+    private void klassenDruckenNurNamen(Jahrgang j) throws DocumentException {
+
+        Paragraph preface = new Paragraph();
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph(j.getJahrgang() + ". Klassen", smallBold));
+        addEmptyLine(preface, 1);
+        document.add(preface);
+
+        Paragraph tabelle = new Paragraph();
+        createTableKlassenNurNamen(tabelle, j);
+        document.add(tabelle);
+
+        Paragraph bottom = new Paragraph();
+        addEmptyLine(bottom, 1);
+        bottom.add(new Paragraph("" + new Date(), Fußnote));
+        document.add(bottom);
+        // Start a new page
+        document.newPage();
+
+    }
 
     private void createTableReligionGruppe(Paragraph newTable, Jahrgang j)
             throws BadElementException, DocumentException {
@@ -452,7 +486,7 @@ public class PrintPDF {
 
         Jahrgang aktuellerJahrgang = j;
         int n = aktuellerJahrgang.getKlassenanzahl();
-        System.out.println(n);
+        //System.out.println(n);
 
         PdfPTable table = new PdfPTable(n); // Spaltenanzahl
         table.setWidthPercentage(100f);
@@ -464,22 +498,8 @@ public class PrintPDF {
                     tableHeadFont));
 
             for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
-
-                switch (s.getReligion()) {
-                    case "RK":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFontRot));
-                        break;
-                    case "EV":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFontGruen));
-                        break;
-                    case "ETH":
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFontBlau));
-                        break;
-
-                    default:
-                        tableI.addCell(new Phrase((s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung()), tableFontBlack));
-                }
-
+                Phrase phrase = phraseStudentAll(s);
+                tableI.addCell(phrase);
             }
 
             table.addCell(tableI);
@@ -489,7 +509,62 @@ public class PrintPDF {
         newTable.add(table);
 
     }
+    
+        private void createTableKlassenNurNamen(Paragraph newTable, Jahrgang j)
+            throws BadElementException, DocumentException {
 
+        Jahrgang aktuellerJahrgang = j;
+        int n = aktuellerJahrgang.getKlassenanzahl();
+        //System.out.println(n);
+
+        PdfPTable table = new PdfPTable(n); // Spaltenanzahl
+        table.setWidthPercentage(100f);
+
+        for (int i = 0; i < n; i++) {
+            PdfPTable tableI = new PdfPTable(1);
+            tableI.setHeaderRows(1);
+            tableI.addCell(new Phrase(aktuellerJahrgang.getJahrgang() + aktuellerJahrgang.getKlassen().get(i).getBuchstabe() + "  Anzahl: " + aktuellerJahrgang.getKlassen().get(i).getKlassengroesse(),
+                    tableHeadFont));
+
+            for (Student s : aktuellerJahrgang.getKlassen().get(i).getSchueler()) {
+                Phrase phrase = phraseStudentNurNamen(s);
+                tableI.addCell(phrase);
+            }
+
+            table.addCell(tableI);
+        }
+
+        table.addCell("1.1");
+        newTable.add(table);
+
+    }
+    
+    public Phrase phraseStudentAll(Student s){
+        Phrase phrase;
+        phrase = new Phrase(s.getName() + " " + s.getGeschlecht() + " " + s.getZweig() + " " + s.getFs2() + " " + s.getFs3() + " " + s.getFs4() + " " + s.getReligion() + " " + s.getBemerkung(), getColorForReligion(s));
+        return phrase;
+    }
+    
+      public Phrase phraseStudentNurNamen(Student s){
+        Phrase phrase;
+        phrase = new Phrase(s.getName() , getColorForReligion(s));
+        return phrase;
+    }
+
+    private Font getColorForReligion(Student s){
+        Font font ;
+        switch (s.getReligion()) {
+                    case "RK": font = tableFontRot;
+                        break;
+                    case "EV": font = tableFontGruen;
+                        break;
+                    case "ETH": font = tableFontBlau;
+                        break;
+                    default: font = tableFontBlack;
+                }
+        return font;
+        
+    }
     private Font getColorForClass(Student s) {
         Font font = tableFontBlack;
         switch (s.getKlasse()) {

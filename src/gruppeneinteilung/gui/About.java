@@ -41,7 +41,7 @@ public class About extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Das Programm Gruppenmanager wurde von der Q11\nund Q12 des Jack Steinberger Gymnasium unter der \nLeitung von Claus Behl als Softwareprojekt in der \n11. Jahrgangsstufe geschrieben.\nBeteiligte Schüler waren Tim-Jonathan Heske, Michael\nLose, Fabian Müller, Philipp Krapf, Lennard Zimmer, \nFabian Röder, Florian Meyer, Yannik Bauer, Laurenz \nLutz, Fabian Großmann, Christian Schwindt, Rene Floth \nund Jan Brettschneider.");
+        jTextArea1.setText("Version 0.4.1\nDas Programm Gruppenmanager wurde von der Q11\nund Q12 des Jack Steinberger Gymnasium unter der \nLeitung von Claus Behl als Softwareprojekt in der \n11. Jahrgangsstufe geschrieben.\nBeteiligte Schüler waren Tim-Jonathan Heske, Michael\nLose, Fabian Müller, Philipp Krapf, Lennard Zimmer, \nFabian Röder, Florian Meyer, Yannik Bauer, Laurenz \nLutz, Fabian Großmann, Christian Schwindt, Rene Floth \nund Jan Brettschneider.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

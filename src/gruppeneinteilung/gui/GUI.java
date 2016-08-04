@@ -114,6 +114,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuItemAllesDrucken = new javax.swing.JMenuItem();
         jMenuItemJahrgangDrucken = new javax.swing.JMenuItem();
         jMenuItemKlassenDrucken = new javax.swing.JMenuItem();
+        jMenuItemKlassenDruckenNurNamen = new javax.swing.JMenuItem();
         jMenuItemFremdsprachenGruppenDrucken = new javax.swing.JMenuItem();
         jMenuItemReligionsGruppenDrucken = new javax.swing.JMenuItem();
         jMenuItemSportGruppenDrucken = new javax.swing.JMenuItem();
@@ -490,6 +491,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMenuDrucken.add(jMenuItemKlassenDrucken);
+
+        jMenuItemKlassenDruckenNurNamen.setText("Klassen drucken (Nur Namen)");
+        jMenuItemKlassenDruckenNurNamen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemKlassenDruckenNurNamenActionPerformed(evt);
+            }
+        });
+        jMenuDrucken.add(jMenuItemKlassenDruckenNurNamen);
 
         jMenuItemFremdsprachenGruppenDrucken.setText("Fremdsprachengruppen drucken");
         jMenuItemFremdsprachenGruppenDrucken.addActionListener(new java.awt.event.ActionListener() {
@@ -988,6 +997,14 @@ public class GUI extends javax.swing.JFrame {
         about.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItemKlassenDruckenNurNamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemKlassenDruckenNurNamenActionPerformed
+        // TODO add your handling code here:
+        PrintPDF printPdf = new PrintPDF(ge);
+        int n = Integer.parseInt(jComboBoxJahrgang.getSelectedItem().toString());
+        Jahrgang j = ge.getJahrgang(n);
+        printPdf.druckeKlassenNurNamen(j);
+    }//GEN-LAST:event_jMenuItemKlassenDruckenNurNamenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnsichtDrucken;
     private javax.swing.JButton jButtonEinstellungReligion;
@@ -1032,6 +1049,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemImport;
     private javax.swing.JMenuItem jMenuItemJahrgangDrucken;
     private javax.swing.JMenuItem jMenuItemKlassenDrucken;
+    private javax.swing.JMenuItem jMenuItemKlassenDruckenNurNamen;
     private javax.swing.JMenuItem jMenuItemOpen;
     private javax.swing.JMenuItem jMenuItemReligionsGruppenDrucken;
     private javax.swing.JMenuItem jMenuItemSave;

@@ -162,6 +162,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemKlassenDruckenActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemKlassenDruckenNurNamen">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Klassen drucken (Nur Namen)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemKlassenDruckenNurNamenActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFremdsprachenGruppenDrucken">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fremdsprachengruppen drucken"/>
