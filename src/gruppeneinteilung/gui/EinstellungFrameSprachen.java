@@ -83,6 +83,7 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(476, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -99,7 +100,7 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
         });
 
         jSpinner1.setValue(jahrgang.getReligionsgruppenzahl());
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 8, 1));
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 16, 1));
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinner1StateChanged(evt);
@@ -113,7 +114,7 @@ public class EinstellungFrameSprachen extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setLayout(new java.awt.GridLayout(8, 1));
+        jPanel1.setLayout(new java.awt.GridLayout(16, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
