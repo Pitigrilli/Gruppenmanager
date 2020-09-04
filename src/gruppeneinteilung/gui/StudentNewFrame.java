@@ -76,7 +76,7 @@ public class StudentNewFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Vorname,Nachname");
+        jLabel1.setText("Nachname, Vorname");
 
         jLabel2.setText("Klasse");
 
@@ -113,7 +113,7 @@ public class StudentNewFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Zweig auswählen", "GY", "GY_NTG_8", "GY_WSG_8", "GY_SOG_8", "MU", "TH"}));
+        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Zweig auswählen", "GY", "GY_NTG_8", "GY_WSG_8", "GY_SG_8", "GY_NTG_G9", "GY_SWG_G9", "GY_SG_G9", "MU", "TH"}));
         jComboZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboZweigActionPerformed(evt);

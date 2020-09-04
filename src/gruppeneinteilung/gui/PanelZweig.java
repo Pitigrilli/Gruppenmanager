@@ -50,7 +50,7 @@ public class PanelZweig extends JPanel {
         this.add(JCheckBoxH);
         JCheckBoxH.setText("h");
 
-        String[] auswahl = {"Zweig wählen", "GY", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8", "MU", "TH"};
+        String[] auswahl = {"Zweig wählen", "GY", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8", "GY_NTG_G9", "GY_SWG_G9", "GY_SG_G9", "MU", "TH"};
         JComboBoxZweig = new javax.swing.JComboBox<>(auswahl);
         this.add(JComboBoxZweig);
     }

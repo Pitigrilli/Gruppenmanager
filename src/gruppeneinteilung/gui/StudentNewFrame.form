@@ -161,7 +161,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Vorname,Nachname"/>
+        <Property name="text" type="java.lang.String" value="Nachname, Vorname"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -240,7 +240,7 @@
     <Component class="javax.swing.JComboBox" name="jComboZweig">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Zweig ausw&#xe4;hlen&quot;, &quot;GY&quot;, &quot;GY_NTG_8&quot;, &quot;GY_WSG_8&quot;, &quot;GY_SOG_8&quot;, &quot;MU&quot;, &quot;TH&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;Zweig ausw&#xe4;hlen&quot;, &quot;GY&quot;, &quot;GY_NTG_8&quot;, &quot;GY_WSG_8&quot;, &quot;GY_SG_8&quot;, &quot;GY_NTG_G9&quot;, &quot;GY_SWG_G9&quot;, &quot;GY_SG_G9&quot;, &quot;MU&quot;, &quot;TH&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>

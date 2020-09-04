@@ -113,7 +113,7 @@ public class StudentEditFrame extends javax.swing.JFrame {
             }
         });
 
-        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8", "MU", "TH"}));
+        jComboZweig.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"GY", "GY_NTG_8", "GY_WSG-S_8", "GY_SG_8", "GY_NTG_G9", "GY_SWG_G9", "GY_SG_G9", "MU", "TH"}));
         jComboZweig.setSelectedItem(s.getZweig());
         jComboZweig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
